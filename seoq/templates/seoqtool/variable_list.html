@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Variable</h1>
+<ul>
+{% for variable in object_list %}
+    <li>{{ variable }} - {% if variable.active %}active{% else %}inactive{% endif %}</li>
+{% empty %}
+    <li>No variables yet.</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'seoqtool:create_variable' %}">create variable</a>
+{% endblock content %}

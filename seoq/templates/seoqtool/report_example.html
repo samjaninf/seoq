@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	{% if form %}
+	<form action="" method="get">
+	    {{ form.as_p }}
+	    <input type="submit" value="Submit" />
+	</form>
+	<br>
+	{% endif %}
+	<div class="row">
+	{% if netloc and keywords %}
+	<div class="col-md-12">
+		<h2>{{ keywords }} ScoreCard for {{ netloc }}</h2>
+	</div>
+	{% endif %}
+	{% if report %}
+		
+		<div class="col-md-6">
+			<p>job_id: {{ report.job_id }}</p>	
+		</div>
+		<div class="col-md-6">
+			<p>url: {{ report.url }}</p>
+		</div>
+		<div class="col-md-6">
+			<p>date: {{ report.date }}</p>
+		</div>
+		{% if domain_dates.0 != None and domain_dates.1 != None %}
+		<div class="col-md-6">
+			<p>domain creation date: {{ domain_dates.0 }}</p>
+		</div>
+		<div class="col-md-6">
+			<p><strong>domain expiration date: {{ domain_dates.1 }}</strong></p>
+		</div>
+		{% endif %}
+		<div class="col-md-6">
+			<p>amount of pages analyzed: {{ report.amount_of_pages_analyzed }}</p>
+		</div>
+		{% if speed_info %}
+		<div class="col-md-6">
+			<p>SSL certificate: {% if ssl_certificate %}SSL certificate found{% else %}No SSL certificate{% endif %}</p>
+		</div>
+		<div class="col-md-6">
+			<p>time to access the url from our server : {{ speed_info.time_in_seconds }} seconds</p>
+		</div>
+		{% endif %}
+
+			<div class="col-md-4">
+				<strong>recent reports</strong>
+				{% for recent_report in report.recent_reports %}
+				<p><a href="{% url 'seoqtool:seoq_url_friendly_detail' slug netloc %}?{{recent_report|date:'Y-m-d'}}">{{ recent_report }}</a></p>
+				{% endfor %}
+			</div>
+
+		{% if cms_information %}
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>CMS</strong></td>
+				<td align = "right">{% for element in cms_information %}{{ element }}{% endfor %}</td>
+			</tr>
+			</table>
+		</div>
+		{% endif %}
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>Heading Score</strong></td>
+				<td align = "right">{{ heading_score }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>Text Link Score</strong></td>
+				<td align = "right">{{ tlink_score }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>Title Score</strong></td>
+				<td align = "right">{{ title_score }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>URL Score</strong></td>
+				<td align = "right">{{ url_score }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>Domain Backlinks</strong></td>
+				<td align = "right">{{ backlinks_domain }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>URL Backlinks</strong></td>
+				<td align = "right">{{ backlinks_url }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>.gov domain backlinks</strong></td>
+				<td align = "right">{{ govlinks_domain }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>.gov url backlinks</strong></td>
+				<td align = "right">{{ govlinks_url }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>.edu domain backlinks</strong></td>
+				<td align = "right">{{ edulinks_domain }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>.edu url backlinks</strong></td>
+				<td align = "right">{{ edulinks_url }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-8">
+			<p style="font-family:arial; color:#1a0dab; font-size:18px; margin:0">{{ page_title }}</p>
+			<p style="font-family:arial; color:#006621; font-size:14px; margin:0">{{ url }}</p>
+			<p style="font-family:arial; color:##545454; font-size:13px; margin:0">{{ metadescription }}</p>
+		</div>
+
+		{% comment %}
+			
+			{% for key, value in report.results.items %}
+			<div class="col-md-4">
+				<p><strong>{{ key }}</strong></p>
+				{% for internal_key, internal_value in value.items %}
+					<p>{{ internal_key}} : {{ internal_value }}</p>
+				{% endfor %}
+			</div>
+		{% endfor %}
+		{% for key, value in report.extra_data.items %}
+		<div class="col-md-4">
+			<p><strong>{{ key }}</strong></p>
+				{% for internal_key, internal_value in value.items %}
+					<p>{{ internal_key }} : {{ internal_value }}</p>
+				{% endfor %}
+		</div>
+		{% endfor %}
+		{% endcomment %}
+	{% endif %}
+		
+	</div>
+
+</div>
+{% endblock content %}
