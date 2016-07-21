@@ -26,5 +26,3 @@ def get_most_common_phrases(txtfile):
     threewordphrases = findertrigram.nbest(bigram_measures.pmi, 10)
 
     return twowordphrases, threewordphrases
-
-print get_most_common_phrases('neopets.txt')
