@@ -144,9 +144,20 @@
 			</table>
 		</div>
 		<div class="col-md-8">
-			<p style="font-family:arial; color:#1a0dab; font-size:18px; margin:0">{{ page_title }}</p>
-			<p style="font-family:arial; color:#006621; font-size:14px; margin:0">{{ url }}</p>
-			<p style="font-family:arial; color:##545454; font-size:13px; margin:0">{{ metadescription }}</p>
+			<p style="font-family:arial; color:#1a0dab; font-size:18px; margin:0">
+			{{ page_title }}</p>
+			<p style="font-family:arial; color:#006621; font-size:14px; margin:0">
+			{{ url }}</p>
+			<p style="font-family:arial; color:##545454; font-size:13px; margin:0">
+			{% for word in metadescription %}
+				{% if word in keywordArray %}
+					<strong>{{ word }}</strong>
+				{% else %}
+					{{ word }}
+				{% endif %}
+			{% endfor %}
+			</p>
+
 		</div>
 
 		{% comment %}

@@ -148,9 +148,10 @@ class SEOQURLFriendlyDetail(View):
 
     def get(self, request, slug, netloc):
         keywords = str(slug).replace('-', ' ')
-        keywordArray = [x.strip() for x in keywords.split(',') if x]
+        keywordArray = [x.strip() for x in keywords.split(' ') if x]
         netloc = str(netloc)
-        context = {'keywords': keywords, 'netloc': netloc, 'slug': slug}
+        context = {'keywords': keywords, 'netloc': netloc, 'slug': slug,
+                   'keywordArray': keywordArray}
         date = request.GET.get('date', '')
         try:
             response = requests.get(
@@ -211,7 +212,7 @@ class SEOQURLFriendlyDetail(View):
         elif (netloc.find('www.') == -1) & (netloc.find('http://') != -1):
             netloc = netloc.replace('http://', 'http://www.')
         response = requests.get(netloc)
-        context['url'] = netloc
+        context['url'] = scraper.get_url(netloc)
         context['page_title'] = scraper.get_title()
         context['metadescription'] = scraper.get_meta_description()
         context['heading_score'] = scraper.calculate_headings()
@@ -221,11 +222,9 @@ class SEOQURLFriendlyDetail(View):
         context['backlinks_domain'] = majestic.getNumBackLinksDomainName(
             netloc)
         context['baclinks_url'] = majestic.getNumBackLinksWebPageURL(netloc)
-        context['govlinks_domain'] = majestic.getNumGovBackLinksDomainName(
-            netloc)
+        context['govlinks_domain'] = majestic.getNumGovBackLinksDomainName(netloc)
         context['govlinks_url'] = majestic.getNumGovBackLinksWebPageURL(netloc)
-        context['edulinks_domain'] = majestic.getNumEduBackLinksWebPageURL(
-            netloc)
+        context['edulinks_domain'] = majestic.getNumEduBackLinksWebPageURL(netloc)
         context['edulinks_url'] = majestic.getNumEduBackLinksWebPageURL(netloc)
         context['govlinks_domain'] = majestic.getNumGovBackLinksDomainName(
             netloc)
