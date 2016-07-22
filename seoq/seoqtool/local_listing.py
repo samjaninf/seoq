@@ -43,6 +43,8 @@ class LocalListing(object):
         for i in range(len(jsonData['results'])):
             print jsonData['results'][i]['name']
 
+        print len(jsonData['results'])
+
         for i in range(len(jsonData['results'])):
             print(len(jsonData['results'])) 
             print query[0]
