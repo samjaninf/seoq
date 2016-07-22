@@ -54,7 +54,7 @@
 			</div>
 			<div class="col-md-4">
 			<strong>two word phrases</strong>
-			{% for phrase in report.density_data.twowordphrases %}
+			{% for phrase in report.results.density_data.twowordphrases %}
 					<p>{% for word in phrase %}
 						{{ word }}
 					{% endfor %}</p>
@@ -62,7 +62,7 @@
 			</div>
 			<div class="col-md-4">
 			<strong>three word phrases</strong>
-			{% for phrase in report.density_data.threewordphrases %}
+			{% for phrase in report.results.density_data.threewordphrases %}
 					<p>{% for word in phrase %}
 						{{ word }}
 					{% endfor %}</p>
