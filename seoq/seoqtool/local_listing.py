@@ -1,13 +1,16 @@
 import urllib
 import json
 from qscraper_utils import JSONPrint
-from django.conf import settings
+
 
 class LocalListing(object):
 
     def main(self, url):
         localListingExists = self.getLocalListing(url)
-        print('Google local listing for ' + url + ' exists: ' + str(localListingExists))
+        if localListingExists:
+            return 'Exists'
+        else:
+            return 'Does not exist'
 
     def getLocalListing(self, url):
         # formatting url
@@ -29,13 +32,13 @@ class LocalListing(object):
         jsonData = json.loads(jsonRaw)
 
         results = JSONPrint()
-        JSONObject = (results.makeRequest(url, ["red"], 0, "72.194.193.110"))['extra_data']
+        JSONObject = (results.makeRequest(url, ["red"], 0,
+                      "72.194.193.110"))['extra_data']
         title = (str(JSONObject['page_titles'][0]))
-        print title 
+        print title
 
         for i in range(0, len(jsonData['results'])):
             name = jsonData['results'][i]['name'].lower().replace(' ', '')
             if query in name:
-                return True    
-
+                return True
         return False
