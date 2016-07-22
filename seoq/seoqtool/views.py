@@ -15,6 +15,9 @@ from .utils import get_expiration_and_creation_date
 from .utils import get_built_with_information
 from .qscraper_utils import QscraperSEOQTool
 from .majestic_utils import MajesticBackLinks
+from .checker_utils import Checker_Utils
+from .local_listing import LocalListing
+from .mobilefriendlycheck import MobileFriendlyChecker
 from .utils import get_expiration_and_creation_date,\
     get_built_with_information, get_total_time_and_ssl_certification
 # Create your views here.
@@ -184,6 +187,10 @@ class SEOQURLFriendlyDetail(View):
 
         scraper = QscraperSEOQTool(netloc, keywordArray, 0, 1223)
         majestic = MajesticBackLinks()
+        checker = Checker_Utils()
+        local = LocalListing()
+        mobile = MobileFriendlyChecker()
+
         context['report'] = response.json()
 
         context['report']['recent_reports'] = sorted(set([
@@ -234,4 +241,7 @@ class SEOQURLFriendlyDetail(View):
             netloc)
         context['edulinks_url'] = majestic.getNumEduBackLinksWebPageURL(
             netloc)
+        context['robots'] = checker.checkRobots(netloc)
+        context['local_listing'] = local.main(netloc)
+        context['mobile'] = mobile.checkMobileFriendly(netloc)
         return render(request, self.template_name, context)
