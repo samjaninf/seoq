@@ -233,14 +233,6 @@ class SEOQURLFriendlyDetail(View):
         context['govlinks_url'] = majestic.getNumGovBackLinksWebPageURL(netloc)
         context['edulinks_domain'] = majestic.getNumEduBackLinksDomainName(netloc)
         context['edulinks_url'] = majestic.getNumEduBackLinksWebPageURL(netloc)
-        context['govlinks_domain'] = majestic.getNumGovBackLinksDomainName(
-            netloc)
-        context['govlinks_url'] = majestic.getNumGovBackLinksWebPageURL(
-            netloc)
-        context['edulinks_domain'] = majestic.getNumEduBackLinksWebPageURL(
-            netloc)
-        context['edulinks_url'] = majestic.getNumEduBackLinksWebPageURL(
-            netloc)
         context['robots'] = checker.checkRobots(netloc)
         context['local_listing'] = local.main(netloc)
         context['mobile'] = mobile.checkMobileFriendly(netloc)
