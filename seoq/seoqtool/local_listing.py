@@ -11,10 +11,13 @@ class LocalListing(object):
 
     def getLocalListing(self, url):
         # formatting url
-        if url.find('http://') != -1 or url.find('https://') != -1:
-            url = url[url.find('/') + 2:]
-        if url.find('www.') != -1:
-            url = url[url.find('.') + 1:]
+
+        # if url.find('http://') != -1 or url.find('https://') != -1:
+        #     url = url[url.find('/') + 2:]
+        # if url.find('www.') != -1:
+        #     url = url[url.find('.') + 1:]
+
+
 
         query = url[:url.find('.com')]
         key = 'AIzaSyCM6HT_sT9W7NHB-riLqxtYllvUU94Ys1k'
@@ -33,6 +36,7 @@ class LocalListing(object):
         title = (str(JSONObject['page_titles'][0]))
         print title 
 
+        print len(jsonData['results'])
         for i in range(0, len(jsonData['results'])):
             name = jsonData['results'][i]['name'].lower().replace(' ', '')
             if query in name:
