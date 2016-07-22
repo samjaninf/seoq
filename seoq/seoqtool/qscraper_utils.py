@@ -128,10 +128,11 @@ class QscraperSEOQTool(object):
     def get_meta_description(self):
         # get the url data
         metaDescription = self.JSONObject['results']
-        metaDescription = (metaDescription['meta_description'])['meta_description_content']
+        metaDescription = metaDescription[
+            'meta_description']['meta_description_content']
         Clean_List = ''
         for text in metaDescription:
-            Clean_List = Clean_List + (str(text))
+            Clean_List = Clean_List + (str(text.encode('utf-8')))
         if len(Clean_List) > 160:
             Clean_List = Clean_List[:160] + '...'
         Clean_List = Clean_List.split(' ')
