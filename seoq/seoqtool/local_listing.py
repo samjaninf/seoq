@@ -8,8 +8,11 @@ from django.conf import settings
 class LocalListing(object):
 
     def main(self, url):
-        localListingExists = self.getLocalListing(url)
-        print('Google local listing for ' + url + ' exists: ' + str(localListingExists))
+        localListingExists = self.getLocalListing(url) 
+        if(localListingExists):
+            return 'This listing does exist'
+        else:
+            return 'Listing not available'
 
     def getLocalListing(self, url):
         # formatting url
