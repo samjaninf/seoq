@@ -231,7 +231,7 @@ class SEOQURLFriendlyDetail(View):
         context['baclinks_url'] = majestic.getNumBackLinksWebPageURL(netloc)
         context['govlinks_domain'] = majestic.getNumGovBackLinksDomainName(netloc)
         context['govlinks_url'] = majestic.getNumGovBackLinksWebPageURL(netloc)
-        context['edulinks_domain'] = majestic.getNumEduBackLinksWebPageURL(netloc)
+        context['edulinks_domain'] = majestic.getNumEduBackLinksDomainName(netloc)
         context['edulinks_url'] = majestic.getNumEduBackLinksWebPageURL(netloc)
         context['govlinks_domain'] = majestic.getNumGovBackLinksDomainName(
             netloc)
