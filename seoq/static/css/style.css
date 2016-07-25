@@ -5779,3 +5779,10 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+.bg-gray {
+  background-color: #F0F4F5; }
+
+a.bg-gray:hover,
+a.bg-gray:focus {
+  background-color: #d1dee1; }
