@@ -62,20 +62,17 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <div class="container">
-
+    <section>
       {% if messages %}
           {% for message in messages %}
               <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
           {% endfor %}
       {% endif %}
+    </section>
 
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
-
-    </div> <!-- /container -->
-
+    {% block content %}
+      <p>Use this document as a way to quick start any new project.</p>
+    {% endblock content %}
     {% block modal %}{% endblock modal %}
 
     <!-- Le javascript
