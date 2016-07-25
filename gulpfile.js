@@ -73,7 +73,7 @@ gulp.task('imgCompression', function(){
 
 // Run django server
 gulp.task('runServer', function() {
-  exec('python manage.py runserver', function (err, stdout, stderr) {
+  exec("python manage.py runserver 0.0.0.0:8000", function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
   });
