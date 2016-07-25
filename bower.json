@@ -1,0 +1,21 @@
+{
+  "name": "seoq",
+  "description": "SEO Quotient™ provides SEO tools for both website owners and online marketing professionals to diagnose your website and create an action plan.",
+  "main": "",
+  "authors": [
+    "Luis Carlos Martinez <karloxmartinez@hotmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/swappsco/seoq",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
