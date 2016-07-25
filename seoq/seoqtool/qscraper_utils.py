@@ -145,7 +145,7 @@ class QscraperSEOQTool(object):
         title = title['page_titles']
         Clean_List = ''
         for text in title:
-            Clean_List = Clean_List + (str(text))
+            Clean_List = Clean_List + (str(text.encode('utf-8')))
         if len(Clean_List) > 70:
             Clean_List = Clean_List[:70]
             if Clean_List.rfind(' ') != -1:
