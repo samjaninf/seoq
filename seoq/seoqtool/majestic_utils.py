@@ -10,21 +10,10 @@ class MajesticBackLinks(object):
         # in order to allow other urls
         # --jlariza
 
-        numGovBackLinksWebPageURL = self.getNumGovBackLinksWebPageURL(url)
-        print('Number of Gov External Backlinks for page URL of ' +
-              url + ': ' + numGovBackLinksWebPageURL)
-
-        numGovBackLinksDomainName = self.getNumGovBackLinksDomainName(url)
-        print('Number of Gov External Backlinks for domain name of ' +
-              url + ': ' + numGovBackLinksDomainName)
-
-        numEduBackLinksWebPageURL = self.getNumEduBackLinksWebPageURL(url)
-        print('Number of Edu External Backlinks for page URL of ' +
-              url + ': ' + numEduBackLinksWebPageURL)
-
-        numEduBackLinksDomainName = self.getNumEduBackLinksDomainName(url)
-        print('Number of Edu External Backlinks for domain name of ' +
-              url + ': ' + numEduBackLinksDomainName)
+        self.numGovBackLinksWebPageURL = self.getNumGovBackLinksWebPageURL(url)
+        self.numGovBackLinksDomainName = self.getNumGovBackLinksDomainName(url)
+        self.numEduBackLinksWebPageURL = self.getNumEduBackLinksWebPageURL(url)
+        self.numEduBackLinksDomainName = self.getNumEduBackLinksDomainName(url)
 
     def getNumBackLinksDomainName(self, url):
         # removed the hardcoded information

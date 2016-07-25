@@ -8,7 +8,8 @@ from django.utils.html import strip_tags
 
 class Checker_Utils(object):
     # needs plain domain such as 'http://www.espn.com'
-    # returns (boolean of if robots are crawlable, boolean if there is a sitemap)
+    # returns (boolean of if robots are crawlable, boolean
+    # if there is a sitemap)
     def checkRobots(self, url):
         siteResult = ''
         robotResult = ''
@@ -72,7 +73,6 @@ class Checker_Utils(object):
         # such as sitemap.txt
         for item in sitemap:
             urlAdd = url + item
-            print urlAdd
             try:
                 r = requests.get(urlAdd)
                 if r.text == '':
@@ -82,7 +82,6 @@ class Checker_Utils(object):
                     if index == r.text.find(item):
                         pass
                     elif index != -1:
-                        print item
                         return 'Sitemap found'
                 urlAdd = url
             except requests.exceptions.RequestException:
