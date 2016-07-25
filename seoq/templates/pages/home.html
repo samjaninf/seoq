@@ -2,30 +2,29 @@
 {% load i18n staticfiles%}
 
 {% block content %}
-	<a href="{% url 'seoqtool:tool_example' %}">use seoq tool</a>
-  <section>
-    <div class="container-fluid">
-      <div class="row">
+	<a href="{% url 'seoqtool:tool_example' %}" class="text-center">use seoq tool</a>
+  <section class="bg-">
+    <div class="container">
+      <div class="row text-center">
         <h1>{% trans "Want to rank higher on search engines?" %}</h1>
         <span>{% trans "Let us help by telling who you are." %}</span>
       </div>
       <div class="row">
         <div class="col-md-4">
-          <img src="{% static "images/F-1.png" %}" alt="" class="img-responsive"></img>
+          <img src="{% static "images/fish-1.png" %}" alt="" class="img-responsive"></img>
           <span></span>
         </div>
         <div class="col-md-4">
-          <img src="{% static "images/F-2.png" %}" alt="" class="img-responsive"></img>
+          <img src="{% static "images/fish-2.png" %}" alt="" class="img-responsive"></img>
           <span></span>
         </div>
         <div class="col-md-4">
-          <img src="{% static "images/F-3.png" %}" alt="" class="img-responsive"></img>
+          <img src="{% static "images/fish-3.png" %}" alt="" class="img-responsive"></img>
           <span></span>
         </div>
       </div>
     </div>
   </section>
-
   <section class="benefits-seo">
     <div class="container">
       <div class="row">

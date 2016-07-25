@@ -26,7 +26,7 @@
 
   <body>
     <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -63,16 +63,33 @@
       </div>
     </nav>
     <section>
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-          {% endfor %}
-      {% endif %}
+      <div class="row">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+      </div>
     </section>
 
     {% block content %}
       <p>Use this document as a way to quick start any new project.</p>
     {% endblock content %}
+    <footer>
+
+      <nav>
+
+      </nav>
+      <div class="row">
+        <div class="col-md-8">
+          2016 SEO Quotient™. All right reserved
+        </div>
+        <div class="col-md-4">
+          logos
+        </div>
+      </div>
+
+    </footer>
     {% block modal %}{% endblock modal %}
 
     <!-- Le javascript
