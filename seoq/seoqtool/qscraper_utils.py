@@ -72,7 +72,6 @@ class QscraperSEOQTool(object):
         kwLinks = links['number_of_kws_in_links_text']
         # turn it into a score out of 10
         score = 10 * kwLinks / float(totalLinks * len(self.keywords))
-        print score
         return score
 
     def calculate_title(self):
@@ -92,7 +91,6 @@ class QscraperSEOQTool(object):
         kwURLS = URLS['number_of_kws_in_url']
         # turn it into a score out of 10
         score = 10 * kwURLS / float(totalURLS * len(self.keywords))
-        print score
         return score
 
     def list_anchor_text(self):
@@ -104,7 +102,7 @@ class QscraperSEOQTool(object):
         # creates a clean list that turns unicode string into regular string
         Clean_List = []
         for text in List_AnchorText:
-            Clean_List.append(str(text))
+            Clean_List.append(str(text.encode("utf-8")))
         return Clean_List  # returns clean string
 
     def list_images(self):
@@ -136,7 +134,6 @@ class QscraperSEOQTool(object):
         if len(Clean_List) > 160:
             Clean_List = Clean_List[:160] + '...'
         Clean_List = Clean_List.split(' ')
-        print Clean_List
         return Clean_List
 
     def get_title(self):
@@ -145,7 +142,7 @@ class QscraperSEOQTool(object):
         title = title['page_titles']
         Clean_List = ''
         for text in title:
-            Clean_List = Clean_List + (str(text))
+            Clean_List = Clean_List + (str(text.encode('utf-8')))
         if len(Clean_List) > 70:
             Clean_List = Clean_List[:70]
             if Clean_List.rfind(' ') != -1:
