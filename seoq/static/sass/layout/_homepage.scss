@@ -1,12 +1,26 @@
 section.seo-experts{
   #experts{
-    display: flex;
-    display: -webkit-flex;
-    align-items: center;
+    @media(min-width:$screen-sm-min){
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+    }
+    .col-sm-6{
+      img.img-circle{
+        border: 3px solid #fff;
+      }
+    }
   }
   #for-students{
     overflow: hidden;
+    @media(max-width:522px){
+      margin-top: 40px;
+    }
     .col-md-8{
+      @media(max-width: $screen-md-max){
+        padding-left: 0px;
+        padding-right: 0px;
+      }
       h2{
         z-index: 9;
       }
@@ -21,6 +35,27 @@ section.seo-experts{
         position: absolute;
         top: 0;
         z-index: 0;
+      }
+      @media(min-width:$screen-md-min){
+        #tablet{
+          height: 130%;
+        }
+      }
+      @media(max-width:$screen-sm){
+        .col-sm-6{
+          .pull-left,.pull-right{
+            float: none !important;
+          }
+        }
+        #tablet{
+          height: 100%;
+        }
+      }
+      @media(max-width:522px){
+        padding-top:0px;
+        #tablet{
+          display: none;
+        }
       }
     }
   }

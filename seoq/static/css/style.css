@@ -5848,15 +5848,26 @@ a.bg-gray:hover,
 a.bg-gray:focus {
   background-color: #d1dee1; }
 
-section.seo-experts #experts {
-  display: -ms-flexbox;
-  display: flex;
-  display: -webkit-flex;
-  -ms-flex-align: center;
-      align-items: center; }
+@media (min-width: 768px) {
+  section.seo-experts #experts {
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -ms-flex-align: center;
+        align-items: center; } }
+
+section.seo-experts #experts .col-sm-6 img.img-circle {
+  border: 3px solid #fff; }
 
 section.seo-experts #for-students {
   overflow: hidden; }
+  @media (max-width: 522px) {
+    section.seo-experts #for-students {
+      margin-top: 40px; } }
+  @media (max-width: 1199px) {
+    section.seo-experts #for-students .col-md-8 {
+      padding-left: 0px;
+      padding-right: 0px; } }
   section.seo-experts #for-students .col-md-8 h2 {
     z-index: 9; }
   section.seo-experts #for-students .col-md-8 .col-sm-6 {
@@ -5868,3 +5879,16 @@ section.seo-experts #for-students {
     position: absolute;
     top: 0;
     z-index: 0; }
+  @media (min-width: 992px) {
+    section.seo-experts #for-students .col-md-8 #tablet {
+      height: 130%; } }
+  @media (max-width: 768px) {
+    section.seo-experts #for-students .col-md-8 .col-sm-6 .pull-left, section.seo-experts #for-students .col-md-8 .col-sm-6 .pull-right {
+      float: none !important; }
+    section.seo-experts #for-students .col-md-8 #tablet {
+      height: 100%; } }
+  @media (max-width: 522px) {
+    section.seo-experts #for-students .col-md-8 {
+      padding-top: 0px; }
+      section.seo-experts #for-students .col-md-8 #tablet {
+        display: none; } }
