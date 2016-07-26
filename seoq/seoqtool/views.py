@@ -48,7 +48,7 @@ class BasicQscraperUseView(View):
         slug = ''
         slug = '-'.join(keywords)
         netloc = url.replace(
-            'https://', '').replace('http://', '').replace('/', '')
+            'https://', '').replace('http://', '')
         if not keywords:
             messages.error(
                 request,
@@ -122,7 +122,9 @@ class BasicQscraperUseView(View):
             return render(request, self.template_name, context)
         # context['form'] = self.formclass(initial=request.GET)
         return redirect(
-            'seoqtool:seoq_url_friendly_detail', slug=slug, netloc=netloc)
+            'seoqtool:seoq_url_friendly_detail',
+            slug=slug,
+            netloc=netloc.replace('/', '-'))
 
 
 class CreateVariableView(CreateView):
