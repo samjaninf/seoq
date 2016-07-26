@@ -1,0 +1,164 @@
+$navbar-seoq-color:             #777 !default;
+$navbar-seoq-bg:                #8fd1e1 !default;
+$navbar-seoq-border:            0 !default;
+
+// Navbar links
+$navbar-seoq-link-color:                #2d5d81 !default;
+$navbar-seoq-link-hover-color:          $navbar-seoq-link-color!default;
+$navbar-seoq-link-hover-bg:             transparent !default;
+$navbar-seoq-link-active-color:         #FFF !default;
+$navbar-seoq-link-active-bg:            #2d5d81 !default;
+$navbar-seoq-link-disabled-color:       #ccc !default;
+$navbar-seoq-link-disabled-bg:          transparent !default;
+
+// Navbar brand label
+$navbar-seoq-brand-color:               $navbar-seoq-link-color !default;
+$navbar-seoq-brand-hover-color:         darken($navbar-seoq-brand-color, 10%) !default;
+$navbar-seoq-brand-hover-bg:            transparent !default;
+
+// Navbar toggle
+$navbar-seoq-toggle-hover-bg:           #ddd !default;
+$navbar-seoq-toggle-icon-bar-bg:        #888 !default;
+$navbar-seoq-toggle-border-color:       #ddd !default;
+
+// Default navbar
+.navbar-seoq {
+  background-color: $navbar-seoq-bg;
+  border-color: $navbar-seoq-border;
+  margin-bottom: 0;
+  padding: 20px 10px;
+  border-radius: 0;
+  .navbar-brand {
+    color: $navbar-seoq-brand-color;
+    padding-top: 0px;
+    &:hover,
+    &:focus {
+      color: $navbar-seoq-brand-hover-color;
+      background-color: $navbar-seoq-brand-hover-bg;
+    }
+    img{
+      min-height: 45px;
+      height: 45px;
+    }
+  }
+
+  .navbar-text {
+    color: $navbar-seoq-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: $navbar-seoq-link-color;
+
+      &:hover,
+      &:focus {
+        color: $navbar-seoq-link-hover-color;
+        background-color: $navbar-seoq-link-hover-bg;
+        text-decoration: underline;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-seoq-link-active-color;
+        background-color: $navbar-seoq-link-active-bg;
+        text-decoration: none;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-seoq-link-disabled-color;
+        background-color: $navbar-seoq-link-disabled-bg;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: $navbar-seoq-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: $navbar-seoq-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: $navbar-seoq-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $navbar-seoq-border;
+  }
+
+  // Dropdown menu items
+  .navbar-nav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $navbar-seoq-link-active-bg;
+        color: $navbar-seoq-link-active-color;
+      }
+    }
+
+    @media (max-width: $grid-float-breakpoint-max) {
+      // Dropdowns get custom display when collapsed
+      .open .dropdown-menu {
+        > li > a {
+          color: $navbar-seoq-link-color;
+          &:hover,
+          &:focus {
+            color: $navbar-seoq-link-hover-color;
+            background-color: $navbar-seoq-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $navbar-seoq-link-active-color;
+            background-color: $navbar-seoq-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $navbar-seoq-link-disabled-color;
+            background-color: $navbar-seoq-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+
+
+  // Links in navbars
+  //
+  // Add a class to ensure links outside the navbar nav are colored correctly.
+
+  .navbar-link {
+    color: $navbar-seoq-link-color;
+    &:hover {
+      color: $navbar-seoq-link-hover-color;
+    }
+  }
+
+  .btn-link {
+    color: $navbar-seoq-link-color;
+    &:hover,
+    &:focus {
+      color: $navbar-seoq-link-hover-color;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: $navbar-seoq-link-disabled-color;
+      }
+    }
+  }
+}
