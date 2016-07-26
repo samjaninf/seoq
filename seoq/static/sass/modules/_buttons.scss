@@ -1,3 +1,25 @@
 .btn-seoq{
   @include button-variant(#FFF, #fe9a28, #f18308)
 }
+.btn-default-ligth {
+  @include button-variant-ligth($btn-default-color, $btn-default-bg, $btn-default-border);
+}
+.btn-primary-ligth {
+  @include button-variant-ligth($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+// Success appears as green
+.btn-success-ligth {
+  @include button-variant-ligth($btn-success-color, $btn-success-bg, $btn-success-border);
+}
+// Info appears as blue-green
+.btn-info-ligth {
+  @include button-variant-ligth($btn-info-color, $btn-info-bg, $btn-info-border);
+}
+// Warning appears as orange
+.btn-warning-ligth {
+  @include button-variant-ligth($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+// Danger and error appear as red
+.btn-danger-ligth {
+  @include button-variant-ligth($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}
