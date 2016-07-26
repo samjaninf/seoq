@@ -124,7 +124,7 @@ class BasicQscraperUseView(View):
         return redirect(
             'seoqtool:seoq_url_friendly_detail',
             slug=slug,
-            netloc=netloc.replace('/', '-'))
+            netloc=netloc.replace('/', '--'))
 
 
 class CreateVariableView(CreateView):
