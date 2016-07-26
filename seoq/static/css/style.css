@@ -116,6 +116,16 @@ than we are going to use in website
 .b-b-1 {
   border-bottom: 1px solid #eeeeee; }
 
+small a {
+  border-bottom: solid 2px #8fd1e1;
+  display: inline;
+  padding-bottom: 3px; }
+  small a:hover {
+    text-decoration: none; }
+
+small a.text-white {
+  border: none; }
+
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
