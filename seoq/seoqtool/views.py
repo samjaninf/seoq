@@ -150,7 +150,7 @@ class SEOQURLFriendlyDetail(View):
     template_name = 'seoqtool/report_example.html'
 
     def get(self, request, slug, netloc):
-        keywords = str(slug).replace('-', ' ')
+        keywords = str(slug.encode('utf-8')).replace('-', ' ')
         keywordArray = [x.strip() for x in keywords.split(' ') if x]
         netloc = str(netloc)
         context = {'keywords': keywords, 'netloc': netloc, 'slug': slug,
@@ -171,7 +171,6 @@ class SEOQURLFriendlyDetail(View):
                 request,
                 'the server is unavailable right now, please try again later.')
             return render(request, self.template_name, context)
-
         if response.status_code != 200:
             if response.status_code == 404:
                 raise Http404
@@ -185,7 +184,8 @@ class SEOQURLFriendlyDetail(View):
                     'An error has occurred, please try again later')
                 return render(request, self.template_name, context)
 
-        scraper = QscraperSEOQTool(netloc, keywordArray, 0, 1223)
+        scraper = QscraperSEOQTool(
+            netloc, keywordArray, 0, 1223, report=response.json())
         majestic = MajesticBackLinks()
         checker = Checker_Utils()
         local = LocalListing()
