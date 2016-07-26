@@ -1,4 +1,5 @@
 section.seo-experts{
+  overflow: hidden;
   #experts{
     @media(min-width:$screen-sm-min){
       display: flex;
@@ -12,7 +13,6 @@ section.seo-experts{
     }
   }
   #for-students{
-    overflow: hidden;
     @media(max-width:522px){
       margin-top: 40px;
     }
@@ -62,9 +62,11 @@ section.seo-experts{
 }
 section.scan-website{
   .col-md-10{
-    display: flex;
-    display: -webkit-flex;
-    align-items:center;
+    @media(min-width:$screen-sm-min){
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+    }
     .col-sm-6{
       form{
         .form-group{

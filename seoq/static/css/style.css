@@ -98,6 +98,9 @@ than we are going to use in website
 .p-b-40 {
   padding-bottom: 40px; }
 
+.p-t-20 {
+  padding-top: 20px; }
+
 .p-t-80 {
   padding-top: 80px; }
 
@@ -5855,19 +5858,17 @@ a.bg-brand:hover,
 a.bg-brand:focus {
   background-color: #67c0d6; }
 
-@media (min-width: 768px) {
-  section.seo-experts #experts {
-    display: -ms-flexbox;
-    display: flex;
-    display: -webkit-flex;
-    -ms-flex-align: center;
-        align-items: center; } }
-
-section.seo-experts #experts .col-sm-6 img.img-circle {
-  border: 3px solid #fff; }
-
-section.seo-experts #for-students {
+section.seo-experts {
   overflow: hidden; }
+  @media (min-width: 768px) {
+    section.seo-experts #experts {
+      display: -ms-flexbox;
+      display: flex;
+      display: -webkit-flex;
+      -ms-flex-align: center;
+          align-items: center; } }
+  section.seo-experts #experts .col-sm-6 img.img-circle {
+    border: 3px solid #fff; }
   @media (max-width: 522px) {
     section.seo-experts #for-students {
       margin-top: 40px; } }
@@ -5900,35 +5901,40 @@ section.seo-experts #for-students {
       section.seo-experts #for-students .col-md-8 #tablet {
         display: none; } }
 
-section.scan-website .col-md-10 {
-  display: -ms-flexbox;
-  display: flex;
-  display: -webkit-flex;
-  -ms-flex-align: center;
-      align-items: center; }
-  section.scan-website .col-md-10 .col-sm-6 form .form-group label {
-    width: 100%; }
-  section.scan-website .col-md-10 .col-sm-6 form .form-group .form-control {
+@media (min-width: 768px) {
+  section.scan-website .col-md-10 {
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -ms-flex-align: center;
+        align-items: center; } }
+
+section.scan-website .col-md-10 .col-sm-6 form .form-group label {
+  width: 100%; }
+
+section.scan-website .col-md-10 .col-sm-6 form .form-group .form-control {
+  font-weight: bold;
+  margin-bottom: 10px;
+  height: 40px;
+  font-size: 15px; }
+
+section.scan-website .col-md-10 .col-sm-6 form button {
+  height: 40px;
+  font-size: 15px;
+  font-weight: bold; }
+
+section.scan-website .col-md-10 .col-sm-6 form .text-block {
+  display: table;
+  margin: 15px auto;
+  width: 50px;
+  height: 50px;
+  background: #8fd1e1;
+  border-radius: 50%; }
+  section.scan-website .col-md-10 .col-sm-6 form .text-block h3 {
+    display: table-cell;
+    vertical-align: middle;
     font-weight: bold;
-    margin-bottom: 10px;
-    height: 40px;
-    font-size: 15px; }
-  section.scan-website .col-md-10 .col-sm-6 form button {
-    height: 40px;
-    font-size: 15px;
-    font-weight: bold; }
-  section.scan-website .col-md-10 .col-sm-6 form .text-block {
-    display: table;
-    margin: 15px auto;
-    width: 50px;
-    height: 50px;
-    background: #8fd1e1;
-    border-radius: 50%; }
-    section.scan-website .col-md-10 .col-sm-6 form .text-block h3 {
-      display: table-cell;
-      vertical-align: middle;
-      font-weight: bold;
-      color: #fff; }
+    color: #fff; }
 
 .navbar-seoq {
   background-color: #8fd1e1;
