@@ -1,5 +1,77 @@
 {% extends "base.html" %}
+{% load i18n staticfiles%}
 
 {% block content %}
-	<a href="{% url 'seoqtool:tool_example' %}">use seoq tool</a>
+	<a href="{% url 'seoqtool:tool_example' %}" class="text-center">use seoq tool</a>
+  <section class="bg-">
+    <div class="container">
+      <div class="row text-center">
+        <h1>{% trans "Want to rank higher on search engines?" %}</h1>
+        <span>{% trans "Let us help by telling who you are." %}</span>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{% static "images/fish-1.png" %}" alt="" class="img-responsive"></img>
+          <span></span>
+        </div>
+        <div class="col-md-4">
+          <img src="{% static "images/fish-2.png" %}" alt="" class="img-responsive"></img>
+          <span></span>
+        </div>
+        <div class="col-md-4">
+          <img src="{% static "images/fish-3.png" %}" alt="" class="img-responsive"></img>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="benefits-seo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="col-sm-6 col-md-6">
+            <h2 class="text-left"><strong>Benefits of SEO</strong></h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore ad, nemo earum aspernatur laboriosam reprehenderit dolor amet vitae et debitis, veniam quisquam aut cupiditate nihil quaerat fuga iste, placeat explicabo!
+            </p>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <img src="{% static "images/images-benefits.png" %}" alt="images benefits" class="center-block img-responsive">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <img src="{% static "images/separator-block-top.png" %}" alt="separator block top" class="img-responsive center-block">
+  <section class="seo-experts bg-gray">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+          <div class="col-sm-4">
+            <img src="http://lorempixel.com/150/150/people/1" alt="experts of seo" class="center-block img-responsive img-circle">
+            <p></p>
+          </div>
+          <div class="col-sm-4">
+            <img src="http://lorempixel.com/150/150/people/2" alt="experts of seo" class="center-block img-responsive img-circle">
+            <p></p>
+          </div>
+          <div class="col-sm-4">
+            <img src="http://lorempixel.com/150/150/people/3" alt="experts of seo" class="center-block img-responsive img-circle">
+            <p></p>
+          </div>
+          <div class="col-sm-4">
+            <img src="http://lorempixel.com/150/150/people/4" alt="experts of seo" class="center-block img-responsive img-circle">
+            <p></p>
+          </div>
+          <div class="col-sm-4">
+            <img src="http://lorempixel.com/150/150/people/5" alt="experts of seo" class="center-block img-responsive img-circle">
+            <p></p>
+          </div>
+          <div class="col-sm-4">
+            <img src="http://lorempixel.com/150/150/people/6" alt="experts of seo" class="center-block img-responsive img-circle">
+            <p></p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <h2 class="text-left"><strong>This week SEO Experts</strong></h2>
 {% endblock content %}
