@@ -1,4 +1,16 @@
 @charset "UTF-8";
+@font-face {
+  font-family: 'Nunito Light';
+  src: url("../fonts/Nunito-Light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Nunito';
+  src: url("../fonts/Nunito-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Nunito Bold';
+  src: url("../fonts/Nunito-Bold.ttf") format("truetype"); }
+
 html {
   font-size: 62.5%; }
 
@@ -1165,7 +1177,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Nunito, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #333333;
@@ -5234,7 +5246,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Nunito, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5347,7 +5359,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Nunito, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -8131,7 +8143,8 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
   .navbar-seoq .navbar-text {
     color: #777; }
   .navbar-seoq .navbar-nav > li > a {
-    color: #2d5d81; }
+    color: #2d5d81;
+    font-weight: bold; }
     .navbar-seoq .navbar-nav > li > a:hover, .navbar-seoq .navbar-nav > li > a:focus {
       color: #2d5d81;
       background-color: transparent;
