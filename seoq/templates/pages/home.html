@@ -6,7 +6,7 @@
   <section class="bg-brand">
     <div class="container">
       <div class="row text-center">
-        <h1>{% trans "Want to rank higher on search engines?" %}</h1>
+        <h1><strong>{% trans "Want to rank higher on search engines?" %}</strong></h1>
         <span>{% trans "Let us help by telling who you are." %}</span>
       </div>
       <div class="row">
@@ -22,6 +22,9 @@
           <img src="{% static "images/fish-3.png" %}" alt="" class="img-responsive"></img>
           <span>{% trans "I study SEO" %}</span>
         </div>
+        <small>
+          <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white">{% trans "Discover more" %}<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+        </small>
       </div>
     </div>
   </section>
@@ -31,7 +34,7 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-sm-6 col-md-6 m-b-40">
-            <h2 class="text-left"><strong>{% trans "Benefits of SEO" %}</strong></h2>
+            <h2 class="text-left" id="benefits-text"><strong>{% trans "Benefits of SEO" %}</strong></h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore ad, nemo earum aspernatur laboriosam reprehenderit dolor amet vitae et debitis, veniam quisquam aut cupiditate nihil quaerat fuga iste, placeat explicabo!
             </p>
@@ -40,6 +43,9 @@
           <div class="col-sm-6 col-md-6">
             <img src="{% static "images/images-benefits.png" %}" alt="images benefits" class="center-block img-responsive">
           </div>
+          <small class="pull-right">
+            <a href="#experts" title="{% trans "Discover more" %}" class="">{% trans "Most recent" %}<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+          </small>
         </div>
       </div>
     </div>
@@ -75,7 +81,7 @@
           </div>
         </div>
         <div class="col-sm-6 col-md-6 clear">
-          <h2 class="text-left"><strong>{% trans "This week SEO Experts" %}</strong></h2>
+          <h2 class="text-left" id="experts"><strong>{% trans "This week SEO Experts" %}</strong></h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente at eius vitae doloremque dolorum, deleniti non expedita id odio eum, dignissimos, quis, adipisci consectetur neque perspiciatis explicabo quo quia voluptatum.</p>
           <a href="#" class="btn btn-primary">{% trans "Create SEO profile" %}</a>
         </div>
@@ -104,6 +110,9 @@
           </div>
           <img src="{% static "images/tablet.png" %}" alt="tablet" class="center-block img-responsive" id="tablet">
         </div>
+        <small class="clear center-block">
+          <a href="#how-website" title="{% trans "Discover more" %}" class=""><i class="fa fa-angle-double-down" aria-hidden="true"></i>{% trans "Give it try" %}</a>
+        </small>
       </div>
     </div>
     <img src="{% static "images/separator-block-bottom.png" %}" alt="separator block top" class="img-responsive center-block relative">
@@ -113,27 +122,44 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-sm-6 col-md-6 m-b-50">
-            <h2 class="">{% trans "How does your" %}<br>{% trans "Website do for SEO?" %}</h2>
+            <h2 class="" id="how-website">{% trans "How does your" %}<br>{% trans "Website do for SEO?" %}</h2>
           </div>
           <div class="col-sm-6 col-md-6 m-b-50 p-t-20">
             <form action="">
               <div class="form-group">
-                <label for="your-website" class="text-center">Your Website</label>
-                <input type="text" class="form-control text-center" id="your-website" placeholder="What is your website? e,g seoq.com">
+                <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
+                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e,g seoq.com" %}">
               </div>
               <div class="text-center text-block">
                 <h3>vs</h3>
               </div>
               <div class="form-group">
-                <label for="competitor-website" class="text-center">Your Competitor</label>
-                <input type="text" class="form-control text-center" id="competitor-website" placeholder="What website ranks higher than yours?">
-                <input type="text" class="form-control text-center" id="keywords" placeholder="What keyword phrase do you want to rank for?">
+                <label for="competitor-website" class="text-center">{% trans "Your Competitor" %}</label>
+                <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}">
+                <input type="text" class="form-control text-center" id="keywords" placeholder="{% trans "What keyword phrase do you want to rank for?" %}">
               </div>
-              <button type="submit" class="btn btn-primary btn-block">Start</button>
+              <button type="submit" class="btn btn-warning btn-block">{% trans "Start" %}</button>
             </form>
           </div>
         </div>
       </div>
     </div>
   </section>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+  </script>
 {% endblock content %}

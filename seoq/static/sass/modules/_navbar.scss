@@ -49,7 +49,7 @@ $navbar-seoq-toggle-border-color:       #ddd !default;
   .navbar-nav {
     > li > a {
       color: $navbar-seoq-link-color;
-
+      font-weight: bold;
       &:hover,
       &:focus {
         color: $navbar-seoq-link-hover-color;
