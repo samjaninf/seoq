@@ -1,4 +1,16 @@
 @charset "UTF-8";
+@font-face {
+  font-family: 'Nunito Light';
+  src: url("../fonts/Nunito-Light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Nunito';
+  src: url("../fonts/Nunito-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Nunito Bold';
+  src: url("../fonts/Nunito-Bold.ttf") format("truetype"); }
+
 html {
   font-size: 62.5%; }
 
@@ -1178,7 +1190,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Nunito, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #333333;
@@ -5247,7 +5259,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Nunito, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5360,7 +5372,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Nunito, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -8044,6 +8056,25 @@ a.bg-brand:hover,
 a.bg-brand:focus {
   background-color: #67c0d6; }
 
+section.benefits-seo #benefits-text:before {
+  content: '';
+  display: block;
+  border-left: 2px solid #8fd1e1;
+  border-bottom: 2px solid #8fd1e1;
+  position: absolute; }
+  @media (min-width: 1200px) {
+    section.benefits-seo #benefits-text:before {
+      height: 160px;
+      width: 65px;
+      left: -76px;
+      top: -80px; } }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    section.benefits-seo #benefits-text:before {
+      height: 160px;
+      width: 45px;
+      left: -55px;
+      top: -80px; } }
+
 section.seo-experts {
   overflow: hidden; }
   @media (min-width: 768px) {
@@ -8095,6 +8126,31 @@ section.seo-experts {
     -ms-flex-align: center;
         align-items: center; } }
 
+section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
+  content: '';
+  border-bottom: 2px solid #8fd1e1;
+  border-left: 2px solid #8fd1e1;
+  display: block;
+  position: absolute; }
+  @media (min-width: 992px) {
+    section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
+      width: 50px;
+      height: 293px;
+      top: -237px;
+      left: -67px; } }
+  @media (min-width: 1200px) {
+    section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
+      width: 70px;
+      height: 295px;
+      top: -240px;
+      left: -82px; } }
+  @media (min-width: 833px) and (max-width: 991px) {
+    section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
+      width: 50px;
+      height: 230px;
+      top: -174px;
+      left: -43px; } }
+
 section.scan-website .col-md-10 .col-sm-6 form .form-group label {
   width: 100%; }
 
@@ -8103,7 +8159,8 @@ section.scan-website .col-md-10 .col-sm-6 form .form-group .form-control {
   margin-bottom: 10px;
   height: 40px;
   font-size: 15px;
-  border-radius: 2px; }
+  border-radius: 2px;
+  background: #F0F4F5; }
 
 section.scan-website .col-md-10 .col-sm-6 form button {
   height: 40px;
@@ -8126,6 +8183,25 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
     font-weight: bold;
     color: #fff; }
 
+small#give-try {
+  /* margin-left: 50px;
+  position: relative;
+  top: -40px; */ }
+  @media (max-width: 991px) {
+    small#give-try {
+      margin-left: 15px; } }
+  @media (min-width: 833px) and (max-width: 991px) {
+    small#give-try {
+      top: 60px;
+      position: relative;
+      z-index: 99;
+      margin-left: -27px; } }
+  @media (min-width: 768px) and (max-width: 832px) {
+    small#give-try {
+      top: 60px;
+      position: relative;
+      z-index: 99; } }
+
 .navbar-seoq {
   background-color: #8fd1e1;
   border-color: 0;
@@ -8144,7 +8220,8 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
   .navbar-seoq .navbar-text {
     color: #777; }
   .navbar-seoq .navbar-nav > li > a {
-    color: #2d5d81; }
+    color: #2d5d81;
+    font-weight: bold; }
     .navbar-seoq .navbar-nav > li > a:hover, .navbar-seoq .navbar-nav > li > a:focus {
       color: #2d5d81;
       background-color: transparent;

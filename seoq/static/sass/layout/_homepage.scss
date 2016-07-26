@@ -1,3 +1,24 @@
+section.benefits-seo{
+  #benefits-text:before{
+    content: '';
+    display: block;
+    border-left: 2px solid $brand-primary;
+    border-bottom: 2px solid $brand-primary;
+    position: absolute;
+    @media (min-width: 1200px){
+      height: 160px;
+      width: 65px;
+      left: -76px;
+      top: -80px;
+    }
+    @media (min-width: $screen-md-min) and (max-width:$screen-md-max){
+      height: 160px;
+      width: 45px;
+      left: -55px;
+      top: -80px;
+    }
+  }
+}
 section.seo-experts{
   overflow: hidden;
   #experts{
@@ -68,6 +89,31 @@ section.scan-website{
       align-items: center;
     }
     .col-sm-6{
+      h2#how-website:before{
+        content: '';
+        border-bottom: 2px solid $brand-primary;
+        border-left: 2px solid $brand-primary;
+        display: block;
+        position: absolute;
+        @media(min-width:$screen-md-min){
+          width: 50px;
+          height: 293px;
+          top: -237px;
+          left: -67px;
+        }
+        @media(min-width:$screen-lg-min){
+          width: 70px;
+          height: 295px;
+          top: -240px;
+          left: -82px;
+        }
+        @media (min-width:833px) and (max-width:$screen-sm-max){
+          width: 50px;
+          height: 230px;
+          top: -174px;
+          left: -43px;
+        }
+      }
       form{
         .form-group{
           label{
@@ -79,6 +125,7 @@ section.scan-website{
             height: 40px;
             font-size: 15px;
             border-radius:2px;
+            background:#F0F4F5;
           }
         }
         button{
@@ -106,4 +153,23 @@ section.scan-website{
       }
     }
   }
+}
+small#give-try{
+  @media(max-width:$screen-sm-max){
+    margin-left: 15px;
+  }
+  @media(min-width:833px) and (max-width:$screen-sm-max){
+    top: 60px;
+    position: relative;
+    z-index: 99;
+    margin-left: -27px
+  }
+  @media(min-width:768px) and (max-width:832px){
+    top: 60px;
+    position: relative;
+    z-index: 99;
+  }
+  /* margin-left: 50px;
+  position: relative;
+  top: -40px; */
 }
