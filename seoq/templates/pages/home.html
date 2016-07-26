@@ -25,6 +25,7 @@
       </div>
     </div>
   </section>
+  <!-- <a href="{% url 'seoqtool:tool_example' %}" class="text-center">use seoq tool</a> -->
   <section class="benefits-seo p-t-80 p-b-40">
     <div class="container">
       <div class="row">
@@ -48,39 +49,39 @@
     <div class="container">
       <div class="row" id="experts">
         <div class="col-sm-6 col-md-6">
-          <div class="col-sm-4">
+          <div class="col-xs-6 col-sm-4">
             <img src="http://lorempixel.com/130/130/people/1" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
-          <div class="col-sm-4">
+          <div class="col-xs-6 col-sm-4">
             <img src="http://lorempixel.com/130/130/people/2" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
-          <div class="col-sm-4">
+          <div class="col-xs-6 col-sm-4">
             <img src="http://lorempixel.com/130/130/people/3" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
-          <div class="col-sm-4">
+          <div class="col-xs-6 col-sm-4">
             <img src="http://lorempixel.com/130/130/people/4" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
-          <div class="col-sm-4">
+          <div class="col-xs-6 col-sm-4">
             <img src="http://lorempixel.com/130/130/people/5" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
-          <div class="col-sm-4">
+          <div class="col-xs-6 col-sm-4">
             <img src="http://lorempixel.com/130/130/people/6" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
         </div>
-        <div class="col-sm-6 col-md-6">
+        <div class="col-sm-6 col-md-6 clear">
           <h2 class="text-left"><strong>{% trans "This week SEO Experts" %}</strong></h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente at eius vitae doloremque dolorum, deleniti non expedita id odio eum, dignissimos, quis, adipisci consectetur neque perspiciatis explicabo quo quia voluptatum.</p>
           <a href="#" class="btn btn-primary">{% trans "Create SEO profile" %}</a>
         </div>
       </div>
       <div class="row m-t-90 relative p-b-40" id="for-students">
-        <div class="col-md-8 col-md-offset-2 p-t-80">
+        <div class="col-sm-12 col-md-8 col-md-offset-2 p-t-80">
           <h2 class="text-center relative m-b-50"><strong>{% trans "For Students of SEO" %}</strong></h2>
           <div class="col-sm-6 col-md-6">
             <div class="pull-right">
@@ -105,6 +106,34 @@
         </div>
       </div>
     </div>
+    <img src="{% static "images/separator-block-bottom.png" %}" alt="separator block top" class="img-responsive center-block relative">
   </section>
-  <img src="{% static "images/separator-block-bottom.jpg" %}" alt="separator block top" class="img-responsive center-block m-b-50">
+  <section class="scan-website p-t-50 m-t-50">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="col-sm-6 col-md-6 m-b-50">
+            <h2 class="">{% trans "How does your" %}<br>{% trans "Website do for SEO?" %}</h2>
+          </div>
+          <div class="col-sm-6 col-md-6 m-b-50 p-t-20">
+            <form action="">
+              <div class="form-group">
+                <label for="your-website" class="text-center">Your Website</label>
+                <input type="text" class="form-control text-center" id="your-website" placeholder="What is your website? e,g seoq.com">
+              </div>
+              <div class="text-center text-block">
+                <h3>vs</h3>
+              </div>
+              <div class="form-group">
+                <label for="competitor-website" class="text-center">Your Competitor</label>
+                <input type="text" class="form-control text-center" id="competitor-website" placeholder="What website ranks higher than yours?">
+                <input type="text" class="form-control text-center" id="keywords" placeholder="What keyword phrase do you want to rank for?">
+              </div>
+              <button type="submit" class="btn btn-warning btn-block">Start</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock content %}
