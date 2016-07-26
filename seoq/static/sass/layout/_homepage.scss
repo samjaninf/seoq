@@ -78,12 +78,16 @@ section.scan-website{
             margin-bottom: 10px;
             height: 40px;
             font-size: 15px;
+            border-radius:2px;
           }
         }
         button{
           height: 40px;
           font-size: 15px;
           font-weight: bold;
+          border-radius: 2px;
+          background:transparent;
+          color: #eea236;
         }
         .text-block{
           display: table;
