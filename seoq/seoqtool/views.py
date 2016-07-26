@@ -220,7 +220,7 @@ class SEOQURLFriendlyDetail(View):
         # if in format http://example.com
         elif (netloc.find('www.') == -1) & (netloc.find('http://') != -1):
             netloc = netloc.replace('http://', 'http://www.')
-
+        netloc = netloc.replace('--', '/')
         context['url'] = scraper.get_url(netloc)
         context['page_title'] = scraper.get_title()
         context['metadescription'] = scraper.get_meta_description()
