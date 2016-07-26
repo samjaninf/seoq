@@ -1,4 +1,9 @@
 section.seo-experts{
+  #experts{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+  }
   #for-students{
     overflow: hidden;
     .col-md-8{
@@ -7,6 +12,10 @@ section.seo-experts{
       }
       .col-sm-6{
         z-index: 9;
+        color: #333333;
+        a{
+          color: #333333;
+        }
       }
       #tablet{
         position: absolute;

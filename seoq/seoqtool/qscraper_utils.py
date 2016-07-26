@@ -61,8 +61,11 @@ class QscraperSEOQTool(object):
         total_of_headers = headings['total_of_headers']  # number of headers
         # number of keywords in headers
         number_of_kws_in_headers = headings['number_of_kws_in_headers']
-        score = number_of_kws_in_headers / float(
-            total_of_headers * kwlength) * 10  # score
+        if total_of_headers:
+            score = number_of_kws_in_headers / float(
+                total_of_headers * kwlength) * 10  # score
+        else:
+            score = 0
         return score
 
     def calc_tlinks(self):
@@ -71,7 +74,10 @@ class QscraperSEOQTool(object):
         totalLinks = links['total_of_links_text']
         kwLinks = links['number_of_kws_in_links_text']
         # turn it into a score out of 10
-        score = 10 * kwLinks / float(totalLinks * len(self.keywords))
+        if totalLinks:
+            score = 10 * kwLinks / float(totalLinks * len(self.keywords))
+        else:
+            score = 0
         return score
 
     def calculate_title(self):
@@ -90,7 +96,10 @@ class QscraperSEOQTool(object):
         totalURLS = URLS['total_of_urls']
         kwURLS = URLS['number_of_kws_in_url']
         # turn it into a score out of 10
-        score = 10 * kwURLS / float(totalURLS * len(self.keywords))
+        if totalURLS:
+            score = 10 * kwURLS / float(totalURLS * len(self.keywords))
+        else:
+            score = 0
         return score
 
     def list_anchor_text(self):

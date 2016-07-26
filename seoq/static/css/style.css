@@ -59,6 +59,12 @@ than we are going to use in website
 .font-weight-bold-5 {
   font-weight: 500; }
 
+.m-b-30 {
+  margin-bottom: 30px; }
+
+.m-b-40 {
+  margin-bottom: 40px; }
+
 .m-b-50 {
   margin-bottom: 50px; }
 
@@ -88,6 +94,9 @@ than we are going to use in website
 
 .m-t-90 {
   margin-top: 90px; }
+
+.p-b-40 {
+  padding-bottom: 40px; }
 
 .p-t-80 {
   padding-top: 80px; }
@@ -5846,12 +5855,22 @@ a.bg-brand:hover,
 a.bg-brand:focus {
   background-color: #67c0d6; }
 
+section.seo-experts #experts {
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex;
+  -ms-flex-align: center;
+      align-items: center; }
+
 section.seo-experts #for-students {
   overflow: hidden; }
   section.seo-experts #for-students .col-md-8 h2 {
     z-index: 9; }
   section.seo-experts #for-students .col-md-8 .col-sm-6 {
-    z-index: 9; }
+    z-index: 9;
+    color: #333333; }
+    section.seo-experts #for-students .col-md-8 .col-sm-6 a {
+      color: #333333; }
   section.seo-experts #for-students .col-md-8 #tablet {
     position: absolute;
     top: 0;
