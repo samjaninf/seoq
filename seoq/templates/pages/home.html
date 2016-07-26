@@ -25,15 +25,16 @@
       </div>
     </div>
   </section>
-  <section class="benefits-seo p-t-100">
+  <section class="benefits-seo p-t-100 p-b-40">
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-sm-6 col-md-6">
-            <h2 class="text-left"><strong>Benefits of SEO</strong></h2>
+            <h2 class="text-left"><strong>{% trans "Benefits of SEO" %}</strong></h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore ad, nemo earum aspernatur laboriosam reprehenderit dolor amet vitae et debitis, veniam quisquam aut cupiditate nihil quaerat fuga iste, placeat explicabo!
             </p>
+            <a href="#" class="btn btn-primary">{% trans "Learn more about SEO" %}</a>
           </div>
           <div class="col-sm-6 col-md-6">
             <img src="{% static "images/images-benefits.png" %}" alt="images benefits" class="center-block img-responsive">
@@ -45,52 +46,59 @@
   <img src="{% static "images/separator-block-top.png" %}" alt="separator block top" class="img-responsive center-block">
   <section class="seo-experts bg-gray p-t-80">
     <div class="container">
-      <div class="row">
+      <div class="row" id="experts">
         <div class="col-sm-6 col-md-6">
           <div class="col-sm-4">
-            <img src="http://lorempixel.com/150/150/people/1" alt="experts of seo" class="center-block img-responsive img-circle">
+            <img src="http://lorempixel.com/130/130/people/1" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
           <div class="col-sm-4">
-            <img src="http://lorempixel.com/150/150/people/2" alt="experts of seo" class="center-block img-responsive img-circle">
+            <img src="http://lorempixel.com/130/130/people/2" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
           <div class="col-sm-4">
-            <img src="http://lorempixel.com/150/150/people/3" alt="experts of seo" class="center-block img-responsive img-circle">
+            <img src="http://lorempixel.com/130/130/people/3" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
           <div class="col-sm-4">
-            <img src="http://lorempixel.com/150/150/people/4" alt="experts of seo" class="center-block img-responsive img-circle">
+            <img src="http://lorempixel.com/130/130/people/4" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
           <div class="col-sm-4">
-            <img src="http://lorempixel.com/150/150/people/5" alt="experts of seo" class="center-block img-responsive img-circle">
+            <img src="http://lorempixel.com/130/130/people/5" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
           <div class="col-sm-4">
-            <img src="http://lorempixel.com/150/150/people/6" alt="experts of seo" class="center-block img-responsive img-circle">
+            <img src="http://lorempixel.com/130/130/people/6" alt="experts of seo" class="center-block img-responsive img-circle">
             <p></p>
           </div>
         </div>
         <div class="col-sm-6 col-md-6">
-          <h2 class="text-left"><strong>This week SEO Experts</strong></h2>
+          <h2 class="text-left"><strong>{% trans "This week SEO Experts" %}</strong></h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente at eius vitae doloremque dolorum, deleniti non expedita id odio eum, dignissimos, quis, adipisci consectetur neque perspiciatis explicabo quo quia voluptatum.</p>
-          <a href="#" class="btn btn-primary">Create SEO profile</a>
+          <a href="#" class="btn btn-primary">{% trans "Create SEO profile" %}</a>
         </div>
       </div>
-      <div class="row m-t-90 relative" id="for-students">
+      <div class="row m-t-90 relative p-b-40" id="for-students">
         <div class="col-md-8 col-md-offset-2 p-t-80">
-          <h2 class="text-center relative m-b-50"><strong>For Students of SEO</strong></h2>
+          <h2 class="text-center relative m-b-50"><strong>{% trans "For Students of SEO" %}</strong></h2>
           <div class="col-sm-6 col-md-6">
             <div class="pull-right">
-              <img src="{% static "images/learn.png" %}" alt="learn" class="img-responsive center-block" width="150px">
-              <h3 class="text-center font-weight-bold-5">Learn more in<br>our SEO University</h3>
+              <a href="#">
+                <img src="{% static "images/learn.png" %}" alt="learn" class="img-responsive center-block" width="130px">
+                <h3 class="text-center font-weight-bold-5">{% trans "Learn more in" %}
+                <br>{% trans "our SEO University" %}</h3>
+              </a>
             </div>
           </div>
           <div class="col-sm-6 col-md-6">
             <div class="pull-left">
-              <img src="{% static "images/discussions.png" %}" alt="discussions" class="img-responsive  center-block" width="150px">
-              <h3 class="text-center font-weight-bold-5">Participate in our<br>SEO Community</h3>
+              <a href="#">
+                <img src="{% static "images/discussions.png" %}" alt="discussions" class="img-responsive  center-block" width="130px">
+                <h3 class="text-center font-weight-bold-5">{% trans "Participate in our" %}
+                <br>{% trans "SEO Community" %}
+                </h3>
+              </a>
             </div>
           </div>
           <img src="{% static "images/tablet.png" %}" alt="tablet" class="center-block img-responsive" id="tablet">
@@ -98,5 +106,5 @@
       </div>
     </div>
   </section>
-  <img src="{% static "images/separator-block-bottom.png" %}" alt="separator block top" class="img-responsive center-block">
+  <img src="{% static "images/separator-block-bottom.jpg" %}" alt="separator block top" class="img-responsive center-block m-b-50">
 {% endblock content %}
