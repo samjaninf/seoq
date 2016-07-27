@@ -8167,7 +8167,8 @@ section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
       left: -43px; } }
 
 section.scan-website .col-md-10 .col-sm-6 form .form-group label {
-  width: 100%; }
+  width: 100%;
+  color: #2d5d83; }
 
 section.scan-website .col-md-10 .col-sm-6 form .form-group .form-control {
   font-weight: bold;
