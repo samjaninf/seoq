@@ -8275,11 +8275,11 @@ small#most-recent:after {
     color: #ccc;
     background-color: transparent; }
   .navbar-seoq .navbar-toggle {
-    border-color: #ddd; }
+    border-color: #FFF; }
     .navbar-seoq .navbar-toggle:hover, .navbar-seoq .navbar-toggle:focus {
-      background-color: #ddd; }
+      background-color: #EEE; }
     .navbar-seoq .navbar-toggle .icon-bar {
-      background-color: #888; }
+      background-color: #FFF; }
   .navbar-seoq .navbar-collapse,
   .navbar-seoq .navbar-form {
     border-color: 0; }
