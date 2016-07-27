@@ -153,6 +153,9 @@ small a {
 small a.text-white {
   border: none; }
 
+hr {
+  border-top: 2px solid #eeeeee !important; }
+
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -8584,8 +8587,20 @@ small#most-recent:after {
     color: #d9534f;
     background-color: #fff; }
 
-footer nav ul li {
-  padding: 15px; }
+footer nav ul {
+  padding-left: 0;
+  list-style: none;
+  margin-left: -5px; }
+  footer nav ul > li {
+    padding-left: 25px;
+    padding-right: 25px; }
+    @media (min-width: 992px) {
+      footer nav ul > li {
+        display: inline-block; }
+        footer nav ul > li:first-child {
+          padding-left: 0; }
+        footer nav ul > li:last-child {
+          padding-right: 0; } }
 
 footer small {
   position: relative;
