@@ -1215,7 +1215,7 @@ body {
   font-family: Nunito, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.42857;
-  color: #353535;
+  color: #2d5d81;
   background-color: #fff; }
 
 input,
@@ -1297,7 +1297,7 @@ h1, h2, h3, h4, h5, h6,
   font-family: inherit;
   font-weight: bold;
   line-height: 1.1;
-  color: #353535; }
+  color: #2d5d81; }
   h1 small,
   h1 .small, h2 small,
   h2 .small, h3 small,
@@ -2848,7 +2848,7 @@ select[multiple].input-lg,
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #757575; }
+  color: #649ec9; }
 
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -4466,7 +4466,7 @@ a.badge:hover, a.badge:focus {
     margin-right: auto; }
   .thumbnail .caption {
     padding: 9px;
-    color: #353535; }
+    color: #2d5d81; }
 
 a.thumbnail:hover,
 a.thumbnail:focus,
@@ -8180,7 +8180,7 @@ section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
 
 section.scan-website .col-md-10 .col-sm-6 form .form-group label {
   width: 100%;
-  color: #353535; }
+  color: #2d5d81; }
 
 section.scan-website .col-md-10 .col-sm-6 form .form-group .form-control {
   font-weight: bold;
