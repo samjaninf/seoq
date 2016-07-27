@@ -9,15 +9,7 @@
  * Main module of the application.
  */
 var app = angular
-  .module('seoq', [
-    'ngResource',
-    'ngSanitize',
-  ]);
-
-app.config(['$resourceProvider', function($resourceProvider) {
-  // Don't strip trailing slashes from calculated URLs
-  $resourceProvider.defaults.stripTrailingSlashes = false;
-}]);
+  .module('seoq', []);
 
 app.config(function($httpProvider) {
 $httpProvider.defaults.xsrfCookieName = 'csrftoken';
