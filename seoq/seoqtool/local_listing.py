@@ -1,7 +1,6 @@
 import urllib
 import json
 import string
-from qscraper_utils import JSONPrint
 from django.conf import settings
 
 
@@ -9,6 +8,7 @@ class LocalListing(object):
 
     def main(self, url):
         localListingExists = self.getLocalListing(url)
+
         if(localListingExists):
             return 'This listing does exist'
         else:
@@ -24,7 +24,6 @@ class LocalListing(object):
         query = url[:url.find('.')].lower()
         exclude = set(string.punctuation)
         query = ''.join(ch for ch in query if ch not in exclude)
-
         key = settings.GOOGLE_PLACES_API_KEY
         apiURL = str(settings.GOOGLE_PLACES_URL)
 
@@ -37,12 +36,11 @@ class LocalListing(object):
         jsonRaw = response.read()
         jsonData = json.loads(jsonRaw)
 
-        # results = JSONPrint()
-        # JSONObject = results.makeRequest(
-        #    url, ["red"], 0, "72.194.193.110")['extra_data']
+        #results = JSONPrint()
+        #JSONObject = results.makeRequest(url, ["red"], 0, "72.194.193.110")['extra_data']
 
-        # title = (str(JSONObject['page_titles'][0])).lower().replace(' ', '')
-        # title = ''.join(ch for ch in title if ch not in exclude)
+        #title = (str(JSONObject['page_titles'][0])).lower().replace(' ', '')
+        #title = ''.join(ch for ch in title if ch not in exclude)
 
         for i in range(len(jsonData['results'])):
             if query[0] in jsonData['results'][i]['name'].lower():

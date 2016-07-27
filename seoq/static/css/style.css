@@ -153,6 +153,13 @@ small a {
 small a.text-white {
   border: none; }
 
+hr {
+  border-top: 2px solid #eeeeee !important;
+  margin-bottom: 0 !important; }
+
+.text-brand {
+  color: #2d5d81 !important; }
+
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -1208,7 +1215,7 @@ body {
   font-family: Nunito, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.42857;
-  color: #777777;
+  color: #353535;
   background-color: #fff; }
 
 input,
@@ -1290,7 +1297,7 @@ h1, h2, h3, h4, h5, h6,
   font-family: inherit;
   font-weight: bold;
   line-height: 1.1;
-  color: #2d5d83; }
+  color: #353535; }
   h1 small,
   h1 .small, h2 small,
   h2 .small, h3 small,
@@ -2841,7 +2848,7 @@ select[multiple].input-lg,
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #b7b7b7; }
+  color: #757575; }
 
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -4459,7 +4466,7 @@ a.badge:hover, a.badge:focus {
     margin-right: auto; }
   .thumbnail .caption {
     padding: 9px;
-    color: #777777; }
+    color: #353535; }
 
 a.thumbnail:hover,
 a.thumbnail:focus,
@@ -8064,13 +8071,6 @@ a.bg-gray:hover,
 a.bg-gray:focus {
   background-color: #d1dee1; }
 
-.bg-brand {
-  background-color: #8fd1e1; }
-
-a.bg-brand:hover,
-a.bg-brand:focus {
-  background-color: #67c0d6; }
-
 section.benefits-seo #benefits-text:before {
   content: '';
   display: block;
@@ -8180,7 +8180,7 @@ section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
 
 section.scan-website .col-md-10 .col-sm-6 form .form-group label {
   width: 100%;
-  color: #2d5d83; }
+  color: #353535; }
 
 section.scan-website .col-md-10 .col-sm-6 form .form-group .form-control {
   font-weight: bold;
@@ -8603,9 +8603,25 @@ small#most-recent:after {
     color: #d9534f;
     background-color: #fff; }
 
-footer nav ul li {
-  padding: 15px; }
-
-footer small {
-  position: relative;
-  left: 65px; }
+footer {
+  color: #6b7b80; }
+  footer nav ul {
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px; }
+    footer nav ul > li {
+      padding-left: 25px;
+      padding-right: 25px; }
+      @media (min-width: 992px) {
+        footer nav ul > li {
+          display: inline-block; }
+          footer nav ul > li:first-child {
+            padding-left: 0; }
+          footer nav ul > li:last-child {
+            padding-right: 0; } }
+  footer small {
+    position: relative;
+    left: 65px; }
+  footer .footer-logo {
+    max-height: 45px;
+    margin-top: 15px; }

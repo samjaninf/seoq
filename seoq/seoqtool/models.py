@@ -1,9 +1,16 @@
 from __future__ import unicode_literals
-
+from django.conf import settings
 from django.db import models
 
 
 # Create your models here.
+
+class Report(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    netloc = models.URLField()
+    site_score = models.FloatField(default=0)
+    keyword_score = models.FloatField(default=0)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
 
 
 class AlgorithmVariable(models.Model):
