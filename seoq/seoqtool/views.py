@@ -15,6 +15,9 @@ from .utils import get_expiration_and_creation_date
 from .utils import get_built_with_information
 from .qscraper_utils import QscraperSEOQTool
 from .majestic_utils import MajesticBackLinks
+from .checker_utils import Checker_Utils
+from .local_listing import LocalListing
+from .mobilefriendlycheck import MobileFriendlyChecker
 from .utils import get_expiration_and_creation_date,\
     get_built_with_information, get_total_time_and_ssl_certification
 # Create your views here.
@@ -148,9 +151,10 @@ class SEOQURLFriendlyDetail(View):
 
     def get(self, request, slug, netloc):
         keywords = str(slug).replace('-', ' ')
-        keywordArray = [x.strip() for x in keywords.split(',') if x]
+        keywordArray = [x.strip() for x in keywords.split(' ') if x]
         netloc = str(netloc)
-        context = {'keywords': keywords, 'netloc': netloc, 'slug': slug}
+        context = {'keywords': keywords, 'netloc': netloc, 'slug': slug,
+                   'keywordArray': keywordArray}
         date = request.GET.get('date', '')
         try:
             response = requests.get(
@@ -183,6 +187,10 @@ class SEOQURLFriendlyDetail(View):
 
         scraper = QscraperSEOQTool(netloc, keywordArray, 0, 1223)
         majestic = MajesticBackLinks()
+        checker = Checker_Utils()
+        local = LocalListing()
+        mobile = MobileFriendlyChecker()
+
         context['report'] = response.json()
 
         context['report']['recent_reports'] = sorted(set([
@@ -211,7 +219,7 @@ class SEOQURLFriendlyDetail(View):
         elif (netloc.find('www.') == -1) & (netloc.find('http://') != -1):
             netloc = netloc.replace('http://', 'http://www.')
         response = requests.get(netloc)
-        context['url'] = netloc
+        context['url'] = scraper.get_url(netloc)
         context['page_title'] = scraper.get_title()
         context['metadescription'] = scraper.get_meta_description()
         context['heading_score'] = scraper.calculate_headings()
@@ -221,11 +229,9 @@ class SEOQURLFriendlyDetail(View):
         context['backlinks_domain'] = majestic.getNumBackLinksDomainName(
             netloc)
         context['baclinks_url'] = majestic.getNumBackLinksWebPageURL(netloc)
-        context['govlinks_domain'] = majestic.getNumGovBackLinksDomainName(
-            netloc)
+        context['govlinks_domain'] = majestic.getNumGovBackLinksDomainName(netloc)
         context['govlinks_url'] = majestic.getNumGovBackLinksWebPageURL(netloc)
-        context['edulinks_domain'] = majestic.getNumEduBackLinksWebPageURL(
-            netloc)
+        context['edulinks_domain'] = majestic.getNumEduBackLinksWebPageURL(netloc)
         context['edulinks_url'] = majestic.getNumEduBackLinksWebPageURL(netloc)
         context['govlinks_domain'] = majestic.getNumGovBackLinksDomainName(
             netloc)
@@ -235,4 +241,7 @@ class SEOQURLFriendlyDetail(View):
             netloc)
         context['edulinks_url'] = majestic.getNumEduBackLinksWebPageURL(
             netloc)
+        context['robots'] = checker.checkRobots(netloc)
+        context['local_listing'] = local.main(netloc)
+        context['mobile'] = mobile.checkMobileFriendly(netloc)
         return render(request, self.template_name, context)
