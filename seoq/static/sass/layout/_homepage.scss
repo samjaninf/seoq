@@ -208,3 +208,13 @@ small#most-recent{
     }
   }
 }
+footer{
+  .container.p-t-20{
+    .row{
+      @media(min-width:$screen-md-min){
+        display: flex;
+        align-items:center;
+      }
+    }
+  }
+}
