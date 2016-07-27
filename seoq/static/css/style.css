@@ -8213,6 +8213,36 @@ small#discover-more {
   position: relative;
   top: 65px; }
 
+@media (min-width: 992px) and (max-width: 1199px) {
+  small#most-recent {
+    right: -76px;
+    position: relative; } }
+
+small#most-recent:after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-right: 2px solid #8fd1e1;
+  border-bottom: 2px solid #8fd1e1; }
+  @media (min-width: 768px) and (max-width: 991px) {
+    small#most-recent:after {
+      width: 41px;
+      height: 293px;
+      right: 55px;
+      top: 185px; } }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    small#most-recent:after {
+      width: 41px;
+      height: 293px;
+      right: 39px;
+      top: 22px; } }
+  @media (min-width: 1200px) {
+    small#most-recent:after {
+      width: 35px;
+      height: 260px;
+      right: 56px;
+      top: 240px; } }
+
 .navbar-seoq {
   background-color: #8fd1e1;
   border-color: 0;
