@@ -154,7 +154,8 @@ small a.text-white {
   border: none; }
 
 hr {
-  border-top: 2px solid #eeeeee !important; }
+  border-top: 2px solid #eeeeee !important;
+  margin-bottom: 0 !important; }
 
 .text-brand {
   color: #2d5d81 !important; }
@@ -8583,21 +8584,25 @@ small#most-recent:after {
     color: #d9534f;
     background-color: #fff; }
 
-footer nav ul {
-  padding-left: 0;
-  list-style: none;
-  margin-left: -5px; }
-  footer nav ul > li {
-    padding-left: 25px;
-    padding-right: 25px; }
-    @media (min-width: 992px) {
-      footer nav ul > li {
-        display: inline-block; }
-        footer nav ul > li:first-child {
-          padding-left: 0; }
-        footer nav ul > li:last-child {
-          padding-right: 0; } }
-
-footer small {
-  position: relative;
-  left: 65px; }
+footer {
+  color: #6b7b80; }
+  footer nav ul {
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px; }
+    footer nav ul > li {
+      padding-left: 25px;
+      padding-right: 25px; }
+      @media (min-width: 992px) {
+        footer nav ul > li {
+          display: inline-block; }
+          footer nav ul > li:first-child {
+            padding-left: 0; }
+          footer nav ul > li:last-child {
+            padding-right: 0; } }
+  footer small {
+    position: relative;
+    left: 65px; }
+  footer .footer-logo {
+    max-height: 45px;
+    margin-top: 15px; }

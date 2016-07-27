@@ -1,4 +1,5 @@
 footer{
+  color: #6b7b80;
   nav{
     ul{
       @include list-unstyled;
@@ -21,5 +22,9 @@ footer{
   small{
     position: relative;
     left: 65px;
+  }
+  .footer-logo{
+    max-height: 45px;
+    margin-top: 15px;
   }
 }
