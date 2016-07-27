@@ -65,8 +65,8 @@ gulp.task('scripts', function() {
 
 // Image compression
 gulp.task('imgCompression', function(){
-  return gulp.src(paths.images + '/*')
-    .pipe(imagemin()) // Compresses PNG, JPEG, GIF and SVG images
+  return gulp.src([paths.images + '/*.jpg', paths.images + '/*.jpeg', paths.images + '/*.png', paths.images + '/*.gif'])
+    .pipe(imagemin()) // Compresses PNG, JPEG, GIF
     .pipe(gulp.dest(paths.images))
 });
 
