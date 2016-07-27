@@ -160,11 +160,12 @@
 
       <!-- place project specific Javascript in this file -->
       {% compress js %}
+      <script src="{% static 'js/components.js' %}"></script>
       <script src="{% static 'js/project.js' %}"></script>
-      {% endcompress %}
-          <!--Angular-->
+      <!--Angular-->
       <script src="{% static 'scripts/app.js' %}"></script>
       <script src="{% static 'scripts/controllers/keyword-score-controller.js' %}"></script>
+      {% endcompress %}
 
     {% endblock javascript %}
   </body>
