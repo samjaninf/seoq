@@ -56,7 +56,7 @@ $brand-danger:          #d9534f !default;
 //** Background color for `<body>`.
 $body-bg:               #fff !default;
 //** Global text color on `<body>`.
-$text-color:            $gray-light !default;
+$text-color:            #353535 !default;
 
 //** Global textual link color.
 $link-color:            #6b7b80 !default;
@@ -110,7 +110,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)) !default;
 $headings-font-family:    inherit !default;
 $headings-font-weight:    bold !default;
 $headings-line-height:    1.1 !default;
-$headings-color:          #2d5d83 !default;
+$headings-color:          $text-color !default;
 
 
 //== Iconography
