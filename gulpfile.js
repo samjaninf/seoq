@@ -36,7 +36,8 @@ var pathsConfig = function (appName) {
 };
 
 var paths = pathsConfig();
-
+var path = paths;
+var _ = require('gulp-load-plugins')({lazy: false})
 ////////////////////////////////
     //Tasks//
 ////////////////////////////////
@@ -87,6 +88,27 @@ gulp.task('browserSync', function() {
 gulp.task('default', function() {
     runSequence(['styles', 'scripts', 'imgCompression'], 'runServer', 'browserSync');
 });
+
+gulp.task('build-js', function() {
+  gulp.src([`${path.vendor}/jquery/dist/jquery.js`,
+    `${path.vendor}/alertify.js/lib/alertify.min.js`,
+    `${path.vendor}/bootstrap/dist/js/bootstrap.js`,
+    `${path.vendor}/bootbox.js/bootbox.js`,
+    `${path.vendor}/geocomplete/jquery.geocomplete.js`,
+    `${path.vendor}/select2/dist/js/select2.js`,
+    `${path.vendor}/jquery-validation/dist/jquery.validate.js`,
+      `${path.vendor}/angular/angular.js`,
+      `${path.vendor}/angular-resource/angular-resource.js`,
+      `${path.vendor}/angular-sanitize/angular-sanitize.js`,
+      `${path.vendor}/progressbar.js/dist/progressbar.js`,
+      `${path.vendor}/html2canvas/build/html2canvas.js` ])
+    .pipe(_.plumber({errorHandler: HandlersError}))
+    .pipe(_.concat('components.js'))
+    .pipe(gulp.dest(path.dist))
+    .pipe(_.rename({ extname: '.min.js'}))
+    .pipe(_.uglify())
+    .pipe(gulp.dest(path.dist))
+})
 
 ////////////////////////////////
     //Watch//
