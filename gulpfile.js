@@ -4,19 +4,20 @@
 
 // Plugins
 var gulp = require('gulp'),
-      pjson = require('./package.json'),
-      gutil = require('gulp-util'),
-      sass = require('gulp-sass'),
       autoprefixer = require('gulp-autoprefixer'),
+      concat = require('gulp-concat'),
       cssnano = require('gulp-cssnano'),
-      rename = require('gulp-rename'),
       del = require('del'),
-      plumber = require('gulp-plumber'),
-      pixrem = require('gulp-pixrem'),
-      uglify = require('gulp-uglify'),
+      gutil = require('gulp-util'),
       imagemin = require('gulp-imagemin'),
+      pixrem = require('gulp-pixrem'),
+      pjson = require('./package.json'),
+      plumber = require('gulp-plumber'),
+      rename = require('gulp-rename'),
       run = require('gulp-run'),
       runSequence = require('run-sequence'),
+      sass = require('gulp-sass'),
+      uglify = require('gulp-uglify'),
       browserSync = require('browser-sync');
 
 
@@ -32,6 +33,7 @@ var pathsConfig = function (appName) {
     fonts: this.app + '/static/fonts',
     images: this.app + '/static/images',
     js: this.app + '/static/js',
+    vendor: 'bower_components/',
   }
 };
 
@@ -85,7 +87,7 @@ gulp.task('browserSync', function() {
 
 // Default task
 gulp.task('default', function() {
-    runSequence(['styles', 'scripts', 'imgCompression'], 'runServer', 'browserSync');
+    runSequence(['styles', 'scripts', 'scripts-vendor', 'imgCompression'], 'runServer', 'browserSync');
 });
 
 ////////////////////////////////
@@ -97,4 +99,16 @@ gulp.task('watch', ['default'], function() {
   gulp.watch(paths.sass + '/**/*.scss', ['styles']);
   gulp.watch(paths.js + '/**/*.js', ['scripts']);
   gulp.watch('/bower_components/**/*', ['styles', 'scripts']);
+});
+
+// Javascript minification
+gulp.task('scripts-vendor', function() {
+  return gulp.src([
+      paths.vendor + '/jquery/dist/jquery.js',
+      paths.vendor + '/bootstrap/dist/js/bootstrap.js',
+      paths.vendor + '/angular/angular.js'
+    ])
+    .pipe(plumber()) // Checks for errors
+    .pipe(concat('components.js'))
+    .pipe(gulp.dest(paths.js))
 });
