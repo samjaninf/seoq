@@ -8077,11 +8077,11 @@ section.benefits-seo #benefits-text:before {
   border-left: 2px solid #8fd1e1;
   border-bottom: 2px solid #8fd1e1;
   position: absolute; }
-  @media (min-width: 1200px) {
+  @media (min-width: 768px) and (max-width: 991px) {
     section.benefits-seo #benefits-text:before {
       height: 160px;
-      width: 65px;
-      left: -76px;
+      width: 22px;
+      left: -16px;
       top: -80px; } }
   @media (min-width: 992px) and (max-width: 1199px) {
     section.benefits-seo #benefits-text:before {
@@ -8089,11 +8089,17 @@ section.benefits-seo #benefits-text:before {
       width: 45px;
       left: -55px;
       top: -80px; } }
+  @media (min-width: 1200px) {
+    section.benefits-seo #benefits-text:before {
+      height: 160px;
+      width: 65px;
+      left: -76px;
+      top: -80px; } }
 
 section.seo-experts {
   overflow: hidden; }
   @media (min-width: 768px) {
-    section.seo-experts #experts {
+    section.seo-experts #experts .col-md-10 {
       display: -ms-flexbox;
       display: flex;
       display: -webkit-flex;
@@ -8147,7 +8153,19 @@ section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
   border-left: 2px solid #8fd1e1;
   display: block;
   position: absolute; }
-  @media (min-width: 992px) {
+  @media (min-width: 768px) and (max-width: 832px) {
+    section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
+      height: 221px;
+      top: -168px;
+      left: 0px;
+      width: 13px; } }
+  @media (min-width: 833px) and (max-width: 991px) {
+    section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
+      width: 50px;
+      height: 230px;
+      top: -174px;
+      left: -43px; } }
+  @media (min-width: 992px) and (max-width: 1199px) {
     section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
       width: 50px;
       height: 293px;
@@ -8159,12 +8177,6 @@ section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
       height: 295px;
       top: -240px;
       left: -82px; } }
-  @media (min-width: 833px) and (max-width: 991px) {
-    section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
-      width: 50px;
-      height: 230px;
-      top: -174px;
-      left: -43px; } }
 
 section.scan-website .col-md-10 .col-sm-6 form .form-group label {
   width: 100%;
@@ -8220,10 +8232,35 @@ small#discover-more {
   position: relative;
   top: 65px; }
 
+@media (min-width: 768px) and (max-width: 991px) {
+  small#most-recent {
+    position: relative;
+    right: -16px; }
+    small#most-recent:after {
+      width: 25px;
+      height: 370px;
+      right: 1px;
+      top: 22px; } }
+
 @media (min-width: 992px) and (max-width: 1199px) {
   small#most-recent {
     right: -76px;
-    position: relative; } }
+    position: relative; }
+    small#most-recent:after {
+      width: 41px;
+      height: 300px;
+      right: 39px;
+      top: 22px; } }
+
+@media (min-width: 1200px) {
+  small#most-recent {
+    position: relative;
+    right: -93px; }
+    small#most-recent:after {
+      width: 67px;
+      height: 277px;
+      right: 41px;
+      top: 22px; } }
 
 small#most-recent:after {
   content: '';
@@ -8231,24 +8268,6 @@ small#most-recent:after {
   position: absolute;
   border-right: 2px solid #8fd1e1;
   border-bottom: 2px solid #8fd1e1; }
-  @media (min-width: 768px) and (max-width: 991px) {
-    small#most-recent:after {
-      width: 41px;
-      height: 293px;
-      right: 55px;
-      top: 185px; } }
-  @media (min-width: 992px) and (max-width: 1199px) {
-    small#most-recent:after {
-      width: 41px;
-      height: 293px;
-      right: 39px;
-      top: 22px; } }
-  @media (min-width: 1200px) {
-    small#most-recent:after {
-      width: 35px;
-      height: 260px;
-      right: 56px;
-      top: 240px; } }
 
 @media (min-width: 992px) {
   footer .container.p-t-20 .row {
