@@ -4,24 +4,12 @@ from django.conf import settings
 
 
 class MajesticBackLinks(object):
-
-<<<<<<< HEAD
+    
     def main(self, url, keywords):
 
         print('Ref IPs' + getRefIPs(url))
         print('Trust Flow' + getTrustFlow(url))
         print('Anchor Text BackLinks' + getAnchorTextBackLinks(url, keywords))
-=======
-    def main(self, url):
-        # replace it for a method variable
-        # in order to allow other urls
-        # --jlariza
-
-        self.numGovBackLinksWebPageURL = self.getNumGovBackLinksWebPageURL(url)
-        self.numGovBackLinksDomainName = self.getNumGovBackLinksDomainName(url)
-        self.numEduBackLinksWebPageURL = self.getNumEduBackLinksWebPageURL(url)
-        self.numEduBackLinksDomainName = self.getNumEduBackLinksDomainName(url)
->>>>>>> aca6a3957962d460249359e1fb8d8b7ea6784cfc
 
     def getNumBackLinksDomainName(self, url):
 
