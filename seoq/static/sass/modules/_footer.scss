@@ -1,0 +1,25 @@
+footer{
+  nav{
+    ul{
+      @include list-unstyled;
+      margin-left: -5px;
+      > li {
+        @media (min-width: $screen-md-min) {
+          display: inline-block;
+          &:first-child {
+            padding-left: 0;
+          }
+          &:last-child {
+            padding-right: 0;
+          }
+        }
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+    }
+  }
+  small{
+    position: relative;
+    left: 65px;
+  }
+}

@@ -17,6 +17,8 @@ def get_expiration_and_creation_date(url):
         url_information = whois.query(domain)
     except Exception:
         return None, None
+    if url_information is None:
+        return None, None
     return url_information.creation_date, url_information.expiration_date
 
 

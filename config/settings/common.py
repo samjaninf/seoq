@@ -240,8 +240,18 @@ ADMIN_URL = r'^admin/'
 
 
 # Your common stuff: Below this line define 3rd party library settings
-
+HUB_DOMAIN = env('HUB_DOMAIN', default='localhost')
+HUB_PORT = env('HUB_PORT', default='8000')
+TWILIO_SID = env('TWILIO_SID', default='')
+TWILIO_AUTH_TOKEN = env('TWILIO_AUTH_TOKEN', default='')
+TWILIO_PHONE_NUMBER = env('TWILIO_PHONE_NUMBER', default='')
 QSCRAPER_URL = env('QSCRAPER_URL')
 MAJESTIC_URL = env('MAJESTIC_URL')
 MAJESTIC_API_KEY = env('MAJESTIC_API_KEY')
+GOOGLE_PLACES_API_KEY = env('GOOGLE_PLACES_API_KEY')
+GOOGLE_PLACES_URL = env('GOOGLE_PLACES_URL')
 MAX_DEPTH_VALUE = env('MAX_DEPTH_VALUE', default=2)
+BASE_URL = env('BASE_URL', default='localhost:8000')
+
+TAGGIT_CASE_INSENSITIVE = False
+SESSION_COOKIE_DOMAIN = env('SESSION_COOKIE_DOMAIN', default=None)

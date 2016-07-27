@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+Optimized for search engines score:
+{{ score }}
+{% if request.user.is_authenticated %}
+{% else %}
+<br>
+do you want to know your SEOQ for an specific keyword?
+
+<a href="">sign up</a>
+	
+{% endif %}
+</div>
+{% endblock content %}
