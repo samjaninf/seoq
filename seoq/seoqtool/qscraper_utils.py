@@ -47,13 +47,16 @@ class QscraperSEOQTool(object):
     class to organize all qscraper seotool related
     methods
     """
-    def __init__(self, url, keywords, depth, ip):
+    def __init__(self, url, keywords, depth, ip, report=None):
         results = JSONPrint()
         self.url = url
         self.keywords = keywords
         self.depth = depth
         self.ip = ip
-        self.JSONObject = (results.makeRequest(url, keywords, depth, ip))
+        if report is None:
+            self.JSONObject = results.makeRequest(url, keywords, depth, ip)
+        else:
+            self.JSONObject = report
 
     def calculate_headings(self):
         kwlength = len(self.keywords)

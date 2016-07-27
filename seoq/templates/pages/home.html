@@ -3,26 +3,26 @@
 
 {% block content %}
 
-  <section class="bg-brand">
+  <section class="bg-brand p-t-70 p-b-70">
     <div class="container">
       <div class="row text-center">
         <h1><strong>{% trans "Want to rank higher on search engines?" %}</strong></h1>
-        <span>{% trans "Let us help by telling who you are." %}</span>
+        <span class="h5">{% trans "Let us help by telling who you are." %}</span>
       </div>
       <div class="row">
         <div class="col-xs-4 text-center">
           <img src="{% static "images/fish-1.png" %}" alt="" class="img-responsive"></img>
-          <span>{% trans "I own a website" %}</span>
+          <p class="m-t-20 h4">{% trans "I own a website" %}</p>
         </div>
         <div class="col-xs-4 text-center">
           <img src="{% static "images/fish-2.png" %}" alt="" class="img-responsive"></img>
-          <span>{% trans "I am a SEO Expert" %}</span>
+          <p class="m-t-20 h4">{% trans "I am a SEO Expert" %}</p>
         </div>
         <div class="col-xs-4 text-center">
           <img src="{% static "images/fish-3.png" %}" alt="" class="img-responsive"></img>
-          <span>{% trans "I study SEO" %}</span>
+          <p class="m-t-20 h4">{% trans "I study SEO" %}</p>
         </div>
-        <small>
+        <small id="discover-more">
           <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white">{% trans "Discover more" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
         </small>
       </div>
@@ -38,13 +38,13 @@
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore ad, nemo earum aspernatur laboriosam reprehenderit dolor amet vitae et debitis, veniam quisquam aut cupiditate nihil quaerat fuga iste, placeat explicabo!
             </p>
-            <a href="#" class="btn btn-primary">{% trans "Learn more about SEO" %}</a>
+            <a href="#" class="btn btn-primary-ligth btn-lg">{% trans "Learn more about SEO" %}</a>
           </div>
           <div class="col-sm-6 col-md-6">
             <img src="{% static "images/images-benefits.png" %}" alt="images benefits" class="center-block img-responsive">
           </div>
           <small class="pull-right">
-            <a href="#experts" title="{% trans "Discover more" %}" class="">{% trans "Most recent" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+            <a href="#experts" title="{% trans "Most recent" %}" class="">{% trans "Most recent" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
           </small>
         </div>
       </div>
@@ -83,7 +83,7 @@
         <div class="col-sm-6 col-md-6 clear">
           <h2 class="text-left" id="experts"><strong>{% trans "This week SEO Experts" %}</strong></h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente at eius vitae doloremque dolorum, deleniti non expedita id odio eum, dignissimos, quis, adipisci consectetur neque perspiciatis explicabo quo quia voluptatum.</p>
-          <a href="#" class="btn btn-primary">{% trans "Create SEO profile" %}</a>
+          <a href="#" class="btn btn-primary-ligth btn-lg">{% trans "Create SEO profile" %}</a>
         </div>
       </div>
       <div class="row m-t-90 relative p-b-40" id="for-students">
@@ -111,7 +111,7 @@
           <img src="{% static "images/tablet.png" %}" alt="tablet" class="center-block img-responsive" id="tablet">
         </div>
         <small class="clear center-block" id="give-try">
-          <a href="#how-website" title="{% trans "Discover more" %}" class=""><i class="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp;{% trans "Give it try" %}</a>
+          <a href="#how-website" title="{% trans "Give it try" %}" class=""><i class="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp;{% trans "Give it try" %}</a>
         </small>
       </div>
     </div>
@@ -138,7 +138,7 @@
                 <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}">
                 <input type="text" class="form-control text-center" id="keywords" placeholder="{% trans "What keyword phrase do you want to rank for?" %}">
               </div>
-              <button type="submit" class="btn btn-warning btn-block">{% trans "Start" %}</button>
+              <button type="submit" class="btn btn-warning-ligth btn-block">{% trans "Start" %}</button>
             </form>
           </div>
         </div>

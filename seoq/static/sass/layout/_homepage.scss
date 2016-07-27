@@ -133,8 +133,6 @@ section.scan-website{
           font-size: 15px;
           font-weight: bold;
           border-radius: 2px;
-          background:transparent;
-          color: #eea236;
         }
         .text-block{
           display: table;
@@ -172,4 +170,8 @@ small#give-try{
   /* margin-left: 50px;
   position: relative;
   top: -40px; */
+}
+small#discover-more{
+    position: relative;
+    top: 65px;
 }

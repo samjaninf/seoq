@@ -48,7 +48,7 @@ class BasicQscraperUseView(View):
         slug = ''
         slug = '-'.join(keywords)
         netloc = url.replace(
-            'https://', '').replace('http://', '').replace('/', '')
+            'https://', '').replace('http://', '')
         if not keywords:
             messages.error(
                 request,
@@ -122,7 +122,9 @@ class BasicQscraperUseView(View):
             return render(request, self.template_name, context)
         # context['form'] = self.formclass(initial=request.GET)
         return redirect(
-            'seoqtool:seoq_url_friendly_detail', slug=slug, netloc=netloc)
+            'seoqtool:seoq_url_friendly_detail',
+            slug=slug,
+            netloc=netloc.replace('/', '--'))
 
 
 class CreateVariableView(CreateView):
@@ -150,7 +152,7 @@ class SEOQURLFriendlyDetail(View):
     template_name = 'seoqtool/report_example.html'
 
     def get(self, request, slug, netloc):
-        keywords = str(slug).replace('-', ' ')
+        keywords = str(slug.encode('utf-8')).replace('-', ' ')
         keywordArray = [x.strip() for x in keywords.split(' ') if x]
         netloc = str(netloc)
         context = {'keywords': keywords, 'netloc': netloc, 'slug': slug,
@@ -171,7 +173,6 @@ class SEOQURLFriendlyDetail(View):
                 request,
                 'the server is unavailable right now, please try again later.')
             return render(request, self.template_name, context)
-
         if response.status_code != 200:
             if response.status_code == 404:
                 raise Http404
@@ -185,7 +186,8 @@ class SEOQURLFriendlyDetail(View):
                     'An error has occurred, please try again later')
                 return render(request, self.template_name, context)
 
-        scraper = QscraperSEOQTool(netloc, keywordArray, 0, 1223)
+        scraper = QscraperSEOQTool(
+            netloc, keywordArray, 0, 1223, report=response.json())
         majestic = MajesticBackLinks()
         checker = Checker_Utils()
         local = LocalListing()
@@ -218,7 +220,7 @@ class SEOQURLFriendlyDetail(View):
         # if in format http://example.com
         elif (netloc.find('www.') == -1) & (netloc.find('http://') != -1):
             netloc = netloc.replace('http://', 'http://www.')
-        response = requests.get(netloc)
+        netloc = netloc.replace('--', '/')
         context['url'] = scraper.get_url(netloc)
         context['page_title'] = scraper.get_title()
         context['metadescription'] = scraper.get_meta_description()

@@ -68,7 +68,7 @@
       <p>Use this document as a way to quick start any new project.</p>
       <a href="{% url 'seoqtool:tool_example' %}" class="text-center">use seoq tool</a>
     {% endblock content %}
-    <footer class="bg-gray">
+    <footer class="bg-gray p-20">
       <div class="container b-b-1">
         <div class="row">
           <div class="col-md-12">
@@ -111,7 +111,9 @@
                 <img src="{% static "images/logo-b.png" %}" class="img-responsive">
               </div>
               <div class="col-xs-6 col-sm-6 col-md-5 ">
-                <div class="no-margin logo-text"><small>a product of</small></div>
+                <div>
+                  <small>a product of</small>
+                </div>
                 <a href="http://labs.inqbation.com" target="_blank">
                   <img src="{% static "images/inqbation-labs-logo.png" %}" class="img-responsive" alt="inQbation Labs" target="_blank">
                 </a>
@@ -137,11 +139,9 @@
                 <!-- end Social icons -->
               </div>
             </div>
-
           </div>
         </div>
       </div>
-
     </footer>
     {% block modal %}{% endblock modal %}
 
