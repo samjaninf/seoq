@@ -128,7 +128,7 @@
             <form action="">
               <div class="form-group">
                 <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
-                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e,g seoq.com" %}">
+                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}">
               </div>
               <div class="text-center text-block">
                 <h3>vs</h3>
@@ -154,7 +154,7 @@
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
       if (target.length) {
         $('html, body').animate({
-          scrollTop: target.offset().top
+          scrollTop: target.offset().top - 50
         }, 1000);
         return false;
       }
