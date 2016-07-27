@@ -1,6 +1,6 @@
 {% load staticfiles i18n compress %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:ng="http://angularjs.org" ng-app="seoq">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -162,6 +162,9 @@
       {% compress js %}
       <script src="{% static 'js/project.js' %}"></script>
       {% endcompress %}
+          <!--Angular-->
+      <script src="{% static 'scripts/app.js' %}"></script>
+      <script src="{% static 'scripts/controllers/keyword-score-controller.js' %}"></script>
 
     {% endblock javascript %}
   </body>

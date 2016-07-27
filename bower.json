@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "bootstrap-sass": "^3.3.6",
-    "font-awesome": "^4.6.3"
+    "font-awesome": "^4.6.3",
+    "angular": "^1.5.8"
   }
 }

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container" ng-controller="keywordScoreController">
 Optimized for search engines score:
 {{ score }}
 {% if request.user.is_authenticated %}
