@@ -10,9 +10,7 @@ from django.views.generic import CreateView, ListView
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 from .forms import ExampleForm
-from .models import AlgorithmVariable
-from .utils import get_expiration_and_creation_date
-from .utils import get_built_with_information
+from .models import AlgorithmVariable, Report
 from .qscraper_utils import QscraperSEOQTool
 from .majestic_utils import MajesticBackLinks
 from .checker_utils import Checker_Utils
@@ -20,6 +18,8 @@ from .local_listing import LocalListing
 from .mobilefriendlycheck import MobileFriendlyChecker
 from .utils import get_expiration_and_creation_date,\
     get_built_with_information, get_total_time_and_ssl_certification
+from .algorithm import Algorithm
+
 # Create your views here.
 
 
@@ -141,6 +141,52 @@ class VariableListView(ListView):
 
     model = AlgorithmVariable
     template_name = 'seoqtool/variable_list.html'
+
+
+class SiteFormView(View):
+    """
+    View that return the basic report from an url,
+    without keywords score.
+    """
+    template_name = 'seoqtool/site_form.html'
+    formclass = ExampleForm
+
+    def get(self, request):
+        context = {'form': self.formclass(initial=request.GET)}
+        url = request.GET.get('url', None)
+        if url is None:
+            return render(request, self.template_name, context)
+        netloc = url.replace(
+            'https://', '').replace('http://', '')
+        if request.user.is_authenticated():
+            Report.objects.create(netloc=netloc, user=request.user)
+        else:
+            Report.objects.create(netloc=netloc)
+        return redirect(
+            'seoqtool:report',
+            netloc=netloc.replace('/', '--'))
+
+
+class ReportView(View):
+
+    template_name = 'seoqtool/report.html'
+
+    def get(self, request, netloc):
+        netloc = str(netloc)
+        netloc = netloc.replace('--', '/')
+        context = {'netloc': netloc}
+        score = Algorithm().getSiteScore(netloc)
+        context['score'] = score
+        if request.user.is_authenticated():
+            report = Report.objects.filter(
+                netloc=netloc,
+                user=request.user).latest('created').update(
+                site_score=score)
+        else:
+            report = Report.objects.filter(
+                netloc=netloc).latest('created').update(site_score=score)
+        context['report'] = report
+        return render(request, self.template_name, context)
 
 
 class SEOQURLFriendlyDetail(View):
