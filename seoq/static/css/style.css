@@ -107,6 +107,9 @@ than we are going to use in website
 .m-t-90 {
   margin-top: 90px; }
 
+.p-0-6 {
+  padding: 0 6px !important; }
+
 .p-20 {
   padding: 20px; }
 
@@ -121,6 +124,9 @@ than we are going to use in website
 
 .p-t-20 {
   padding-top: 20px; }
+
+.p-t-30 {
+  padding-top: 30px; }
 
 .p-t-80 {
   padding-top: 80px; }
@@ -8242,6 +8248,13 @@ small#most-recent:after {
       height: 260px;
       right: 56px;
       top: 240px; } }
+
+@media (min-width: 992px) {
+  footer .container.p-t-20 .row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center; } }
 
 .navbar-seoq {
   background-color: #8fd1e1;
