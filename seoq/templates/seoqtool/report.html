@@ -2,7 +2,9 @@
 
 {% block content %}
 <div class="container" ng-controller="keywordScoreController">
-Optimized for search engines score:
+<input type="text" ng-model="request_data.url" value="{{ netloc }}" hidden>
+<input type="text" ng-model="request_data.keyword">
+{{ netloc }} Optimized for search engines score:
 {{ score }}
 {% if request.user.is_authenticated %}
 {% else %}
@@ -10,7 +12,7 @@ Optimized for search engines score:
 do you want to know your SEOQ for an specific keyword?
 
 <a href="">sign up</a>
-	
 {% endif %}
+<button onclick="keyword_score()" ng-disabled="!request_data.keyword">kw analysis</button>
 </div>
 {% endblock content %}
