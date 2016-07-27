@@ -180,11 +180,14 @@ class ReportView(View):
         if request.user.is_authenticated():
             report = Report.objects.filter(
                 netloc=netloc,
-                user=request.user).latest('created').update(
-                site_score=score)
+                user=request.user).latest('created')
+            report.site_score = score
+            report.save()
         else:
             report = Report.objects.filter(
-                netloc=netloc).latest('created').update(site_score=score)
+                netloc=netloc).latest('created')
+            report.site_score = score
+            report.save()
         context['report'] = report
         return render(request, self.template_name, context)
 
