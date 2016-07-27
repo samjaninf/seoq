@@ -1,6 +1,6 @@
 {
   "name": "seoq",
-  "description": "SEO Quotient™ provides SEO tools for both website owners and online marketing professionals to diagnose your website and create an action plan.",
+  "description": "SEO Quotient™ provides SEO tools to diagnose your website and create an action plan.",
   "main": "",
   "authors": [
     "Luis Carlos Martinez <karloxmartinez@hotmail.com>"
@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "bootstrap-sass": "^3.3.6",
-    "font-awesome": "^4.6.3"
+    "font-awesome": "^4.6.3",
+    "angular": "^1.5.8"
   }
 }

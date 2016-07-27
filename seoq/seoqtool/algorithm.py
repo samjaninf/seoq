@@ -68,18 +68,16 @@ class Algorithm(object):
             score = score + 5
         else:
             score = score - 5
-        self.score = int(score)
-        return score
+        return int(score)
 
-    def getKeywordScore(self, url, keyword):
-        scraper = QscraperSEOQTool(url, keyword, 0, 1223)
+    def getKeywordScore(self, url, keyword, ip=1223):
+        scraper = QscraperSEOQTool(url, keyword, 0, ip)
         score = self.score
         score = score + ((scraper.calculate_headings() - 5) * 2)
         score = score + (scraper.calc_tlinks() - 5)
         score = score + ((scraper.calculate_title() - 5) * 3)
         score = score + ((scraper.calculate_url() - 5) * 3)
-        self.score = int(score)
-        return score
+        return int(score)
 
 #a = Algorithm()
 # print a.getSiteScore('howdesign.com/editors-picks/dont-go-chasing-waterfalls-agile-web-design/')

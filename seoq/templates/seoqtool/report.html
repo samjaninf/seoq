@@ -1,16 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-Optimized for search engines score:
-{{ score }}
-{% if request.user.is_authenticated %}
-{% else %}
-<br>
-do you want to know your SEOQ for an specific keyword?
-
-<a href="">sign up</a>
-	
-{% endif %}
+<div class="container" ng-controller="keywordScoreController">
+<h3><span id="netloc">{{ netloc }}</span></h3>
+<div class="row">
+	<div class="col-md-4">
+		Optimized for search engines, score: <span id="site_score">{{ score }}</span>
+	</div>
+	<div class="col-md-4">
+		your keyword score: <span id='kw_score'>0</span>
+	</div>
+	<div class="col-md-4">
+		your total score: <span id='total_score'>{{ score }}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<input type="text" ng-model="request_data.keyword">
+	</div>
+	<div class="col-md-6">
+		<button ng-click="keyword_score()" ng-disabled="!request_data.keyword">kw analysis</button>
+	</div>
+</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		{% if request.user.is_authenticated %}
+		{% else %}
+			do you want to know your SEOQ for an specific keyword?
+			<a href="">sign up</a>
+		{% endif %}
+	</div>
 </div>
 {% endblock content %}
