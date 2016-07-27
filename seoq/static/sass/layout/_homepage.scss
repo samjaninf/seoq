@@ -118,6 +118,7 @@ section.scan-website{
         .form-group{
           label{
             width: 100%;
+            color: $headings-color;
           }
           .form-control{
             font-weight: bold;
@@ -205,6 +206,16 @@ small#most-recent{
       height: 260px;
       right: 56px;
       top: 240px;
+    }
+  }
+}
+footer{
+  .container.p-t-20{
+    .row{
+      @media(min-width:$screen-md-min){
+        display: flex;
+        align-items:center;
+      }
     }
   }
 }

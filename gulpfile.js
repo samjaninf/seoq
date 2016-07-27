@@ -43,7 +43,7 @@ var paths = pathsConfig();
 
 // Styles autoprefixing and minification
 gulp.task('styles', function() {
-  return gulp.src(paths.sass + '/project.scss')
+  return gulp.src(paths.sass + '/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(plumber()) // Checks for errors
     .pipe(autoprefixer({browsers: ['last 2 version']})) // Adds vendor prefixes
@@ -65,8 +65,8 @@ gulp.task('scripts', function() {
 
 // Image compression
 gulp.task('imgCompression', function(){
-  return gulp.src(paths.images + '/*')
-    .pipe(imagemin()) // Compresses PNG, JPEG, GIF and SVG images
+  return gulp.src([paths.images + '/*.jpg', paths.images + '/*.jpeg', paths.images + '/*.png', paths.images + '/*.gif'])
+    .pipe(imagemin()) // Compresses PNG, JPEG, GIF
     .pipe(gulp.dest(paths.images))
 });
 
@@ -94,11 +94,7 @@ gulp.task('default', function() {
 
 // Watch
 gulp.task('watch', ['default'], function() {
-
-  gulp.watch(paths.sass + '/**/*.scss', ['styles']);
   gulp.watch(paths.sass + '/**/*.scss', ['styles']);
   gulp.watch(paths.js + '/**/*.js', ['scripts']);
-  gulp.watch(paths.images + '/**/*', ['imgCompression']);
   gulp.watch('/bower_components/**/*', ['styles', 'scripts']);
-
 });
