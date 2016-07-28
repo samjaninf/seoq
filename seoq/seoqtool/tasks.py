@@ -11,8 +11,9 @@ from django.conf import settings
 def run_report(report_url):
     report_url = ReportURL.objects.get(pk=report_url)
     report = Report.objects.create(
-        score=Algorithm().getSiteScore(report_url.url),
-        netloc=report_url.url,
+        site_score=Algorithm().getSiteScore(report_url.url),
+        netloc=report_url.url.replace('http://', '').replace(
+            'https://', '').replace('www.', ''),
         keyword_score=Algorithm().getKeywordScore(
             report_url.url, report_url.keywords),
         user=report_url.user)
@@ -23,8 +24,8 @@ def run_report(report_url):
               report.created.strftime("%m"),
               report.created.strftime("%d")])
     subject = report_url.frequency + " report for " + report_url.url
-    message = 'the ' + subject + 'has been created. to access it, please go to'
-    message += ' ' + seoq_report_url
+    message = 'the ' + subject + ' has been created. to access it, please go '
+    message += 'to ' + seoq_report_url
     send_mail(
         subject,
         message,
