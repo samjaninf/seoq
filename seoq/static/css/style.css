@@ -8076,15 +8076,15 @@ a.bg-gray:focus {
 
 @media (max-width: 768px) {
   section.benefits-seo .pull-right {
-    float: none !important; }
+    float: none !important;
+    text-align: center; }
+  section.benefits-seo .col-sm-6 {
+    text-align: center; }
+    section.benefits-seo .col-sm-6 a.btn {
+      white-space: inherit;
+      margin: 20px auto; }
   section.benefits-seo h2 {
-    text-align: center; }
-  section.benefits-seo p {
-    text-align: center; }
-  section.benefits-seo a.btn {
-    display: block;
-    width: 236px;
-    margin: 20px auto; } }
+    text-align: center; } }
 
 section.benefits-seo #benefits-text:before {
   content: '';
@@ -8119,7 +8119,20 @@ section.seo-experts {
       display: flex;
       display: -webkit-flex;
       -ms-flex-align: center;
-          align-items: center; } }
+          align-items: center; }
+    section.seo-experts #experts .col-sm-6.pull-right {
+      -ms-flex-order: 1;
+          order: 1; } }
+  @media (max-width: 768px) {
+    section.seo-experts #experts .col-sm-6.pull-right {
+      text-align: center;
+      float: none !important;
+      margin-bottom: 20px; }
+      section.seo-experts #experts .col-sm-6.pull-right h2 {
+        text-align: center; }
+      section.seo-experts #experts .col-sm-6.pull-right a.btn {
+        white-space: inherit;
+        margin: 20px auto; } }
   section.seo-experts #experts .col-sm-6 img.img-circle {
     border: 3px solid #fff; }
   @media (max-width: 522px) {
@@ -8144,6 +8157,8 @@ section.seo-experts {
     section.seo-experts #for-students .col-md-8 #tablet {
       height: 130%; } }
   @media (max-width: 768px) {
+    section.seo-experts #for-students .col-md-8 .col-sm-6:nth-child(2) {
+      margin-bottom: 30px; }
     section.seo-experts #for-students .col-md-8 .col-sm-6 .pull-left, section.seo-experts #for-students .col-md-8 .col-sm-6 .pull-right {
       float: none !important; }
     section.seo-experts #for-students .col-md-8 #tablet {
@@ -8228,6 +8243,9 @@ small#give-try {
   /* margin-left: 50px;
   position: relative;
   top: -40px; */ }
+  @media (max-width: 768px) {
+    small#give-try {
+      display: none; } }
   @media (max-width: 991px) {
     small#give-try {
       margin-left: 15px; } }
