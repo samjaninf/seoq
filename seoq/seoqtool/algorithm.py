@@ -23,14 +23,16 @@ class Algorithm(object):
         mobile = MobileFriendlyChecker()
         score = float(100)
         avgTime = float(0.150895375)
+        total_time_and_ssl = get_total_time_and_ssl_certification(netloc)
+        check_robots = checker.checkRobots(netloc)
 
         if netloc.find('.gov') != -1:
             score = score + 6
         elif netloc.find('.edu') != -1:
             score = score + 3
-        if get_total_time_and_ssl_certification(netloc)['ssl_certificate']:
+        if total_time_and_ssl['ssl_certificate']:
             score = score + 5
-        time = get_total_time_and_ssl_certification(netloc)['speed_info']
+        time = total_time_and_ssl['speed_info']
         time = float(time['time_in_seconds'])
         if time > 0:
             score = score + (float(time) / float(2 * avgTime) - .5) / -10
@@ -52,11 +54,11 @@ class Algorithm(object):
         if edulinks > 0:
             score = score + float(math.log(edulinks))
         edulinks = float(majestic.getNumEduBackLinksWebPageURL(netloc))
-        if checker.checkRobots(netloc)[0].find('Robots allowed') != -1:
+        if check_robots[0].find('Robots allowed') != -1:
             score = score + 5
         else:
             score = score - 15
-        if checker.checkRobots(netloc)[1].find('Sitemap found') != -1:
+        if check_robots[1].find('Sitemap found') != -1:
             score = score + 5
         else:
             score = score - 10

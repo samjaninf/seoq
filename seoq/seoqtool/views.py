@@ -175,6 +175,21 @@ class ReportView(View):
         netloc = str(netloc)
         netloc = netloc.replace('--', '/')
         context = {'netloc': netloc}
+        url = netloc.replace(
+            'www.', '').replace(
+            'https://', 'http://')
+        if 'http://' not in url:
+            url = 'http://' + url
+        response = requests.get(url)
+        if response.status_code == 403:
+            context['no_crawl_allowed'] = True
+            return render(request, self.template_name, context)
+        if response.status_code == 500:
+            context['server_error'] = True
+            return render(request, self.template_name, context)
+        if response.status_code == 404:
+            context['page_not_found'] = True
+            return render(request, self.template_name, context)
         score = Algorithm().getSiteScore(netloc)
         context['score'] = score
         if request.user.is_authenticated():

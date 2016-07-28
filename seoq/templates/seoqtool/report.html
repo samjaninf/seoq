@@ -2,6 +2,14 @@
 
 {% block content %}
 <div class="container" ng-controller="keywordScoreController">
+{% if no_crawl_allowed %}
+	<h3>Your site does not allow to be crawled! Without this, no search engine will be able
+	to find you!</h3>
+{% elif server_error %}
+	<h3>Your site returned a 500 code, server error. Please, check everything is working fine</h3>
+{% elif page_not_found %}
+	<h3>The page you are trying to analyze does not exist. It returned 404 status code, page not found</h3>
+{% else %}
 <h3><span id="netloc">{{ netloc }}</span></h3>
 <div class="row">
 	<div class="col-md-4">
@@ -31,5 +39,6 @@
 			<a href="">sign up</a>
 		{% endif %}
 	</div>
+{% endif %}
 </div>
 {% endblock content %}
