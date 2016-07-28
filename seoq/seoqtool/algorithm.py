@@ -54,6 +54,14 @@ class Algorithm(object):
         if edulinks > 0:
             score = score + float(math.log(edulinks))
         edulinks = float(majestic.getNumEduBackLinksWebPageURL(netloc))
+        if edulinks > 0:
+            score = score + float(math.log(edulinks))
+        trustFlow = majestic.getTrustFlow(netloc)
+        if trustFlow > 0:
+            score = score + trustFlow - 5
+        refIPS = majestic.getRefIPs(netloc)
+        if refIPS > 0:
+            score = score + float(math.log(refIPS))
         if check_robots[0].find('Robots allowed') != -1:
             score = score + 5
         else:
@@ -74,11 +82,14 @@ class Algorithm(object):
 
     def getKeywordScore(self, url, keyword, ip=1223):
         scraper = QscraperSEOQTool(url, keyword, 0, ip)
+        majestic = MajesticBackLinks()
         score = self.score
         score = score + ((scraper.calculate_headings() - 5) * 2)
         score = score + (scraper.calc_tlinks() - 5)
         score = score + ((scraper.calculate_title() - 5) * 3)
         score = score + ((scraper.calculate_url() - 5) * 3)
+        anchorLinks = majestic.getAnchorTextBackLinks(url)
+        score = score + anchorLinks - 5
         return int(score)
 
 #a = Algorithm()
