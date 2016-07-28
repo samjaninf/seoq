@@ -13,11 +13,11 @@
 		<h3 class="text-center"><span id="netloc">Score for {{ netloc }}</span></h3>
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<h4 id='total_score'>{{ score }}</h4>
+				<h4 id='total_score'>{% if total_score %}{{ total_score }}{% else %}{{ score }}{% endif %}</h4>
 			</div>
 			{% if request.user.is_authenticated %}
 			<div class="col-md-4">
-				your keyword score: <span id='kw_score'>0</span>
+				your keyword score: <span id='kw_score'>{% if keyword_score %}{{ keyword_score }}{% else %}0{% endif %}</span>
 			</div>
 			<div class="col-md-4">
 				your site score: <span id="site_score">{{ score }}</span>
@@ -216,6 +216,7 @@
 			</table>
 			</div>
 		</div>
+		{% if keyword_score %}
 		<div class="row">
 			<div class="col-md-12">
 				{% if request.user.is_authenticated %}
@@ -231,6 +232,7 @@
 				{% endif %}
 			</div>
 		</div>
+		{% endif %}
 	{% endif %}
 </div>
 {% endblock content %}
