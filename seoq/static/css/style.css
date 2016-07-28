@@ -8748,12 +8748,14 @@ small#most-recent:after {
 
 footer {
   color: #6b7b80; }
-  @media (min-width: 992px) {
-    footer .container.p-t-20 .row {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-          align-items: center; } }
+  footer .container.p-t-20 {
+    padding-bottom: 20px; }
+    @media (min-width: 992px) {
+      footer .container.p-t-20 .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+            align-items: center; } }
   footer nav ul {
     padding-left: 0;
     list-style: none;

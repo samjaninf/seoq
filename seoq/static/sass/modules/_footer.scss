@@ -1,5 +1,6 @@
 footer{
   .container.p-t-20{
+    padding-bottom: 20px;
     .row{
       @media(min-width:$screen-md-min){
         display: flex;
