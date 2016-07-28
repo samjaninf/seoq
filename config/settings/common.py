@@ -42,6 +42,7 @@ THIRD_PARTY_APPS = (
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
     'rest_framework',
+    'djsupervisor',
 )
 
 # Apps specific for this project go here.
@@ -241,6 +242,16 @@ ADMIN_URL = r'^admin/'
 
 
 # Your common stuff: Below this line define 3rd party library settings
+
+# CELERY STUFF
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+
+
 HUB_DOMAIN = env('HUB_DOMAIN', default='localhost')
 HUB_PORT = env('HUB_PORT', default='8000')
 TWILIO_SID = env('TWILIO_SID', default='')
