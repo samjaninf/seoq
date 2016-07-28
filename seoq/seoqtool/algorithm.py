@@ -56,10 +56,10 @@ class Algorithm(object):
         edulinks = float(majestic.getNumEduBackLinksWebPageURL(netloc))
         if edulinks > 0:
             score = score + float(math.log(edulinks))
-        trustFlow = majestic.getTrustFlow(netloc)
+        trustFlow = float(majestic.getTrustFlow(netloc))
         if trustFlow > 0:
             score = score + trustFlow - 5
-        refIPS = majestic.getRefIPs(netloc)
+        refIPS = float(majestic.getRefIPs(netloc))
         if refIPS > 0:
             score = score + float(math.log(refIPS))
         if check_robots[0].find('Robots allowed') != -1:
