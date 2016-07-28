@@ -10,7 +10,7 @@ class MajesticBackLinks(object):
         print('Ref IPs: ' + self.getRefIPs(url))
         print('Trust Flow: ' + self.getTrustFlow(url))
         print('Anchor Text BackLinks: ' +
-              self.getAnchorTextBackLinks(url, keywords))
+              str(self.getAnchorTextBackLinks(url, keywords)))
 
     def getNumBackLinksDomainName(self, url):
 
