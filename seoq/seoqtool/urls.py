@@ -16,6 +16,11 @@ urlpatterns = [
         view=views.SiteFormView.as_view(),
         name='start_report'
     ),
+    url(
+        regex=r'^add-url/$',
+        view=views.CreateReportURLView.as_view(),
+        name='add_url'
+    ),
 
     # url(
     #     regex=r'^seoqtool-example/$',

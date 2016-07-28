@@ -4,12 +4,13 @@ from django.conf import settings
 
 
 class MajesticBackLinks(object):
-    
+
     def main(self, url, keywords):
 
-        print('Ref IPs' + getRefIPs(url))
-        print('Trust Flow' + getTrustFlow(url))
-        print('Anchor Text BackLinks' + getAnchorTextBackLinks(url, keywords))
+        print('Ref IPs: ' + self.getRefIPs(url))
+        print('Trust Flow: ' + self.getTrustFlow(url))
+        print('Anchor Text BackLinks: ' +
+              str(self.getAnchorTextBackLinks(url, keywords)))
 
     def getNumBackLinksDomainName(self, url):
 

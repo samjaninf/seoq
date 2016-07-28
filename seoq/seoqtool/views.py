@@ -1,16 +1,18 @@
 import requests
 import time
 import iso8601
-from django.shortcuts import render
 from django.http import Http404
-from django.views.generic import View
 from django.conf import settings
+from django.utils import timezone
+from django.shortcuts import render
 from django.contrib import messages
-from django.views.generic import CreateView, ListView
-from django.core.urlresolvers import reverse
+from django.views.generic import View
 from django.shortcuts import redirect
+from django.core.urlresolvers import reverse
+from django.views.generic import CreateView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ExampleForm
-from .models import AlgorithmVariable, Report
+from .models import AlgorithmVariable, Report, ReportURL
 from .qscraper_utils import QscraperSEOQTool
 from .majestic_utils import MajesticBackLinks
 from .checker_utils import Checker_Utils
@@ -303,3 +305,25 @@ class SEOQURLFriendlyDetail(View):
         context['local_listing'] = local.main(netloc)
         context['mobile'] = mobile.checkMobileFriendly(netloc)
         return render(request, self.template_name, context)
+
+
+class CreateReportURLView(LoginRequiredMixin, CreateView):
+    template_name = 'seoqtool/create_urls.html'
+    fields = ['frequency', 'url']
+    model = ReportURL
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(CreateReportURLView, self).get_context_data(
+            *args, **kwargs)
+        context['user_urls'] = self.request.user.reporturl_set.all()
+        return context
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.last_analyzed = timezone.now()
+        return super(CreateReportURLView, self).form_valid(form)
+
+    def get_success_url(self):
+        success_url = reverse(
+            'seoqtool:add_url')
+        return success_url

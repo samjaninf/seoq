@@ -10,20 +10,29 @@
         <span class="h5 text-brand">{% trans "Let us help by telling who you are." %}</span>
       </div>
       <div class="row">
-        <div class="col-xs-4 text-center">
+        <div class="col-sm-4 hidden-xs text-center">
           <img src="{% static "images/fish-1.png" %}" alt="" class="img-responsive"></img>
           <p class="text-brand m-t-20 h4">{% trans "I own a website" %}</p>
         </div>
-        <div class="col-xs-4 text-center">
+        <div class="col-sm-4 hidden-xs text-center">
           <img src="{% static "images/fish-2.png" %}" alt="" class="img-responsive"></img>
           <p class="text-brand m-t-20 h4">{% trans "I am a SEO Expert" %}</p>
         </div>
-        <div class="col-xs-4 text-center">
+        <div class="col-sm-4 hidden-xs text-center">
           <img src="{% static "images/fish-3.png" %}" alt="" class="img-responsive"></img>
           <p class="text-brand m-t-20 h4">{% trans "I study SEO" %}</p>
         </div>
+        <div class="col-xs-12 visible-xs-block text-center m-t-30">
+          <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I own a website" %}</button>
+        </div>
+        <div class="col-xs-12 visible-xs-block text-center m-t-30">
+          <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I am a SEO Expert" %}</button>
+        </div>
+        <div class="col-xs-12 visible-xs-block text-center m-t-30">
+          <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I study SEO" %}</button>
+        </div>
         <small id="discover-more">
-          <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white">{% trans "Discover more" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+          <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white hidden-xs">{% trans "Discover more" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
         </small>
       </div>
     </div>
