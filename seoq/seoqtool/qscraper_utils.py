@@ -167,3 +167,6 @@ class QscraperSEOQTool(object):
         if len(url) > 70:
             url = url[:70] + '...'
         return url
+
+    def get_social_data(self):
+        return self.JSONObject['social_data']
