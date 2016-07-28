@@ -8357,7 +8357,8 @@ small#most-recent:after {
       .navbar-seoq #navbar button.navbar-toggle {
         border: none;
         margin: 0px;
-        margin-right: -2px; }
+        margin-right: -2px;
+        margin-top: 20px; }
         .navbar-seoq #navbar button.navbar-toggle:focus, .navbar-seoq #navbar button.navbar-toggle:hover {
           border: none;
           background: transparent; }
