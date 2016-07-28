@@ -5,6 +5,7 @@ from .algorithm import Algorithm
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.utils import timezone
 
 
 @shared_task
@@ -33,3 +34,18 @@ def run_report(report_url):
         [report_url.user],
         fail_silently=False,
     )
+
+
+@shared_task
+def run_all_reports():
+    duration = {'daily': 1,
+                'weekly': 7,
+                'monthly': 30}
+    now = timezone.now()
+    report_urls = ReportURL.objects.all()
+    for report in report_urls:
+        time_delta = now - report.last_analyzed
+        if time_delta.days >= duration[report.frequency]:
+            run_report.delay(report.pk)
+            report.last_analyzed = now
+            report.save()
