@@ -282,13 +282,3 @@ small#most-recent{
     border-bottom: 2px solid $brand-primary;
   }
 }
-footer{
-  .container.p-t-20{
-    .row{
-      @media(min-width:$screen-md-min){
-        display: flex;
-        align-items:center;
-      }
-    }
-  }
-}

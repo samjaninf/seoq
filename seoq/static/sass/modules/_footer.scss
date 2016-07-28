@@ -1,4 +1,12 @@
 footer{
+  .container.p-t-20{
+    .row{
+      @media(min-width:$screen-md-min){
+        display: flex;
+        align-items:center;
+      }
+    }
+  }
   color: #6b7b80;
   nav{
     ul{
@@ -26,5 +34,54 @@ footer{
   .footer-logo{
     max-height: 45px;
     margin-top: 15px;
+  }
+  @media(max-width: $screen-sm){
+    nav{
+      ul{
+        text-align: center;
+        li{
+          display: inline-block;
+        }
+        li.pull-right{
+          float: none !important;
+        }
+      }
+    }
+    .container.p-t-20{
+      text-align: center;
+      .row{
+        .col-xs-12.col-md-6{
+          &:first-child{
+            margin-top: 20px;
+            margin-bottom: 30px;
+          }
+          &:last-child{
+            .row{
+              .col-sm-12{
+                ul.list-inline.text-right{
+                  li{
+                    display: block;
+                    .pull-right{
+                      float: none !important;
+                    }
+                    img{
+                      display: block;
+                      margin: 0 auto;
+                      clear: both;
+                    }
+                    &:last-child{
+                      img{
+                        margin-top: 30px;
+                        margin-bottom: 30px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
