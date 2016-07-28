@@ -9,7 +9,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 from __future__ import absolute_import, unicode_literals
-
+from celery.schedules import crontab
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3
@@ -252,6 +252,15 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
+
+
+CELERYBEAT_SCHEDULE = {
+    # Executes every Monday morning at 7:30 A.M
+    'add-every-monday-morning': {
+        'task': 'seoq.seoqtool.tasks.run_all_reports',
+        'schedule': crontab(minute=0, hour=0),
+    },
+}
 
 
 TWILIO_SID = env('TWILIO_SID', default='')
