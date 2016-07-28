@@ -7,10 +7,12 @@ class MajesticBackLinks(object):
 
     def main(self, url, keywords):
 
-        print('Ref IPs: ' + self.getRefIPs(url))
-        print('Trust Flow: ' + self.getTrustFlow(url))
+        print('Ref IPs: ' + str(self.getRefIPs(url)))
+        print('Trust Flow: ' + str(self.getTrustFlow(url)))
         print('Anchor Text BackLinks: ' +
               str(self.getAnchorTextBackLinks(url, keywords)))
+        print('Citation Flow Backlinks: ' +
+              str(self.getCitationFlowBackLinks(url)))
 
     def getNumBackLinksDomainName(self, url):
 
@@ -348,7 +350,7 @@ class MajesticBackLinks(object):
             for row in results.rows:
                 item = row['Item']  # website you are analyzing
                 trustFlow = row.get('TrustFlow')
-            return trustFlow
+            return float(trustFlow) / 10
 
         else:
             print ('\nERROR MESSAGE:')
@@ -434,12 +436,48 @@ class MajesticBackLinks(object):
             # print the URL table
             numKeyWordsInAnchorText = 0
             results = response.get_table_for_name('BackLinks')
-            print(len(results.rows))
             for row in results.rows:
                 for word in keywords:
                     if row['AnchorText'].find(word) != -1:
                         numKeyWordsInAnchorText += 1
-            return float(numKeyWordsInAnchorText) / float(len(results.rows))
+            return float(numKeyWordsInAnchorText) / float(len(results.rows)) * 10
+
+        else:
+            print ('\nERROR MESSAGE:')
+            print (str(response.get_error_message()))
+
+    def getCitationFlowBackLinks(self, url):
+
+        endpoint = settings.MAJESTIC_URL  # API
+        app_api_key = settings.MAJESTIC_API_KEY  # put API key
+
+        if url.find('http://') != -1 or url.find('https://') != -1:
+            url = url[url.find('/') + 2:]
+        if url.find('www.') != -1:
+            url = url[url.find('.') + 1:]
+        if url.find('/') != -1:
+            url = url[:url.find('/')]
+        item_to_query = url
+
+        # set up parameters
+        parameters = {}
+        parameters['Count'] = '50000'
+        parameters['item'] = item_to_query
+        parameters['Mode'] = '0'
+        parameters['datasource'] = 'fresh'
+
+        api_service = APIService(app_api_key, endpoint)
+        response = api_service.execute_command('GetBackLinkData', parameters)
+
+        # check the response code
+        if(response.is_ok()):
+            # print the URL table
+            results = response.get_table_for_name('BackLinks')
+            totalCitationFlow = 0
+            for row in results.rows:
+                totalCitationFlow += int(row.get('SourceCitationFlow'))
+            return float(totalCitationFlow) / (float(len(results.rows)) * 10)
+
         else:
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))

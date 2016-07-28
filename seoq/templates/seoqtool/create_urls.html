@@ -3,7 +3,7 @@
 {% block content %}
 
 {% for report_url in user_urls %}
-	<p>{{ report_url.url }} - {{ report_url.frequency }}</p>
+	<p>{{ report_url.url }} - {{report_url.keywords}} - {{ report_url.frequency }}</p>
 {% endfor %}
 <form action="" method="post">{% csrf_token %}
     {{ form.as_p }}
