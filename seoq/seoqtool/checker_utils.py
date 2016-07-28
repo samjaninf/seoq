@@ -14,21 +14,25 @@ class Checker_Utils(object):
         siteResult = ''
         robotResult = ''
 
-        # if already in format http://www.example.com
-        if (url.find('www.') != -1) & (url.find('http://') != -1):
-            url = url
-        # if in format www.example.com
-        elif (url.find('www.') != -1) & (url.find('http://') == -1):
+        # # if already in format http://www.example.com
+        # if (url.find('www.') != -1) & (url.find('http://') != -1):
+        #     url = url
+        # # if in format www.example.com
+        # elif (url.find('www.') != -1) & (url.find('http://') == -1):
+        #     url = 'http://' + url
+        # # if in format example.com
+        # elif (url.find('www.') == -1) & (url.find('http://') == -1):
+        #     url = 'http://www.' + url
+        # # if in format http://example.com
+        # elif (url.find('www.') == -1) & (url.find('http://') != -1):
+        #     url = url.replace('http://', 'http://www.')
+        # # add robots.txt standard
+        url = url.replace(
+            'www.', '').replace(
+            'https://', 'http://')
+        if 'http://' not in url:
             url = 'http://' + url
-        # if in format example.com
-        elif (url.find('www.') == -1) & (url.find('http://') == -1):
-            url = 'http://www.' + url
-        # if in format http://example.com
-        elif (url.find('www.') == -1) & (url.find('http://') != -1):
-            url = url.replace('http://', 'http://www.')
-        # add robots.txt standard
         response = requests.get(url)
-
         if response.text.find('<meta name="robots" content="noindex">') != -1:
             robotResult = 'Robots cannot crawl this page'
             return (robotResult, self.checkSitemap(url))

@@ -1,6 +1,6 @@
 {% load staticfiles i18n compress %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:ng="http://angularjs.org" ng-app="seoq">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -23,7 +23,6 @@
     {% endblock %}
 
   </head>
-
   <body>
     <nav class="navbar navbar-seoq">
       <div class="container-fluid">
@@ -63,10 +62,7 @@
         {% endif %}
       </div>
     </section>
-
-    {% block content %}
-      <p>Use this document as a way to quick start any new project.</p>
-      <a href="{% url 'seoqtool:tool_example' %}" class="text-center">use seoq tool</a>
+   {% block content %}
     {% endblock content %}
     <footer class="bg-gray">
       <div class="container p-t-30">
@@ -100,23 +96,27 @@
           </div>
         </div>
       </div>
-      <hr>
-      <div class="container p-t-20 p-b-40">
+      <hr class="m-0">
+      <div class="container p-t-20">
         <div class="row">
           <div class="col-xs-12 col-md-6">
             2016 SEO Quotient™. All right reserved
           </div>
           <div class="col-xs-12 col-md-6">
             <div class="row">
-              <div class="col-xs-6 col-sm-6 col-md-5 ">
-                <a href="/">
-                  <img src="{% static "images/logo-b.png" %}" class="img-responsive">
-                </a>
-              </div>
-              <div class="col-xs-6 col-sm-6 col-md-5 ">
-                <a href="http://labs.inqbation.com" target="_blank">
-                  <img src="{% static "images/inqbation-labs-logo.svg" %}" class="img-responsive" alt="inQbation Labs" target="_blank">
-                </a>
+              <div class="col-xs-12 col-sm-12 col-md-10 ">
+                <ul class="list-inline text-right">
+                  <li>
+                    <a href="/">
+                      <img src="{% static "images/logo-b.png" %}" class="img-responsive footer-logo pull-right">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://labs.inqbation.com" target="_blank">
+                      <img src="{% static "images/inqbation-labs-logo.svg" %}" class="img-responsive footer-logo pull-right" alt="inQbation Labs" target="_blank">
+                    </a>
+                  </li>
+                </ul>
               </div>
               <div class="col-xs-12 col-md-2 ">
                 <!-- Social icons -->
@@ -162,7 +162,11 @@
 
       <!-- place project specific Javascript in this file -->
       {% compress js %}
+      <script src="{% static 'js/components.js' %}"></script>
       <script src="{% static 'js/project.js' %}"></script>
+      <!--Angular-->
+      <script src="{% static 'scripts/app.js' %}"></script>
+      <script src="{% static 'scripts/controllers/keyword-score-controller.js' %}"></script>
       {% endcompress %}
 
     {% endblock javascript %}

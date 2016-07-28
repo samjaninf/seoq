@@ -13,6 +13,7 @@ class JSONPrint(object):
             url = "http://" + url
 
         # makes request
+        keywords = [x.strip() for x in keywords.split(',') if x]
         r = requests.post(settings.QSCRAPER_URL + '/api/seoq-tool/start-job/',
                           json={'url': url,
                                 'keywords': keywords,
@@ -20,7 +21,6 @@ class JSONPrint(object):
                                 'ip': ip})
         data = r.json()
         job_id = data['job_id']  # gets job id
-
         # get status of the job
         getRequest = requests.get(
             settings.QSCRAPER_URL + '/api/status/' + job_id + '/').json()
@@ -167,3 +167,6 @@ class QscraperSEOQTool(object):
         if len(url) > 70:
             url = url[:70] + '...'
         return url
+
+    def get_social_data(self):
+        return self.JSONObject['social_data']

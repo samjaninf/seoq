@@ -6,6 +6,7 @@
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.2",
     "gulp-imagemin": "^3.0.2",
     "gulp-pixrem": "^1.0.0",
@@ -19,5 +20,8 @@
   },
   "engines": {
     "node": ">=0.8.0"
+  },
+  "dependencies": {
+    "gulp-load-plugins": "^1.2.4"
   }
 }
