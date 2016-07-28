@@ -10,20 +10,29 @@
         <span class="h5 text-brand">{% trans "Let us help by telling who you are." %}</span>
       </div>
       <div class="row">
-        <div class="col-xs-4 text-center">
+        <div class="col-sm-4 hidden-xs text-center">
           <img src="{% static "images/fish-1.png" %}" alt="" class="img-responsive"></img>
           <p class="text-brand m-t-20 h4">{% trans "I own a website" %}</p>
         </div>
-        <div class="col-xs-4 text-center">
+        <div class="col-sm-4 hidden-xs text-center">
           <img src="{% static "images/fish-2.png" %}" alt="" class="img-responsive"></img>
           <p class="text-brand m-t-20 h4">{% trans "I am a SEO Expert" %}</p>
         </div>
-        <div class="col-xs-4 text-center">
+        <div class="col-sm-4 hidden-xs text-center">
           <img src="{% static "images/fish-3.png" %}" alt="" class="img-responsive"></img>
           <p class="text-brand m-t-20 h4">{% trans "I study SEO" %}</p>
         </div>
+        <div class="col-xs-12 visible-xs-block text-center m-t-30">
+          <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I own a website" %}</button>
+        </div>
+        <div class="col-xs-12 visible-xs-block text-center m-t-30">
+          <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I am a SEO Expert" %}</button>
+        </div>
+        <div class="col-xs-12 visible-xs-block text-center m-t-30">
+          <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I study SEO" %}</button>
+        </div>
         <small id="discover-more">
-          <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white">{% trans "Discover more" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+          <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white hidden-xs">{% trans "Discover more" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
         </small>
       </div>
     </div>
@@ -32,17 +41,17 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <div class="col-sm-6 col-md-6 m-b-40">
+          <div class="col-sm-6 col-md-6 m-b-40 pull-right">
+            <img src="{% static "images/images-benefits.png" %}" alt="images benefits" class="center-block img-responsive">
+          </div>
+          <div class="col-sm-6 col-md-6">
             <h2 class="text-left" id="benefits-text"><strong>{% trans "Benefits of SEO" %}</strong></h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore ad, nemo earum aspernatur laboriosam reprehenderit dolor amet vitae et debitis, veniam quisquam aut cupiditate nihil quaerat fuga iste, placeat explicabo!
             </p>
             <a href="#" class="btn btn-primary-ligth btn-lg">{% trans "Learn more about SEO" %}</a>
           </div>
-          <div class="col-sm-6 col-md-6">
-            <img src="{% static "images/images-benefits.png" %}" alt="images benefits" class="center-block img-responsive">
-          </div>
-          <small class="pull-right" id="most-recent">
+          <small class="clear pull-right" id="most-recent">
             <a href="#experts" title="{% trans "Most recent" %}" class="">{% trans "Most recent" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
           </small>
         </div>
