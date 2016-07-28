@@ -164,8 +164,8 @@ hr {
   color: #2d5d81 !important; }
 
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1236,7 +1236,6 @@ a {
     color: #485356;
     text-decoration: underline; }
   a:focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -2448,7 +2447,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -2953,7 +2951,6 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -8074,6 +8071,10 @@ a.bg-gray:hover,
 a.bg-gray:focus {
   background-color: #d1dee1; }
 
+@media (max-width: 767px) {
+  section.bg-primary h1.text-brand {
+    margin-top: 0; } }
+
 section.benefits-seo #benefits-text:before {
   content: '';
   display: block;
@@ -8304,6 +8305,9 @@ small#most-recent:after {
         height: 0px; }
         .navbar-seoq .container-fluid .navbar-header {
           padding: 20px 10px; } }
+  @media (max-width: 767px) {
+    .navbar-seoq .container-fluid .navbar-header {
+      padding-bottom: 0; } }
   @media (max-width: 991px) {
     .navbar-seoq #navbar {
       position: relative;
@@ -8368,11 +8372,13 @@ small#most-recent:after {
     color: #ccc;
     background-color: transparent; }
   .navbar-seoq .navbar-toggle {
-    border-color: #FFF; }
+    border-color: transparent; }
     .navbar-seoq .navbar-toggle:hover, .navbar-seoq .navbar-toggle:focus {
-      background-color: #EEE; }
+      background-color: rgba(45, 93, 129, 0.9); }
+      .navbar-seoq .navbar-toggle:hover .icon-bar, .navbar-seoq .navbar-toggle:focus .icon-bar {
+        background-color: #FFF; }
     .navbar-seoq .navbar-toggle .icon-bar {
-      background-color: #FFF; }
+      background-color: rgba(45, 93, 129, 0.9); }
   .navbar-seoq .navbar-collapse,
   .navbar-seoq .navbar-form {
     border-color: 0; }
@@ -8438,6 +8444,45 @@ small#most-recent:after {
     background-color: #fe9a28;
     border-color: #f18308; }
   .btn-seoq .badge {
+    color: #fe9a28;
+    background-color: #FFF; }
+
+.btn-seoq-lb {
+  color: #FFF;
+  background-color: #fe9a28;
+  border-color: #cdb075;
+  padding-top: 25px;
+  padding-bottom: 25px; }
+  .btn-seoq-lb:focus, .btn-seoq-lb.focus {
+    color: #FFF;
+    background-color: #f28101;
+    border-color: #8f7134; }
+  .btn-seoq-lb:hover {
+    color: #FFF;
+    background-color: #f28101;
+    border-color: #bd9648; }
+  .btn-seoq-lb:active, .btn-seoq-lb.active,
+  .open > .btn-seoq-lb.dropdown-toggle {
+    color: #FFF;
+    background-color: #f28101;
+    border-color: #bd9648; }
+    .btn-seoq-lb:active:hover, .btn-seoq-lb:active:focus, .btn-seoq-lb:active.focus, .btn-seoq-lb.active:hover, .btn-seoq-lb.active:focus, .btn-seoq-lb.active.focus,
+    .open > .btn-seoq-lb.dropdown-toggle:hover,
+    .open > .btn-seoq-lb.dropdown-toggle:focus,
+    .open > .btn-seoq-lb.dropdown-toggle.focus {
+      color: #FFF;
+      background-color: #ce6e01;
+      border-color: #8f7134; }
+  .btn-seoq-lb:active, .btn-seoq-lb.active,
+  .open > .btn-seoq-lb.dropdown-toggle {
+    background-image: none; }
+  .btn-seoq-lb.disabled:hover, .btn-seoq-lb.disabled:focus, .btn-seoq-lb.disabled.focus, .btn-seoq-lb[disabled]:hover, .btn-seoq-lb[disabled]:focus, .btn-seoq-lb[disabled].focus,
+  fieldset[disabled] .btn-seoq-lb:hover,
+  fieldset[disabled] .btn-seoq-lb:focus,
+  fieldset[disabled] .btn-seoq-lb.focus {
+    background-color: #fe9a28;
+    border-color: #cdb075; }
+  .btn-seoq-lb .badge {
     color: #fe9a28;
     background-color: #FFF; }
 

@@ -1,3 +1,10 @@
+section.bg-primary{
+  @media(max-width: $screen-xs-max) {
+    h1.text-brand{
+      margin-top: 0;
+    }
+  }
+}
 section.benefits-seo{
   #benefits-text:before{
     content: '';

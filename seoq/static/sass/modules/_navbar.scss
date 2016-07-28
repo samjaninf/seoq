@@ -55,6 +55,13 @@ $navbar-seoq-toggle-border-color:       #FFF !default;
       }
     }
   }
+  @media(max-width: $screen-xs-max) {
+    .container-fluid{
+      .navbar-header{
+        padding-bottom: 0;
+      }
+    }
+  }
   #navbar{
     @media(max-width:$screen-sm-max){
      position: relative;
@@ -149,13 +156,16 @@ $navbar-seoq-toggle-border-color:       #FFF !default;
   }
 
   .navbar-toggle {
-    border-color: $navbar-seoq-toggle-border-color;
+    border-color: transparent;
     &:hover,
     &:focus {
-      background-color: $navbar-seoq-toggle-hover-bg;
+      background-color: rgba(45, 93, 129, 0.9);
+      .icon-bar{
+        background-color: $navbar-seoq-toggle-icon-bar-bg;
+      }
     }
     .icon-bar {
-      background-color: $navbar-seoq-toggle-icon-bar-bg;
+      background-color: rgba(45, 93, 129, 0.9);
     }
   }
 
