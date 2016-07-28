@@ -41,6 +41,7 @@ footer{
         text-align: center;
         li{
           display: inline-block;
+          margin-bottom: 20px;
         }
         li.pull-right{
           float: none !important;
@@ -68,15 +69,26 @@ footer{
                       display: block;
                       margin: 0 auto;
                       clear: both;
+                      max-height: 40px;
                     }
                     &:last-child{
+                      text-align: center;
                       img{
                         margin-top: 30px;
                         margin-bottom: 30px;
+                        display: inline-block;
+                      }
+                      div.content-social{
+                        width: 80px;
+                        display: inline-block;
+                        vertical-align: middle;
                       }
                     }
                   }
                 }
+              }
+              .col-md-2{
+                display: none;
               }
             }
           }
