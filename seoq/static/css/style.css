@@ -8075,6 +8075,18 @@ a.bg-gray:focus {
   section.bg-primary h1.text-brand {
     margin-top: 0; } }
 
+@media (max-width: 768px) {
+  section.benefits-seo .pull-right {
+    float: none !important; }
+  section.benefits-seo h2 {
+    text-align: center; }
+  section.benefits-seo p {
+    text-align: center; }
+  section.benefits-seo a.btn {
+    display: block;
+    width: 236px;
+    margin: 20px auto; } }
+
 section.benefits-seo #benefits-text:before {
   content: '';
   display: block;
@@ -8236,13 +8248,17 @@ small#discover-more {
   position: relative;
   top: 65px; }
 
+@media (max-width: 768px) {
+  small#most-recent {
+    display: none; } }
+
 @media (min-width: 768px) and (max-width: 991px) {
   small#most-recent {
     position: relative;
     right: -16px; }
     small#most-recent:after {
       width: 25px;
-      height: 370px;
+      height: 260px;
       right: 1px;
       top: 22px; } }
 
@@ -8252,7 +8268,7 @@ small#discover-more {
     position: relative; }
     small#most-recent:after {
       width: 41px;
-      height: 300px;
+      height: 230px;
       right: 39px;
       top: 22px; } }
 
@@ -8262,7 +8278,7 @@ small#discover-more {
     right: -93px; }
     small#most-recent:after {
       width: 67px;
-      height: 277px;
+      height: 268px;
       right: 41px;
       top: 22px; } }
 
