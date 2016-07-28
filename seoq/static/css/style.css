@@ -8181,6 +8181,10 @@ section.seo-experts {
     -ms-flex-align: center;
         align-items: center; } }
 
+@media (max-width: 768px) {
+  section.scan-website .col-md-10 .col-sm-6 {
+    text-align: center; } }
+
 section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
   content: '';
   border-bottom: 2px solid #8fd1e1;

@@ -140,6 +140,9 @@ section.scan-website{
       align-items: center;
     }
     .col-sm-6{
+      @media(max-width:$screen-sm){
+        text-align:center;
+      }
       h2#how-website:before{
         content: '';
         border-bottom: 2px solid $brand-primary;
