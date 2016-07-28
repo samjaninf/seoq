@@ -180,7 +180,7 @@ class ReportView(View):
             'https://', 'http://')
         if 'http://' not in url:
             url = 'http://' + url
-        response = requests.get(url)
+        response = requests.get(url, verify=False)
         if response.status_code == 403:
             context['no_crawl_allowed'] = True
             return render(request, self.template_name, context)
