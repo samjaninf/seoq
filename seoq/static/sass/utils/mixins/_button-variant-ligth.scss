@@ -2,6 +2,7 @@
   color: $background;
   background-color: transparent;
   border-color: $border;
+  border-width: 2px;
 
   &:focus,
   &.focus {
