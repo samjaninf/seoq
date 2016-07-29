@@ -23,7 +23,7 @@
     {% endblock %}
 
   </head>
-  <body>
+  <body class="{% block page_class %}{% endblock page_class %}">
     <nav class="navbar navbar-seoq">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -42,8 +42,8 @@
             <h3>X</h3>
           </button>
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="#blog">Blog</a></li>
             <li><a href="#website-owners">Website Owners</a></li>
             <li><a href="#seo-professionals">SEO Profesionals</a></li>
