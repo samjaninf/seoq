@@ -54,6 +54,14 @@ class Algorithm(object):
         if edulinks > 0:
             score = score + float(math.log(edulinks))
         edulinks = float(majestic.getNumEduBackLinksWebPageURL(netloc))
+        if edulinks > 0:
+            score = score + float(math.log(edulinks))
+        trustFlow = float(majestic.getTrustFlow(netloc))
+        if trustFlow > 0:
+            score = score + trustFlow - 5
+        refIPS = float(majestic.getRefIPs(netloc))
+        if refIPS > 0:
+            score = score + float(math.log(refIPS))
         if check_robots[0].find('Robots allowed') != -1:
             score = score + 5
         else:
@@ -74,25 +82,13 @@ class Algorithm(object):
 
     def getKeywordScore(self, url, keyword, ip=1223):
         scraper = QscraperSEOQTool(url, keyword, 0, ip)
+        majestic = MajesticBackLinks()
         score = self.score
         score = score + ((scraper.calculate_headings() - 5) * 2)
         score = score + (scraper.calc_tlinks() - 5)
         score = score + ((scraper.calculate_title() - 5) * 3)
         score = score + ((scraper.calculate_url() - 5) * 3)
+        anchorLinks = majestic.getAnchorTextBackLinks(
+            url, keyword.split(','))
+        score = score + anchorLinks - 5
         return int(score)
-
-#a = Algorithm()
-# print a.getSiteScore('howdesign.com/editors-picks/dont-go-chasing-waterfalls-agile-web-design/')
-# print a.getKeywordScore('howdesign.com/editors-picks/dont-go-chasing-waterfalls-agile-web-design/', ['agile', 'web', 'development'])
-#a = Algorithm()
-# print a.getSiteScore('pragprog.com/book/rails4/agile-web-development-with-rails-4')
-# print a.getKeywordScore('pragprog.com/book/rails4/agile-web-development-with-rails-4', ['agile', 'web', 'development'])
-#a = Algorithm()
-#print a.getSiteScore('sixrevisions.com/web-development/agile/')
-#print a.getKeywordScore('sixrevisions.com/web-development/agile/', ['agile', 'web', 'development'])
-# a = Algorithm()
-# print a.getSiteScore('amazon.com/Agile-Development-Rails-Pragmatic-Programmers/dp/1934356549')
-# print a.getKeywordScore('amazon.com/Agile-Development-Rails-Pragmatic-Programmers/dp/1934356549', ['agile', 'web', 'development'])
-#a = Algorithm()
-#print a.getSiteScore('agileana.com')
-#print a.getKeywordScore('agileana.com', ['agile', 'web', 'development'])

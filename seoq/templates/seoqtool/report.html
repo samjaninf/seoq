@@ -13,11 +13,11 @@
 		<h3 class="text-center"><span id="netloc">Score for {{ netloc }}</span></h3>
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<h4 id='total_score'>{{ score }}</h4>
+				<h4 id='total_score'>{% if total_score %}{{ total_score }}{% else %}{{ score }}{% endif %}</h4>
 			</div>
 			{% if request.user.is_authenticated %}
 			<div class="col-md-4">
-				your keyword score: <span id='kw_score'>0</span>
+				your keyword score: <span id='kw_score'>{% if keyword_score %}{{ keyword_score }}{% else %}0{% endif %}</span>
 			</div>
 			<div class="col-md-4">
 				your site score: <span id="site_score">{{ score }}</span>
@@ -59,6 +59,7 @@
 					</table>
 				</div>
 			</div>
+<<<<<<< HEAD
 			<div class="row">
 				<div class="col-md-12 table-responsive text-center">
 					<table class="table">
@@ -78,6 +79,167 @@
 								<td><i class="fa fa-heartbeat" aria-hidden="true"></i></td>
 							</tr>
 						</table>
+=======
+		</div>
+		<div class="row">
+			<div class="col-md-12 table-responsive text-center">
+			<table class="table">
+				<tr>
+					<th>Credibility</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td><i class="fa fa-heartbeat" aria-hidden="true"></i></td>
+  			</tr>
+			</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 table-responsive text-center">
+			<table class="table">
+				<tr>
+					<th>Content</th>
+					<th></th>
+					<th>For members only</th>
+				</tr>
+				<tr>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td><i class="fa fa-heartbeat" aria-hidden="true"></i></td>
+  			</tr>
+			</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 table-responsive text-center">
+			<table class="table">
+				<tr>
+					<th>Code</th>
+					<th></th>
+					<th>for members only</th>
+				</tr>
+				<tr>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td><i class="fa fa-heartbeat" aria-hidden="true"></i></td>
+  			</tr>
+			</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 table-responsive text-center">
+			<table class="table">
+				<tr>
+					<th>Conversation</th>
+				</tr>
+				<tr>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td><i class="fa fa-heartbeat" aria-hidden="true"></i></td>
+  			</tr>
+			</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 table-responsive text-center">
+			<table class="table">
+				<tr>
+					<th>Competition</th>
+				</tr>
+				<tr>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td><i class="fa fa-heartbeat" aria-hidden="true"></i></td>
+  			</tr>
+			</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 table-responsive text-center">
+			<table class="table">
+				<tr>
+					<th>Conversion</th>
+					<th></th>
+					<th>for member only</th>
+				</tr>
+				<tr>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+    			<td><i class="fa fa-heartbeat" aria-hidden="true"></i></td>
+  			</tr>
+			</table>
+			</div>
+		</div>
+		{% if keyword_score %}
+		<div class="row">
+			<div class="col-md-12">
+				{% if request.user.is_authenticated %}
+					<div class="col-md-6">
+						<input type="text" ng-model="request_data.keyword">
+>>>>>>> origin/develop
 					</div>
 				</div>
 				<div class="row">
@@ -101,6 +263,7 @@
 							</table>
 						</div>
 					</div>
+<<<<<<< HEAD
 					<div class="row">
 						<div class="col-md-12 table-responsive text-center">
 							<table class="table">
@@ -202,3 +365,15 @@
 
 
 							</script>
+=======
+				{% else %}
+					do you want to know your SEOQ for an specific keyword?
+					<a href="">sign up</a>
+				{% endif %}
+			</div>
+		</div>
+		{% endif %}
+	{% endif %}
+</div>
+{% endblock content %}
+>>>>>>> origin/develop

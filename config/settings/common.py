@@ -9,7 +9,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 from __future__ import absolute_import, unicode_literals
-
+from celery.schedules import crontab
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3
@@ -90,6 +90,8 @@ FIXTURE_DIRS = (
 # ------------------------------------------------------------------------------
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 
+SERVER_EMAIL = env('SERVER_EMAIL', default='admin@balystic.com')
+DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL', default=SERVER_EMAIL)
 # MANAGER CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
@@ -252,8 +254,15 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
 
 
-HUB_DOMAIN = env('HUB_DOMAIN', default='localhost')
-HUB_PORT = env('HUB_PORT', default='8000')
+CELERYBEAT_SCHEDULE = {
+    # Executes every Monday morning at 7:30 A.M
+    'add-every-monday-morning': {
+        'task': 'seoq.seoqtool.tasks.run_all_reports',
+        'schedule': crontab(minute=0, hour=0),
+    },
+}
+
+
 TWILIO_SID = env('TWILIO_SID', default='')
 TWILIO_AUTH_TOKEN = env('TWILIO_AUTH_TOKEN', default='')
 TWILIO_PHONE_NUMBER = env('TWILIO_PHONE_NUMBER', default='')

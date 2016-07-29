@@ -12,9 +12,19 @@ urlpatterns = [
         name='report'
     ),
     url(
+        regex=r'^www/(?P<netloc>[\w_\-\.]+)/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<day>[0-9]{2})/$',
+        view=views.ArchiveReportView.as_view(),
+        name='archive_report'
+    ),
+    url(
         regex=r'^start-report/$',
         view=views.SiteFormView.as_view(),
         name='start_report'
+    ),
+    url(
+        regex=r'^add-url/$',
+        view=views.CreateReportURLView.as_view(),
+        name='add_url'
     ),
 
     # url(

@@ -1,18 +1,25 @@
+section.bg-primary{
+  @media(max-width: $screen-xs-max) {
+    h1.text-brand{
+      margin-top: 0;
+    }
+  }
+}
 section.benefits-seo{
   @media(max-width:$screen-sm-min){
     .pull-right{
       float: none !important;
+      text-align:center;
+    }
+    .col-sm-6{
+      text-align: center;
+      a.btn{
+        white-space: inherit;
+        margin:20px auto;
+      }
     }
     h2{
       text-align: center;
-    }
-    p{
-      text-align: center;
-    }
-    a.btn{
-      display: block;
-      width: 236px;
-      margin:20px auto;
     }
   }
   #benefits-text:before{
@@ -49,6 +56,23 @@ section.seo-experts{
         display: flex;
         display: -webkit-flex;
         align-items: center;
+      }
+      .col-sm-6.pull-right{
+        order: 1;
+      }
+    }
+    @media(max-width:$screen-sm-min){
+      .col-sm-6.pull-right{
+        text-align: center;
+        float: none !important;
+        margin-bottom: 20px;
+        h2{
+          text-align: center;
+        }
+        a.btn{
+          white-space: inherit;
+          margin:20px auto;
+        }
       }
     }
     .col-sm-6{
@@ -88,6 +112,9 @@ section.seo-experts{
       }
       @media(max-width:$screen-sm){
         .col-sm-6{
+          &:nth-child(2){
+            margin-bottom: 30px;
+          }
           .pull-left,.pull-right{
             float: none !important;
           }
@@ -113,6 +140,9 @@ section.scan-website{
       align-items: center;
     }
     .col-sm-6{
+      @media(max-width:$screen-sm){
+        text-align:center;
+      }
       h2#how-website:before{
         content: '';
         border-bottom: 2px solid $brand-primary;
@@ -184,6 +214,9 @@ section.scan-website{
   }
 }
 small#give-try{
+  @media(max-width:$screen-sm){
+    display: none;
+  }
   @media(max-width:$screen-sm-max){
     margin-left: 15px;
   }
@@ -247,15 +280,5 @@ small#most-recent{
     position: absolute;
     border-right: 2px solid $brand-primary;
     border-bottom: 2px solid $brand-primary;
-  }
-}
-footer{
-  .container.p-t-20{
-    .row{
-      @media(min-width:$screen-md-min){
-        display: flex;
-        align-items:center;
-      }
-    }
   }
 }

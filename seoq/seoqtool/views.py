@@ -1,16 +1,18 @@
 import requests
 import time
 import iso8601
-from django.shortcuts import render
 from django.http import Http404
-from django.views.generic import View
 from django.conf import settings
+from django.utils import timezone
+from django.shortcuts import render
 from django.contrib import messages
-from django.views.generic import CreateView, ListView
-from django.core.urlresolvers import reverse
+from django.views.generic import View
 from django.shortcuts import redirect
+from django.core.urlresolvers import reverse
+from django.views.generic import CreateView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ExampleForm
-from .models import AlgorithmVariable, Report
+from .models import AlgorithmVariable, Report, ReportURL
 from .qscraper_utils import QscraperSEOQTool
 from .majestic_utils import MajesticBackLinks
 from .checker_utils import Checker_Utils
@@ -207,6 +209,35 @@ class ReportView(View):
         return render(request, self.template_name, context)
 
 
+class ArchiveReportView(View):
+
+    template_name = 'seoqtool/report.html'
+
+    def get(self, request, netloc, year, month, day):
+        netloc = str(netloc)
+        netloc = netloc.replace('--', '/')
+        context = {'netloc': netloc}
+        url = netloc.replace(
+            'www.', '').replace(
+            'https://', 'http://')
+        if 'http://' not in url:
+            url = 'http://' + url
+        try:
+            report = Report.objects.filter(
+                created__year=year,
+                created__month=month,
+                created__day=day,
+                netloc=netloc).latest('created')
+        except Report.DoesNotExist:
+            raise Http404
+        context['score'] = report.site_score
+        context['keyword_score'] = report.keyword_score
+        context['total_score'] = int(report.site_score +
+                                     report.keyword_score)
+        context['report'] = report
+        return render(request, self.template_name, context)
+
+
 class SEOQURLFriendlyDetail(View):
     """
     view to return the qscraper report
@@ -303,3 +334,25 @@ class SEOQURLFriendlyDetail(View):
         context['local_listing'] = local.main(netloc)
         context['mobile'] = mobile.checkMobileFriendly(netloc)
         return render(request, self.template_name, context)
+
+
+class CreateReportURLView(LoginRequiredMixin, CreateView):
+    template_name = 'seoqtool/create_urls.html'
+    fields = ['frequency', 'url', 'keywords']
+    model = ReportURL
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(CreateReportURLView, self).get_context_data(
+            *args, **kwargs)
+        context['user_urls'] = self.request.user.reporturl_set.all()
+        return context
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.last_analyzed = timezone.now()
+        return super(CreateReportURLView, self).form_valid(form)
+
+    def get_success_url(self):
+        success_url = reverse(
+            'seoqtool:add_url')
+        return success_url
