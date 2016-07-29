@@ -170,6 +170,9 @@ hr {
 .text-brand {
   color: #2d5d81 !important; }
 
+p {
+  font-size: 17px; }
+
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
