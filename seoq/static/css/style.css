@@ -8598,7 +8598,8 @@ small#most-recent:after {
 .btn-default-ligth {
   color: #fff;
   background-color: transparent;
-  border-color: #ccc; }
+  border-color: #ccc;
+  border-width: 2px; }
   .btn-default-ligth:focus, .btn-default-ligth.focus {
     color: #333;
     background-color: #e6e6e6;
@@ -8635,7 +8636,8 @@ small#most-recent:after {
 .btn-primary-ligth {
   color: #8fd1e1;
   background-color: transparent;
-  border-color: #7bc9dc; }
+  border-color: #7bc9dc;
+  border-width: 2px; }
   .btn-primary-ligth:focus, .btn-primary-ligth.focus {
     color: #fff;
     background-color: #67c0d6;
@@ -8672,7 +8674,8 @@ small#most-recent:after {
 .btn-success-ligth {
   color: #5cb85c;
   background-color: transparent;
-  border-color: #4cae4c; }
+  border-color: #4cae4c;
+  border-width: 2px; }
   .btn-success-ligth:focus, .btn-success-ligth.focus {
     color: #fff;
     background-color: #449d44;
@@ -8709,7 +8712,8 @@ small#most-recent:after {
 .btn-info-ligth {
   color: #5bc0de;
   background-color: transparent;
-  border-color: #46b8da; }
+  border-color: #46b8da;
+  border-width: 2px; }
   .btn-info-ligth:focus, .btn-info-ligth.focus {
     color: #fff;
     background-color: #31b0d5;
@@ -8746,7 +8750,8 @@ small#most-recent:after {
 .btn-warning-ligth {
   color: #f0ad4e;
   background-color: transparent;
-  border-color: #eea236; }
+  border-color: #eea236;
+  border-width: 2px; }
   .btn-warning-ligth:focus, .btn-warning-ligth.focus {
     color: #fff;
     background-color: #ec971f;
@@ -8783,7 +8788,8 @@ small#most-recent:after {
 .btn-danger-ligth {
   color: #d9534f;
   background-color: transparent;
-  border-color: #d43f3a; }
+  border-color: #d43f3a;
+  border-width: 2px; }
   .btn-danger-ligth:focus, .btn-danger-ligth.focus {
     color: #fff;
     background-color: #c9302c;
