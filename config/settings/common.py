@@ -43,6 +43,7 @@ THIRD_PARTY_APPS = (
     'allauth.socialaccount',  # registration
     'rest_framework',
     'djsupervisor',
+    'balystic',
 )
 
 # Apps specific for this project go here.
@@ -276,3 +277,6 @@ BASE_URL = env('BASE_URL', default='localhost:8000')
 
 TAGGIT_CASE_INSENSITIVE = False
 SESSION_COOKIE_DOMAIN = env('SESSION_COOKIE_DOMAIN', default=None)
+
+BALYSTIC_API_TOKEN = env('BALYSTIC_API_TOKEN')
+BALYSTIC_API_PATH = env('BALYSTIC_API_PATH')
