@@ -51,7 +51,7 @@
 				1 Error
 			</div>
 			<div class="col-md-3">
-				share score
+				<button onclick="sendReport();">Share Score</button>
 			</div>
 		</div>
 		<div class="row">
@@ -235,3 +235,27 @@
 	{% endif %}
 </div>
 {% endblock content %}
+<script>
+function sendReport() {
+    var email = prompt("Please enter your email", "");
+    
+    if (email != null) {
+    $.ajax({
+        type: 'POST',
+        url: "../../seoqtool/email_report.py",
+        data: {
+        emailto:}, //passing some input here
+        dataType: "text",
+        success: function(response){
+           output = response;
+           alert(output);
+        }
+}).done(function(data){
+    console.log(data);
+    alert(data);
+});
+
+    }
+}
+
+</script>
