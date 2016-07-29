@@ -24,7 +24,7 @@
 
   </head>
   <body class="{% block page_class %}{% endblock page_class %}">
-    <nav class="navbar navbar-seoq">
+    <nav class="navbar navbar-seoq {% block nav_class %}{% endblock nav_class %}">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" id="#navbar-toggle">
@@ -34,7 +34,9 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">
-            <img src="{% static "images/logo-w.png" %}" alt="">
+          {% block logo %}
+            <img src="{% static "images/logo-w.png" %}" alt="SEOQ Logo">
+          {% endblock logo %}
           </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">

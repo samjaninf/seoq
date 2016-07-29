@@ -1,4 +1,7 @@
 section.bg-primary{
+  .h4.text-brand{
+    font-weight: lighter;
+  }
   @media(max-width: $screen-xs-max) {
     h1.text-brand{
       margin-top: 0;

@@ -65,6 +65,9 @@ than we are going to use in website
 .p-b-40{
   padding-bottom: 40px;
 }
+.p-b-100{
+  padding-bottom: 100px;
+}
 .p-t-20{
   padding-top:20px;
 }
@@ -113,4 +116,8 @@ hr{
   display: -webkit-flex;
   display: -ms-flexbox;
   display:         flex;
+}
+.effect-100vh{
+  height: 100vh;
+  min-height: 660px;
 }

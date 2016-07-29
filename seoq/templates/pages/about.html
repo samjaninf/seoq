@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
 {% block page_class %}about{% endblock page_class %}
+{% block nav_class %}navbar-about{% endblock nav_class %}
+{% block logo %}
+<img src="{% static "images/logo-b.png" %}" alt="SEOQ Logo">
+{% endblock logo %}
 {% block content %}
+<section id="banner-team">
+  <img src="{% static "images/team-background.jpg" %}" alt="team background" class="center-block img-responsive">
+  <h1 class="text-center">{% trans "A family more than a company" %}</h1>
+</section>
 <section id="what-is">
 	<div class="container">
 		<div class="row">
@@ -39,7 +47,7 @@
 				<div class="row full-hg">
 					<div class="col-md-10 col-md-offset-1 full-hg">
 						<div class="wrapper full-hg">
-							<img src="{% static 'images/fish-4.png' %}" alt="Fish image" class="img-responsive">
+							<img src="{% static 'images/fish-4.gif' %}" alt="Fish image" class="img-responsive">
 						</div>
 					</div>
 				</div>
