@@ -167,6 +167,10 @@ hr {
   display: -ms-flexbox;
   display: flex; }
 
+.effect-100vh {
+  height: 100vh;
+  min-height: 660px; }
+
 .text-brand {
   color: #2d5d81 !important; }
 
