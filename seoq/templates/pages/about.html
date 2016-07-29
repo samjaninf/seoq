@@ -1,1 +1,60 @@
 {% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block page_class %}about{% endblock page_class %}
+{% block content %}
+<section id="what-is">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h2 class="about-title">{% trans "What is SEO Quotient?" %}</h2>
+			</div>
+		</div>
+		<div class="row col-eq-height">
+			<div class="col-md-5 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-12 resaltable">
+						<h3>For website Owners</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum error at ipsa sit reiciendis consequuntur excepturi placeat tempore, quod perferendis unde beatae suscipit dolorem maiores modi ab! Quam, excepturi, quis.</p>
+					</div>
+					<div class="divider"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-md-12 resaltable">
+						<h3>For SEO professionals</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio deserunt dolor voluptas, unde voluptatibus perspiciatis earum velit nulla quibusdam nemo totam, provident est aut, dicta aperiam doloribus. Eius expedita, commodi!</p>
+					</div>
+					<div class="divider"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-md-12 resaltable">
+						<h3>For students of SEO</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis eaque iusto non, est magnam reiciendis officia officiis ab porro velit animi doloribus expedita sed esse amet quod reprehenderit, debitis deserunt!</p>
+					</div>
+					<div class="divider"></div>
+				</div>
+			</div>
+			<div class="col-md-5 about-image">
+				<div class="row full-hg">
+					<div class="col-md-10 col-md-offset-1 full-hg">
+						<div class="wrapper full-hg">
+							<img src="{% static 'images/fish-4.png' %}" alt="Fish image" class="img-responsive">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="team">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h2>{% trans "Meet the team" %}</h2>
+			</div>
+		</div>
+		
+	</div>
+</section>
+{% endblock content %}
