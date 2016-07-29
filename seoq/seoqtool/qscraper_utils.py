@@ -13,6 +13,7 @@ class JSONPrint(object):
             url = "http://" + url
 
         # makes request
+        keywords = ''.join(keywords)
         keywords = [x.strip() for x in keywords.split(',') if x]
         r = requests.post(settings.QSCRAPER_URL + '/api/seoq-tool/start-job/',
                           json={'url': url,
