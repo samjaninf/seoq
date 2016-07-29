@@ -149,14 +149,14 @@ than we are going to use in website
 .b-b-1 {
   border-bottom: 1px solid #eeeeee; }
 
-small a {
+.scrollable a {
   border-bottom: solid 2px #8fd1e1;
   display: inline;
-  padding-bottom: 3px; }
-  small a:hover {
+  padding-bottom: 2px; }
+  .scrollable a:hover {
     text-decoration: none; }
 
-small a.text-white {
+.scrollable a.text-white {
   border: none; }
 
 hr {
@@ -181,8 +181,8 @@ p {
   font-size: 17px; }
 
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1253,7 +1253,6 @@ a {
     color: #485356;
     text-decoration: underline; }
   a:focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -2465,7 +2464,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -2970,7 +2968,6 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -8232,8 +8229,8 @@ section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
   @media (min-width: 1200px) {
     section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
       width: 70px;
-      height: 295px;
-      top: -240px;
+      height: 300px;
+      top: -245px;
       left: -82px; } }
 
 section.scan-website .col-md-10 .col-sm-6 form .form-group label {
@@ -8267,67 +8264,67 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
     font-weight: bold;
     color: #fff; }
 
-small#give-try {
+#give-try {
   /* margin-left: 50px;
   position: relative;
   top: -40px; */ }
   @media (max-width: 768px) {
-    small#give-try {
+    #give-try {
       display: none; } }
   @media (max-width: 991px) {
-    small#give-try {
+    #give-try {
       margin-left: 15px; } }
   @media (min-width: 833px) and (max-width: 991px) {
-    small#give-try {
+    #give-try {
       top: 60px;
       position: relative;
       z-index: 99;
       margin-left: -27px; } }
   @media (min-width: 768px) and (max-width: 832px) {
-    small#give-try {
+    #give-try {
       top: 60px;
       position: relative;
       z-index: 99; } }
 
-small#discover-more {
+#discover-more {
   position: relative;
   top: 65px; }
 
 @media (max-width: 768px) {
-  small#most-recent {
+  #most-recent {
     display: none; } }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  small#most-recent {
+  #most-recent {
     position: relative;
     right: -16px; }
-    small#most-recent:after {
+    #most-recent:after {
       width: 25px;
       height: 260px;
       right: 1px;
       top: 22px; } }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  small#most-recent {
+  #most-recent {
     right: -76px;
     position: relative; }
-    small#most-recent:after {
+    #most-recent:after {
       width: 41px;
       height: 230px;
       right: 39px;
       top: 22px; } }
 
 @media (min-width: 1200px) {
-  small#most-recent {
+  #most-recent {
     position: relative;
     right: -93px; }
-    small#most-recent:after {
+    #most-recent:after {
       width: 67px;
       height: 268px;
       right: 41px;
       top: 22px; } }
 
-small#most-recent:after {
+#most-recent:after {
   content: '';
   display: block;
   position: absolute;

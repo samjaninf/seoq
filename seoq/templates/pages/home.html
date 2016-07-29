@@ -3,7 +3,7 @@
 
 {% block content %}
 
-  <section class="bg-primary p-t-70 p-b-70 effect-100vh">
+  <section class="bg-primary p-t-70 p-b-70">
     <div class="container">
       <div class="row text-center p-b-100">
         <h1 class="text-brand"><strong>{% trans "Want to rank higher on search engines?" %}</strong></h1>
@@ -31,9 +31,9 @@
         <div class="col-xs-12 visible-xs-block text-center m-t-30">
           <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I study SEO" %}</button>
         </div>
-        <small id="discover-more">
+        <span id="discover-more" class="scrollable">
           <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white hidden-xs">{% trans "Discover more" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
-        </small>
+        </span>
       </div>
     </div>
   </section>
@@ -51,9 +51,9 @@
             </p>
             <a href="#" class="btn btn-primary-ligth btn-lg">{% trans "Learn more about SEO" %}</a>
           </div>
-          <small class="clear pull-right" id="most-recent">
+          <span class="clear pull-right scrollable" id="most-recent">
             <a href="#experts" title="{% trans "Most recent" %}" class="">{% trans "Most recent" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
-          </small>
+          </span>
         </div>
       </div>
     </div>
@@ -122,9 +122,9 @@
           </div>
           <img src="{% static "images/tablet.png" %}" alt="tablet" class="center-block img-responsive" id="tablet">
         </div>
-        <small class="clear center-block" id="give-try">
+        <span class="clear center-block scrollable" id="give-try">
           <a href="#how-website" title="{% trans "Give it try" %}" class=""><i class="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp;{% trans "Give it try" %}</a>
-        </small>
+        </span>
       </div>
     </div>
     <img src="{% static "images/separator-block-bottom.png" %}" alt="separator block top" class="img-responsive center-block relative">

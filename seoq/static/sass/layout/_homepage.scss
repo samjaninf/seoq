@@ -172,8 +172,8 @@ section.scan-website{
         }
         @media(min-width:$screen-lg-min){
           width: 70px;
-          height: 295px;
-          top: -240px;
+          height: 300px;
+          top: -245px;
           left: -82px;
         }
       }
@@ -216,7 +216,7 @@ section.scan-website{
     }
   }
 }
-small#give-try{
+#give-try{
   @media(max-width:$screen-sm){
     display: none;
   }
@@ -238,12 +238,12 @@ small#give-try{
   position: relative;
   top: -40px; */
 }
-small#discover-more{
+#discover-more{
     position: relative;
     top: 65px;
 }
 
-small#most-recent{
+#most-recent{
   @media(max-width:$screen-sm-min){
     display: none;
   }
