@@ -46,7 +46,7 @@ class Checker_Utils(object):
             return ('No robots.txt', self.checkSitemap(url))
 
         response = requests.get(urlRobots)
-        rText = strip_tags(response.text.decode('utf-8').encode('utf-8'))
+        rText = strip_tags(response.text.encode('utf-8'))
         text_array = []
         # find all the lines in the robots.txt
         while rText.find("\n") != -1:
