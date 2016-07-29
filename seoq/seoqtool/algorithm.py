@@ -40,10 +40,10 @@ class Algorithm(object):
             score = score + 5
         backlinks = float(majestic.getNumBackLinksDomainName(netloc))
         if backlinks > 0:
-            score = score + float(math.log(backlinks))
+            score = score + float(math.log(backlinks)) * 2
         backlinks = float(majestic.getNumBackLinksWebPageURL(netloc))
         if backlinks > 0:
-            score = score + float(math.log(backlinks))
+            score = score + float(math.log(backlinks)) * 2
         govlinks = float(majestic.getNumGovBackLinksDomainName(netloc))
         if govlinks > 0:
             score = score + float(math.log(govlinks))
