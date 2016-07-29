@@ -24,6 +24,9 @@ $navbar-seoq-toggle-border-color:       #FFF !default;
 // Default navbar
 .navbar-seoq {
   background-color: $navbar-seoq-bg;
+  &.navbar-about{
+    background-color: #fff;
+  }
   border-color: $navbar-seoq-border;
   margin-bottom: 0;
   padding: 20px 10px;
@@ -111,7 +114,6 @@ $navbar-seoq-toggle-border-color:       #FFF !default;
         }
         > li > a{
           color: #fff;
-          font-weight: bold;
           padding-left:0px;
           padding-right:0px;
           font-size: 20px;
@@ -127,7 +129,6 @@ $navbar-seoq-toggle-border-color:       #FFF !default;
       > li > a {
         @media(min-width: $screen-md-min){
           color: $navbar-seoq-link-color;
-          font-weight: bold;
           &:hover,
           &:focus {
             color: $navbar-seoq-link-hover-color;
@@ -143,6 +144,7 @@ $navbar-seoq-toggle-border-color:       #FFF !default;
           color: $navbar-seoq-link-active-color;
           background-color: $navbar-seoq-link-active-bg;
           text-decoration: none;
+          border-radius: 3px;
         }
       }
       > .disabled > a {

@@ -8390,6 +8390,8 @@ small#most-recent:after {
   margin-bottom: 0;
   padding: 20px 10px;
   border-radius: 0; }
+  .navbar-seoq.navbar-about {
+    background-color: #fff; }
   .navbar-seoq .navbar-brand {
     color: #2d5d81;
     padding-top: 0px; }
@@ -8453,7 +8455,6 @@ small#most-recent:after {
             text-decoration: underline; }
         .navbar-seoq #navbar .navbar-nav > li > a {
           color: #fff;
-          font-weight: bold;
           padding-left: 0px;
           padding-right: 0px;
           font-size: 20px; }
@@ -8463,8 +8464,7 @@ small#most-recent:after {
             text-decoration: underline; } }
   @media (min-width: 992px) {
     .navbar-seoq #navbar .navbar-nav > li > a {
-      color: #2d5d81;
-      font-weight: bold; }
+      color: #2d5d81; }
       .navbar-seoq #navbar .navbar-nav > li > a:hover, .navbar-seoq #navbar .navbar-nav > li > a:focus {
         color: #2d5d81;
         background-color: transparent;
@@ -8472,7 +8472,8 @@ small#most-recent:after {
   .navbar-seoq #navbar .navbar-nav > .active > a, .navbar-seoq #navbar .navbar-nav > .active > a:hover, .navbar-seoq #navbar .navbar-nav > .active > a:focus {
     color: #FFF;
     background-color: #2d5d81;
-    text-decoration: none; }
+    text-decoration: none;
+    border-radius: 3px; }
   .navbar-seoq #navbar .navbar-nav > .disabled > a, .navbar-seoq #navbar .navbar-nav > .disabled > a:hover, .navbar-seoq #navbar .navbar-nav > .disabled > a:focus {
     color: #ccc;
     background-color: transparent; }
