@@ -83,12 +83,13 @@ class Algorithm(object):
     def getKeywordScore(self, url, keyword, ip=1223):
         scraper = QscraperSEOQTool(url, keyword, 0, ip)
         majestic = MajesticBackLinks()
-        score = self.score
+        score = 100
+        score = self.getSiteScore(url)
         score = score + ((scraper.calculate_headings() - 5) * 2)
         score = score + (scraper.calc_tlinks() - 5)
         score = score + ((scraper.calculate_title() - 5) * 3)
         score = score + ((scraper.calculate_url() - 5) * 3)
         anchorLinks = majestic.getAnchorTextBackLinks(
-            url, keyword.split(','))
+            url, keyword)
         score = score + anchorLinks - 5
         return int(score)
