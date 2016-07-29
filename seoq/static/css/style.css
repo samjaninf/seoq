@@ -125,6 +125,9 @@ than we are going to use in website
 .p-b-40 {
   padding-bottom: 40px; }
 
+.p-b-100 {
+  padding-bottom: 100px; }
+
 .p-t-20 {
   padding-top: 20px; }
 
@@ -171,8 +174,8 @@ hr {
   color: #2d5d81 !important; }
 
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1243,7 +1246,6 @@ a {
     color: #485356;
     text-decoration: underline; }
   a:focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -2455,7 +2457,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -2960,7 +2961,6 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -8080,6 +8080,9 @@ button.close {
 a.bg-gray:hover,
 a.bg-gray:focus {
   background-color: #d1dee1; }
+
+section.bg-primary .h4.text-brand {
+  font-weight: lighter; }
 
 @media (max-width: 767px) {
   section.bg-primary h1.text-brand {
