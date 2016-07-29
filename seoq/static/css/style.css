@@ -170,9 +170,9 @@ hr {
   display: -ms-flexbox;
   display: flex; }
 
-.effect-100vh {
-  height: 100vh;
-  min-height: 660px; }
+.fullscreen {
+  height: calc(100vh - 90px);
+  min-height: 570px; }
 
 .text-brand {
   color: #2d5d81 !important; }
@@ -8288,7 +8288,7 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
 
 #discover-more {
   position: relative;
-  top: 65px; }
+  top: 30px; }
 
 @media (max-width: 768px) {
   #most-recent {
