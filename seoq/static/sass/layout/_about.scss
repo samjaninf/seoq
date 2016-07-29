@@ -3,6 +3,22 @@
 		color: $gray;
 		font-weight: lighter;
 	}
+  #banner-team{
+    position: relative;
+    h1{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      margin:0px;
+      @media (max-width:450px) {
+        transform: translate(0%, -50%);
+        font-size: 32px;
+        left: inherit;
+      }
+    }
+  }
 	#what-is{
 		color: $gray;
 		.about-title{
@@ -20,6 +36,7 @@
 			padding-left: 0;
 			padding-top: 14px;
 			padding-bottom: 35px;
+			transition: padding-left 0.5s ease-out, padding-right 0.5s ease-in;
 			&:hover{
 				background-color: #f0f4f5;
 				padding-left: 25px;
