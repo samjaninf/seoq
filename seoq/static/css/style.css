@@ -125,6 +125,9 @@ than we are going to use in website
 .p-b-40 {
   padding-bottom: 40px; }
 
+.p-b-100 {
+  padding-bottom: 100px; }
+
 .p-t-20 {
   padding-top: 20px; }
 
@@ -8083,6 +8086,9 @@ button.close {
 a.bg-gray:hover,
 a.bg-gray:focus {
   background-color: #d1dee1; }
+
+section.bg-primary .h4.text-brand {
+  font-weight: lighter; }
 
 @media (max-width: 767px) {
   section.bg-primary h1.text-brand {
