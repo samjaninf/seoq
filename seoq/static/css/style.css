@@ -8325,6 +8325,21 @@ small#most-recent:after {
   color: #555555;
   font-weight: lighter; }
 
+.about #banner-team {
+  position: relative; }
+  .about #banner-team h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    margin: 0px; }
+    @media (max-width: 450px) {
+      .about #banner-team h1 {
+        transform: translate(0%, -50%);
+        font-size: 32px;
+        left: inherit; } }
+
 .about #what-is {
   color: #555555; }
   .about #what-is .about-title {
