@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
 {% block page_class %}about{% endblock page_class %}
+{% block nav_class %}navbar-about{% endblock nav_class %}
+{% block logo %}
+<img src="{% static "images/logo-b.png" %}" alt="SEOQ Logo">
+{% endblock logo %}
 {% block content %}
 <section id="banner-team">
   <img src="{% static "images/team-background.jpg" %}" alt="team background" class="center-block img-responsive">
