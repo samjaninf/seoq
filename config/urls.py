@@ -19,6 +19,7 @@ urlpatterns = [
 
     # User management
     url(r'^users/', include('seoq.users.urls', namespace='users')),
+    url(r'^', include('balystic.urls')),
     url(r'^', include('seoq.seoqtool.urls', namespace='seoqtool')),
     url(r'^api/', include('seoq.api.urls', namespace='api')),
     url(r'^accounts/', include('allauth.urls')),

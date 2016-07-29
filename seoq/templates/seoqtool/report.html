@@ -10,19 +10,35 @@
 	{% elif page_not_found %}
 		<h3>The page you are trying to analyze does not exist. It returned 404 status code, page not found</h3>
 	{% else %}
-		<h3 class="text-center"><span id="netloc">Score for {{ netloc }}</span></h3>
+		<h3 class="text-center">Score for <span id="netloc">{{ netloc }}</span></h3>
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<h4 id='total_score'>{% if total_score %}{{ total_score }}{% else %}{{ score }}{% endif %}</h4>
 			</div>
-			{% if request.user.is_authenticated %}
 			<div class="col-md-4">
 				your keyword score: <span id='kw_score'>{% if keyword_score %}{{ keyword_score }}{% else %}0{% endif %}</span>
 			</div>
 			<div class="col-md-4">
 				your site score: <span id="site_score">{{ score }}</span>
 			</div>
-			{% endif %}
+		{% if not keyword_score %}
+		<div class="row">
+			<div class="col-md-12">
+					<div class="col-md-6">
+						<input type="text" ng-model="request_data.keyword">
+					</div>
+					<div class="col-md-6">
+						<button ng-click="keyword_score()" ng-disabled="!request_data.keyword">kw analysis</button>
+					</div>
+
+					{% comment %}
+					do you want to know your SEOQ for an specific keyword?
+					<a href="">sign up</a>
+						to add users
+					{% endcomment %}
+			</div>
+		</div>
+		{% endif %}
 		</div>
 		<div class="row">
 			<div class="col-md-3">
@@ -35,7 +51,7 @@
 				1 Error
 			</div>
 			<div class="col-md-3">
-				share score
+				<button onclick="sendReport();">Share Score</button>
 			</div>
 		</div>
 		<div class="row">
@@ -216,23 +232,30 @@
 			</table>
 			</div>
 		</div>
-		{% if keyword_score %}
-		<div class="row">
-			<div class="col-md-12">
-				{% if request.user.is_authenticated %}
-					<div class="col-md-6">
-						<input type="text" ng-model="request_data.keyword">
-					</div>
-					<div class="col-md-6">
-						<button ng-click="keyword_score()" ng-disabled="!request_data.keyword">kw analysis</button>
-					</div>
-				{% else %}
-					do you want to know your SEOQ for an specific keyword?
-					<a href="">sign up</a>
-				{% endif %}
-			</div>
-		</div>
-		{% endif %}
 	{% endif %}
 </div>
 {% endblock content %}
+<script>
+function sendReport() {
+    var email = prompt("Please enter your email", "");
+    
+    if (email != null) {
+    $.ajax({
+        type: 'POST',
+        url: "../../seoqtool/email_report.py",
+        data: {
+        emailto:}, //passing some input here
+        dataType: "text",
+        success: function(response){
+           output = response;
+           alert(output);
+        }
+}).done(function(data){
+    console.log(data);
+    alert(data);
+});
+
+    }
+}
+
+</script>

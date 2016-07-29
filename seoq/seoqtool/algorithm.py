@@ -40,10 +40,10 @@ class Algorithm(object):
             score = score + 5
         backlinks = float(majestic.getNumBackLinksDomainName(netloc))
         if backlinks > 0:
-            score = score + float(math.log(backlinks))
+            score = score + float(math.log(backlinks)) * 2
         backlinks = float(majestic.getNumBackLinksWebPageURL(netloc))
         if backlinks > 0:
-            score = score + float(math.log(backlinks))
+            score = score + float(math.log(backlinks)) * 2
         govlinks = float(majestic.getNumGovBackLinksDomainName(netloc))
         if govlinks > 0:
             score = score + float(math.log(govlinks))
@@ -83,12 +83,13 @@ class Algorithm(object):
     def getKeywordScore(self, url, keyword, ip=1223):
         scraper = QscraperSEOQTool(url, keyword, 0, ip)
         majestic = MajesticBackLinks()
-        score = self.score
+        score = 100
+        score = self.getSiteScore(url)
         score = score + ((scraper.calculate_headings() - 5) * 2)
         score = score + (scraper.calc_tlinks() - 5)
         score = score + ((scraper.calculate_title() - 5) * 3)
         score = score + ((scraper.calculate_url() - 5) * 3)
         anchorLinks = majestic.getAnchorTextBackLinks(
-            url, keyword.split(','))
+            url, keyword)
         score = score + anchorLinks - 5
         return int(score)
