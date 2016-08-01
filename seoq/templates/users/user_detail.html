@@ -7,7 +7,7 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-8 col-sm-offset-2">
 
       <h2>{{ object.username }}</h2>
       {% if object.name %}
@@ -20,7 +20,7 @@
 <!-- Action buttons -->
 <div class="row">
 
-  <div class="col-sm-12 ">
+  <div class="col-sm-8 col-sm-offset-2 ">
     <a class="btn btn-primary" href="{% url 'users:update' %}">My Info</a>
     <a class="btn btn-primary" href="">E-Mail</a>
     <!-- Your Stuff: Custom user template urls -->
