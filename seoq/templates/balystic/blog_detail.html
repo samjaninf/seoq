@@ -15,7 +15,7 @@
     </div>
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
-        <img class="img-responsive center-block" src="{% if entry.image.url %}{{ entry.image.url }}{% else %}{% static "images/default_small.jpg" %}{% endif %}" alt="Blog image {{ entry.title }}">
+        <img class="img-responsive center-block" src="{% if entry.image %}{{ entry.image }}{% else %}{% static "images/default_small.jpg" %}{% endif %}" alt="Blog image {{ entry.title }}">
       </div>
     </div>
     <div class="col-md-12">
