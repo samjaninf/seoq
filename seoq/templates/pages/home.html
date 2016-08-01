@@ -23,13 +23,17 @@
           <p class="text-brand m-t-20 h4"><a href="{% url 'students' %}" class="text-brand">{% trans "I study SEO" %}</a></p>
         </div>
         <div class="col-xs-12 visible-xs-block text-center m-t-30">
-          <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I own a website" %}</button>
+          <a href="{% url 'owners' %}" class="text-brand"><button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I own a website" %}</button></a>
         </div>
         <div class="col-xs-12 visible-xs-block text-center m-t-30">
+        <a href="{% url 'professionals' %}" class="text-brand">
           <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I am a SEO Expert" %}</button>
+        </a>
         </div>
         <div class="col-xs-12 visible-xs-block text-center m-t-30">
-          <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I study SEO" %}</button>
+          <a href="{% url 'students' %}" class="text-brand">
+            <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I study SEO" %}</button>
+          </a>
         </div>
         <span id="discover-more" class="scrollable">
           <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white hidden-xs">{% trans "Discover more" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
