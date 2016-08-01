@@ -11,13 +11,13 @@
     {% for entry in blog_entries %}
       <div class="row p-20">
         <div class="col-md-4">
-          <a href="{{ entry.get_absolute_url }}">
+          <a href="{% url 'balystic_blog_detail' entry.slug %}">
             <img class="img-responsive" src="{% if entry.image.url %}{{ entry.image.url }}{% else %}{% static "images/default_small.jpg" %}{% endif %}" alt="Blog image {{ entry.title }}">
           </a>
         </div>
         <div class="col-md-8">
           <div class="col-md-12">
-            <a href="" class="title-blog">
+            <a href="{% url 'balystic_blog_detail' entry.slug %}" class="title-blog">
               <h3>{{ entry.title }}</h3>
             </a>
             <small class="m-t-10" id="link-block">
@@ -26,7 +26,7 @@
               <i class="fa fa-calendar"></i>&nbsp;{{ entry.publication_date }}
             </small>
             <p class="m-t-10">{{ entry.excerpt }}
-              <a href="{{ entry.get_absolute_url }}">{% trans "Read more..." %}</a>
+              <a href="{% url 'balystic_blog_detail' entry.slug %}">{% trans "Read more..." %}</a>
             </p>
           </div>
         </div>

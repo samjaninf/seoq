@@ -1,4 +1,33 @@
 {% extends "balystic/base.html" %}
 {% block content %}
-  {{ question }}
+{{ question }}
+{% for answer in question.answer_set  %}
+	<p>{{ answer }}</p>
+      <div class ="col-md-1">
+        <div class="row">
+          <div class ="col-sm-1"><big class="pull-left custom-big"><b>{{ answer.total_points }}</b></big></div>
+          <div class ="col-sm-1">
+          <form action="{% url 'balystic_qa_vote_answer' answer.pk %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ request.path }}">
+              <input type="hidden" name="upvote" value="on">
+              <button type="submit" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Vote Up this answer"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+          </form>
+          <form action="{% url 'balystic_qa_vote_answer' answer.pk %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ request.path }}">
+              <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Vote Down this answer"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div>
+          </form>
+        </div>
+      </div>
+{% endfor %}
+{% if request.user.is_authenticated %}
+	<h2>answer this question</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+
+{% endif %}
 {% endblock content %}
