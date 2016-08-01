@@ -13,6 +13,8 @@ urlpatterns = [
         name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'),
         name='about'),
+    url(r'^join/$', TemplateView.as_view(template_name='pages/join.html'),
+        name='join'),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),

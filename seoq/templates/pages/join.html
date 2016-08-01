@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block title %}Join now{% endblock title %}
+{% block page_class %}join{% endblock page_class %}
+{% block nav_class %}navbar-about{% endblock nav_class %}
+{% block logo %}
+<img src="{% static "images/logo-b.png" %}" alt="SEOQ Logo">
+{% endblock logo %}
+{% block content %}
+<section class="join-now p-b-40 p-t-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-6 m-b-50">
+      <h2 class="text-center m-b-30">Log in</h2>
+        <form action="" id="login-form">
+          <div id="div_id_login" class="form-group has-feedback">
+            <label for="id_login" class="control-label sr-only">Username</label>
+            <input type="text" class="form-control" id="id_login" name="login" placeholder="Username" autocomplete="off">
+              <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true"></span>
+              <p class="help-block text-left"></p>
+          </div>
+          <div id="div_id_password" class="form-group has-feedback">
+            <label for="id_password" class="control-label sr-only">Password</label>
+            <input type="password" class="form-control" id="id_password" name="password" placeholder="Password" autocomplete="off">
+            <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true"></span>
+            <p class="help-block text-left"></p>
+          </div>
+          <div class="checkbox">
+            <label for="id_remember">
+              <input id="id_remember" name="remember" type="checkbox">Stay signed in
+            </label>
+            <a data-dismiss="modal" data-toggle="modal" data-target="#reset-password" href="#" title="Forgot Password">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary-ligth">Log In</button>
+        </form>
+      </div>
+      <div class="col-sm-6 col-md-6">
+      <h2 class="text-center m-b-30">Signup</h2>
+        <form action="" id="signup"></form>
+        <form id="signup-form" class="popup-form ng-pristine ng-valid" method="post" action="/accounts/signup/?next=/">
+          <input type="hidden" name="csrfmiddlewaretoken" value="PKctUbeas9BFteiRfSV8x9rqZs9lWL2I">
+          <div class="form-group has-feedback">
+            <label for="id_email" class="control-label sr-only">Email *<small>(required)</small></label>
+            <input type="email" class="form-control fa" id="id_email" name="email" placeholder=" Email" required>
+            <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true"></span>
+            <p class="help-block text-left"></p>
+          </div>
+          <div class="form-group has-feedback">
+            <label for="id_password1" class="control-label sr-only">Password *<small>(required)</small></label>
+            <input type="password" class="form-control fa" id="id_password1" name="password1" placeholder=" Password (min. 6 characters)" required>
+            <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true"></span>
+            <p class="help-block text-left"></p>
+          </div>
+          <div class="form-group has-feedback">
+            <label for="id_password2" class="control-label sr-only">Password (again) *<small>(required)</small></label>
+            <input type="password" class="form-control fa" id="id_password2" name="password2" placeholder=" Password (again)" required>
+            <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true"></span>
+            <p class="help-block text-left"></p>
+          </div>
+        <button type="submit" class="btn btn-primary-ligth">Join now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+  var login_error = true;
+  var recovery_error = true;
+  function isValidEmailAddress(emailAddress) {
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+      return pattern.test(emailAddress);
+    };
+  function changeState(element, state, message) {
+    var error = true;
+    if (state === 'valid') {
+      error = false;
+      element.parent().find('.help-block').hide();
+      element.parent().removeClass('has-error');
+      element.parent().addClass('has-success');
+      element.parent().find('.glyphicon-remove-sign').hide();
+      element.parent().find('.glyphicon-ok-sign').show();
+    }
+    else {
+      error = true;
+      element.parent().find('.help-block').show().html(message);
+      element.parent().removeClass('has-success');
+      element.parent().addClass('has-error');
+      element.parent().find('.glyphicon-ok-sign').hide();
+      element.parent().find('.glyphicon-remove-sign').show();
+    }
+    return error;
+  }
+  // Validation of each field
+  $('#login-form #id_login').change(function () {
+    var state = '';
+    var message = '';
+    if (isValidEmailAddress($(this).val())){
+      state = 'valid';
+    }
+    else{
+      state = 'invalid';
+      message = 'Please enter a valid email address';
+    }
+    login_error = changeState($(this), state, message);
+  });
+  $('#login-form #id_password').change(function () {
+    var state = '';
+    var message = '';
+    if ($(this).val().length >= 6){
+      state = 'valid';
+    }
+    else{
+      state = 'invalid';
+      message = 'Password (min. 6 characters)';
+    }
+    login_error = changeState($(this), state, message);
+  });
+  $("#login").submit(function(e){
+    if (login_error){
+      e.preventDefault();
+      return false;
+    }
+  });
+  $("#login-form").submit(function(e){
+    if (recovery_error){
+      e.preventDefault();
+      return false;
+    }
+  });
+</script>
+<script>
+  var login_error = true;
+  var signup_error = true;
+  var recovery_error = true;
+  function isValidEmailAddress(emailAddress) {
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+    return pattern.test(emailAddress);
+  };
+  function changeState(element, state, message) {
+    var error = true;
+    if (state === 'valid') {
+      error = false;
+      element.parent().find('.help-block').hide();
+      element.parent().removeClass('has-error');
+      element.parent().addClass('has-success');
+      element.parent().find('.glyphicon-remove-sign').hide();
+      element.parent().find('.glyphicon-ok-sign').show();
+    }
+    else {
+      error = true;
+      element.parent().find('.help-block').show().html(message);
+      element.parent().removeClass('has-success');
+      element.parent().addClass('has-error');
+      element.parent().find('.glyphicon-ok-sign').hide();
+      element.parent().find('.glyphicon-remove-sign').show();
+    }
+    return error;
+  }
+  $('#signup-form #id_email').change(function () {
+    var state = '';
+    var message = '';
+    if (isValidEmailAddress($(this).val())){
+      state = 'valid';
+    }
+    else{
+      state = 'invalid';
+      message = 'Please enter a valid email address';
+    }
+    signup_error = changeState($(this), state, message);
+  });
+  $('#signup-form #id_password1').change(function () {
+    var state = '';
+    var message = '';
+    if ($(this).val().length >= 6){
+      state = 'valid';
+    }
+    else{
+      state = 'invalid';
+      message = 'Password (min. 6 characters)';
+    }
+    signup_error = changeState($(this), state, message);
+  });
+  $('#signup-form #id_password2').change(function () {
+    var state = '';
+    var message = '';
+    if ($(this).val().length >= 6){
+      if ($(this).val() == $('#signup-form #id_password1').val()) {
+        state = 'valid';
+      }
+      else {
+        state = 'invalid';
+        message = 'The passwords must match'
+      }
+    }
+    else{
+      state = 'invalid';
+      message = 'Password (min. 6 characters)';
+    }
+    signup_error = changeState($(this), state, message);
+  });
+  $("#signup-form").submit(function(e){
+    if (signup_error){
+      e.preventDefault();
+      return false;
+    }
+  });
+</script>
+{% endblock content %}
