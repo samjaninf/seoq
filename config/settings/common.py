@@ -38,9 +38,9 @@ DJANGO_APPS = (
 )
 THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts
-    'allauth',  # registration
-    'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
+    #'allauth',  # registration
+    #'allauth.account',  # registration
+    #'allauth.socialaccount',  # registration
     'rest_framework',
     'djsupervisor',
     'balystic',
@@ -212,18 +212,19 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    'seoq.core.auth_backends.SeoqBackend',
+    #'django.contrib.auth.backends.ModelBackend',
+    #'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 # Some really nice defaults
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
+#ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
-ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
-ACCOUNT_ADAPTER = 'seoq.users.adapters.AccountAdapter'
-SOCIALACCOUNT_ADAPTER = 'seoq.users.adapters.SocialAccountAdapter'
+#ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
+#ACCOUNT_ADAPTER = 'seoq.users.adapters.AccountAdapter'
+#SOCIALACCOUNT_ADAPTER = 'seoq.users.adapters.SocialAccountAdapter'
 
 # Custom user app defaults
 # Select the correct user model
