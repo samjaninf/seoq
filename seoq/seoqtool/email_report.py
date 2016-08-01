@@ -1,12 +1,17 @@
 # 28 July 2016, Jessie Shen
 
 from django.core.mail import send_mail
-from django.http import HttpResponse
+import json
+import request
 
 
-def sendSimpleEmail(emailto, reporturl, siteurl):
+def sendSimpleEmail(emailto, reporturl):
     subject = 'Your SEOQ Report is Ready!'
-    message = 'Visit the link below to see your score report for your site ' + siteurl + '\n \n' + reporturl
+    message = 'Visit the link below to see your score report for your site!' + '\n \n' + reporturl
     emailfrom = 'freddie@seoq.com'
     sendto = [emailto]
     send_mail(subject, message, emailfrom, sendto)
+
+toemail = json.loads(request.POST.get('toemail'))
+urlreport = json.loads(request.POST.get('urlreport'))
+sendSimpleEmail(toemail, urlreport)
