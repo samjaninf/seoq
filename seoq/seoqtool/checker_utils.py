@@ -6,28 +6,33 @@ import requests
 from django.utils.html import strip_tags
 
 
-class checker_utils(object):
+class Checker_Utils(object):
     # needs plain domain such as 'http://www.espn.com'
-    # returns (boolean of if robots are crawlable, boolean if there is a sitemap)
+    # returns (boolean of if robots are crawlable, boolean
+    # if there is a sitemap)
     def checkRobots(self, url):
         siteResult = ''
         robotResult = ''
 
-        # if already in format http://www.example.com
-        if (url.find('www.') != -1) & (url.find('http://') != -1):
-            url = url
-        # if in format www.example.com
-        elif (url.find('www.') != -1) & (url.find('http://') == -1):
+        # # if already in format http://www.example.com
+        # if (url.find('www.') != -1) & (url.find('http://') != -1):
+        #     url = url
+        # # if in format www.example.com
+        # elif (url.find('www.') != -1) & (url.find('http://') == -1):
+        #     url = 'http://' + url
+        # # if in format example.com
+        # elif (url.find('www.') == -1) & (url.find('http://') == -1):
+        #     url = 'http://www.' + url
+        # # if in format http://example.com
+        # elif (url.find('www.') == -1) & (url.find('http://') != -1):
+        #     url = url.replace('http://', 'http://www.')
+        # # add robots.txt standard
+        url = url.replace(
+            'www.', '').replace(
+            'https://', 'http://')
+        if 'http://' not in url:
             url = 'http://' + url
-        # if in format example.com
-        elif (url.find('www.') == -1) & (url.find('http://') == -1):
-            url = 'http://www.' + url
-        # if in format http://example.com
-        elif (url.find('www.') == -1) & (url.find('http://') != -1):
-            url = url.replace('http://', 'http://www.')
-        # add robots.txt standard
         response = requests.get(url)
-
         if response.text.find('<meta name="robots" content="noindex">') != -1:
             robotResult = 'Robots cannot crawl this page'
             return (robotResult, self.checkSitemap(url))
@@ -41,7 +46,7 @@ class checker_utils(object):
             return ('No robots.txt', self.checkSitemap(url))
 
         response = requests.get(urlRobots)
-        rText = strip_tags(response.text.decode('utf-8').encode('utf-8'))
+        rText = strip_tags(response.text.encode('utf-8'))
         text_array = []
         # find all the lines in the robots.txt
         while rText.find("\n") != -1:
@@ -74,15 +79,15 @@ class checker_utils(object):
             urlAdd = url + item
             try:
                 r = requests.get(urlAdd)
+                if r.text == '':
+                    pass
+                else:
+                    index = r.text.find('sitemap')
+                    if index == r.text.find(item):
+                        pass
+                    elif index != -1:
+                        return 'Sitemap found'
+                urlAdd = url
             except requests.exceptions.RequestException:
-                break
-            if r.text == '':
-                break
-            else:
-                index = r.text.find('sitemap')
-                if index == r.text.find(item):
-                    break
-                elif index != -1:
-                    print item
-                    return 'Sitemap found'
+                pass
         return 'Sitemap not found'

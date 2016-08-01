@@ -5,30 +5,16 @@ from django.conf import settings
 
 class MajesticBackLinks(object):
 
-    def main(self, url):
-        # replace it for a method variable
-        # in order to allow other urls
-        # --jlariza
+    def main(self, url, keywords):
 
-        numGovBackLinksWebPageURL = self.getNumGovBackLinksWebPageURL(url)
-        print('Number of Gov External Backlinks for page URL of ' +
-              url + ': ' + numGovBackLinksWebPageURL)
-
-        numGovBackLinksDomainName = self.getNumGovBackLinksDomainName(url)
-        print('Number of Gov External Backlinks for domain name of ' +
-              url + ': ' + numGovBackLinksDomainName)
-
-        numEduBackLinksWebPageURL = self.getNumEduBackLinksWebPageURL(url)
-        print('Number of Edu External Backlinks for page URL of ' +
-              url + ': ' + numEduBackLinksWebPageURL)
-
-        numEduBackLinksDomainName = self.getNumEduBackLinksDomainName(url)
-        print('Number of Edu External Backlinks for domain name of ' +
-              url + ': ' + numEduBackLinksDomainName)
+        print('Ref IPs: ' + str(self.getRefIPs(url)))
+        print('Trust Flow: ' + str(self.getTrustFlow(url)))
+        print('Anchor Text BackLinks: ' +
+              str(self.getAnchorTextBackLinks(url, keywords)))
+        print('Citation Flow Backlinks: ' +
+              str(self.getCitationFlowBackLinks(url)))
 
     def getNumBackLinksDomainName(self, url):
-        # removed the hardcoded information
-        # --jlariza
 
         endpoint = settings.MAJESTIC_URL  # API
         app_api_key = settings.MAJESTIC_API_KEY  # put API key
@@ -64,8 +50,6 @@ class MajesticBackLinks(object):
             results = response.get_table_for_name('Results')
             for row in results.rows:
                 item = row['Item']  # website you are analyzing
-                # print('Number of External Backlinks for ' + str(item) +
-                #       ': ' + row.get('ExtBackLinks'))
                 numBackLinks = row.get('ExtBackLinks')
             return numBackLinks
 
@@ -74,8 +58,6 @@ class MajesticBackLinks(object):
             print (str(response.get_error_message()))
 
     def getNumBackLinksWebPageURL(self, url):
-        # removed the hardcoded information
-        # --jlariza
 
         endpoint = settings.MAJESTIC_URL  # API
         app_api_key = settings.MAJESTIC_API_KEY  # put API key
@@ -123,8 +105,6 @@ class MajesticBackLinks(object):
             results = response.get_table_for_name('Results')
             for row in results.rows:
                 item = row['Item']  # website you are analyzing
-                # print('Number of External Backlinks for ' + str(item) +
-                #       ': ' + row.get('ExtBackLinks'))
                 numBackLinks = row.get('ExtBackLinks')
             return numBackLinks
 
@@ -133,8 +113,6 @@ class MajesticBackLinks(object):
             print (str(response.get_error_message()))
 
     def getNumGovBackLinksDomainName(self, url):
-        # removed the hardcoded information
-        # --jlariza
 
         endpoint = settings.MAJESTIC_URL  # API
         app_api_key = settings.MAJESTIC_API_KEY  # put API key
@@ -170,8 +148,6 @@ class MajesticBackLinks(object):
             results = response.get_table_for_name('Results')
             for row in results.rows:
                 item = row['Item']  # website you are analyzing
-                # print('Number of External Backlinks for ' + str(item) +
-                #       ': ' + row.get('ExtBackLinks'))
                 numBackLinks = row.get('ExtBackLinksGOV')
             return numBackLinks
 
@@ -180,8 +156,6 @@ class MajesticBackLinks(object):
             print (str(response.get_error_message()))
 
     def getNumGovBackLinksWebPageURL(self, url):
-        # removed the hardcoded information
-        # --jlariza
 
         endpoint = settings.MAJESTIC_URL  # API
         app_api_key = settings.MAJESTIC_API_KEY  # put API key
@@ -226,8 +200,6 @@ class MajesticBackLinks(object):
             results = response.get_table_for_name('Results')
             for row in results.rows:
                 item = row['Item']  # website you are analyzing
-                # print('Number of External Backlinks for ' + str(item) +
-                #       ': ' + row.get('ExtBackLinks'))
                 numBackLinks = row.get('ExtBackLinksGOV')
             return numBackLinks
 
@@ -273,8 +245,6 @@ class MajesticBackLinks(object):
             results = response.get_table_for_name('Results')
             for row in results.rows:
                 item = row['Item']  # website you are analyzing
-                # print('Number of External Backlinks for ' + str(item) +
-                #       ': ' + row.get('ExtBackLinks'))
                 numBackLinks = row.get('ExtBackLinksEDU')
             return numBackLinks
 
@@ -283,8 +253,6 @@ class MajesticBackLinks(object):
             print (str(response.get_error_message()))
 
     def getNumEduBackLinksWebPageURL(self, url):
-        # removed the hardcoded information
-        # --jlariza
 
         endpoint = settings.MAJESTIC_URL  # API
         app_api_key = settings.MAJESTIC_API_KEY  # put API key
@@ -329,10 +297,186 @@ class MajesticBackLinks(object):
             results = response.get_table_for_name('Results')
             for row in results.rows:
                 item = row['Item']  # website you are analyzing
-                # print('Number of External Backlinks for ' + str(item) +
-                #       ': ' + row.get('ExtBackLinks'))
                 numBackLinks = row.get('ExtBackLinksEDU')
             return numBackLinks
+
+        else:
+            print ('\nERROR MESSAGE:')
+            print (str(response.get_error_message()))
+
+    def getTrustFlow(self, url):
+
+        endpoint = settings.MAJESTIC_URL  # API
+        app_api_key = settings.MAJESTIC_API_KEY  # put API key
+
+        # website to analyze; domain name must follow format of example.com,
+        # web page URL must follow format of http://example.com
+
+        if url.find('https://') != -1:
+            url = url.replace('https://', 'http://')
+
+        # if already in format http://www.example.com
+        if (url.find('www.') != -1) & (url.find('http://') != -1):
+            url = url
+        # if in format www.example.com
+        elif (url.find('www.') != -1) & (url.find('http://') == -1):
+            url = 'http://' + url
+        # if in format example.com
+        elif (url.find('www.') == -1) & (url.find('http://') == -1):
+            url = 'http://www.' + url
+        # if in format http://example.com
+        elif (url.find('www.') == -1) & (url.find('http://') != -1):
+            url = url.replace('http://', 'http://www.')
+        items = [url]
+
+        # create a hash from the resulting array with the key being
+        # 'item0 => first item to query, item1 => second item to query' etc
+        parameters = {}
+        for index, item in enumerate(items):
+            parameters['item' + str(index)] = item
+
+        # add the total number of items to the hash with the key being 'items'
+        parameters['items'] = len(items)
+        parameters['datasource'] = 'fresh'
+
+        api_service = APIService(app_api_key, endpoint)
+        response = api_service.execute_command(
+            'GetIndexItemInfo', parameters)  # gets XML response
+
+        # check the response code
+        if(response.is_ok()):
+            # print the results table
+            results = response.get_table_for_name('Results')
+            for row in results.rows:
+                item = row['Item']  # website you are analyzing
+                trustFlow = row.get('TrustFlow')
+            return float(trustFlow) / 10
+
+        else:
+            print ('\nERROR MESSAGE:')
+            print (str(response.get_error_message()))
+
+    def getRefIPs(self, url):
+
+        endpoint = settings.MAJESTIC_URL  # API
+        app_api_key = settings.MAJESTIC_API_KEY  # put API key
+
+        # website to analyze; domain name must follow format of example.com,
+        # web page URL must follow format of http://example.com
+
+        if url.find('https://') != -1:
+            url = url.replace('https://', 'http://')
+
+        # if already in format http://www.example.com
+        if (url.find('www.') != -1) & (url.find('http://') != -1):
+            url = url
+        # if in format www.example.com
+        elif (url.find('www.') != -1) & (url.find('http://') == -1):
+            url = 'http://' + url
+        # if in format example.com
+        elif (url.find('www.') == -1) & (url.find('http://') == -1):
+            url = 'http://www.' + url
+        # if in format http://example.com
+        elif (url.find('www.') == -1) & (url.find('http://') != -1):
+            url = url.replace('http://', 'http://www.')
+        items = [url]
+
+        # create a hash from the resulting array with the key being
+        # 'item0 => first item to query, item1 => second item to query' etc
+        parameters = {}
+        for index, item in enumerate(items):
+            parameters['item' + str(index)] = item
+
+        # add the total number of items to the hash with the key being 'items'
+        parameters['items'] = len(items)
+        parameters['datasource'] = 'fresh'
+
+        api_service = APIService(app_api_key, endpoint)
+        response = api_service.execute_command(
+            'GetIndexItemInfo', parameters)  # gets XML response
+
+        # check the response code
+        if(response.is_ok()):
+            # print the results table
+            results = response.get_table_for_name('Results')
+            for row in results.rows:
+                item = row['Item']  # website you are analyzing
+                refIPs = row.get('RefIPs')
+            return refIPs
+
+        else:
+            print ('\nERROR MESSAGE:')
+            print (str(response.get_error_message()))
+
+    def getAnchorTextBackLinks(self, url, keywords):
+
+        endpoint = settings.MAJESTIC_URL  # API
+        app_api_key = settings.MAJESTIC_API_KEY  # put API key
+
+        if url.find('http://') != -1 or url.find('https://') != -1:
+            url = url[url.find('/') + 2:]
+        if url.find('www.') != -1:
+            url = url[url.find('.') + 1:]
+        if url.find('/') != -1:
+            url = url[:url.find('/')]
+        item_to_query = url
+
+        # set up parameters
+        parameters = {}
+        parameters['Count'] = '50000'
+        parameters['item'] = item_to_query
+        parameters['Mode'] = '0'
+        parameters['datasource'] = 'fresh'
+
+        api_service = APIService(app_api_key, endpoint)
+        response = api_service.execute_command('GetBackLinkData', parameters)
+
+        # check the response code
+        if(response.is_ok()):
+            # print the URL table
+            numKeyWordsInAnchorText = 0
+            results = response.get_table_for_name('BackLinks')
+            for row in results.rows:
+                for word in keywords:
+                    if row['AnchorText'].find(word) != -1:
+                        numKeyWordsInAnchorText += 1
+            return float(numKeyWordsInAnchorText) / float(len(results.rows)) * 10
+
+        else:
+            print ('\nERROR MESSAGE:')
+            print (str(response.get_error_message()))
+
+    def getCitationFlowBackLinks(self, url):
+
+        endpoint = settings.MAJESTIC_URL  # API
+        app_api_key = settings.MAJESTIC_API_KEY  # put API key
+
+        if url.find('http://') != -1 or url.find('https://') != -1:
+            url = url[url.find('/') + 2:]
+        if url.find('www.') != -1:
+            url = url[url.find('.') + 1:]
+        if url.find('/') != -1:
+            url = url[:url.find('/')]
+        item_to_query = url
+
+        # set up parameters
+        parameters = {}
+        parameters['Count'] = '50000'
+        parameters['item'] = item_to_query
+        parameters['Mode'] = '0'
+        parameters['datasource'] = 'fresh'
+
+        api_service = APIService(app_api_key, endpoint)
+        response = api_service.execute_command('GetBackLinkData', parameters)
+
+        # check the response code
+        if(response.is_ok()):
+            # print the URL table
+            results = response.get_table_for_name('BackLinks')
+            totalCitationFlow = 0
+            for row in results.rows:
+                totalCitationFlow += int(row.get('SourceCitationFlow'))
+            return float(totalCitationFlow) / (float(len(results.rows)) * 10)
 
         else:
             print ('\nERROR MESSAGE:')

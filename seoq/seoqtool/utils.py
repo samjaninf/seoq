@@ -17,6 +17,8 @@ def get_expiration_and_creation_date(url):
         url_information = whois.query(domain)
     except Exception:
         return None, None
+    if url_information is None:
+        return None, None
     return url_information.creation_date, url_information.expiration_date
 
 
@@ -36,13 +38,13 @@ def get_built_with_information(url):
 def get_total_time_and_ssl_certification(url):
     url = url.replace(
         'www.', '').replace(
-        'http://', 'https://').replace('https://', 'https://www.')
-    if 'https://www.' in url:
+        'http://', 'https://')
+    if 'https://' in url:
         ssl_certificate = True
     else:
         ssl_certificate = False
-    if 'http://www.' not in url and 'https://www.' not in url:
-        url = 'https://www.' + url
+    if 'http://' not in url and 'https://' not in url:
+        url = 'https://' + url
     try:
         response = requests.get(url)
         ssl_certificate = True

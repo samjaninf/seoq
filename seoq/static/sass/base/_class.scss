@@ -1,0 +1,121 @@
+/*
+This document is for create own class of bootstrap
+than we are going to use in website
+*/
+.clear{
+  clear:both;
+}
+.font-weight-bold{
+  font-weight: bold;
+}
+.font-weight-bold-5{
+  font-weight: 500;
+}
+.m-0{
+  margin:0px;
+}
+.m-b-30{
+  margin-bottom: 30px;
+}
+.m-b-40{
+  margin-bottom: 40px;
+}
+.m-b-50{
+  margin-bottom: 50px;
+}
+.m-t-10{
+  margin-top: 10px;
+}
+.m-t-20{
+  margin-top: 20px;
+}
+.m-t-30{
+  margin-top: 30px;
+}
+.m-t-40{
+  margin-top: 40px;
+}
+.m-t-50{
+  margin-top: 50px;
+}
+.m-t-60{
+  margin-top: 60px;
+}
+.m-t-70{
+  margin-top: 70px;
+}
+.m-t-80{
+  margin-top: 80px;
+}
+.m-t-90{
+  margin-top: 90px;
+}
+.p-0-6{
+  padding:0 6px !important;
+}
+.p-20{
+  padding: 20px;
+}
+.p-t-70{
+  padding-top: 70px;
+}
+.p-b-70{
+  padding-bottom: 70px;
+}
+.p-b-40{
+  padding-bottom: 40px;
+}
+.p-b-100{
+  padding-bottom: 100px;
+}
+.p-t-20{
+  padding-top:20px;
+}
+.p-t-30{
+  padding-top:30px;
+}
+.p-t-80{
+  padding-top: 80px;
+}
+.p-t-100{
+  padding-top:100px;
+}
+.relative{
+  position: relative;
+}
+.text-white{
+  color: #fff;
+}
+.b-b-1{
+  border-bottom: 1px solid $gray-lighter;
+}
+.scrollable{
+  a{
+    &:hover{
+      text-decoration: none;
+    }
+    border-bottom: solid 2px $brand-primary;
+    display: inline;
+    padding-bottom: 2px;
+  }
+  a.text-white{
+    border:none;
+  }
+}
+hr{
+  border-top: 2px solid #eeeeee !important;
+  margin-bottom: 0 !important;
+}
+.none{
+  display: none;
+}
+.col-eq-height{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+.fullscreen{
+  height: calc(100vh - 90px);
+  min-height: 570px;
+}

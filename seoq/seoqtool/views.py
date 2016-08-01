@@ -1,22 +1,27 @@
 import requests
 import time
 import iso8601
-from django.shortcuts import render
 from django.http import Http404
-from django.views.generic import View
 from django.conf import settings
+from django.utils import timezone
+from django.shortcuts import render
 from django.contrib import messages
-from django.views.generic import CreateView, ListView
-from django.core.urlresolvers import reverse
+from django.views.generic import View
 from django.shortcuts import redirect
+from django.core.urlresolvers import reverse
+from django.views.generic import CreateView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ExampleForm
-from .models import AlgorithmVariable
-from .utils import get_expiration_and_creation_date
-from .utils import get_built_with_information
+from .models import AlgorithmVariable, Report, ReportURL
 from .qscraper_utils import QscraperSEOQTool
 from .majestic_utils import MajesticBackLinks
+from .checker_utils import Checker_Utils
+from .local_listing import LocalListing
+from .mobilefriendlycheck import MobileFriendlyChecker
 from .utils import get_expiration_and_creation_date,\
     get_built_with_information, get_total_time_and_ssl_certification
+from .algorithm import Algorithm
+
 # Create your views here.
 
 
@@ -45,7 +50,7 @@ class BasicQscraperUseView(View):
         slug = ''
         slug = '-'.join(keywords)
         netloc = url.replace(
-            'https://', '').replace('http://', '').replace('/', '')
+            'https://', '').replace('http://', '')
         if not keywords:
             messages.error(
                 request,
@@ -119,7 +124,9 @@ class BasicQscraperUseView(View):
             return render(request, self.template_name, context)
         # context['form'] = self.formclass(initial=request.GET)
         return redirect(
-            'seoqtool:seoq_url_friendly_detail', slug=slug, netloc=netloc)
+            'seoqtool:seoq_url_friendly_detail',
+            slug=slug,
+            netloc=netloc.replace('/', '--'))
 
 
 class CreateVariableView(CreateView):
@@ -138,6 +145,99 @@ class VariableListView(ListView):
     template_name = 'seoqtool/variable_list.html'
 
 
+class SiteFormView(View):
+    """
+    View that return the basic report from an url,
+    without keywords score.
+    """
+    template_name = 'seoqtool/site_form.html'
+    formclass = ExampleForm
+
+    def get(self, request):
+        context = {'form': self.formclass(initial=request.GET)}
+        url = request.GET.get('url', None)
+        if url is None:
+            return render(request, self.template_name, context)
+        netloc = url.replace(
+            'https://', '').replace('http://', '')
+        if request.user.is_authenticated():
+            Report.objects.create(netloc=netloc, user=request.user)
+        else:
+            Report.objects.create(netloc=netloc)
+        return redirect(
+            'seoqtool:report',
+            netloc=netloc.replace('/', '--'))
+
+
+class ReportView(View):
+
+    template_name = 'seoqtool/report.html'
+
+    def get(self, request, netloc):
+        netloc = str(netloc)
+        netloc = netloc.replace('--', '/')
+        context = {'netloc': netloc}
+        url = netloc.replace(
+            'www.', '').replace(
+            'https://', 'http://')
+        if 'http://' not in url:
+            url = 'http://' + url
+        response = requests.get(url, verify=False)
+        if response.status_code == 403:
+            context['no_crawl_allowed'] = True
+            return render(request, self.template_name, context)
+        if response.status_code == 500:
+            context['server_error'] = True
+            return render(request, self.template_name, context)
+        if response.status_code == 404:
+            context['page_not_found'] = True
+            return render(request, self.template_name, context)
+        score = Algorithm().getSiteScore(netloc)
+        context['score'] = score
+        if request.user.is_authenticated():
+            report = Report.objects.filter(
+                netloc=netloc,
+                user=request.user).latest('created')
+            report.site_score = score
+            report.save()
+        else:
+            report = Report.objects.filter(
+                netloc=netloc).latest('created')
+            report.site_score = score
+            report.save()
+        context['report'] = report
+        return render(request, self.template_name, context)
+
+
+class ArchiveReportView(View):
+
+    template_name = 'seoqtool/report.html'
+
+    def get(self, request, netloc, year, month, day):
+        netloc = str(netloc)
+        netloc = netloc.replace('--', '/')
+        context = {'netloc': netloc}
+        url = netloc.replace(
+            'www.', '').replace(
+            'https://', 'http://')
+        if 'http://' not in url:
+            url = 'http://' + url
+        try:
+            report = Report.objects.filter(
+                created__year=year,
+                created__month=month,
+                created__day=day,
+                netloc=netloc).latest('created')
+        except Report.DoesNotExist:
+            raise Http404
+        context['score'] = report.site_score
+        context['keyword_score'] = report.keyword_score
+        context['total_score'] = int(report.site_score +
+                                     report.keyword_score)
+        context['report'] = report
+        return render(request, self.template_name, context)
+
+
 class SEOQURLFriendlyDetail(View):
     """
     view to return the qscraper report
@@ -147,7 +247,7 @@ class SEOQURLFriendlyDetail(View):
     template_name = 'seoqtool/report_example.html'
 
     def get(self, request, slug, netloc):
-        keywords = str(slug).replace('-', ' ')
+        keywords = str(slug.encode('utf-8')).replace('-', ' ')
         keywordArray = [x.strip() for x in keywords.split(' ') if x]
         netloc = str(netloc)
         context = {'keywords': keywords, 'netloc': netloc, 'slug': slug,
@@ -168,7 +268,6 @@ class SEOQURLFriendlyDetail(View):
                 request,
                 'the server is unavailable right now, please try again later.')
             return render(request, self.template_name, context)
-
         if response.status_code != 200:
             if response.status_code == 404:
                 raise Http404
@@ -182,8 +281,13 @@ class SEOQURLFriendlyDetail(View):
                     'An error has occurred, please try again later')
                 return render(request, self.template_name, context)
 
-        scraper = QscraperSEOQTool(netloc, keywordArray, 0, 1223)
+        scraper = QscraperSEOQTool(
+            netloc, keywordArray, 0, 1223, report=response.json())
         majestic = MajesticBackLinks()
+        checker = Checker_Utils()
+        local = LocalListing()
+        mobile = MobileFriendlyChecker()
+
         context['report'] = response.json()
 
         context['report']['recent_reports'] = sorted(set([
@@ -211,7 +315,7 @@ class SEOQURLFriendlyDetail(View):
         # if in format http://example.com
         elif (netloc.find('www.') == -1) & (netloc.find('http://') != -1):
             netloc = netloc.replace('http://', 'http://www.')
-        response = requests.get(netloc)
+        netloc = netloc.replace('--', '/')
         context['url'] = scraper.get_url(netloc)
         context['page_title'] = scraper.get_title()
         context['metadescription'] = scraper.get_meta_description()
@@ -224,14 +328,31 @@ class SEOQURLFriendlyDetail(View):
         context['baclinks_url'] = majestic.getNumBackLinksWebPageURL(netloc)
         context['govlinks_domain'] = majestic.getNumGovBackLinksDomainName(netloc)
         context['govlinks_url'] = majestic.getNumGovBackLinksWebPageURL(netloc)
-        context['edulinks_domain'] = majestic.getNumEduBackLinksWebPageURL(netloc)
+        context['edulinks_domain'] = majestic.getNumEduBackLinksDomainName(netloc)
         context['edulinks_url'] = majestic.getNumEduBackLinksWebPageURL(netloc)
-        context['govlinks_domain'] = majestic.getNumGovBackLinksDomainName(
-            netloc)
-        context['govlinks_url'] = majestic.getNumGovBackLinksWebPageURL(
-            netloc)
-        context['edulinks_domain'] = majestic.getNumEduBackLinksWebPageURL(
-            netloc)
-        context['edulinks_url'] = majestic.getNumEduBackLinksWebPageURL(
-            netloc)
+        context['robots'] = checker.checkRobots(netloc)
+        context['local_listing'] = local.main(netloc)
+        context['mobile'] = mobile.checkMobileFriendly(netloc)
         return render(request, self.template_name, context)
+
+
+class CreateReportURLView(LoginRequiredMixin, CreateView):
+    template_name = 'seoqtool/create_urls.html'
+    fields = ['frequency', 'url', 'keywords']
+    model = ReportURL
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(CreateReportURLView, self).get_context_data(
+            *args, **kwargs)
+        context['user_urls'] = self.request.user.reporturl_set.all()
+        return context
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.last_analyzed = timezone.now()
+        return super(CreateReportURLView, self).form_valid(form)
+
+    def get_success_url(self):
+        success_url = reverse(
+            'seoqtool:add_url')
+        return success_url

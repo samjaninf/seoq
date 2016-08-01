@@ -1,0 +1,100 @@
+footer{
+  .container.p-t-20{
+    padding-bottom: 20px;
+    .row{
+      @media(min-width:$screen-md-min){
+        display: flex;
+        align-items:center;
+      }
+    }
+  }
+  color: #6b7b80;
+  nav{
+    ul{
+      @include list-unstyled;
+      margin-left: -5px;
+      > li {
+        @media (min-width: $screen-md-min) {
+          display: inline-block;
+          &:first-child {
+            padding-left: 0;
+          }
+          &:last-child {
+            padding-right: 0;
+          }
+        }
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+    }
+  }
+  small{
+    position: relative;
+    left: 65px;
+  }
+  .footer-logo{
+    max-height: 45px;
+    margin-top: 15px;
+  }
+  @media(max-width: $screen-sm){
+    nav{
+      ul{
+        text-align: center;
+        li{
+          display: inline-block;
+          margin-bottom: 20px;
+        }
+        li.pull-right{
+          float: none !important;
+        }
+      }
+    }
+    .container.p-t-20{
+      text-align: center;
+      .row{
+        .col-xs-12.col-md-6{
+          &:first-child{
+            margin-top: 20px;
+            margin-bottom: 30px;
+          }
+          &:last-child{
+            .row{
+              .col-sm-12{
+                ul.list-inline.text-right{
+                  li{
+                    display: block;
+                    .pull-right{
+                      float: none !important;
+                    }
+                    img{
+                      display: block;
+                      margin: 0 auto;
+                      clear: both;
+                      max-height: 40px;
+                    }
+                    &:last-child{
+                      text-align: center;
+                      img{
+                        margin-top: 30px;
+                        margin-bottom: 30px;
+                        display: inline-block;
+                      }
+                      div.content-social{
+                        width: 80px;
+                        display: inline-block;
+                        vertical-align: middle;
+                      }
+                    }
+                  }
+                }
+              }
+              .col-md-2{
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

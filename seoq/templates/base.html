@@ -1,12 +1,12 @@
 {% load staticfiles i18n compress %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:ng="http://angularjs.org" ng-app="seoq">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}seoq{% endblock title %}</title>
+    <title>{% block title %}SEO Quotient{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="SEO Quotient™ provides SEO tools for both website owners and online marketing professionals to diagnose your website and create an action plan.">
     <meta name="author" content="">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -15,75 +15,153 @@
     <![endif]-->
 
     {% block css %}
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-
     <!-- Your stuff: Third-party css libraries go here -->
     {% compress css %}
     <!-- This file store project specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
     {% endcompress %}
     {% endblock %}
 
   </head>
-
-  <body>
-
-    <div class="m-b">
-      <nav class="navbar navbar-dark navbar-static-top bg-inverse">
-        <div class="container">
-          <a class="navbar-brand" href="/">seoq</a>
-          <button type="button" class="navbar-toggler hidden-sm-up pull-xs-right" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
-            &#9776;
+  <body class="{% block page_class %}{% endblock page_class %}">
+    <nav class="navbar navbar-seoq {% block nav_class %}{% endblock nav_class %}">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" id="#navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
+          <a class="navbar-brand" href="#">
+          {% block logo %}
+            <img src="{% static "images/logo-w.png" %}" alt="SEOQ Logo">
+          {% endblock logo %}
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" id="#navbar-toggle">
+            <h3>X</h3>
+          </button>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'balystic_blog' %}">Blog</a></li>
+            <li><a href="#website-owners">Website Owners</a></li>
+            <li><a href="#seo-professionals">SEO Profesionals</a></li>
+            <li><a href="#seo-students">SEO Students</a></li>
+            <li>
+              <button class="btn btn-lg btn-seoq" type="button">Join now</button>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-toggleable-xs" id="bs-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-              </li>
-            </ul>
-
-            <ul class="nav navbar-nav pull-xs-right">
-              {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
+      </div>
+    </nav>
+    <section>
+      <div class="row">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+      </div>
+    </section>
+   {% block content %}
+    {% endblock content %}
+    <footer class="bg-gray">
+      <div class="container p-t-30">
+        <div class="row">
+          <div class="col-md-12">
+            <nav>
+              <ul>
+                <li>
+                  <a href="#home">Home</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign out" %}</a>
+                <li>
+                  <a href="#about">About</a>
                 </li>
-              {% else %}
-                <li class="nav-item">
-                  <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                <li>
+                  <a href="#blog">Blog</a>
                 </li>
-                <li class="nav-item">
-                  <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+                <li>
+                  <a href="#website-owners">Website Owners</a>
                 </li>
-              {% endif %}
-            </ul>
+                <li>
+                  <a href="#SEO-professionals">SEO Professionals</a>
+                </li>
+                <li>
+                  <a href="#SEO-students">SEO Students</a>
+                </li>
+                <li class="pull-right">
+                  <a href="#Contact Us">Contact Us</a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
-      </nav>
-    </div>
-
-    <div class="container">
-
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-          {% endfor %}
-      {% endif %}
-
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
-
-    </div> <!-- /container -->
-
+      </div>
+      <hr class="m-0">
+      <div class="container p-t-20">
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            2016 SEO Quotient™. All rights reserved
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-10 ">
+                <ul class="list-inline text-right">
+                  <li>
+                    <a href="/">
+                      <img src="{% static "images/logo-b.png" %}" class="img-responsive footer-logo pull-right">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://labs.inqbation.com" target="_blank">
+                      <img src="{% static "images/inqbation-labs-logo.svg" %}" class="img-responsive footer-logo pull-right" alt="inQbation Labs" target="_blank">
+                    </a>
+                    <div class="content-social none">
+                      <a href="https://facebook.com/seoquotient/" title="Facebook" target="_blank">
+                      <i class="fa fa-facebook-square fa-2x"></i>
+                      </a>
+                      <a href="https://twitter.com/SEOQuotient" title="Twitter" target="_blank">
+                        <i class="fa fa-twitter-square fa-2x"></i>
+                      </a>
+                      <a href="https://plus.google.com/+Seoquotient/" title="Google Plus" target="_blank">
+                        <i class="fa fa-google-plus-square fa-2x"></i>
+                      </a>
+                      <a href="https://www.linkedin.com/company/seo-quotient" title="LinkedIn" target="_blank">
+                        <i class="fa fa-linkedin-square fa-2x"></i>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-12 col-md-2 ">
+                <!-- Social icons -->
+                <div class="row">
+                  <div class="col-md-12 text-center p-0-6">
+                    <a href="https://facebook.com/seoquotient/" title="Facebook" target="_blank">
+                      <i class="fa fa-facebook-square fa-2x"></i>
+                    </a>
+                    <a href="https://twitter.com/SEOQuotient" title="Twitter" target="_blank">
+                      <i class="fa fa-twitter-square fa-2x"></i>
+                    </a>
+                    <a href="https://plus.google.com/+Seoquotient/" title="Google Plus" target="_blank">
+                      <i class="fa fa-google-plus-square fa-2x"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/seo-quotient" title="LinkedIn" target="_blank">
+                      <i class="fa fa-linkedin-square fa-2x"></i>
+                    </a>
+                  </div>
+                </div>
+                <!-- end Social icons -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
     {% block modal %}{% endblock modal %}
 
     <!-- Le javascript
@@ -103,10 +181,14 @@
 
       <!-- place project specific Javascript in this file -->
       {% compress js %}
+      <script src="{% static 'js/components.js' %}"></script>
       <script src="{% static 'js/project.js' %}"></script>
+      <!--Angular-->
+      <script src="{% static 'scripts/app.js' %}"></script>
+      <script src="{% static 'scripts/controllers/keyword-score-controller.js' %}"></script>
       {% endcompress %}
 
     {% endblock javascript %}
   </body>
 </html>
- 
+

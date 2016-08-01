@@ -1,0 +1,88 @@
+.about{
+	h2, h3{
+		color: $gray;
+		font-weight: lighter;
+	}
+  #banner-team{
+    position: relative;
+    h1{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      margin:0px;
+      @media (max-width:450px) {
+        transform: translate(0%, -50%);
+        font-size: 32px;
+        left: inherit;
+      }
+    }
+  }
+	#what-is{
+		color: $gray;
+		.about-title{
+			margin-top: 85px;
+			margin-bottom: 85px;
+		}
+		hr{
+			border-color: rgba($brand-primary, 0.9) !important;
+			width: 70px;
+			margin-left: 0;
+			margin-bottom: 21px !important;
+		}
+		.resaltable{
+			margin-left: 15px;
+			padding-left: 0;
+			padding-top: 14px;
+			padding-bottom: 35px;
+			transition: padding-left 0.5s ease-out, padding-right 0.5s ease-in;
+			&:hover{
+				background-color: #f0f4f5;
+				padding-left: 25px;
+				padding-right: 25px;
+
+				h3{
+					color: $brand-info;
+				}
+			}
+		}
+		.about-image{
+			.full-hg{
+				height: 100%;
+			}
+			.wrapper{
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: -ms-flexbox;
+				display:         flex;
+				align-items: center;
+			}
+		}
+	}
+	#team{
+    .container{
+      .row{
+        .col-md-8.col-md-offset-2{
+          .col-xs-6{
+            margin-bottom: 40px;
+            img{
+              opacity: 0.6;
+              border:3px solid #E0E4E5;
+              &:hover{
+                opacity: 1;
+              }
+            }
+            p{
+              margin-top: 10px;
+              margin-bottom: 0px;
+            }
+          }
+        }
+      }
+    }
+	}
+  footer{
+    margin-top: 30px;
+  }
+}

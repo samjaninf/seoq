@@ -1,1 +1,98 @@
 {% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block title %}About | SEO Quotient{% endblock title %}
+{% block page_class %}about{% endblock page_class %}
+{% block nav_class %}navbar-about{% endblock nav_class %}
+{% block logo %}
+<img src="{% static "images/logo-b.png" %}" alt="SEOQ Logo">
+{% endblock logo %}
+{% block content %}
+<section id="banner-team">
+  <img src="{% static "images/team-background.jpg" %}" alt="team background" class="center-block img-responsive">
+  <h1 class="text-center">{% trans "A family more than a company" %}</h1>
+</section>
+<section id="what-is">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h2 class="about-title">{% trans "What is SEO Quotient?" %}</h2>
+			</div>
+		</div>
+		<div class="row col-eq-height">
+			<div class="col-md-5 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-12 resaltable">
+						<h3>For website Owners</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum error at ipsa sit reiciendis consequuntur excepturi placeat tempore, quod perferendis unde beatae suscipit dolorem maiores modi ab! Quam, excepturi, quis.</p>
+					</div>
+					<div class="divider"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-md-12 resaltable">
+						<h3>For SEO professionals</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio deserunt dolor voluptas, unde voluptatibus perspiciatis earum velit nulla quibusdam nemo totam, provident est aut, dicta aperiam doloribus. Eius expedita, commodi!</p>
+					</div>
+					<div class="divider"></div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-md-12 resaltable">
+						<h3>For students of SEO</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis eaque iusto non, est magnam reiciendis officia officiis ab porro velit animi doloribus expedita sed esse amet quod reprehenderit, debitis deserunt!</p>
+					</div>
+					<div class="divider"></div>
+				</div>
+			</div>
+			<div class="col-md-5 about-image">
+				<div class="row full-hg">
+					<div class="col-md-10 col-md-offset-1 full-hg">
+						<div class="wrapper full-hg">
+							<img src="{% static 'images/fish-4.gif' %}" alt="Fish image" class="img-responsive">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="team" class="p-t-30">
+	<div class="container">
+		<div class="row">
+			 <h2 class="text-center m-b-30">{% trans "Meet the team" %}</h2>
+       <div class="col-sm-12 col-md-8 col-md-offset-2 p-t-30">
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-1.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-2.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-3.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-4.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-5.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-6.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+       </div>
+		</div>
+	</div>
+</section>
+{% endblock content %}

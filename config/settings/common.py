@@ -9,7 +9,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 from __future__ import absolute_import, unicode_literals
-
+from celery.schedules import crontab
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3
@@ -41,6 +41,9 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'rest_framework',
+    'djsupervisor',
+    'balystic',
 )
 
 # Apps specific for this project go here.
@@ -88,6 +91,8 @@ FIXTURE_DIRS = (
 # ------------------------------------------------------------------------------
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 
+SERVER_EMAIL = env('SERVER_EMAIL', default='admin@balystic.com')
+DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL', default=SERVER_EMAIL)
 # MANAGER CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
@@ -241,7 +246,30 @@ ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 
-QSCRAPER_URL = env('QSCRAPER_URL')
-MAJESTIC_URL = env('MAJESTIC_URL')
-MAJESTIC_API_KEY = env('MAJESTIC_API_KEY')
+# CELERY STUFF
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+
+
+CELERYBEAT_SCHEDULE = {
+    # Executes every Monday morning at 7:30 A.M
+    'add-every-monday-morning': {
+        'task': 'seoq.seoqtool.tasks.run_all_reports',
+        'schedule': crontab(minute=0, hour=0),
+    },
+}
+
+
+QSCRAPER_URL = env('QSCRAPER_URL', default='http://qscraper.7dhub.com/')
+MAJESTIC_URL = env('MAJESTIC_URL', default='https://api.majestic.com/api_command')
+MAJESTIC_API_KEY = env('MAJESTIC_API_KEY', default='')
+GOOGLE_PLACES_API_KEY = env('GOOGLE_PLACES_API_KEY', default='')
+GOOGLE_PLACES_URL = env('GOOGLE_PLACES_URL', default='https://maps.googleapis.com/maps/api/place/textsearch/json')
 MAX_DEPTH_VALUE = env('MAX_DEPTH_VALUE', default=2)
+
+BALYSTIC_API_TOKEN = env('BALYSTIC_API_TOKEN')
+BALYSTIC_API_PATH = env('BALYSTIC_API_PATH')

@@ -23,8 +23,3 @@ class MobileFriendlyChecker(object):
             return answer
         except:
             return "Looks like the API is down."
-
-mfcobj = MobileFriendlyChecker()
-url = raw_input('Enter your url to test: ')
-ans = mfcobj.checkMobileFriendly(url)
-print ans

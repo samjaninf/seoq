@@ -13,6 +13,8 @@ class JSONPrint(object):
             url = "http://" + url
 
         # makes request
+        keywords = ''.join(keywords)
+        keywords = [x.strip() for x in keywords.split(',') if x]
         r = requests.post(settings.QSCRAPER_URL + '/api/seoq-tool/start-job/',
                           json={'url': url,
                                 'keywords': keywords,
@@ -20,7 +22,6 @@ class JSONPrint(object):
                                 'ip': ip})
         data = r.json()
         job_id = data['job_id']  # gets job id
-
         # get status of the job
         getRequest = requests.get(
             settings.QSCRAPER_URL + '/api/status/' + job_id + '/').json()
@@ -47,13 +48,16 @@ class QscraperSEOQTool(object):
     class to organize all qscraper seotool related
     methods
     """
-    def __init__(self, url, keywords, depth, ip):
+    def __init__(self, url, keywords, depth, ip, report=None):
         results = JSONPrint()
         self.url = url
         self.keywords = keywords
         self.depth = depth
         self.ip = ip
-        self.JSONObject = (results.makeRequest(url, keywords, depth, ip))
+        if report is None:
+            self.JSONObject = results.makeRequest(url, keywords, depth, ip)
+        else:
+            self.JSONObject = report
 
     def calculate_headings(self):
         kwlength = len(self.keywords)
@@ -61,8 +65,11 @@ class QscraperSEOQTool(object):
         total_of_headers = headings['total_of_headers']  # number of headers
         # number of keywords in headers
         number_of_kws_in_headers = headings['number_of_kws_in_headers']
-        score = number_of_kws_in_headers / float(
-            total_of_headers * kwlength) * 10  # score
+        if total_of_headers:
+            score = number_of_kws_in_headers / float(
+                total_of_headers * kwlength) * 10  # score
+        else:
+            score = 0
         return score
 
     def calc_tlinks(self):
@@ -71,8 +78,10 @@ class QscraperSEOQTool(object):
         totalLinks = links['total_of_links_text']
         kwLinks = links['number_of_kws_in_links_text']
         # turn it into a score out of 10
-        score = 10 * kwLinks / float(totalLinks * len(self.keywords))
-        print score
+        if totalLinks:
+            score = 10 * kwLinks / float(totalLinks * len(self.keywords))
+        else:
+            score = 0
         return score
 
     def calculate_title(self):
@@ -91,8 +100,10 @@ class QscraperSEOQTool(object):
         totalURLS = URLS['total_of_urls']
         kwURLS = URLS['number_of_kws_in_url']
         # turn it into a score out of 10
-        score = 10 * kwURLS / float(totalURLS * len(self.keywords))
-        print score
+        if totalURLS:
+            score = 10 * kwURLS / float(totalURLS * len(self.keywords))
+        else:
+            score = 0
         return score
 
     def list_anchor_text(self):
@@ -104,7 +115,7 @@ class QscraperSEOQTool(object):
         # creates a clean list that turns unicode string into regular string
         Clean_List = []
         for text in List_AnchorText:
-            Clean_List.append(str(text))
+            Clean_List.append(str(text.encode("utf-8")))
         return Clean_List  # returns clean string
 
     def list_images(self):
@@ -128,14 +139,14 @@ class QscraperSEOQTool(object):
     def get_meta_description(self):
         # get the url data
         metaDescription = self.JSONObject['results']
-        metaDescription = (metaDescription['meta_description'])['meta_description_content']
+        metaDescription = metaDescription[
+            'meta_description']['meta_description_content']
         Clean_List = ''
         for text in metaDescription:
-            Clean_List = Clean_List + (str(text))
+            Clean_List = Clean_List + (str(text.encode('utf-8')))
         if len(Clean_List) > 160:
             Clean_List = Clean_List[:160] + '...'
         Clean_List = Clean_List.split(' ')
-        print Clean_List
         return Clean_List
 
     def get_title(self):
@@ -144,7 +155,7 @@ class QscraperSEOQTool(object):
         title = title['page_titles']
         Clean_List = ''
         for text in title:
-            Clean_List = Clean_List + (str(text))
+            Clean_List = Clean_List + (str(text.encode('utf-8')))
         if len(Clean_List) > 70:
             Clean_List = Clean_List[:70]
             if Clean_List.rfind(' ') != -1:
@@ -157,3 +168,6 @@ class QscraperSEOQTool(object):
         if len(url) > 70:
             url = url[:70] + '...'
         return url
+
+    def get_social_data(self):
+        return self.JSONObject['social_data']

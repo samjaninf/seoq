@@ -9,15 +9,19 @@ from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
-    url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
+    url(r'^$', TemplateView.as_view(template_name='pages/home.html'),
+        name='home'),
+    url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'),
+        name='about'),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),
 
     # User management
     url(r'^users/', include('seoq.users.urls', namespace='users')),
+    url(r'^', include('balystic.urls')),
     url(r'^', include('seoq.seoqtool.urls', namespace='seoqtool')),
+    url(r'^api/', include('seoq.api.urls', namespace='api')),
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
