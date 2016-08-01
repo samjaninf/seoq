@@ -1,6 +1,8 @@
 SEO Quotient
 ==============================
 
+Version 0.1.1
+
 Is an online community that provides information, education, and tools for website owners, search engine optimization (SEO) professionals, digital marketing professionals, and students aspiring to enhance their careers in SEO and digital marketing.
 
 
