@@ -14,6 +14,19 @@ class Algorithm(object):
     Has algorithm for score.
     """
     score = 0
+    backlinkVar = 1
+    trustFlowVar = 1
+    robotsVar = 1
+    listingVar = 1
+    keyVar = 1
+
+    def changeVar(self, backlinkVar, trustFlowVar,
+                  robotsVar, listingVar, keyVar):
+        self.backlinkVar = backlinkVar
+        self.trustFlowVar = trustFlowVar
+        self.robotsVar = robotsVar
+        self.listingVar = listingVar
+        self.keyVar = keyVar
 
     def getSiteScore(self, netloc):
         netloc = str(netloc)
@@ -40,44 +53,44 @@ class Algorithm(object):
             score = score + 5
         backlinks = float(majestic.getNumBackLinksDomainName(netloc))
         if backlinks > 0:
-            score = score + float(math.log(backlinks)) * 2
+            score = score + float(math.log(backlinks)) * self.backlinkVar
         backlinks = float(majestic.getNumBackLinksWebPageURL(netloc))
         if backlinks > 0:
-            score = score + float(math.log(backlinks)) * 2
+            score = score + float(math.log(backlinks)) * self.backlinkVar
         govlinks = float(majestic.getNumGovBackLinksDomainName(netloc))
         if govlinks > 0:
-            score = score + float(math.log(govlinks))
+            score = score + float(math.log(govlinks)) * self.backlinkVar / 2
         govlinks = float(majestic.getNumGovBackLinksWebPageURL(netloc))
         if govlinks > 0:
-            score = score + float(math.log(govlinks))
+            score = score + float(math.log(govlinks)) * self.backlinkVar / 2
         edulinks = float(majestic.getNumEduBackLinksDomainName(netloc))
         if edulinks > 0:
-            score = score + float(math.log(edulinks))
+            score = score + float(math.log(edulinks)) * self.backlinkVar / 3
         edulinks = float(majestic.getNumEduBackLinksWebPageURL(netloc))
         if edulinks > 0:
-            score = score + float(math.log(edulinks))
+            score = score + float(math.log(edulinks)) * self.backlinkVar / 3
         trustFlow = float(majestic.getTrustFlow(netloc))
         if trustFlow > 0:
-            score = score + trustFlow - 5
+            score = score + trustFlow - self.trustFlowVar
         refIPS = float(majestic.getRefIPs(netloc))
         if refIPS > 0:
             score = score + float(math.log(refIPS))
         if check_robots[0].find('Robots allowed') != -1:
-            score = score + 5
+            score = score + self.robotsVar
         else:
-            score = score - 15
+            score = score - self.robotsVar * 3
         if check_robots[1].find('Sitemap found') != -1:
-            score = score + 5
+            score = score + self.robotsVar
         else:
-            score = score - 10
+            score = score - self.robotsVar * 2
         if local.main(netloc) == 'This listing does exist':
-            score = score + 5
+            score = score + self.listingVar
         else:
-            score = score - 5
+            score = score - self.listingVar
         if mobile.checkMobileFriendly(netloc) is True:
-            score = score + 5
+            score = score + self.listingVar
         else:
-            score = score - 5
+            score = score - self.listingVar
         return int(score)
 
     def getKeywordScore(self, url, keyword, ip=1223):
@@ -85,10 +98,10 @@ class Algorithm(object):
         majestic = MajesticBackLinks()
         score = 100
         score = self.getSiteScore(url)
-        score = score + ((scraper.calculate_headings() - 5) * 2)
-        score = score + (scraper.calc_tlinks() - 5)
-        score = score + ((scraper.calculate_title() - 5) * 3)
-        score = score + ((scraper.calculate_url() - 5) * 3)
+        score = score + ((scraper.calculate_headings() - 5) * self.keyVar / 2)
+        score = score + (scraper.calc_tlinks() - 5) * self.keyVar / 3
+        score = score + ((scraper.calculate_title() - 5) * self.keyVar)
+        score = score + ((scraper.calculate_url() - 5) * self.keyVar)
         anchorLinks = majestic.getAnchorTextBackLinks(
             url, keyword)
         score = score + anchorLinks - 5
