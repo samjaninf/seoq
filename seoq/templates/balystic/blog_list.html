@@ -12,7 +12,7 @@
       <div class="row p-20">
         <div class="col-md-4">
           <a href="{% url 'balystic_blog_detail' entry.slug %}">
-            <img class="img-responsive" src="{% if entry.image.url %}{{ entry.image.url }}{% else %}{% static "images/default_small.jpg" %}{% endif %}" alt="Blog image {{ entry.title }}">
+            <img class="img-responsive" src="{% if entry.image %}{{ entry.image }}{% else %}{% static "images/default_small.jpg" %}{% endif %}" alt="Blog image {{ entry.title }}">
           </a>
         </div>
         <div class="col-md-8">
