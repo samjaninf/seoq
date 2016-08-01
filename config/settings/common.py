@@ -51,7 +51,9 @@ LOCAL_APPS = (
     # custom users app
     'seoq.users.apps.UsersConfig',
     # Your stuff: custom apps go here
+    'seoq.core',
     'seoq.seoqtool',
+
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
