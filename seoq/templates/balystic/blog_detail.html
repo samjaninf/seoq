@@ -1,4 +1,6 @@
 {% extends "balystic/base.html" %}
-<h2>{{ entry.title }}</h2>
-<p>{{ entry.user }}</p>
-<p>{{ entry.content }}</p>
+{% block content %}
+  <h2>{{ entry.title }}</h2>
+  <p>{{ entry.user }}</p>
+  <p>{{ entry.content }}</p>
+{% endblock content %}
