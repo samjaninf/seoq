@@ -169,16 +169,6 @@ class SiteFormView(View):
             netloc=netloc.replace('/', '--'))
 
 
-<<<<<<< Updated upstream
-=======
-class EmailReportView(View):
-    template_name = 'seoqtool/report.html'
-
-    def get(self):
-        netloc = str(netloc)
-
-
->>>>>>> Stashed changes
 class ReportView(View):
 
     template_name = 'seoqtool/report.html'
