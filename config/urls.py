@@ -15,6 +15,8 @@ urlpatterns = [
         name='about'),
     url(r'^directory/$', TemplateView.as_view(template_name='pages/users_directory_page.html'),
         name='directory'),
+    url(r'^join/$', TemplateView.as_view(template_name='pages/join.html'),
+        name='join'),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),

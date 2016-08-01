@@ -1,4 +1,6 @@
 {% extends "balystic/base.html" %}
-{% for question in questions %}
-	{{ question }}
-{% endfor %}
+{% block content %}
+  {% for question in questions %}
+  	{{ question }}
+  {% endfor %}
+{% endblock content %}
