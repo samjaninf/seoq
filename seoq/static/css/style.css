@@ -110,6 +110,9 @@ than we are going to use in website
 .m-t-90 {
   margin-top: 90px; }
 
+.p-0 {
+  padding: 0px !important; }
+
 .p-0-6 {
   padding: 0 6px !important; }
 
@@ -130,6 +133,9 @@ than we are going to use in website
 
 .p-t-20 {
   padding-top: 20px; }
+
+.p-t-50 {
+  padding-top: 50px; }
 
 .p-t-30 {
   padding-top: 30px; }
@@ -8528,6 +8534,9 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
     fieldset[disabled] .navbar-seoq .btn-link:hover,
     fieldset[disabled] .navbar-seoq .btn-link:focus {
       color: #ccc; }
+
+.btn-seoq a {
+  color: #fff; }
 
 .btn-seoq {
   color: #FFF;
