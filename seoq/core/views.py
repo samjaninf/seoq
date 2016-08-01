@@ -19,7 +19,6 @@ class LoginView(View):
     def post(self, request):
         form = LoginForm(request.POST)
         if form.is_valid():
-            print form.cleaned_data
             user = authenticate(
                 email=form.cleaned_data['email'],
                 password=form.cleaned_data['password']
