@@ -1,6 +1,36 @@
 {% extends "balystic/base.html" %}
-{% for entry in blog_entries %}
-	<h2>{{ entry.title }}</h2>
-	<p>{{ entry.user }}</p>
-	<p>{{ entry.excerpt }}</p>
-{% endfor %}
+{% load i18n staticfiles %}
+{% block title %}Blog - {% endblock title %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{% trans "Blog" %}</h1>
+      </div>
+    </div>
+    {% for entry in blog_entries %}
+      <div class="row p-20">
+        <div class="col-md-4">
+          <a href="{{ entry.get_absolute_url }}">
+            <img class="img-responsive" src="{% if entry.image.url %}{{ entry.image.url }}{% else %}{% static "images/default_small.jpg" %}{% endif %}" alt="Blog image {{ entry.title }}">
+          </a>
+        </div>
+        <div class="col-md-8">
+          <div class="col-md-12">
+            <a href="" class="title-blog">
+              <h3>{{ entry.title }}</h3>
+            </a>
+            <small class="m-t-10" id="link-block">
+              <i class="fa fa-user"></i>
+              <a href="" id="link-author">&nbsp;{{ entry.user.username|title }}</a>&nbsp;
+              <i class="fa fa-calendar"></i>&nbsp;{{ entry.publication_date }}
+            </small>
+            <p class="m-t-10">{{ entry.excerpt }}
+              <a href="{{ entry.get_absolute_url }}">{% trans "Read more..." %}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}
