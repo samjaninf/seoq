@@ -1,10 +1,11 @@
 {% extends "balystic/base.html" %}
 {% load i18n staticfiles %}
+{% block title %}Blog - {% endblock title %}
 {% block content %}
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>{% trans "Blog List" %}</h1>
+        <h1>{% trans "Blog" %}</h1>
       </div>
     </div>
     {% for entry in blog_entries %}
