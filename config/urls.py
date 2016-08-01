@@ -19,6 +19,12 @@ urlpatterns = [
         name='owners'),
     url(r'^join/$', TemplateView.as_view(template_name='pages/join.html'),
         name='join'),
+    url(r'^professionals/$', TemplateView.as_view
+        (template_name='pages/professionals.html'),
+        name='professionals'),
+    url(r'^students/$', TemplateView.as_view
+        (template_name='pages/students.html'),
+        name='students'),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),
