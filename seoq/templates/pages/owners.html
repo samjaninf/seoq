@@ -3,14 +3,62 @@
 
 {% block title %}Website Owners | SEOQ{% endblock title %}
 {% block page_class %}owners{% endblock page_class %}
-
+{% block logo %}
+<img src="{% static "images/logo-b.png" %}" alt="SEOQ Logo">
+{% endblock logo %}
 {% block content %}
-<div class="container">
-	<h3>Website Owners</h3>
-	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse unde voluptates perspiciatis nobis sapiente cupiditate porro obcaecati animi a, blanditiis at ad aspernatur excepturi deserunt quis eos nulla ipsam nihil.</div>
-	<div>Aspernatur, doloremque similique temporibus? In quo ducimus nesciunt fugiat debitis laborum sed dicta quia laboriosam inventore aperiam, cum, quas repudiandae natus expedita eos minus. Fuga beatae, excepturi. Aliquam, ullam quas!</div>
-	<div>Rerum ut praesentium ratione quam numquam obcaecati, eius illo eum veniam, repellendus expedita mollitia deleniti consequuntur sapiente laborum assumenda illum eos sequi quae iure debitis laudantium temporibus tenetur vitae quaerat.</div>
-	<div>Quidem sapiente culpa nulla, quasi veritatis, exercitationem possimus eius, sed quis ab at odit provident unde veniam iure, vitae fuga neque. Ut obcaecati, saepe maiores aperiam quibusdam delectus. Ab, distinctio!</div>
-	<div>Enim dolorem fugit molestiae repellat, sit amet corporis! Cupiditate cum, impedit dignissimos vero libero doloremque placeat natus et quos suscipit atque mollitia, cumque. Velit, nisi iusto itaque totam quia corporis.</div>
-</div>
+<section class="for-owners">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1 p-t-30">
+        <div class="col-sm-6 col-md-6">
+          <h3>For owners of SEO</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio deserunt dolor voluptas, unde voluptatibus perspiciatis earum velit nulla quibusdam nemo totam, provident est aut, dicta aperiam doloribus. Eius expedita, commodi!</p>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <img src="{% static "images/fish-1.gif" %}" alt="fish" class="center-block img-responsive">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="team-owners" class="p-t-30 m-b-80">
+  <div class="container">
+    <div class="row">
+       <h2 class="text-center m-b-30">{% trans "Meet owners" %}</h2>
+       <div class="col-sm-12 col-md-8 col-md-offset-2 p-t-30">
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-1.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-2.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-3.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-4.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-5.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-6.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+       </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}
