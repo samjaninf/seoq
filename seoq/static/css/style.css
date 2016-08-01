@@ -8371,11 +8371,11 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
     padding-left: 0;
     padding-top: 14px;
     padding-bottom: 35px;
-    transition: padding-left 0.5s ease-out, padding-right 0.5s ease-in; }
+    transition: padding-left 0.5s linear, padding-right 0.5s linear; }
     .about #what-is .resaltable:hover {
       background-color: #f0f4f5;
-      padding-left: 25px;
-      padding-right: 25px; }
+      padding-left: 15px;
+      padding-right: 0; }
       .about #what-is .resaltable:hover h3 {
         color: #5bc0de; }
   .about #what-is .about-image .full-hg {
