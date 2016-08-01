@@ -1,11 +1,10 @@
 {% extends "base.html" %}
-{% load static %}
+{% load i18n staticfiles %}
 
 {% block title %}User: {{ object.username }}{% endblock %}
 
 {% block content %}
 <div class="container">
-
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
 
@@ -18,7 +17,7 @@
 
 {% if object == request.user %}
 <!-- Action buttons -->
-<div class="row">
+<div class="row m-b-50">
 
   <div class="col-sm-8 col-sm-offset-2 ">
     <a class="btn btn-primary" href="{% url 'users:update' %}">My Info</a>

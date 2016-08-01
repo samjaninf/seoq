@@ -66,12 +66,18 @@
               <a href="{% url 'students' %}">SEO Students</a>
             </li>
             {% if request.user.is_authenticated %}
+            <li class="responsive">
+              <a href="{% url 'users:detail' request.user.username %}">{% trans "See Profile" %}</a>
+            </li>
+            <li class="responsive">
+              <a href="{% url 'balystic_logout' %}?next=/">{% trans "Sign out" %}</a>
+            </li>
             <li class="dropdown">
-                <a href="javascript:;" id="user-dropdown" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <a href="javascript:;" id="user-dropdown" class="dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                    {% if request.user.profile_picture %}
                       <img src="{{ request.user.profile_picture.url }}" alt="Profile picture">
                    {% else %}
-                      <img src="{% static 'img/508q_person.png' %}" alt="Profile picture">
+                      <img src="{% static 'images/person.png' %}" alt="Profile picture" class="img-respnsive img-circle">
                     {% endif %}
                   <span class="caret"><span>
                 </a>
@@ -82,6 +88,11 @@
                 </ul>
               </li>
             {% else %}
+            <li>
+              <a href="{% url 'account_login' %}">
+                Join now
+              </a>
+            </li>
             <li>
               <a href="{% url 'account_login' %}" class="btn btn-lg btn-seoq">
                 Join now
