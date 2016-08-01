@@ -5,30 +5,22 @@ from django.conf import settings
 
 class MajesticBackLinks(object):
 
-    def main(self, url, keywords):
-
-        print('Ref IPs: ' + str(self.getRefIPs(url)))
-        print('Trust Flow: ' + str(self.getTrustFlow(url)))
-        print('Anchor Text BackLinks: ' +
-              str(self.getAnchorTextBackLinks(url, keywords)))
-        print('Citation Flow Backlinks: ' +
-              str(self.getCitationFlowBackLinks(url)))
-
-    def getNumBackLinksDomainName(self, url):
-
+    def __init__(self, url):
         endpoint = settings.MAJESTIC_URL  # API
         app_api_key = settings.MAJESTIC_API_KEY  # put API key
 
         # website to analyze; domain name must follow format of example.com,
         # web page URL must follow format of http://example.com
 
+        domainURL = url
         if url.find('http://') != -1 or url.find('https://') != -1:
-            url = url[url.find('/') + 2:]
+            domainURL = url[url.find('/') + 2:]
         if url.find('www.') != -1:
-            url = url[url.find('.') + 1:]
+            domainURL = url[url.find('.') + 1:]
         if url.find('/') != -1:
-            url = url[:url.find('/')]
-        items = [url]
+            domainURL = url[:url.find('/')]
+        items = [domainURL]
+        item_to_query = domainURL
 
         # create a hash from the resulting array with the key being
         # 'item0 => first item to query, item1 => second item to query' etc
@@ -41,26 +33,9 @@ class MajesticBackLinks(object):
         parameters['datasource'] = 'fresh'
 
         api_service = APIService(app_api_key, endpoint)
-        response = api_service.execute_command(
+
+        self.indexItemInfoDomainNameResponse = api_service.execute_command(
             'GetIndexItemInfo', parameters)  # gets XML response
-
-        # check the response code
-        if(response.is_ok()):
-            # print the results table
-            results = response.get_table_for_name('Results')
-            for row in results.rows:
-                item = row['Item']  # website you are analyzing
-                numBackLinks = row.get('ExtBackLinks')
-            return numBackLinks
-
-        else:
-            print ('\nERROR MESSAGE:')
-            print (str(response.get_error_message()))
-
-    def getNumBackLinksWebPageURL(self, url):
-
-        endpoint = settings.MAJESTIC_URL  # API
-        app_api_key = settings.MAJESTIC_API_KEY  # put API key
 
         # website to analyze; domain name must follow format of example.com,
         # web page URL must follow format of http://example.com
@@ -68,22 +43,23 @@ class MajesticBackLinks(object):
         # if url has https:// in it, then replace it
         #               with http:// for further analysis
 
+        pageURL = url
         if url.find('https://') != -1:
-            url = url.replace('https://', 'http://')
+            pageURL = url.replace('https://', 'http://')
 
         # if already in format http://www.example.com
         if (url.find('www.') != -1) & (url.find('http://') != -1):
-            url = url
+            pageURL = url
         # if in format www.example.com
         elif (url.find('www.') != -1) & (url.find('http://') == -1):
-            url = 'http://' + url
+            pageURL = 'http://' + url
         # if in format example.com
         elif (url.find('www.') == -1) & (url.find('http://') == -1):
-            url = 'http://www.' + url
+            pageURL = 'http://www.' + url
         # if in format http://example.com
         elif (url.find('www.') == -1) & (url.find('http://') != -1):
-            url = url.replace('http://', 'http://www.')
-        items = [url]
+            pageURL = url.replace('http://', 'http://www.')
+        items = [pageURL]
 
         # create a hash from the resulting array with the key being
         # 'item0 => first item to query, item1 => second item to query' etc
@@ -95,16 +71,41 @@ class MajesticBackLinks(object):
         parameters['items'] = len(items)
         parameters['datasource'] = 'fresh'
 
-        api_service = APIService(app_api_key, endpoint)
-        response = api_service.execute_command(
+        self.indexItemInfoWebPageURLResponse = api_service.execute_command(
             'GetIndexItemInfo', parameters)  # gets XML response
 
-        # check the response code
+        # for getting response for backlink data
+        parameters = {}
+        parameters['Count'] = '50000'
+        parameters['item'] = item_to_query
+        parameters['Mode'] = '0'
+        parameters['datasource'] = 'fresh'
+
+        self.backLinkDataReponse = api_service.execute_command(
+            'GetBackLinkData', parameters)
+
+    def main(self, url, keywords):
+
+        print('BackLinks Domain: ' + str(self.getNumBackLinksDomainName()))
+        print('BackLinks URL: ' + str(self.getNumBackLinksWebPageURL()))
+        print('BackLinks Gov Domain: ' + str(self.getNumGovBackLinksDomainName()))
+        print('Backlinks Gov URL: ' + str(self.getNumGovBackLinksWebPageURL()))
+        print('Backlinks Edu Domain: ' + str(self.getNumEduBackLinksDomainName()))
+        print('Backlinks Edu URL: ' + str(self.getNumEduBackLinksWebPageURL()))
+        print('Ref IPs: ' + str(self.getRefIPs()))
+        print('Trust Flow: ' + str(self.getTrustFlow()))
+        print('Anchor Text BackLinks: ' +
+              str(self.getAnchorTextBackLinks(keywords)))
+        print('Citation Flow Backlinks: ' +
+              str(self.getCitationFlowBackLinks()))
+
+    def getNumBackLinksDomainName(self):
+        response = self.indexItemInfoDomainNameResponse
+
         if(response.is_ok()):
             # print the results table
             results = response.get_table_for_name('Results')
             for row in results.rows:
-                item = row['Item']  # website you are analyzing
                 numBackLinks = row.get('ExtBackLinks')
             return numBackLinks
 
@@ -112,42 +113,28 @@ class MajesticBackLinks(object):
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
-    def getNumGovBackLinksDomainName(self, url):
+    def getNumBackLinksWebPageURL(self):
+        response = self.indexItemInfoWebPageURLResponse
+        # check the response code
+        if(response.is_ok()):
+            # print the results table
+            results = response.get_table_for_name('Results')
+            for row in results.rows:
+                numBackLinks = row.get('ExtBackLinks')
+            return numBackLinks
 
-        endpoint = settings.MAJESTIC_URL  # API
-        app_api_key = settings.MAJESTIC_API_KEY  # put API key
+        else:
+            print ('\nERROR MESSAGE:')
+            print (str(response.get_error_message()))
 
-        # website to analyze; domain name must follow format of example.com,
-        # web page URL must follow format of http://example.com
-
-        if url.find('http://') != -1 or url.find('https://') != -1:
-            url = url[url.find('/') + 2:]
-        if url.find('www.') != -1:
-            url = url[url.find('.') + 1:]
-        if url.find('/') != -1:
-            url = url[:url.find('/')]
-        items = [url]
-
-        # create a hash from the resulting array with the key being
-        # 'item0 => first item to query, item1 => second item to query' etc
-        parameters = {}
-        for index, item in enumerate(items):
-            parameters['item' + str(index)] = item
-
-        # add the total number of items to the hash with the key being 'items'
-        parameters['items'] = len(items)
-        parameters['datasource'] = 'fresh'
-
-        api_service = APIService(app_api_key, endpoint)
-        response = api_service.execute_command(
-            'GetIndexItemInfo', parameters)  # gets XML response
+    def getNumGovBackLinksDomainName(self):
+        response = self.indexItemInfoDomainNameResponse
 
         # check the response code
         if(response.is_ok()):
             # print the results table
             results = response.get_table_for_name('Results')
             for row in results.rows:
-                item = row['Item']  # website you are analyzing
                 numBackLinks = row.get('ExtBackLinksGOV')
             return numBackLinks
 
@@ -155,51 +142,14 @@ class MajesticBackLinks(object):
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
-    def getNumGovBackLinksWebPageURL(self, url):
-
-        endpoint = settings.MAJESTIC_URL  # API
-        app_api_key = settings.MAJESTIC_API_KEY  # put API key
-
-        # website to analyze; domain name must follow format of example.com,
-        # web page URL must follow format of http://example.com
-
-        if url.find('https://') != -1:
-            url = url.replace('https://', 'http://')
-
-        # if already in format http://www.example.com
-        if (url.find('www.') != -1) & (url.find('http://') != -1):
-            url = url
-        # if in format www.example.com
-        elif (url.find('www.') != -1) & (url.find('http://') == -1):
-            url = 'http://' + url
-        # if in format example.com
-        elif (url.find('www.') == -1) & (url.find('http://') == -1):
-            url = 'http://www.' + url
-        # if in format http://example.com
-        elif (url.find('www.') == -1) & (url.find('http://') != -1):
-            url = url.replace('http://', 'http://www.')
-        items = [url]
-
-        # create a hash from the resulting array with the key being
-        # 'item0 => first item to query, item1 => second item to query' etc
-        parameters = {}
-        for index, item in enumerate(items):
-            parameters['item' + str(index)] = item
-
-        # add the total number of items to the hash with the key being 'items'
-        parameters['items'] = len(items)
-        parameters['datasource'] = 'fresh'
-
-        api_service = APIService(app_api_key, endpoint)
-        response = api_service.execute_command(
-            'GetIndexItemInfo', parameters)  # gets XML response
+    def getNumGovBackLinksWebPageURL(self):
+        response = self.indexItemInfoWebPageURLResponse
 
         # check the response code
         if(response.is_ok()):
             # print the results table
             results = response.get_table_for_name('Results')
             for row in results.rows:
-                item = row['Item']  # website you are analyzing
                 numBackLinks = row.get('ExtBackLinksGOV')
             return numBackLinks
 
@@ -207,44 +157,14 @@ class MajesticBackLinks(object):
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
-    def getNumEduBackLinksDomainName(self, url):
-        # removed the hardcoded information
-        # --jlariza
-
-        endpoint = settings.MAJESTIC_URL  # API
-        app_api_key = settings.MAJESTIC_API_KEY  # put API key
-
-        # website to analyze; domain name must follow format of example.com,
-        # web page URL must follow format of http://example.com
-
-        if url.find('http://') != -1 or url.find('https://') != -1:
-            url = url[url.find('/') + 2:]
-        if url.find('www.') != -1:
-            url = url[url.find('.') + 1:]
-        if url.find('/') != -1:
-            url = url[:url.find('/')]
-        items = [url]
-
-        # create a hash from the resulting array with the key being
-        # 'item0 => first item to query, item1 => second item to query' etc
-        parameters = {}
-        for index, item in enumerate(items):
-            parameters['item' + str(index)] = item
-
-        # add the total number of items to the hash with the key being 'items'
-        parameters['items'] = len(items)
-        parameters['datasource'] = 'fresh'
-
-        api_service = APIService(app_api_key, endpoint)
-        response = api_service.execute_command(
-            'GetIndexItemInfo', parameters)  # gets XML response
+    def getNumEduBackLinksDomainName(self):
+        response = self.indexItemInfoDomainNameResponse
 
         # check the response code
         if(response.is_ok()):
             # print the results table
             results = response.get_table_for_name('Results')
             for row in results.rows:
-                item = row['Item']  # website you are analyzing
                 numBackLinks = row.get('ExtBackLinksEDU')
             return numBackLinks
 
@@ -252,51 +172,14 @@ class MajesticBackLinks(object):
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
-    def getNumEduBackLinksWebPageURL(self, url):
-
-        endpoint = settings.MAJESTIC_URL  # API
-        app_api_key = settings.MAJESTIC_API_KEY  # put API key
-
-        # website to analyze; domain name must follow format of example.com,
-        # web page URL must follow format of http://example.com
-
-        if url.find('https://') != -1:
-            url = url.replace('https://', 'http://')
-
-        # if already in format http://www.example.com
-        if (url.find('www.') != -1) & (url.find('http://') != -1):
-            url = url
-        # if in format www.example.com
-        elif (url.find('www.') != -1) & (url.find('http://') == -1):
-            url = 'http://' + url
-        # if in format example.com
-        elif (url.find('www.') == -1) & (url.find('http://') == -1):
-            url = 'http://www.' + url
-        # if in format http://example.com
-        elif (url.find('www.') == -1) & (url.find('http://') != -1):
-            url = url.replace('http://', 'http://www.')
-        items = [url]
-
-        # create a hash from the resulting array with the key being
-        # 'item0 => first item to query, item1 => second item to query' etc
-        parameters = {}
-        for index, item in enumerate(items):
-            parameters['item' + str(index)] = item
-
-        # add the total number of items to the hash with the key being 'items'
-        parameters['items'] = len(items)
-        parameters['datasource'] = 'fresh'
-
-        api_service = APIService(app_api_key, endpoint)
-        response = api_service.execute_command(
-            'GetIndexItemInfo', parameters)  # gets XML response
+    def getNumEduBackLinksWebPageURL(self):
+        response = self.indexItemInfoWebPageURLResponse
 
         # check the response code
         if(response.is_ok()):
             # print the results table
             results = response.get_table_for_name('Results')
             for row in results.rows:
-                item = row['Item']  # website you are analyzing
                 numBackLinks = row.get('ExtBackLinksEDU')
             return numBackLinks
 
@@ -304,51 +187,14 @@ class MajesticBackLinks(object):
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
-    def getTrustFlow(self, url):
-
-        endpoint = settings.MAJESTIC_URL  # API
-        app_api_key = settings.MAJESTIC_API_KEY  # put API key
-
-        # website to analyze; domain name must follow format of example.com,
-        # web page URL must follow format of http://example.com
-
-        if url.find('https://') != -1:
-            url = url.replace('https://', 'http://')
-
-        # if already in format http://www.example.com
-        if (url.find('www.') != -1) & (url.find('http://') != -1):
-            url = url
-        # if in format www.example.com
-        elif (url.find('www.') != -1) & (url.find('http://') == -1):
-            url = 'http://' + url
-        # if in format example.com
-        elif (url.find('www.') == -1) & (url.find('http://') == -1):
-            url = 'http://www.' + url
-        # if in format http://example.com
-        elif (url.find('www.') == -1) & (url.find('http://') != -1):
-            url = url.replace('http://', 'http://www.')
-        items = [url]
-
-        # create a hash from the resulting array with the key being
-        # 'item0 => first item to query, item1 => second item to query' etc
-        parameters = {}
-        for index, item in enumerate(items):
-            parameters['item' + str(index)] = item
-
-        # add the total number of items to the hash with the key being 'items'
-        parameters['items'] = len(items)
-        parameters['datasource'] = 'fresh'
-
-        api_service = APIService(app_api_key, endpoint)
-        response = api_service.execute_command(
-            'GetIndexItemInfo', parameters)  # gets XML response
+    def getTrustFlow(self):
+        response = self.indexItemInfoDomainNameResponse
 
         # check the response code
         if(response.is_ok()):
             # print the results table
             results = response.get_table_for_name('Results')
             for row in results.rows:
-                item = row['Item']  # website you are analyzing
                 trustFlow = row.get('TrustFlow')
             return float(trustFlow) / 10
 
@@ -356,51 +202,14 @@ class MajesticBackLinks(object):
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
-    def getRefIPs(self, url):
-
-        endpoint = settings.MAJESTIC_URL  # API
-        app_api_key = settings.MAJESTIC_API_KEY  # put API key
-
-        # website to analyze; domain name must follow format of example.com,
-        # web page URL must follow format of http://example.com
-
-        if url.find('https://') != -1:
-            url = url.replace('https://', 'http://')
-
-        # if already in format http://www.example.com
-        if (url.find('www.') != -1) & (url.find('http://') != -1):
-            url = url
-        # if in format www.example.com
-        elif (url.find('www.') != -1) & (url.find('http://') == -1):
-            url = 'http://' + url
-        # if in format example.com
-        elif (url.find('www.') == -1) & (url.find('http://') == -1):
-            url = 'http://www.' + url
-        # if in format http://example.com
-        elif (url.find('www.') == -1) & (url.find('http://') != -1):
-            url = url.replace('http://', 'http://www.')
-        items = [url]
-
-        # create a hash from the resulting array with the key being
-        # 'item0 => first item to query, item1 => second item to query' etc
-        parameters = {}
-        for index, item in enumerate(items):
-            parameters['item' + str(index)] = item
-
-        # add the total number of items to the hash with the key being 'items'
-        parameters['items'] = len(items)
-        parameters['datasource'] = 'fresh'
-
-        api_service = APIService(app_api_key, endpoint)
-        response = api_service.execute_command(
-            'GetIndexItemInfo', parameters)  # gets XML response
+    def getRefIPs(self):
+        response = self.indexItemInfoDomainNameResponse
 
         # check the response code
         if(response.is_ok()):
             # print the results table
             results = response.get_table_for_name('Results')
             for row in results.rows:
-                item = row['Item']  # website you are analyzing
                 refIPs = row.get('RefIPs')
             return refIPs
 
@@ -408,28 +217,8 @@ class MajesticBackLinks(object):
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
-    def getAnchorTextBackLinks(self, url, keywords):
-
-        endpoint = settings.MAJESTIC_URL  # API
-        app_api_key = settings.MAJESTIC_API_KEY  # put API key
-
-        if url.find('http://') != -1 or url.find('https://') != -1:
-            url = url[url.find('/') + 2:]
-        if url.find('www.') != -1:
-            url = url[url.find('.') + 1:]
-        if url.find('/') != -1:
-            url = url[:url.find('/')]
-        item_to_query = url
-
-        # set up parameters
-        parameters = {}
-        parameters['Count'] = '50000'
-        parameters['item'] = item_to_query
-        parameters['Mode'] = '0'
-        parameters['datasource'] = 'fresh'
-
-        api_service = APIService(app_api_key, endpoint)
-        response = api_service.execute_command('GetBackLinkData', parameters)
+    def getAnchorTextBackLinks(self, keywords):
+        response = self.backLinkDataReponse
 
         # check the response code
         if(response.is_ok()):
@@ -446,28 +235,8 @@ class MajesticBackLinks(object):
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
-    def getCitationFlowBackLinks(self, url):
-
-        endpoint = settings.MAJESTIC_URL  # API
-        app_api_key = settings.MAJESTIC_API_KEY  # put API key
-
-        if url.find('http://') != -1 or url.find('https://') != -1:
-            url = url[url.find('/') + 2:]
-        if url.find('www.') != -1:
-            url = url[url.find('.') + 1:]
-        if url.find('/') != -1:
-            url = url[:url.find('/')]
-        item_to_query = url
-
-        # set up parameters
-        parameters = {}
-        parameters['Count'] = '50000'
-        parameters['item'] = item_to_query
-        parameters['Mode'] = '0'
-        parameters['datasource'] = 'fresh'
-
-        api_service = APIService(app_api_key, endpoint)
-        response = api_service.execute_command('GetBackLinkData', parameters)
+    def getCitationFlowBackLinks(self):
+        response = self.backLinkDataReponse
 
         # check the response code
         if(response.is_ok()):

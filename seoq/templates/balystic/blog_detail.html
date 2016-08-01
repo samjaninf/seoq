@@ -1,4 +1,25 @@
 {% extends "balystic/base.html" %}
-<h2>{{ entry.title }}</h2>
-<p>{{ entry.user }}</p>
-<p>{{ entry.content }}</p>
+{% load staticfiles %}
+{% block title %}{{entry.title}} - Blog | SEOQ{% endblock title %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{{ entry.title }}</h1>
+        <small class="m-t-10" id="link-block">
+          <i class="fa fa-user"></i>
+          <a href="" id="link-author">&nbsp;{{ entry.user.username|title }}</a>&nbsp;
+          <i class="fa fa-calendar"></i>&nbsp;{{ entry.publication_date }}
+        </small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <img class="img-responsive center-block" src="{% if entry.image.url %}{{ entry.image.url }}{% else %}{% static "images/default_small.jpg" %}{% endif %}" alt="Blog image {{ entry.title }}">
+      </div>
+    </div>
+    <div class="col-md-12">
+      {{ entry.content|safe }}
+    </div>
+  </div>
+{% endblock content %}
