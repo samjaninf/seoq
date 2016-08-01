@@ -8421,17 +8421,17 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
     opacity: 1; }
 
 @media (min-width: 992px) {
-  .students .for-seo .container .row .col-sm-12.col-md-10 {
+  .students .for-students .container .row .col-sm-12.col-md-10 {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
         align-items: center; } }
 
-.students #team .container .row .col-sm-12 .col-xs-6 img {
+.students #team-students .container .row .col-sm-12 .col-xs-6 img {
   opacity: 0.6;
   border: 3px solid #E0E4E5;
   transition: opacity 0.5s ease-out; }
-  .students #team .container .row .col-sm-12 .col-xs-6 img:hover {
+  .students #team-students .container .row .col-sm-12 .col-xs-6 img:hover {
     opacity: 1; }
 
 .navbar-seoq {
