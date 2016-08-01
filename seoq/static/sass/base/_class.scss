@@ -23,6 +23,9 @@ than we are going to use in website
 .m-b-50{
   margin-bottom: 50px;
 }
+.m-b-80{
+  margin-bottom: 80px;
+}
 .m-t-10{
   margin-top: 10px;
 }
@@ -50,6 +53,9 @@ than we are going to use in website
 .m-t-90{
   margin-top: 90px;
 }
+.p-0{
+  padding:0px !important;
+}
 .p-0-6{
   padding:0 6px !important;
 }
@@ -70,6 +76,9 @@ than we are going to use in website
 }
 .p-t-20{
   padding-top:20px;
+}
+.p-t-50{
+  padding-top:50px;
 }
 .p-t-30{
   padding-top:30px;
@@ -118,4 +127,10 @@ hr{
 .fullscreen{
   height: calc(100vh - 90px);
   min-height: 570px;
+}
+#form-login{
+  .form-control-feedback{
+    top: 25px !important;
+  }
+
 }

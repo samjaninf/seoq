@@ -7,12 +7,29 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
+from balystic import views as balystic_views
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'),
         name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'),
         name='about'),
+    # Needed because django-braces uses the account prefix for LoginRequiredMixin
+    url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='account_login'),
+    url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='balystic_login'),
+    url(r'^accounts/logout/$', balystic_views.LogoutView.as_view(), name='balystic_logout'),
+    url(r'^directory/$', TemplateView.as_view(template_name='pages/users_directory_page.html'),
+        name='directory'),
+    url(r'^owners/$', TemplateView.as_view(template_name='pages/owners.html'),
+        name='owners'),
+    # url(r'^join/$', TemplateView.as_view(template_name='pages/join.html'),
+    #     name='join'),
+    url(r'^professionals/$', TemplateView.as_view
+        (template_name='pages/professionals.html'),
+        name='professionals'),
+    url(r'^students/$', TemplateView.as_view
+        (template_name='pages/students.html'),
+        name='students'),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),
@@ -22,7 +39,6 @@ urlpatterns = [
     url(r'^', include('balystic.urls')),
     url(r'^', include('seoq.seoqtool.urls', namespace='seoqtool')),
     url(r'^api/', include('seoq.api.urls', namespace='api')),
-    url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
 
