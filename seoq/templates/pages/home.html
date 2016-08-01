@@ -141,10 +141,10 @@
             <h2 class="" id="how-website">{% trans "How does your" %}<br>{% trans "Website do for SEO?" %}</h2>
           </div>
           <div class="col-sm-6 col-md-6 m-b-50 p-t-20">
-            <form action="">
+            <form action="{% url 'seoqtool:start_report' %}">
               <div class="form-group">
                 <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
-                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}">
+                <input type="text" name='url' class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}">
               </div>
               <div class="text-center text-block">
                 <h3>vs</h3>
