@@ -12,15 +12,15 @@
       <div class="row">
         <div class="col-sm-4 hidden-xs text-center">
           <img src="{% static "images/fish-1.gif" %}" alt="" class="img-responsive"></img>
-          <p class="text-brand m-t-20 h4">{% trans "I own a website" %}</p>
+          <p class="text-brand m-t-20 h4"><a href="{% url 'owners' %}" class="text-brand">{% trans "I own a website" %}</a></p>
         </div>
         <div class="col-sm-4 hidden-xs text-center">
           <img src="{% static "images/fish-2.gif" %}" alt="" class="img-responsive"></img>
-          <p class="text-brand m-t-20 h4">{% trans "I am a SEO Expert" %}</p>
+          <p class="text-brand m-t-20 h4"><a href="{% url 'professionals' %}" class="text-brand">{% trans "I am a SEO Expert" %}</a></p>
         </div>
         <div class="col-sm-4 hidden-xs text-center">
           <img src="{% static "images/fish-3.gif" %}" alt="" class="img-responsive"></img>
-          <p class="text-brand m-t-20 h4">{% trans "I study SEO" %}</p>
+          <p class="text-brand m-t-20 h4"><a href="{% url 'students' %}" class="text-brand">{% trans "I study SEO" %}</a></p>
         </div>
         <div class="col-xs-12 visible-xs-block text-center m-t-30">
           <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I own a website" %}</button>
@@ -49,7 +49,7 @@
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore ad, nemo earum aspernatur laboriosam reprehenderit dolor amet vitae et debitis, veniam quisquam aut cupiditate nihil quaerat fuga iste, placeat explicabo!
             </p>
-            <a href="#" class="btn btn-primary-ligth btn-lg">{% trans "Learn more about SEO" %}</a>
+            <a href="{% url 'about' %}" class="btn btn-primary-ligth btn-lg">{% trans "Learn more about SEO" %}</a>
           </div>
           <span class="clear pull-right scrollable" id="most-recent">
             <a href="#experts" title="{% trans "Most recent" %}" class="">{% trans "Most recent" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
@@ -66,7 +66,7 @@
           <div class="col-sm-6 col-md-6 pull-right">
             <h2 class="text-left" id="experts"><strong>{% trans "This week SEO Experts" %}</strong></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente at eius vitae doloremque dolorum, deleniti non expedita id odio eum, dignissimos, quis, adipisci consectetur neque perspiciatis explicabo quo quia voluptatum.</p>
-            <a href="#" class="btn btn-primary-ligth btn-lg">{% trans "Create SEO profile" %}</a>
+            <a href="{% url 'join' %}" class="btn btn-primary-ligth btn-lg">{% trans "Create SEO profile" %}</a>
           </div>
           <div class="col-sm-6 col-md-6">
             <div class="row">
