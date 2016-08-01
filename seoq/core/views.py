@@ -10,7 +10,7 @@ class LoginView(View):
     """
     View that handles the authentication form.
     """
-    template_name = 'account/login.html'
+    template_name = 'pages/join.html'
 
     def get(self, request):
         form = LoginForm()
