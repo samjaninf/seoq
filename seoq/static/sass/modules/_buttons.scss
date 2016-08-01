@@ -6,25 +6,26 @@
 	padding-top: 25px;
 	padding-bottom: 25px;
 }
+
 .btn-default-ligth {
-  @include button-variant-ligth($btn-default-color, $btn-default-bg, $btn-default-border);
+  @include button-variant-ligth($btn-default-color, $btn-default-bg, $btn-default-bg);
 }
 .btn-primary-ligth {
-  @include button-variant-ligth($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  @include button-variant-ligth($btn-primary-color, $btn-primary-bg, $btn-primary-bg);
 }
 // Success appears as green
 .btn-success-ligth {
-  @include button-variant-ligth($btn-success-color, $btn-success-bg, $btn-success-border);
+  @include button-variant-ligth($btn-success-color, $btn-success-bg, $btn-success-bg);
 }
 // Info appears as blue-green
 .btn-info-ligth {
-  @include button-variant-ligth($btn-info-color, $btn-info-bg, $btn-info-border);
+  @include button-variant-ligth($btn-info-color, $btn-info-bg, $btn-info-bg);
 }
 // Warning appears as orange
 .btn-warning-ligth {
-  @include button-variant-ligth($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+  @include button-variant-ligth($btn-warning-color, $btn-warning-bg, $btn-warning-bg);
 }
 // Danger and error appear as red
 .btn-danger-ligth {
-  @include button-variant-ligth($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  @include button-variant-ligth($btn-danger-color, $btn-danger-bg, $btn-danger-bg);
 }
