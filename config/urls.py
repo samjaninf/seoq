@@ -13,6 +13,8 @@ urlpatterns = [
         name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'),
         name='about'),
+    url(r'^directory/$', TemplateView.as_view(template_name='pages/users_directory_page.html'),
+        name='directory'),
     url(r'^join/$', TemplateView.as_view(template_name='pages/join.html'),
         name='join'),
 
