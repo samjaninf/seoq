@@ -264,19 +264,12 @@ CELERYBEAT_SCHEDULE = {
 }
 
 
-TWILIO_SID = env('TWILIO_SID', default='')
-TWILIO_AUTH_TOKEN = env('TWILIO_AUTH_TOKEN', default='')
-TWILIO_PHONE_NUMBER = env('TWILIO_PHONE_NUMBER', default='')
-QSCRAPER_URL = env('QSCRAPER_URL')
-MAJESTIC_URL = env('MAJESTIC_URL')
-MAJESTIC_API_KEY = env('MAJESTIC_API_KEY')
-GOOGLE_PLACES_API_KEY = env('GOOGLE_PLACES_API_KEY')
-GOOGLE_PLACES_URL = env('GOOGLE_PLACES_URL')
+QSCRAPER_URL = env('QSCRAPER_URL', default='http://qscraper.7dhub.com/')
+MAJESTIC_URL = env('MAJESTIC_URL', default='https://api.majestic.com/api_command')
+MAJESTIC_API_KEY = env('MAJESTIC_API_KEY', default='')
+GOOGLE_PLACES_API_KEY = env('GOOGLE_PLACES_API_KEY', default='')
+GOOGLE_PLACES_URL = env('GOOGLE_PLACES_URL', default='https://maps.googleapis.com/maps/api/place/textsearch/json')
 MAX_DEPTH_VALUE = env('MAX_DEPTH_VALUE', default=2)
-BASE_URL = env('BASE_URL', default='localhost:8000')
-
-TAGGIT_CASE_INSENSITIVE = False
-SESSION_COOKIE_DOMAIN = env('SESSION_COOKIE_DOMAIN', default=None)
 
 BALYSTIC_API_TOKEN = env('BALYSTIC_API_TOKEN')
 BALYSTIC_API_PATH = env('BALYSTIC_API_PATH')
