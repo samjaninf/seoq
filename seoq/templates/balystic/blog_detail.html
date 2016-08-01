@@ -1,5 +1,5 @@
 {% extends "balystic/base.html" %}
-{% load staticfiles %}
+{% load staticfiles date_string %}
 {% block title %}{{entry.title}} - Blog | SEOQ{% endblock title %}
 {% block content %}
   <div class="container">
@@ -9,7 +9,7 @@
         <small class="m-t-10" id="link-block">
           <i class="fa fa-user"></i>
           <a href="" id="link-author">&nbsp;{{ entry.user.username|title }}</a>&nbsp;
-          <i class="fa fa-calendar"></i>&nbsp;{{ entry.publication_date }}
+          <i class="fa fa-calendar"></i>&nbsp;{{ entry.publication_date|date_string }}
         </small>
       </div>
     </div>

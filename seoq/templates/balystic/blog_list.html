@@ -1,5 +1,5 @@
 {% extends "balystic/base.html" %}
-{% load i18n staticfiles %}
+{% load i18n staticfiles date_string %}
 {% block title %}Blog - {% endblock title %}
 {% block content %}
   <div class="container">
@@ -23,7 +23,7 @@
             <small class="m-t-10" id="link-block">
               <i class="fa fa-user"></i>
               <a href="" id="link-author">&nbsp;{{ entry.user.username|title }}</a>&nbsp;
-              <i class="fa fa-calendar"></i>&nbsp;{{ entry.publication_date }}
+              <i class="fa fa-calendar"></i>&nbsp;{{ entry.publication_date|date_string }}
             </small>
             <p class="m-t-10">{{ entry.excerpt }}
               <a href="{{ entry.get_absolute_url }}">{% trans "Read more..." %}</a>
