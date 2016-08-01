@@ -214,7 +214,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = (
-    'seoq.core.auth_backends.SeoqBackend',
+    'balystic.authentication_backends.BalysticBackend',
     #'django.contrib.auth.backends.ModelBackend',
     #'allauth.account.auth_backends.AuthenticationBackend',
 )

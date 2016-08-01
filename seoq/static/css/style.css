@@ -8437,6 +8437,20 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
   .students #team-students .container .row .col-sm-12 .col-xs-6 img:hover {
     opacity: 1; }
 
+@media (min-width: 992px) {
+  .owners .for-owners .container .row .col-sm-12.col-md-10 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center; } }
+
+.owners #team-owners .container .row .col-sm-12 .col-xs-6 img {
+  opacity: 0.6;
+  border: 3px solid #E0E4E5;
+  transition: opacity 0.5s ease-out; }
+  .owners #team-owners .container .row .col-sm-12 .col-xs-6 img:hover {
+    opacity: 1; }
+
 .navbar-seoq {
   background-color: #7dd0e3;
   border-color: 0;
@@ -8575,7 +8589,11 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
 .btn-seoq {
   color: #FFF;
   background-color: #fe9a28;
-  border-color: #f18308; }
+  border-color: #f18308;
+  border-top: 0;
+  border-bottom: 0;
+  margin-left: 10px;
+  color: #FFF !important; }
   .btn-seoq:focus, .btn-seoq.focus {
     color: #FFF;
     background-color: #f28101;

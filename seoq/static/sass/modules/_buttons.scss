@@ -1,5 +1,9 @@
 .btn-seoq{
   @include button-variant(#FFF, #fe9a28, #f18308)
+  border-top: 0;
+  border-bottom: 0;
+  margin-left: 10px;
+  color: #FFF !important;
 }
 .btn-seoq-lb{
 	@include button-variant(#FFF, #fe9a28, #cdb075)

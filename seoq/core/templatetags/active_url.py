@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse, NoReverseMatch
 
 register = template.Library()
 
+
 @register.simple_tag(takes_context=True)
 def active_url(context, url):
     try:
