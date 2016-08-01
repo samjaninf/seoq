@@ -1,9 +1,54 @@
 .btn-seoq{
-  @include button-variant(#FFF, #fe9a28, #f18308)
+  $background: #fe9a28;
+  $border: #f18308;
+  $color: #FFF !important;
+  @include button-variant($color, $background, $border)
   border-top: 0;
   border-bottom: 0;
   margin-left: 10px;
-  color: #FFF !important;
+  color: $color;
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 10%);
+  }
+  &:hover {
+    text-decoration: none !important;
+    color: $color;
+    background-color: darken($background, 10%) !important;
+        border-color: darken($border, 10%) !important;
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 10%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: darken($background, 17%);
+          border-color: darken($border, 17%);
+    }
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
 }
 .btn-seoq-lb{
 	@include button-variant(#FFF, #fe9a28, #cdb075)

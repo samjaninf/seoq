@@ -8587,7 +8587,7 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
   color: #fff; }
 
 .btn-seoq {
-  color: #FFF;
+  color: #FFF !important;
   background-color: #fe9a28;
   border-color: #f18308;
   border-top: 0;
@@ -8595,23 +8595,23 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
   margin-left: 10px;
   color: #FFF !important; }
   .btn-seoq:focus, .btn-seoq.focus {
-    color: #FFF;
+    color: #FFF !important;
     background-color: #f28101;
     border-color: #764004; }
   .btn-seoq:hover {
-    color: #FFF;
+    color: #FFF !important;
     background-color: #f28101;
     border-color: #b66306; }
   .btn-seoq:active, .btn-seoq.active,
   .open > .btn-seoq.dropdown-toggle {
-    color: #FFF;
+    color: #FFF !important;
     background-color: #f28101;
     border-color: #b66306; }
     .btn-seoq:active:hover, .btn-seoq:active:focus, .btn-seoq:active.focus, .btn-seoq.active:hover, .btn-seoq.active:focus, .btn-seoq.active.focus,
     .open > .btn-seoq.dropdown-toggle:hover,
     .open > .btn-seoq.dropdown-toggle:focus,
     .open > .btn-seoq.dropdown-toggle.focus {
-      color: #FFF;
+      color: #FFF !important;
       background-color: #ce6e01;
       border-color: #764004; }
   .btn-seoq:active, .btn-seoq.active,
@@ -8625,7 +8625,37 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
     border-color: #f18308; }
   .btn-seoq .badge {
     color: #fe9a28;
-    background-color: #FFF; }
+    background-color: #FFF !important; }
+  .btn-seoq:focus, .btn-seoq.focus {
+    color: #FFF !important;
+    background-color: #f28101;
+    border-color: #c06806; }
+  .btn-seoq:hover {
+    text-decoration: none !important;
+    color: #FFF !important;
+    background-color: #f28101 !important;
+    border-color: #c06806 !important; }
+  .btn-seoq:active, .btn-seoq.active,
+  .open > .btn-seoq.dropdown-toggle {
+    color: #FFF !important;
+    background-color: #f28101;
+    border-color: #c06806; }
+    .btn-seoq:active:hover, .btn-seoq:active:focus, .btn-seoq:active.focus, .btn-seoq.active:hover, .btn-seoq.active:focus, .btn-seoq.active.focus,
+    .open > .btn-seoq.dropdown-toggle:hover,
+    .open > .btn-seoq.dropdown-toggle:focus,
+    .open > .btn-seoq.dropdown-toggle.focus {
+      color: #FFF !important;
+      background-color: #ce6e01;
+      border-color: #9d5505; }
+  .btn-seoq:active, .btn-seoq.active,
+  .open > .btn-seoq.dropdown-toggle {
+    background-image: none; }
+  .btn-seoq.disabled:hover, .btn-seoq.disabled:focus, .btn-seoq.disabled.focus, .btn-seoq[disabled]:hover, .btn-seoq[disabled]:focus, .btn-seoq[disabled].focus,
+  fieldset[disabled] .btn-seoq:hover,
+  fieldset[disabled] .btn-seoq:focus,
+  fieldset[disabled] .btn-seoq.focus {
+    background-color: #fe9a28;
+    border-color: #f18308; }
 
 .btn-seoq-lb {
   color: #FFF;
