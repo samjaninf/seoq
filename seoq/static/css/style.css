@@ -8958,3 +8958,73 @@ footer {
             vertical-align: middle; }
       footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-md-2 {
         display: none; } }
+
+.slider-on-off {
+  display: block;
+  clear: both;
+  margin-top: 20px;
+  padding-bottom: 20px; }
+  .slider-on-off p {
+    float: left;
+    margin-left: 10px; }
+  .slider-on-off .onoffswitch {
+    position: relative;
+    width: 60px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    float: left; }
+  .slider-on-off .onoffswitch-checkbox {
+    display: none; }
+  .slider-on-off .onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 20px; }
+  .slider-on-off .onoffswitch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s; }
+  .slider-on-off .onoffswitch-inner:before, .slider-on-off .onoffswitch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 25px;
+    padding: 0;
+    line-height: 25px;
+    font-size: 14px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box; }
+  .slider-on-off .onoffswitch-inner:before {
+    content: "Yes";
+    background-color: #499c17;
+    color: #FFFFFF;
+    padding-right: 29px;
+    text-align: right; }
+  .slider-on-off .onoffswitch-inner:after {
+    content: "No";
+    padding-right: 8px;
+    background-color: #fe9a28;
+    color: #FFFFFF;
+    text-align: right; }
+  .slider-on-off .onoffswitch-switch {
+    display: block;
+    width: 25px;
+    margin: 2px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 31px;
+    border: 1px solid #999999;
+    border-radius: 20px;
+    transition: all 0.3s ease-in 0s;
+    margin-top: 1px;
+    margin-bottom: 6px; }
+  .slider-on-off .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0; }
+  .slider-on-off .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; }
