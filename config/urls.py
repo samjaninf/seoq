@@ -8,6 +8,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from balystic import views as balystic_views
+from seoq.core import views as core_views
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'),
@@ -18,7 +19,7 @@ urlpatterns = [
     url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='account_login'),
     url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='balystic_login'),
     url(r'^accounts/logout/$', balystic_views.LogoutView.as_view(), name='balystic_logout'),
-    url(r'^seo-directory/$', TemplateView.as_view(template_name='pages/users_directory_page.html'),
+    url(r'^seo-directory/$', core_views.SEODirectoryUserList.as_view(),
         name='directory'),
     url(r'^website-owners/$', TemplateView.as_view(template_name='pages/owners.html'),
         name='owners'),
