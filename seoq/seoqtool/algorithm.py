@@ -98,10 +98,9 @@ class Algorithm(object):
     def getKeywordClass(self, url, keyword, ip=1223):
         self.scraper = QscraperSEOQTool(url, keyword, ip)
 
-    def getKeywordScore(self, url, keyword):
-        self.getKeywordClass(url, keyword)
+    def getKeywordScore(self, keyword):
         score = 100
-        score = self.getSiteScore(url)
+        score = self.getSiteScore()
         score = score + (
             (self.scraper.calculate_headings() - 5) * self.keyVar / 2)
         score = score + (self.scraper.calc_tlinks() - 5) * self.keyVar / 3

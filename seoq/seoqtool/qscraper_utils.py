@@ -21,6 +21,7 @@ class JSONPrint(object):
                                 'depth': depth,
                                 'ip': ip})
         data = r.json()
+        print data
         job_id = data['job_id']  # gets job id
         # get status of the job
         getRequest = requests.get(
