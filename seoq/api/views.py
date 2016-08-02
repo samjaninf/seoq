@@ -12,6 +12,7 @@ from seoq.seoqtool.models import Report
 class SiteFormView(APIView):
     """
     View that creates the report and returns its pk
+    format https://example.org
     """
 
     def post(self, request):
@@ -34,7 +35,7 @@ class SiteFormView(APIView):
                 {'error': 'url required'},
                 status=status.HTTP_400_BAD_REQUEST)
         netloc = url.replace(
-            'https://', '').replace('http://', '')
+            'https://', '').replace('www.', '').replace('http://', '')
         if request.user.is_authenticated():
             report = Report.objects.create(netloc=netloc, user=request.user)
         else:
@@ -50,7 +51,9 @@ class KeywordsScoreView(APIView):
         if keywords is None:
             raise Http404
         report = get_object_or_404(Report, pk=pk)
-        keyword_score = Algorithm().getKeywordScore(report.netloc, keywords)
+        keyword_score = Algorithm(
+            report.netloc).getKeywordScore(report.netloc, keywords)
+        report.refresh_from_db()
         report.keyword_score = keyword_score
         report.save()
         return Response({'redirect_url': report.get_absolute_url()})
@@ -61,7 +64,8 @@ class SiteScoreView(APIView):
     def post(self, request, format=None):
         pk = request.POST.get('pk', None)
         report = get_object_or_404(Report, pk=pk)
-        score = Algorithm().getSiteScore(report.netloc)
+        score = Algorithm(report.netloc).getSiteScore()
+        report.refresh_from_db()
         report.site_score = score
         report.save()
         return Response({'redirect_url': report.get_absolute_url()})
