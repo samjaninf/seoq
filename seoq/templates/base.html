@@ -75,9 +75,9 @@
             <li class="dropdown p-0-6">
                 <a href="javascript:;" id="user-dropdown" class="dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                    {% if request.user.profile_picture %}
-                      <img src="{{ request.user.profile_picture.url }}" alt="Profile picture">
+                      <img src="{{ request.user.profile_picture.url }}" alt="Profile picture" height="50" width="50" class="img-responsive img-circle">
                    {% else %}
-                      <img src="{% static 'images/person.png' %}" alt="Profile picture" class="img-respnsive img-circle">
+                      <img src="{% static 'images/person.png' %}" alt="Profile picture" class="img-responsive img-circle">
                     {% endif %}
                   <span class="caret"><span>
                 </a>

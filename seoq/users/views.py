@@ -7,6 +7,7 @@ from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import User
+from .forms import EditProfileForm
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -26,9 +27,7 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
 
-    fields = ['name', 'fb_account', 'twitter_account',
-             'linkedin_account', 'title', 'about',
-             'profile_picture']
+    form_class = EditProfileForm
 
     # we already imported User in the view code above, remember?
     model = User
