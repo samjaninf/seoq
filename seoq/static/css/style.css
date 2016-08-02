@@ -113,6 +113,9 @@ than we are going to use in website
 .m-t-90 {
   margin-top: 90px; }
 
+.p-t-0 {
+  padding-top: 0px; }
+
 .p-0 {
   padding: 0px !important; }
 
@@ -121,6 +124,9 @@ than we are going to use in website
 
 .p-20 {
   padding: 20px; }
+
+.p-50-0 {
+  padding: 50px 0px; }
 
 .p-t-70 {
   padding-top: 70px; }
@@ -210,8 +216,8 @@ p {
   font-size: 17px; }
 
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1282,6 +1288,7 @@ a {
     color: #485356;
     text-decoration: underline; }
   a:focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -2493,6 +2500,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -2997,6 +3005,7 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -8464,6 +8473,19 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
   transition: opacity 0.5s ease-out; }
   .owners #team-owners .container .row .col-sm-12 .col-xs-6 img:hover {
     opacity: 1; }
+
+.score .container .row #container {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin-top: 30px; }
+
+.score .container .row .btn-facebook {
+  background: #2E609B; }
+
+.score .container .row .btn-twitter {
+  background: #00C3F3; }
 
 .navbar-seoq {
   background-color: #7dd0e3;

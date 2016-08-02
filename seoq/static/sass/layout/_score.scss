@@ -1,0 +1,25 @@
+.score{
+  .container{
+    .row{
+      #container {
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        margin-top: 30px;
+      }
+      .btn-facebook {
+        background: #2E609B;
+        &:hover{
+          color: #fff;
+        }
+      }
+      .btn-twitter {
+        background: #00C3F3;
+        &:hover{
+          color: #fff;
+        }
+      }
+    }
+  }
+}
