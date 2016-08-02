@@ -82,6 +82,7 @@
     background-color: transparent;
     color: inherit;
     transition: all .5s;
+    font-size: 15px;
 }
 .btn-primary.btn-outline:hover,
 .btn-success.btn-outline:hover,
@@ -108,5 +109,14 @@
 
 .btn-danger.btn-outline {
     color: #d9534f;
+}
+.btn-muted{
+  @include button-variant-ligth($gray-light, $gray-light, $gray-light);
+  opacity: 0.5;
+  transition: all .5s;
+  &:hover{
+    color: #fff;
+  }
+  font-size: 15px;
 }
 

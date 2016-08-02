@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static i18n %}
+
 {% block content %}
 <div class="container" ng-controller="keywordScoreController">
 	{% if no_crawl_allowed %}
@@ -54,25 +54,6 @@
 				<button onclick="sendReport();">Share Score</button>
 			</div>
 		</div>
-		<section>
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<p><span>3</span><small>/3</small></p>
-					<h4>Crawlability</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae assumenda dolor asperiores soluta commodi temporibus cum minus ipsam, dolore voluptatum eius explicabo laudantium totam dolorum id sequi veniam, corporis laboriosam.</p>
-					<img src="{% static 'images/fish-2.gif' %}" alt="Fish animation">
-					<a class="btn btn-default" href="#" role="button">Link</a>
-					<a class="btn btn-default" href="#" role="button">Link</a>
-					<a class="btn btn-default" href="#" role="button">Link</a>
-				</div>
-			</div>
-		</section>
-		<section>
-			<div class="row"></div>
-		</section>
-		<section>
-			<div class="row"></div>
-		</section>
 		<div class="row">
 			<div class="col-md-12 table-responsive text-center">
 			<table class="table">

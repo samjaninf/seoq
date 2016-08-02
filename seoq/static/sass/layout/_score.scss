@@ -8,21 +8,55 @@
         position: relative;
         margin-top: 30px;
       }
-      .btn-facebook {
-        background: #2E609B;
-        &:hover{
-          color: #fff;
-        }
-      }
-      .btn-twitter {
-        background: #00C3F3;
-        &:hover{
-          color: #fff;
-        }
-      }
     }
   }
 }
 .score-number{
   font-size: 28px;
+  color: $gray;
+}
+.btn-facebook {
+  background: #2E609B;
+  &:hover{
+    color: #fff;
+  }
+}
+.btn-twitter {
+  background: #00C3F3;
+  &:hover{
+    color: #fff;
+  }
+}
+.report{
+  h2, h3{
+    color: $gray;
+    font-weight: lighter;
+  }
+  @media(max-width: $screen-xs-max) {
+    .btn{
+      margin-bottom: 5px;
+    }
+  }
+  #team{
+    .container{
+      .row{
+        .col-md-8.col-md-offset-2{
+          .col-xs-6{
+            margin-bottom: 40px;
+            img{
+              opacity: 0.6;
+              border:3px solid #E0E4E5;
+              &:hover{
+                opacity: 1;
+              }
+            }
+            p{
+              margin-top: 10px;
+              margin-bottom: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
