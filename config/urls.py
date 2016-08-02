@@ -30,6 +30,12 @@ urlpatterns = [
     url(r'^seo-students/$', TemplateView.as_view
         (template_name='pages/students.html'),
         name='students'),
+    url(r'^seo-score/$', TemplateView.as_view
+        (template_name='pages/score.html'),
+        name='score'),
+
+    url(r'^example-report/$', TemplateView.as_view(template_name='seoqtool/report_test.html'),
+        name='example_report'),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),

@@ -106,7 +106,8 @@ gulp.task('scripts-vendor', function() {
   return gulp.src([
       paths.vendor + '/jquery/dist/jquery.js',
       paths.vendor + '/bootstrap/dist/js/bootstrap.js',
-      paths.vendor + '/angular/angular.js'
+      paths.vendor + '/angular/angular.js',
+      paths.vendor + '/progressbar.js/dist/progressbar.js'
     ])
     .pipe(plumber()) // Checks for errors
     .pipe(concat('components.js'))
