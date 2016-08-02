@@ -1,19 +1,52 @@
 'use strict';
 
 angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', function ($scope, $http) {
-	$scope.request_data = {'url': document.getElementById('netloc').innerHTML,
-	'keyword': ''}
-	$scope.obtained_keyword_score = 0;
-	$scope.keyword_score = function () {
-		var netloc = $scope.request_data.url;
-		var keywords = $scope.request_data.keyword;
-		$http.get("/api/kw-score/"+'?url='+ netloc +'&keywords=' + keywords)
-		.then(function(response) {
-			var obtained_site_score = document.getElementById('site_score').innerHTML;
-			var obtained_keyword_score = response.data.keyword_score;
-			document.getElementById('kw_score').innerHTML = parseInt(obtained_keyword_score)
-			document.getElementById('total_score').innerHTML = parseInt(obtained_keyword_score) +
-				parseInt(obtained_site_score)
-		});
-	};
+	$scope.request_data = {
+		'url': '',
+		'keyword': ''
+	}
+	$scope.animation = false;
+	$scope.startReport = function(){
+		var keyword_disabled = document.getElementById('keywords').getAttribute('disabled')
+		var url = '/api/start-report/';
+		var data = {
+			url: $scope.request_data.url
+		};
+		 $http.post(url, data)
+            .success(function (data, status) {
+            	$scope.animation = true;
+            	$scope.analysis_message = "we are getting your site score";
+            	var obtained_pk = data.report;
+            	url = '/api/site-score/';
+            	data = {
+            		pk: obtained_pk
+            	}
+		 		$http.post(url, data)
+            	.success(function (data, status) {
+            		var redirect_url = data.redirect_url;
+            		if (keyword_disabled != null) {
+            			window.location.assign(redirect_url);
+            		}else{
+            			$scope.analysis_message = "we are done with your site score, now we are getting your keyword phrase score";
+            			url = '/api/kw-score/';
+            			data = {
+            				keywords: $scope.request_data.keyword,
+            				pk: obtained_pk
+            			}
+            			$http.post(url, data)
+            			.success(function (data, status) {
+            				var redirect_url = data.redirect_url;
+            				window.location.assign(redirect_url);
+            			}).error(function (data, status) {
+
+            			});
+            		};
+            	}).error(function (data, status) {
+
+            	});
+            })
+            .error(function (data, status) {
+
+            });
+	}
 }]);

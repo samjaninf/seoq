@@ -16,7 +16,8 @@ class SiteFormView(APIView):
     """
 
     def post(self, request):
-        url = request.POST.get('url', None)
+        obtained_json = request.data
+        url = obtained_json.get('url', None)
         response = requests.get(url, verify=False)
         if response.status_code == 403:
             return Response(
@@ -46,8 +47,9 @@ class SiteFormView(APIView):
 class KeywordsScoreView(APIView):
 
     def post(self, request, format=None):
-        pk = request.POST.get('pk', None)
-        keywords = request.POST.get('keywords', None)
+        obtained_json = request.data
+        pk = obtained_json.get('pk', None)
+        keywords = obtained_json.get('keywords', None)
         if keywords is None:
             raise Http404
         report = get_object_or_404(Report, pk=pk)
@@ -63,7 +65,8 @@ class KeywordsScoreView(APIView):
 class SiteScoreView(APIView):
 
     def post(self, request, format=None):
-        pk = request.POST.get('pk', None)
+        obtained_json = request.data
+        pk = obtained_json.get('pk', None)
         report = get_object_or_404(Report, pk=pk)
         report.analysis = {}
         score = Algorithm(report.netloc).getSiteScore()
