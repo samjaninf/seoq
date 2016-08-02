@@ -1,78 +1,105 @@
 {% extends "base.html" %}
 {% load static i18n %}
+{% block title %}Report{% endblock title %}
+{% block nav_class %}navbar-about{% endblock nav_class %}
+{% block logo %}
+<img src="{% static "images/logo-b.png" %}" alt="SEOQ Logo">
+{% endblock logo %}
 {% block content %}
-<div class="container" ng-controller="keywordScoreController">
-	{% if no_crawl_allowed %}
-		<h3>Your site does not allow to be crawled! Without this, no search engine will be able
-		to find you!</h3>
-	{% elif server_error %}
-		<h3>Your site returned a 500 code, server error. Please, check everything is working fine</h3>
-	{% elif page_not_found %}
-		<h3>The page you are trying to analyze does not exist. It returned 404 status code, page not found</h3>
-	{% else %}
-		<h3 class="text-center">Score for <span id="netloc">{{ netloc }}</span></h3>
+<section class="bg-primary p-50-0 score">
+  <div class="container">
+    <div class="row">
+      <p class="text-center m-0">Score for:</p>
+      <h3 class="text-center text-white m-0">www.website.com</h3>
+      <div id="container"></div>
+      <div class="m-t-10 text-center">
+        <p class="m-b-10 m-t-10">Share score:</p>
+        <a href="http://www.facebook.com/dialog/share?display=popup&amp;href={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}&amp;app_id=1533371110295720" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
+          <i class="fa fa-facebook-f m-r-5"></i>
+          Facebook
+        </a>
+        <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20web%20accessibility%20and%20Section%20508%20compliance%20report%20on%20508Q.com%20for%20{{ netloc }}&amp;via=inQbation&amp;lang=en" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
+          <i class="fa fa-twitter m-r-5"></i>
+          Twitter
+        </a>
+      </div>
+      <div class="col-sm-12 col-md-8 col-md-offset-2 p-t-30">
+        <div class="col-sm-4 col-md-4">
+          <img src="{% static "images/fish-2.gif" %}" alt="fish" class="center-block img-responsive">
+          <p class="text-center m-0 m-t-10">2 Passed</p>
+        </div>
+        <div class="col-sm-4 col-md-4">
+          <img src="{% static "images/fish-3.gif" %}" alt="fish" class="center-block img-responsive">
+          <p class="text-center m-0 m-t-10">1 To improve</p>
+          </div>
+        <div class="col-sm-4 col-md-4">
+          <img src="{% static "images/fish-1.gif" %}" alt="fish" class="center-block img-responsive">
+          <p class="text-center m-0 m-t-10">1 Error</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+	<div class="container">
 		<div class="row">
-			<div class="col-md-12 text-center">
-				<h4 id='total_score'>{% if total_score %}{{ total_score }}{% else %}{{ score }}{% endif %}</h4>
-			</div>
-			<div class="col-md-4">
-				your keyword score: <span id='kw_score'>{% if keyword_score %}{{ keyword_score }}{% else %}0{% endif %}</span>
-			</div>
-			<div class="col-md-4">
-				your site score: <span id="site_score">{{ score }}</span>
-			</div>
-		{% if not keyword_score %}
-		<div class="row">
-			<div class="col-md-12">
-					<div class="col-md-6">
-						<input type="text" ng-model="request_data.keyword">
-					</div>
-					<div class="col-md-6">
-						<button ng-click="keyword_score()" ng-disabled="!request_data.keyword">kw analysis</button>
-					</div>
-
-					{% comment %}
-					do you want to know your SEOQ for an specific keyword?
-					<a href="">sign up</a>
-						to add users
-					{% endcomment %}
-			</div>
-		</div>
-		{% endif %}
-		</div>
-		<div class="row">
-			<div class="col-md-3">
-				2 passed
-			</div>
-			<div class="col-md-3">
-				1 to improve
-			</div>
-			<div class="col-md-3">
-				1 Error
-			</div>
-			<div class="col-md-3">
-				<button onclick="sendReport();">Share Score</button>
-			</div>
-		</div>
-		<section>
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<p><span>3</span><small>/3</small></p>
-					<h4>Crawlability</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae assumenda dolor asperiores soluta commodi temporibus cum minus ipsam, dolore voluptatum eius explicabo laudantium totam dolorum id sequi veniam, corporis laboriosam.</p>
-					<img src="{% static 'images/fish-2.gif' %}" alt="Fish animation">
-					<a class="btn btn-default" href="#" role="button">Link</a>
-					<a class="btn btn-default" href="#" role="button">Link</a>
-					<a class="btn btn-default" href="#" role="button">Link</a>
+			<div class="col-md-10 col-md-offset-1 text-center m-t-50">
+				<p><span class="score-number">3</span><small class="text-muted">/3</small></p>
+				<h3 class="m-b-30">Crawlability</h3>
+				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae assumenda dolor asperiores soluta commodi temporibus cum minus ipsam, dolore voluptatum eius explicabo laudantium totam dolorum id sequi veniam, corporis laboriosam.</p>
+				<img src="{% static 'images/fish-2.gif' %}" alt="Fish animation" class="img-responsive center-block m-y-25" width="190" height="140">
+				<div class="row">
+					<div class="col-md-4"><a class="btn btn-info btn-lg btn-block btn-outline" href="#" role="button">Link</a></div>
+					<div class="col-md-4"><a class="btn btn-info btn-lg btn-block btn-outline" href="#" role="button">Link</a></div>
+					<div class="col-md-4"><a class="btn btn-info btn-lg btn-block btn-outline" href="#" role="button">Link</a></div>
 				</div>
 			</div>
-		</section>
-		<section>
-			<div class="row"></div>
-		</section>
-		<section>
-			<div class="row"></div>
-		</section>
+			<div class="col-md-10 col-md-offset-1 text-center m-t-50">
+				<p><span class="score-number">3</span><small class="text-muted">/3</small></p>
+				<h3 class="m-b-30">Credibility</h3>
+				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae assumenda dolor asperiores soluta commodi temporibus cum minus ipsam, dolore voluptatum eius explicabo laudantium totam dolorum id sequi veniam, corporis laboriosam.</p>
+				<img src="{% static 'images/fish-2.gif' %}" alt="Fish animation" class="img-responsive center-block m-y-25" width="190" height="140">
+				<div class="row">
+					<div class="col-md-4"><a class="btn btn-info btn-outline btn-lg btn-block" href="#" role="button">Link</a></div>
+					<div class="col-md-4"><a class="btn btn-info btn-outline btn-lg btn-block" href="#" role="button">Link</a></div>
+					<div class="col-md-4"><a class="btn btn-info btn-outline btn-lg btn-block" href="#" role="button">Link</a></div>
+				</div>
+			</div>
+			<div class="col-md-10 col-md-offset-1 text-center m-t-50">
+				<p><span class="score-number">3</span><small class="text-muted">/3</small></p>
+				<h3 class="m-b-30">Conversation</h3>
+				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae assumenda dolor asperiores soluta commodi temporibus cum minus ipsam, dolore voluptatum eius explicabo laudantium totam dolorum id sequi veniam, corporis laboriosam.</p>
+				<img src="{% static 'images/fish-3.gif' %}" alt="Fish animation" class="img-responsive center-block m-y-25" width="190" height="140">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-2"><a class="btn btn-info btn-outline btn-lg btn-block" href="#" role="button">Link</a></div>
+					<div class="col-md-4"><a class="btn btn-danger btn-outline btn-lg btn-block" href="#" role="button">Link</a></div>
+				</div>
+			</div>
+			<div class="col-md-10 col-md-offset-1 text-center m-t-50 m-b-50">
+				<p><span class="score-number">3</span><small class="text-muted">/3</small></p>
+				<h3 class="m-b-30">Conversion</h3>
+				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae assumenda dolor asperiores soluta commodi temporibus cum minus ipsam, dolore voluptatum eius explicabo laudantium totam dolorum id sequi veniam, corporis laboriosam.</p>
+				<img src="{% static 'images/fish-3.gif' %}" alt="Fish animation" class="img-responsive center-block m-y-25" width="190" height="140">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-2"><a class="btn btn-danger btn-outline btn-lg btn-block" href="#" role="button">Link</a></div>
+					<div class="col-md-4"><a class="btn btn-danger btn-outline btn-lg btn-block" href="#" role="button">Link</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="container">
+		<div class="row"></div>
+	</div>
+</section>
+<section>
+	<div class="container">
+		<div class="row">
+			
+		</div>
+	</div>
+</section>
 		<div class="row">
 			<div class="col-md-12 table-responsive text-center">
 			<table class="table">
@@ -251,11 +278,45 @@
 			</table>
 			</div>
 		</div>
-	{% endif %}
 </div>
 {% endblock content %}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+{% block extra_javascript %}
+<script>
+// progressbar.js@1.0.0 version is used
+// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+  var bar = new ProgressBar.Circle(container, {
+
+    color: '#fff',
+    // This has to be the same size as the maximum width to
+    // prevent clipping
+    strokeWidth: 4,
+    trailWidth: 1,
+    easing: 'easeInOut',
+    duration: 1400,
+    text: {
+      autoStyleContainer: false
+    },
+    from: { color: '#fff', width: 1 },
+    to: { color: '#fff', width: 4 },
+    // Set default step function for all animate calls
+    step: function(state, circle) {
+      circle.path.setAttribute('stroke', state.color);
+      circle.path.setAttribute('stroke-width', state.width);
+
+      var value = Math.round(circle.value() * 100);
+      if (value === 0) {
+        circle.setText('');
+      } else {
+        circle.setText(value);
+      }
+
+    }
+  });
+  bar.text.style.fontSize = '4rem';
+  bar.text.style.fontWeight = 'bold';
+  bar.animate(1.0);  // Number from 0.0 to 1.0
+</script>
 <script>
 function sendReport() {
     var email = prompt("Please enter your email", "");
@@ -278,5 +339,5 @@ function sendReport() {
 
     }
 }
-
 </script>
+{% endblock extra_javascript %}

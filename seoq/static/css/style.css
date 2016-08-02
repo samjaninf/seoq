@@ -74,6 +74,10 @@ than we are going to use in website
 .m-0 {
   margin: 0px; }
 
+.m-y-25 {
+  margin-top: 25px;
+  margin-bottom: 25px; }
+
 .m-b-30 {
   margin-bottom: 30px; }
 
@@ -216,8 +220,8 @@ p {
   font-size: 17px; }
 
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1288,7 +1292,6 @@ a {
     color: #485356;
     text-decoration: underline; }
   a:focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -2500,7 +2503,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -3005,7 +3007,6 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -8483,9 +8484,16 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
 
 .score .container .row .btn-facebook {
   background: #2E609B; }
+  .score .container .row .btn-facebook:hover {
+    color: #fff; }
 
 .score .container .row .btn-twitter {
   background: #00C3F3; }
+  .score .container .row .btn-twitter:hover {
+    color: #fff; }
+
+.score-number {
+  font-size: 28px; }
 
 .navbar-seoq {
   background-color: #7dd0e3;
@@ -8959,6 +8967,33 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
   .btn-danger-ligth .badge {
     color: #d9534f;
     background-color: #fff; }
+
+.btn-outline {
+  background-color: transparent;
+  color: inherit;
+  transition: all .5s; }
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+  color: #fff; }
+
+.btn-primary.btn-outline {
+  color: #428bca; }
+
+.btn-success.btn-outline {
+  color: #5cb85c; }
+
+.btn-info.btn-outline {
+  color: #5bc0de; }
+
+.btn-warning.btn-outline {
+  color: #f0ad4e; }
+
+.btn-danger.btn-outline {
+  color: #d9534f; }
 
 footer {
   color: #6b7b80; }
