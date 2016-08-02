@@ -1,0 +1,28 @@
+{% load static i18n %}
+<div class="col-md-10 col-md-offset-1 text-center m-t-50 m-b-50">
+	<p><span class="score-number">{{numeric_info.conversion.success }}</span><small class="text-muted">/{{numeric_info.conversion.total }}</small></p>
+	<h3 class="m-b-30">Conversion</h3>
+	<p class="text-muted">{% if report.analysis.conversion.robots == "error" %}Make sure no robots are disallowed{% else %}Robots file activated{% endif %}</p>
+	<p class="text-muted">{% if report.analysis.conversion.sitemap == 'error' %}Make sure you have a sitemap{% else %}Sitemap found{% endif %}</p>
+	<p class="text-muted">{% if report.analysis.conversion.speed == 'to improve' %}Reduce loading times by compressing images and files, optimizing caching and optimizing your css/js files{% else %}The speed of your site is above average{% endif %}</p>
+
+	{% if numeric_info.conversion.success == numeric_info.conversion.max %}
+	  <img src="{% static "images/fish-2.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
+	{% elif numeric_info.conversion.to_improve == numeric_info.conversion.max %}
+	  <img src="{% static "images/fish-5.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
+	{% else %}
+	  <img src="{% static "images/fish-1.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
+	{% endif %}
+
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">
+			<a class="btn btn-danger btn-outline btn-lg btn-block" href="#" role="button">Google local listing</a>
+		</div>
+		<div class="col-sm-4">
+			<a class="btn 
+			{% if report.analysis.conversion.google_listing == 'error' %}btn-danger
+			{% else %}btn-success
+			{% endif %} btn-outline btn-lg btn-block" href="#" role="button">SERP image thing</a>
+		</div>
+	</div>
+</div>
