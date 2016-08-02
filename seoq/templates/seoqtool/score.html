@@ -13,7 +13,7 @@
     <div class="row">
       <p class="text-center m-0">Score for:</p>
       <h3 class="text-center text-white m-0">www.website.com</h3>
-      <div id="container"></div>
+      <div id="container">{{ total_score }}</div>
       <div class="m-t-10 text-center">
         <p class="m-b-10 m-t-10">Share score:</p>
         <a href="http://www.facebook.com/dialog/share?display=popup&amp;href={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}&amp;app_id=1533371110295720" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
@@ -28,15 +28,15 @@
       <div class="col-sm-12 col-md-8 col-md-offset-2 p-t-30">
         <div class="col-sm-4 col-md-4">
           <img src="{% static "images/fish-2.gif" %}" alt="fish" class="center-block img-responsive">
-          <p class="text-center m-0 m-t-10">2 Passed</p>
+          <p class="text-center m-0 m-t-10">{{ passed }} Passed</p>
         </div>
         <div class="col-sm-4 col-md-4">
           <img src="{% static "images/fish-3.gif" %}" alt="fish" class="center-block img-responsive">
-          <p class="text-center m-0 m-t-10">1 To improve</p>
+          <p class="text-center m-0 m-t-10">{{ to_improve }} To improve</p>
           </div>
         <div class="col-sm-4 col-md-4">
           <img src="{% static "images/fish-1.gif" %}" alt="fish" class="center-block img-responsive">
-          <p class="text-center m-0 m-t-10">1 Error</p>
+          <p class="text-center m-0 m-t-10">{{ error }} Error</p>
           </div>
       </div>
     </div>
@@ -46,6 +46,8 @@
 {% include "seoqtool/report_elements/_crawlability.html" %}
 {% include "seoqtool/report_elements/_credibility.html" %}
 {% include "seoqtool/report_elements/_content.html" %}
+{% include "seoqtool/report_elements/_code.html" %}
+{% include "seoqtool/report_elements/_conversion.html" %}
 </div>
 {% endblock content %}
 {% block extra_javascript %}

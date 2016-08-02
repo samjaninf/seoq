@@ -43,7 +43,6 @@ class Algorithm(object):
         report = {
             'crawlability': {},
             'credibility': {},
-            'code': {},
             'conversation': {},
             'competition': {},
             'conversion': {}
@@ -167,10 +166,10 @@ class Algorithm(object):
             report['crawlability']['sitemap'] = 'error'
         if self.local.main(self.netloc) == 'This listing does exist':
             score = score + self.listingVar
-            report['conversation']['google_listing'] = 'passed'
+            report['conversion']['google_listing'] = 'passed'
         else:
             score = score - self.listingVar
-            report['conversation']['google_listing'] = 'error'
+            report['conversion']['google_listing'] = 'error'
         if self.mobile.checkMobileFriendly(self.netloc) is True:
             score = score + self.listingVar
         else:
@@ -230,12 +229,12 @@ class Algorithm(object):
         else:
             report['content']['cms'] = 'error'
 
-        if title_score < 3:
-            report['code']['kw_in_title'] = 'error'
-        elif title_score < 7:
-            report['code']['kw_in_title'] = 'to improve'
+        if url_score < 3:
+            report['code']['kw_in_url'] = 'error'
+        elif url_score < 7:
+            report['code']['kw_in_url'] = 'to improve'
         else:
-            report['code']['kw_in_title'] = 'passed'
+            report['code']['kw_in_url'] = 'passed'
 
         if meta_description_score < 3:
             report['code']['kw_in_meta_description'] = 'error'

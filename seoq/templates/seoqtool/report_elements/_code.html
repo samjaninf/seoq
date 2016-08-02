@@ -1,0 +1,28 @@
+{% load static i18n %}
+<div class="row">
+      <div class="col-md-12 table-responsive text-center">
+      <table class="table">
+        <tr>
+          <th>{{ numeric_info.code.success }}/{{ numeric_info.code.total }}</th>
+          <th>Code</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>Description about code</td>
+          <td>
+            <p>{% if report.analysis.code.kw_in_meta_description == "to improve" %}Nice, you have some keywords in your meta description. info about how to improve keywords in meta description {% elif report.analysis.code.kw_in_meta_description == "error" %}info about how to improve keywords in meta description{% else %}your meta description contains a lot of keyword phrases{% endif %}</p>
+            <p>{% if report.analysis.code.kw_in_url == "to improve" %}Nice, you have some keywords in your url. info about how to improve keywords in url {% elif report.analysis.code.kw_in_url == "error" %}info about how to improve keywords in url{% else %}your meta description contains a lot of keyword phrases{% endif %}</p>
+          </td>
+          <td>
+            {% if numeric_info.code.success == numeric_info.code.max %}
+              <img src="{% static "images/fish-2.gif" %}" alt="fish" class="center-block img-responsive">
+            {% elif numeric_info.code.to_improve == numeric_info.code.max %}
+              <img src="{% static "images/fish-3.gif" %}" alt="fish" class="center-block img-responsive">
+            {% else %}
+              <img src="{% static "images/fish-1.gif" %}" alt="fish" class="center-block img-responsive">
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+      </div>
+</div>
