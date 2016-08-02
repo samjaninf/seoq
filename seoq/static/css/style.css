@@ -68,6 +68,9 @@ than we are going to use in website
 .font-weight-bold {
   font-weight: bold; }
 
+.text-light {
+  font-weight: lighter; }
+
 .font-weight-bold-5 {
   font-weight: 500; }
 
@@ -8505,9 +8508,24 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
   .btn-twitter:hover {
     color: #fff; }
 
-.report h3 {
+.report h2, .report h3 {
   color: #555555;
   font-weight: lighter; }
+
+@media (max-width: 767px) {
+  .report .btn {
+    margin-bottom: 5px; } }
+
+.report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 {
+  margin-bottom: 40px; }
+  .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img {
+    opacity: 0.6;
+    border: 3px solid #E0E4E5; }
+    .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img:hover {
+      opacity: 1; }
+  .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 p {
+    margin-top: 10px;
+    margin-bottom: 0px; }
 
 .navbar-seoq {
   background-color: #7dd0e3;
