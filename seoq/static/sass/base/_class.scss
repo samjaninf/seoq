@@ -133,3 +133,24 @@ hr{
     top: 25px !important;
   }
 }
+.responsive{
+  @media(min-width:$screen-md-min){
+    display: none !important;
+  }
+}
+.form-horizontal .form-group{
+  margin-left:0px !important;
+  margin-right:0px !important;
+}
+.dropdown{
+  #user-dropdown{
+    background: transparent;
+    &:hover,&:focus{
+      text-decoration: none !important;
+      background: transparent;
+    }
+  }
+  .dropdown-menu{
+    top: 71px;
+  }
+}

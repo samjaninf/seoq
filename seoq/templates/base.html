@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}SEO Quotient{% endblock title %}</title>
+    <title>{% block empty_title %}{% block title %}{% endblock title %} | SEO Quotient™{% endblock empty_title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="SEO Quotient™ provides SEO tools for both website owners and online marketing professionals to diagnose your website and create an action plan.">
     <meta name="author" content="">
@@ -66,12 +66,18 @@
               <a href="{% url 'students' %}">SEO Students</a>
             </li>
             {% if request.user.is_authenticated %}
-            <li class="dropdown">
-                <a href="javascript:;" id="user-dropdown" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <li class="responsive">
+              <a href="{% url 'users:detail' request.user.username %}">{% trans "See Profile" %}</a>
+            </li>
+            <li class="responsive">
+              <a href="{% url 'balystic_logout' %}?next=/">{% trans "Sign out" %}</a>
+            </li>
+            <li class="dropdown p-0-6">
+                <a href="javascript:;" id="user-dropdown" class="dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                    {% if request.user.profile_picture %}
                       <img src="{{ request.user.profile_picture.url }}" alt="Profile picture">
                    {% else %}
-                      <img src="{% static 'img/508q_person.png' %}" alt="Profile picture">
+                      <img src="{% static 'images/person.png' %}" alt="Profile picture" class="img-respnsive img-circle">
                     {% endif %}
                   <span class="caret"><span>
                 </a>
