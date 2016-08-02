@@ -1,0 +1,44 @@
+<div class="row">
+      <div class="col-md-12 table-responsive text-center">
+      <table class="table">
+        <tr>
+          <th>Credibility</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>Description about credibility</td>
+          
+          <td>
+          <table class="table">
+            <tr>
+              <td>{% if report.analysis.credibility.backlinks_domain == "to improve" %}info about how to improve backlinks for the domain{% else %}your domain has a lot of backlinks{% endif %}</td>
+            </tr>
+            <tr>
+              <td>{% if report.analysis.credibility.backlinks_url == 'to improve' %}info about how to improve backlinks for the url{% else %}your url has a lot of backlinks{% endif %}</td>
+            </tr>
+            <tr>
+              <td>{% if report.analysis.credibility.edulinks_domain == 'to improve' %}info about how to improve .edu links for the domain{% else %}your domain has a lot of .edu backlinks{% endif %}</td>
+            </tr>
+            <tr>
+              <td>{% if report.analysis.credibility.edulinks_url == 'to improve' %}info about how to improve .edu links for the url{% else %}your url has a lot of .edu backlinks{% endif %}</td>
+            </tr>
+            <tr>
+              <td>{% if report.analysis.credibility.govlinks_domain == 'to improve' %}info about how to improve .gov links for the domain{% else %}your domain has a lot of .gov backlinks{% endif %}</td>
+            </tr>
+            <tr>
+              <td>{% if report.analysis.credibility.govlinks_url == 'to improve' %}info about how to improve .gov links for the url{% else %}your url has a lot of .gov backlinks{% endif %}</td>
+            </tr>
+            <tr>
+              <td>{% if report.analysis.credibility.https == 'error' %}Purchase an SSL license for your site{% else %}An SSL license was found for your site{% endif %}</td>
+            </tr>
+            <tr>
+              <td>{% if report.analysis.credibility.speed == 'to improve' %}improve your trustflow{% else %}your trust flow is fine{% endif %}</td>
+            </tr>
+          </table>
+          </td>
+          <td><i class="fa fa-heartbeat" aria-hidden="true"></i></td>
+        </tr>
+      </table>
+      </div>
+</div>

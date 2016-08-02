@@ -31,7 +31,7 @@ urlpatterns = [
         (template_name='pages/students.html'),
         name='students'),
     url(r'^seo-score/$', TemplateView.as_view
-        (template_name='pages/score.html'),
+        (template_name='seoqtool/score.html'),
         name='score'),
 
     url(r'^example-report/$', TemplateView.as_view(template_name='seoqtool/report_test.html'),
