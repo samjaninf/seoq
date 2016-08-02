@@ -4,14 +4,15 @@
 {% block title %}User: {{ object.username }}{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container fullscreen">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-8 col-sm-offset-2 m-b-30">
 
       <h2>{{ object.username }}</h2>
-      {% if object.name %}
-        <p>{{ object.name }}</p>
-      {% endif %}
+      <p><strong>Name of User:</strong> {{ object.name }}</p>
+      <p><strong>Name:</strong> {{ object.first_name }}</p>
+      <p><strong>Last Name:</strong> {{ object.last_name }}</p>
+      <p><strong>Email:</strong> {{ object.email }}</p>
     </div>
   </div>
 
