@@ -48,7 +48,7 @@ class QscraperSEOQTool(object):
     class to organize all qscraper seotool related
     methods
     """
-    def __init__(self, url, keywords, depth, ip, report=None):
+    def __init__(self, url, keywords, ip, depth=0, report=None):
         results = JSONPrint()
         self.url = url
         self.keywords = keywords

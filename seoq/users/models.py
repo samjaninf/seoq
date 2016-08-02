@@ -20,7 +20,7 @@ class User(AbstractUser):
     title = models.CharField(blank=True, max_length=255)
     about = models.TextField(_("About You"), blank=True, default='')
     profile_picture = models.ImageField(
-        null=True,
+        blank=True,
         upload_to='profile/')
 
     def __str__(self):
