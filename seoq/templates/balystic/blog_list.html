@@ -1,6 +1,14 @@
 {% extends "balystic/base.html" %}
 {% load i18n staticfiles date_string %}
 {% block title %}Blog{% endblock title %}
+
+{% block meta %}
+{% trans "" as title %}
+{% trans "" as description %}
+{% static "images/facebook-image-post.jpg" as image%}
+{% include "include/metatags.html" with title=title description=description image=image %}
+{% endblock meta %}
+
 {% block content %}
   <div class="container">
     <div class="row">
