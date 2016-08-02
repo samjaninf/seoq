@@ -8,21 +8,28 @@
         position: relative;
         margin-top: 30px;
       }
-      .btn-facebook {
-        background: #2E609B;
-        &:hover{
-          color: #fff;
-        }
-      }
-      .btn-twitter {
-        background: #00C3F3;
-        &:hover{
-          color: #fff;
-        }
-      }
     }
   }
 }
 .score-number{
   font-size: 28px;
+  color: $gray;
+}
+.btn-facebook {
+  background: #2E609B;
+  &:hover{
+    color: #fff;
+  }
+}
+.btn-twitter {
+  background: #00C3F3;
+  &:hover{
+    color: #fff;
+  }
+}
+.report{
+  h3{
+    color: $gray;
+    font-weight: lighter;
+  }
 }
