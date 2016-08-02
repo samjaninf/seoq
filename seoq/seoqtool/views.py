@@ -145,30 +145,6 @@ class VariableListView(ListView):
     template_name = 'seoqtool/variable_list.html'
 
 
-class SiteFormView(View):
-    """
-    View that return the basic report from an url,
-    without keywords score.
-    """
-    template_name = 'seoqtool/site_form.html'
-    formclass = ExampleForm
-
-    def get(self, request):
-        context = {'form': self.formclass(initial=request.GET)}
-        url = request.GET.get('url', None)
-        if url is None:
-            return render(request, self.template_name, context)
-        netloc = url.replace(
-            'https://', '').replace('http://', '')
-        if request.user.is_authenticated():
-            Report.objects.create(netloc=netloc, user=request.user)
-        else:
-            Report.objects.create(netloc=netloc)
-        return redirect(
-            'seoqtool:report',
-            netloc=netloc.replace('/', '--'))
-
-
 class ReportView(View):
 
     template_name = 'seoqtool/report.html'
