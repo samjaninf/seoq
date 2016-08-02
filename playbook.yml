@@ -34,7 +34,7 @@
 
     - name: Create database
       postgresql_db:
-        name: hub
+        name: seoq
         owner: "vagrant"
         state: present
         encoding: "UTF-8"

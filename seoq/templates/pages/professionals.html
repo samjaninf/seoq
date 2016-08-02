@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block title %}Professional{% endblock title %}
+{% block page_class %}professional{% endblock page_class %}
+{% block content %}
+<section class="for-seo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1 p-t-30">
+        <div class="col-sm-6 col-md-6">
+          <h3>For SEO professionals</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio deserunt dolor voluptas, unde voluptatibus perspiciatis earum velit nulla quibusdam nemo totam, provident est aut, dicta aperiam doloribus. Eius expedita, commodi!</p>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <img src="{% static "images/fish-2.gif" %}" alt="fish" class="center-block img-responsive">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="team" class="p-t-30 m-b-80">
+  <div class="container">
+    <div class="row">
+       <h2 class="text-center m-b-30">{% trans "Meet the team" %}</h2>
+       <div class="col-sm-12 col-md-8 col-md-offset-2 p-t-30">
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-1.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-2.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-3.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-4.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-5.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-6.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+       </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

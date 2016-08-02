@@ -13,7 +13,6 @@ class Algorithm(object):
     """
     Has algorithm for score.
     """
-
     backlinkVar = 1
     trustFlowVar = 1
     robotsVar = 1
@@ -97,12 +96,14 @@ class Algorithm(object):
         return int(score)
 
     def getKeywordClass(self, url, keyword, ip=1223):
-        self.scraper = QscraperSEOQTool(url, keyword, 0, ip)
+        self.scraper = QscraperSEOQTool(url, keyword, ip)
 
-    def getKeywordScore(self, keyword):
+    def getKeywordScore(self, url, keyword):
+        self.getKeywordClass(url, keyword)
         score = 100
-        score = self.getSiteScore()
-        score = score + ((self.scraper.calculate_headings() - 5) * self.keyVar / 2)
+        score = self.getSiteScore(url)
+        score = score + (
+            (self.scraper.calculate_headings() - 5) * self.keyVar / 2)
         score = score + (self.scraper.calc_tlinks() - 5) * self.keyVar / 3
         score = score + ((self.scraper.calculate_title() - 5) * self.keyVar)
         score = score + ((self.scraper.calculate_url() - 5) * self.keyVar)
