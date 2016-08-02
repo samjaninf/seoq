@@ -194,6 +194,15 @@ hr {
   margin-left: 0px !important;
   margin-right: 0px !important; }
 
+.dropdown #user-dropdown {
+  background: transparent; }
+  .dropdown #user-dropdown:hover, .dropdown #user-dropdown:focus {
+    text-decoration: none !important;
+    background: transparent; }
+
+.dropdown .dropdown-menu {
+  top: 71px; }
+
 .text-brand {
   color: #2d5d81 !important; }
 
