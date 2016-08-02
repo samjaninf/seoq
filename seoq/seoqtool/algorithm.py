@@ -184,6 +184,7 @@ class Algorithm(object):
         self.getKeywordClass(url, keyword)
         report = {
             'content': {},
+            'code': {},
         }
         url_score = self.scraper.calculate_url()
         title_score = self.scraper.calculate_title()

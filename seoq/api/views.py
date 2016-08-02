@@ -54,7 +54,8 @@ class KeywordsScoreView(APIView):
         keyword_score = Algorithm(
             report.netloc).getKeywordScore(report.netloc, keywords)
         report.refresh_from_db()
-        report.keyword_score = keyword_score
+        report.keyword_score = keyword_score[0]
+        report.analysis.update(keyword_score[1])
         report.save()
         return Response({'redirect_url': report.get_absolute_url()})
 
@@ -64,8 +65,10 @@ class SiteScoreView(APIView):
     def post(self, request, format=None):
         pk = request.POST.get('pk', None)
         report = get_object_or_404(Report, pk=pk)
+        report.analysis = {}
         score = Algorithm(report.netloc).getSiteScore()
         report.refresh_from_db()
-        report.site_score = score
+        report.site_score = score[0]
+        report.analysis = score[1]
         report.save()
         return Response({'redirect_url': report.get_absolute_url()})

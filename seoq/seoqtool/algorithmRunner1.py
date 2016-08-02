@@ -3,21 +3,21 @@ from .algorithm import Algorithm
 
 class AlgorithmRunner1(object):
 
-    key = ['hotels', 'in', 'dc']
+    key = ['hotels', 'dc']
 
     def run(self):
-        one = Algorithm('https://www.hotels.com/de1467359/hotels-washington-district-of-columbia/')
+        one = Algorithm('hotels.com/de1467359/hotels-washington-district-of-columbia/')
         print 'done 1'
-        two = Algorithm('https://www.tripadvisor.com/Hotels-g28970-Washington_DC_District_of_Columbia-Hotels.html')
+        two = Algorithm('tripadvisor.com/Hotels-g28970-Washington_DC_District_of_Columbia-Hotels.html')
         print 'done 2'
-        three = Algorithm('https://www.expedia.com/Washington-Hotels.d178318.Travel-Guide-Hotels')
+        three = Algorithm('expedia.com/Washington-Hotels.d178318.Travel-Guide-Hotels')
         print 'done 3'
         four = Algorithm('https://www.hipmunk.com/Hotels-in-Washington-DC')
         print 'done 4'
         five = Algorithm('http://www.marriott.com/hotel-search/washington-dc.hotels.united-states/')
         print 'done 5'
 
-        one.getKeywordClass('https://www.hotels.com/de1467359/hotels-washington-district-of-columbia/')
+        one.getKeywordClass('hotels.com/de1467359/hotels-washington-district-of-columbia/', self.key)
         print 'done 1'
         two.getKeywordClass('https://www.tripadvisor.com/Hotels-g28970-Washington_DC_District_of_Columbia-Hotels.html', self.key)
         print 'done 2'

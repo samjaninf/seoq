@@ -21,6 +21,7 @@ class User(AbstractUser):
     about = models.TextField(_("About You"), blank=True, default='')
     profile_picture = models.ImageField(
         blank=True,
+        null=True,
         upload_to='profile/')
 
     def __str__(self):
