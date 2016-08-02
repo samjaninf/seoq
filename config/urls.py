@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='account_login'),
     url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='balystic_login'),
     url(r'^accounts/logout/$', balystic_views.LogoutView.as_view(), name='balystic_logout'),
+    url(r'^users/edit/(?P<username>[-\w.]+)/$', balystic_views.CommunityUserUpdate.as_view(), name='balystic_user_update'),
     url(r'^seo-directory/$', core_views.SEODirectoryUserList.as_view(),
         name='directory'),
     url(r'^website-owners/$', TemplateView.as_view(template_name='pages/owners.html'),
