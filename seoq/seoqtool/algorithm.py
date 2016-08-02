@@ -14,6 +14,22 @@ class Algorithm(object):
     Has algorithm for score.
     """
 
+    backlinkVar = 1
+    trustFlowVar = 1
+    robotsVar = 1
+    listingVar = 1
+    keyVar = 1
+
+    def __init__(self, netloc):
+        self.netloc = str(netloc)
+        self.majestic = MajesticBackLinks(netloc)
+        self.checker = Checker_Utils()
+        self.local = LocalListing()
+        self.mobile = MobileFriendlyChecker()
+        self.check_robots = self.checker.checkRobots(netloc)
+        self.total_time_and_ssl = get_total_time_and_ssl_certification(netloc)
+        self.cms = get_built_with_information(netloc).get('cms', [])
+
     def changeVar(self, backlinkVar, trustFlowVar,
                   robotsVar, listingVar, keyVar):
         self.backlinkVar = backlinkVar
@@ -22,22 +38,13 @@ class Algorithm(object):
         self.listingVar = listingVar
         self.keyVar = keyVar
 
-    def getClasses(self, netloc):
-        self.netloc = str(netloc)
-        self.majestic = MajesticBackLinks()
-        self.checker = Checker_Utils()
-        self.local = LocalListing()
-        self.mobile = MobileFriendlyChecker()
-        self.check_robots = self.checker.checkRobots(netloc)
-        self.total_time_and_ssl = get_total_time_and_ssl_certification(netloc)
-
-    def getSiteScore(self, netloc):
+    def getSiteScore(self):
         score = float(100)
         avgTime = float(0.150895375)
 
-        if netloc.find('.gov') != -1:
+        if self.netloc.find('.gov') != -1:
             score = score + 6
-        elif netloc.find('.edu') != -1:
+        elif self.netloc.find('.edu') != -1:
             score = score + 3
         if self.total_time_and_ssl['ssl_certificate']:
             score = score + 5
@@ -45,30 +52,30 @@ class Algorithm(object):
         time = float(time['time_in_seconds'])
         if time > 0:
             score = score + (float(time) / float(2 * avgTime) - .5) / -10
-        if get_built_with_information(netloc).get('cms', []):
+        if self.cms:
             score = score + 5
-        backlinks = float(self.majestic.getNumBackLinksDomainName(netloc))
+        backlinks = float(self.majestic.getNumBackLinksDomainName())
         if backlinks > 0:
             score = score + float(math.log(backlinks)) * self.backlinkVar
-        backlinks = float(self.majestic.getNumBackLinksWebPageURL(netloc))
+        backlinks = float(self.majestic.getNumBackLinksWebPageURL())
         if backlinks > 0:
             score = score + float(math.log(backlinks)) * self.backlinkVar
-        govlinks = float(self.majestic.getNumGovBackLinksDomainName(netloc))
+        govlinks = float(self.majestic.getNumGovBackLinksDomainName())
         if govlinks > 0:
             score = score + float(math.log(govlinks)) * self.backlinkVar / 2
-        govlinks = float(self.majestic.getNumGovBackLinksWebPageURL(netloc))
+        govlinks = float(self.majestic.getNumGovBackLinksWebPageURL())
         if govlinks > 0:
             score = score + float(math.log(govlinks)) * self.backlinkVar / 2
-        edulinks = float(self.majestic.getNumEduBackLinksDomainName(netloc))
+        edulinks = float(self.majestic.getNumEduBackLinksDomainName())
         if edulinks > 0:
             score = score + float(math.log(edulinks)) * self.backlinkVar / 3
-        edulinks = float(self.majestic.getNumEduBackLinksWebPageURL(netloc))
+        edulinks = float(self.majestic.getNumEduBackLinksWebPageURL())
         if edulinks > 0:
             score = score + float(math.log(edulinks)) * self.backlinkVar / 3
-        trustFlow = float(self.majestic.getTrustFlow(netloc))
+        trustFlow = float(self.majestic.getTrustFlow())
         if trustFlow > 0:
             score = score + trustFlow - self.trustFlowVar
-        refIPS = float(self.majestic.getRefIPs(netloc))
+        refIPS = float(self.majestic.getRefIPs())
         if refIPS > 0:
             score = score + float(math.log(refIPS))
         if self.check_robots[0].find('Robots allowed') != -1:
@@ -90,16 +97,15 @@ class Algorithm(object):
         return int(score)
 
     def getKeywordClass(self, url, keyword, ip=1223):
-        self.scraper = QscraperSEOQTool(self, url, keyword, ip)
+        self.scraper = QscraperSEOQTool(url, keyword, 0, ip)
 
-    def getKeywordScore(self):
+    def getKeywordScore(self, keyword):
         score = 100
-        score = self.getSiteScore(url)
+        score = self.getSiteScore()
         score = score + ((self.scraper.calculate_headings() - 5) * self.keyVar / 2)
         score = score + (self.scraper.calc_tlinks() - 5) * self.keyVar / 3
         score = score + ((self.scraper.calculate_title() - 5) * self.keyVar)
         score = score + ((self.scraper.calculate_url() - 5) * self.keyVar)
-        anchorLinks = self.majestic.getAnchorTextBackLinks(
-            url, keyword)
+        anchorLinks = self.majestic.getAnchorTextBackLinks(keyword)
         score = score + anchorLinks - 5
         return int(score)
