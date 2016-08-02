@@ -1,29 +1,31 @@
 from .algorithm import Algorithm
 
 
-class AlgorithmRunner(object):
+class AlgorithmRunner1(object):
+
+    key = ['hotels', 'dc']
 
     def run(self):
-        one = Algorithm('en.wikipedia.org/wiki/Agile_software_development')
+        one = Algorithm('hotels.com/de1467359/hotels-washington-district-of-columbia/')
         print 'done 1'
-        two = Algorithm('howdesign.com/editors-picks/dont-go-chasing-waterfalls-agile-web-design/')
+        two = Algorithm('tripadvisor.com/Hotels-g28970-Washington_DC_District_of_Columbia-Hotels.html')
         print 'done 2'
-        three = Algorithm('sixrevisions.com/web-development/agile/')
+        three = Algorithm('expedia.com/Washington-Hotels.d178318.Travel-Guide-Hotels')
         print 'done 3'
-        four = Algorithm('amazon.com/Agile-Development-Rails-Pragmatic-Programmers/dp/1934356549')
+        four = Algorithm('https://www.hipmunk.com/Hotels-in-Washington-DC')
         print 'done 4'
-        five = Algorithm('agileana.com/')
+        five = Algorithm('http://www.marriott.com/hotel-search/washington-dc.hotels.united-states/')
         print 'done 5'
 
-        one.getKeywordClass('en.wikipedia.org/wiki/Agile_software_development', ['agile', 'web', 'development'])
+        one.getKeywordClass('hotels.com/de1467359/hotels-washington-district-of-columbia/', self.key)
         print 'done 1'
-        two.getKeywordClass('howdesign.com/editors-picks/dont-go-chasing-waterfalls-agile-web-design/', ['agile', 'web', 'development'])
+        two.getKeywordClass('https://www.tripadvisor.com/Hotels-g28970-Washington_DC_District_of_Columbia-Hotels.html', self.key)
         print 'done 2'
-        three.getKeywordClass('sixrevisions.com/web-development/agile/', ['agile', 'web', 'development'])
+        three.getKeywordClass('https://www.expedia.com/Washington-Hotels.d178318.Travel-Guide-Hotels', self.key)
         print 'done 3'
-        four.getKeywordClass('amazon.com/Agile-Development-Rails-Pragmatic-Programmers/dp/1934356549', ['agile', 'web', 'development'])
+        four.getKeywordClass('https://www.hipmunk.com/Hotels-in-Washington-DC', self.key)
         print 'done 4'
-        five.getKeywordClass('agileana.com/', ['agile', 'web', 'development'])
+        five.getKeywordClass('http://www.marriott.com/hotel-search/washington-dc.hotels.united-states/', self.key)
         print 'done 5'
 
         algs = [one, two, three, four, five]
@@ -51,7 +53,7 @@ class AlgorithmRunner(object):
         scores = [100.00, 100.00, 100.00, 100.00, 100.00]
         for count in range(5):
             alg = algs[count]
-            scores[count] = alg.getKeywordScore(['agile', 'web', 'development'])
+            scores[count] = alg.getKeywordScore(self.key)
             if count > 0:
                 if scores[count] > scores[count - 1]:
                     return False
