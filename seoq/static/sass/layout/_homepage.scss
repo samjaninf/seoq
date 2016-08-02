@@ -108,7 +108,7 @@ section.seo-experts{
         top: 0;
         z-index: 0;
       }
-      @media(min-width:$screen-md-min){
+      @media(min-width:$screen-md-min) and (max-width:$screen-md-max){
         #tablet{
           height: 130%;
         }
