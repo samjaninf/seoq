@@ -1,3 +1,6 @@
+#Kunal Naik 8.2.16
+#The purpose of this file is to run the algorithm and get the SEOQ score with and without keyword
+
 import math
 from .utils import get_built_with_information
 from .utils import get_total_time_and_ssl_certification
@@ -13,11 +16,11 @@ class Algorithm(object):
     """
     Has algorithm for score.
     """
-    backlinkVar = 1
-    trustFlowVar = 1
-    robotsVar = 1
-    listingVar = 1
-    keyVar = 1
+    backlinkVar = 2.0140845
+    trustFlowVar = 2.0140845
+    robotsVar = 5.5211267
+    listingVar = 4.0422535
+    keyVar = 1.521126761
 
     def __init__(self, netloc):
         self.netloc = str(netloc)
