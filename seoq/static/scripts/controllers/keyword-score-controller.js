@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', function ($scope, $http) {
-	$scope.request_data = {
+angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', '$httpProvider', function ($scope, $http, $httpProvider) {
+	$httpProvider.defaults.xsrfCookieName = 'csrftoken';
+      $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+      $scope.request_data = {
 		'url': '',
 		'keyword': ''
 	}
