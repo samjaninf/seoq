@@ -168,6 +168,12 @@ hr{
       text-decoration: none !important;
       background: transparent;
     }
+    .caret{
+      float: right;
+      position: relative;
+      top:-21px;
+      right: -11px;
+    }
   }
   .dropdown-menu{
     top: 71px;

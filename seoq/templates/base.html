@@ -84,10 +84,10 @@
             </li>
             <li class="dropdown p-0-6">
                 <a href="javascript:;" id="user-dropdown" class="dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                   {% if request.user.profile_picture %}
-                      <img src="{{ request.user.profile_picture.url }}" alt="Profile picture" height="50" width="50" class="img-responsive img-circle">
+                   {% if object.user.avatar %}
+                      <img src="{{ object.user.avatar.ur }}" alt="Profile picture" height="50" width="50" class="img-responsive img-circle">
                    {% else %}
-                      <img src="{% static 'images/person.png' %}" alt="Profile picture" class="img-responsive img-circle">
+                      <img src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="Profile picture" class="img-responsive img-circle" width="44px" height="44px">
                     {% endif %}
                   <span class="caret"><span>
                 </a>
