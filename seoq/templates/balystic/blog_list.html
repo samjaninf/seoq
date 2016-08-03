@@ -1,5 +1,5 @@
 {% extends "balystic/base.html" %}
-{% load i18n staticfiles date_string %}
+{% load i18n staticfiles date_string thumbnail %}
 {% block title %}Blog{% endblock title %}
 
 {% block meta %}
@@ -27,7 +27,12 @@
       <div class="row p-20">
         <div class="col-md-4">
           <a href="{% url 'balystic_blog_detail' entry.slug %}">
-            <img class="img-responsive" src="{% if entry.image %}{{ entry.image }}{% else %}{% static "images/default_small.jpg" %}{% endif %}" alt="Blog image {{ entry.title }}">
+            {% thumbnail entry.image "200x150" as im %}
+                <img class="img-responsive" src="{{ im }}" width="{{ im.width }}" height="{{ im.height }}" alt="Blog image {{ entry.title }}">
+            {% empty %}
+                <img class="img-responsive" src="{% static 'images/default_small.jpg' %}" width="200" height="150" alt="Blog default image">
+            {% endthumbnail %}
+            
           </a>
         </div>
         <div class="col-md-8">
@@ -43,8 +48,8 @@
             <p class="m-t-10">{{ entry.excerpt }}
               <a href="{% url 'balystic_blog_detail' entry.slug %}">{% trans "Read more..." %}</a>
             </p>
-            {% if entry.tags %}
-            <p>Tagged: <a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ entry.tags }}</span></a></p>
+            {% if entry.tags %}  
+            <p>Tagged: {% for tag in entry.tags_list %}<a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ entry.tag }}</span></a>{% endfor %}</p>
             {% endif %}
           </div>
         </div>

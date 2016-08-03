@@ -46,6 +46,7 @@ THIRD_PARTY_APPS = (
     'balystic',
     'ordered_model',
     'plans',
+    'sorl.thumbnail',
 )
 
 # Apps specific for this project go here.

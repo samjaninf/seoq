@@ -21,6 +21,7 @@ class Report(models.Model):
     site_score = models.FloatField(default=0)
     keyword_score = models.FloatField(default=0)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
+    custom_information = models.BooleanField(default=False)
     analysis = JSONField(default={})
 
     def get_absolute_url(self):
