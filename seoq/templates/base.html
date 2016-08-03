@@ -6,7 +6,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block empty_title %}{% block title %}{% endblock title %} | SEO Quotient™{% endblock empty_title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block meta %}
     <meta name="description" content="SEO Quotient™ provides SEO tools for both website owners and online marketing professionals to diagnose your website and create an action plan.">
+    {% endblock meta %}
     <meta name="author" content="">
     <link rel="apple-touch-icon" sizes="57x57" href="{% static "images/favicon.png" %}">
     <link rel="apple-touch-icon" sizes="60x60" href="{% static "images/favicon.png" %}">

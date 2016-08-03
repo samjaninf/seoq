@@ -6,6 +6,14 @@
 {% block logo %}
 <img src="{% static "images/logo-b.png" %}" alt="SEOQ Logo">
 {% endblock logo %}
+
+{% block meta %}
+{% trans "" as title %}
+{% trans "" as description %}
+{% static "images/facebook-image-post.jpg" as image%}
+{% include "include/metatags.html" with title=title description=description image=image %}
+{% endblock meta %}
+
 {% block content %}
 <section class="join-now p-b-40 p-t-50">
   <div class="container">
