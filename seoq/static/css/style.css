@@ -225,6 +225,9 @@ hr {
 .bg-gray {
   background-color: #f0f4f5; }
 
+.btn[disabled] {
+  cursor: default; }
+
 .text-brand {
   color: #2d5d81 !important; }
 

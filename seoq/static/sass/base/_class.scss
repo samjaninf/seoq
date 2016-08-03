@@ -176,3 +176,6 @@ hr{
 .bg-gray{
   background-color: #f0f4f5;
 }
+.btn[disabled] {
+    cursor: default;
+}
