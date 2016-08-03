@@ -48,8 +48,6 @@ redis>=2.10.0
 django_compressor==2.0
 
 
-
-
 # Your custom requirements go here
 whois==0.7
 iso8601==0.1.11
@@ -59,3 +57,8 @@ celery==3.1.23
 django-celery==3.1.17
 django-supervisor==0.3.4
 django-balystic==0.1.12
+
+
+# django plans
+django-plans==0.8.11
+django-ordered-model==1.2.1
