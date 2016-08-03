@@ -9116,6 +9116,15 @@ table.plan_table {
   .btn-muted:hover {
     color: #fff; }
 
+/* Workaround for LinkedIn button */
+.IN-widget > span {
+  background: #0077b5;
+  border-radius: 5px;
+  padding: 13px !important;
+  width: 118px; }
+  .IN-widget > span:hover {
+    background-color: #0369a0 !important; }
+
 footer {
   color: #6b7b80; }
   footer .container.p-t-20 {

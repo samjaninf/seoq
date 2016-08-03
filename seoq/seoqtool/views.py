@@ -247,7 +247,8 @@ class ArchiveReportView(View):
         context['error'] = error
         context['passed'] = improve
         context['to_improve'] = success
-        context['seo_professionals'] = self.client.get_users({'isPro':'1'})['users'][0:6]
+        context['seo_professionals'] = self.client.get_users(
+            {'isPro': '1'})['users'][0:6]
         return render(request, self.template_name, context)
 
     def post(self, request, netloc, year, month, day):

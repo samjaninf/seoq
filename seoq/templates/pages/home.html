@@ -148,6 +148,9 @@
             <span ng-if="animation">
               {{ analysis_message }}
             </span>
+            <span ng-if="bad_status_code">
+              {{ status_message }}
+            </span>
           {% endverbatim %}
             <form ng-submit="startReport()" ng-if="!animation">
             {% csrf_token %}
