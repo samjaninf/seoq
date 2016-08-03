@@ -79,7 +79,9 @@
         </div>
         {% endcomment %}
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 m-t-70 m-b-40">
+        {% if not report.user %}
           <a href="#" class="btn btn-block btn-info btn-outline btn-lg">Join now for a complete report</a>
+        {% endif %}
           <p class="text-center m-y-25">Share this report:</p>
           <div class="row">
             <div class="col-sm-6">
