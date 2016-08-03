@@ -20,15 +20,15 @@
       </div>
       <div class="row">
         <div class="col-sm-4 hidden-xs text-center">
-          <img src="{% static "images/fish-1.gif" %}" alt="" class="img-responsive"></img>
+          <a href="{% url 'owners' %}"><img src="{% static "images/fish-1.gif" %}" alt="" class="img-responsive"></img></a>
           <p class="text-brand m-t-20 h4"><a href="{% url 'owners' %}" class="text-brand">{% trans "I own a website" %}</a></p>
         </div>
         <div class="col-sm-4 hidden-xs text-center">
-          <img src="{% static "images/fish-2.gif" %}" alt="" class="img-responsive"></img>
+          <a href="{% url 'professionals' %}"><img src="{% static "images/fish-2.gif" %}" alt="" class="img-responsive"></img></a>
           <p class="text-brand m-t-20 h4"><a href="{% url 'professionals' %}" class="text-brand">{% trans "I am a SEO Expert" %}</a></p>
         </div>
         <div class="col-sm-4 hidden-xs text-center">
-          <img src="{% static "images/fish-3.gif" %}" alt="" class="img-responsive"></img>
+          <a href="{% url 'students' %}"><img src="{% static "images/fish-3.gif" %}" alt="" class="img-responsive"></img></a>
           <p class="text-brand m-t-20 h4"><a href="{% url 'students' %}" class="text-brand">{% trans "I study SEO" %}</a></p>
         </div>
         <div class="col-xs-12 visible-xs-block text-center m-t-30">
