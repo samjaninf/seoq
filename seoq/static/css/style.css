@@ -8180,22 +8180,22 @@ section.benefits-seo #benefits-text:before {
   position: absolute; }
   @media (min-width: 768px) and (max-width: 991px) {
     section.benefits-seo #benefits-text:before {
-      height: 160px;
+      height: 342px;
       width: 22px;
       left: -16px;
-      top: -80px; } }
+      top: -304px; } }
   @media (min-width: 992px) and (max-width: 1199px) {
     section.benefits-seo #benefits-text:before {
       height: 160px;
       width: 45px;
       left: -55px;
-      top: -80px; } }
+      top: -105px; } }
   @media (min-width: 1200px) {
     section.benefits-seo #benefits-text:before {
       height: 160px;
       width: 65px;
       left: -76px;
-      top: -80px; } }
+      top: -105px; } }
 
 section.seo-experts {
   overflow: hidden; }
@@ -8255,81 +8255,79 @@ section.seo-experts {
       section.seo-experts #for-students .col-md-8 #tablet {
         display: none; } }
 
-@media (min-width: 768px) {
-  section.scan-website .col-md-10 {
-    display: -ms-flexbox;
-    display: flex;
-    display: -webkit-flex;
-    -ms-flex-align: center;
-        align-items: center; } }
-
-@media (max-width: 768px) {
-  section.scan-website .col-md-10 .col-sm-6 {
-    text-align: center; } }
-
-section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
-  content: '';
-  border-bottom: 2px solid #7dd0e3;
-  border-left: 2px solid #7dd0e3;
-  display: block;
-  position: absolute; }
-  @media (min-width: 768px) and (max-width: 832px) {
-    section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
-      height: 221px;
-      top: -168px;
-      left: 0px;
-      width: 13px; } }
-  @media (min-width: 833px) and (max-width: 991px) {
-    section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
-      width: 50px;
-      height: 230px;
-      top: -174px;
-      left: -43px; } }
-  @media (min-width: 992px) and (max-width: 1199px) {
-    section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
-      width: 50px;
-      height: 293px;
-      top: -237px;
-      left: -67px; } }
-  @media (min-width: 1200px) {
-    section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
-      width: 70px;
-      height: 300px;
-      top: -245px;
-      left: -82px; } }
-
-section.scan-website .col-md-10 .col-sm-6 form .form-group label {
-  width: 100%;
-  color: #2d5d81; }
-
-section.scan-website .col-md-10 .col-sm-6 form .form-group .form-control {
-  font-weight: bold;
-  margin-bottom: 10px;
-  height: 40px;
-  font-size: 15px;
-  border-radius: 2px;
-  background: #F0F4F5; }
-
-section.scan-website .col-md-10 .col-sm-6 form button {
-  height: 40px;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 2px; }
-
-section.scan-website .col-md-10 .col-sm-6 form .text-block {
-  display: table;
-  margin: 15px auto;
-  width: 50px;
-  height: 50px;
-  background: #7dd0e3;
-  border-radius: 50%; }
-  section.scan-website .col-md-10 .col-sm-6 form .text-block h3 {
-    display: table-cell;
-    vertical-align: middle;
+section.scan-website {
+  min-height: 500px; }
+  @media (min-width: 768px) {
+    section.scan-website .col-md-10 {
+      display: -ms-flexbox;
+      display: flex;
+      display: -webkit-flex;
+      -ms-flex-align: center;
+          align-items: center; } }
+  @media (max-width: 768px) {
+    section.scan-website .col-md-10 .col-sm-6 {
+      text-align: center; } }
+  section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
+    content: '';
+    border-bottom: 2px solid #7dd0e3;
+    border-left: 2px solid #7dd0e3;
+    display: block;
+    position: absolute; }
+    @media (min-width: 768px) and (max-width: 832px) {
+      section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
+        height: 296px;
+        top: -240px;
+        left: 0px;
+        width: 13px; } }
+    @media (min-width: 833px) and (max-width: 991px) {
+      section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
+        width: 50px;
+        height: 230px;
+        top: -174px;
+        left: -43px; } }
+    @media (min-width: 992px) and (max-width: 1199px) {
+      section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
+        width: 50px;
+        height: 300px;
+        top: -250px;
+        left: -67px; } }
+    @media (min-width: 1200px) {
+      section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
+        width: 70px;
+        height: 300px;
+        top: -245px;
+        left: -82px; } }
+  section.scan-website .col-md-10 .col-sm-6 form .form-group label {
+    width: 100%;
+    color: #2d5d81; }
+  section.scan-website .col-md-10 .col-sm-6 form .form-group .form-control {
     font-weight: bold;
-    color: #fff; }
+    margin-bottom: 10px;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 2px;
+    background: #F0F4F5; }
+  section.scan-website .col-md-10 .col-sm-6 form button {
+    height: 40px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 2px; }
+  section.scan-website .col-md-10 .col-sm-6 form .text-block {
+    display: table;
+    margin: 15px auto;
+    width: 50px;
+    height: 50px;
+    background: #7dd0e3;
+    border-radius: 50%; }
+    section.scan-website .col-md-10 .col-sm-6 form .text-block h3 {
+      display: table-cell;
+      vertical-align: middle;
+      font-weight: bold;
+      color: #fff; }
 
 #give-try {
+  position: absolute;
+  top: -55px;
   /* margin-left: 50px;
   position: relative;
   top: -40px; */ }
@@ -8353,7 +8351,15 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
 
 #discover-more {
   position: relative;
-  top: 30px; }
+  top: -30px; }
+
+.fullscreen {
+  height: calc(100vh - 90px);
+  min-height: 570px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center; }
 
 @media (max-width: 768px) {
   #most-recent {
@@ -9170,6 +9176,15 @@ table.plan_table {
     background-color: #777777; }
   .btn-muted:hover {
     color: #fff; }
+
+/* Workaround for LinkedIn button */
+.IN-widget > span {
+  background: #0077b5;
+  border-radius: 5px;
+  padding: 13px !important;
+  width: 118px; }
+  .IN-widget > span:hover {
+    background-color: #0369a0 !important; }
 
 footer {
   color: #6b7b80; }
