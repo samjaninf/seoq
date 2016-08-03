@@ -27,32 +27,6 @@ class AlgorithmRunner(object):
         print 'done 5'
 
         algs = [one, two, three, four, five]
-        for backlinkvar in range(3):
-            for trustflowvar in range(3):
-                for robotsvar in range(3):
-                    for listingvar in range(3):
-                        for keyVar in range(3):
-                            print 'change'
-                            for alg in algs:
-                                alg.changeVar(
-                                    backlinkvar * 2 + 1,
-                                    trustflowvar + 1, robotsvar * 3 + 1,
-                                    listingvar * 3 + 1, keyVar * 3 + 1)
-                            if self.runSites(algs):
-                                print '__________Solution___________'
-                                print (backlinkvar + 1) * 2
-                                print (trustflowvar + 1)
-                                print (robotsvar + 1) * 3
-                                print (listingvar + 1) * 3
-                                print (keyVar + 1) * 3
-        return "done"
-
-    def runSites(self, algs):
-        scores = [100.00, 100.00, 100.00, 100.00, 100.00]
         for count in range(5):
             alg = algs[count]
-            scores[count] = alg.getKeywordScore(['agile', 'web', 'development'])
-            if count > 0:
-                if scores[count] > scores[count - 1]:
-                    return False
-        return True
+            print alg.getKeywordScore(['agile', 'web', 'development'])

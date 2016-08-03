@@ -145,30 +145,6 @@ class VariableListView(ListView):
     template_name = 'seoqtool/variable_list.html'
 
 
-class SiteFormView(View):
-    """
-    View that return the basic report from an url,
-    without keywords score.
-    """
-    template_name = 'seoqtool/site_form.html'
-    formclass = ExampleForm
-
-    def get(self, request):
-        context = {'form': self.formclass(initial=request.GET)}
-        url = request.GET.get('url', None)
-        if url is None:
-            return render(request, self.template_name, context)
-        netloc = url.replace(
-            'https://', '').replace('http://', '')
-        if request.user.is_authenticated():
-            Report.objects.create(netloc=netloc, user=request.user)
-        else:
-            Report.objects.create(netloc=netloc)
-        return redirect(
-            'seoqtool:report',
-            netloc=netloc.replace('/', '--'))
-
-
 class ReportView(View):
 
     template_name = 'seoqtool/report.html'
@@ -211,7 +187,7 @@ class ReportView(View):
 
 class ArchiveReportView(View):
 
-    template_name = 'seoqtool/report.html'
+    template_name = 'seoqtool/score.html'
 
     def get(self, request, netloc, year, month, day):
         netloc = str(netloc)
@@ -235,6 +211,42 @@ class ArchiveReportView(View):
         context['total_score'] = int(report.site_score +
                                      report.keyword_score)
         context['report'] = report
+        error = 0
+        improve = 0
+        success = 0
+        numeric_info = {
+            'crawlability': {},
+            'credibility': {},
+            'conversation': {},
+            'competition': {},
+            'conversion': {},
+            'content': {},
+            'code': {},
+        }
+        for key, value in report.analysis.items():
+            numeric_info[key]['total'] = len(value)
+            local_error = 0
+            local_success = 0
+            local_improve = 0
+            for inner_key, inner_value in value.items():
+                if inner_value == 'error':
+                    local_error += 1
+                    error += 1
+                elif inner_value == 'passed':
+                    local_success += 1
+                    success += 1
+                elif inner_value == 'to improve':
+                    local_improve += 1
+                    improve += 1
+            numeric_info[key]['errors'] = local_error
+            numeric_info[key]['to_improve'] = local_improve
+            numeric_info[key]['success'] = local_success
+            numeric_info[key]['max'] = max(
+                local_error, local_success, local_improve)
+        context['numeric_info'] = numeric_info
+        context['error'] = error
+        context['passed'] = improve
+        context['to_improve'] = success
         return render(request, self.template_name, context)
 
 

@@ -20,6 +20,7 @@ class User(AbstractUser):
     title = models.CharField(blank=True, max_length=255)
     about = models.TextField(_("About You"), blank=True, default='')
     profile_picture = models.ImageField(
+        blank=True,
         null=True,
         upload_to='profile/')
 

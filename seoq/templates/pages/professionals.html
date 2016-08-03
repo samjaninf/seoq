@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
-{% block title %}Professional{% endblock title %}
+{% block title %}SEO Professionals{% endblock title %}
 {% block page_class %}professional{% endblock page_class %}
+
+{% block meta %}
+{% trans "" as title %}
+{% trans "" as description %}
+{% static "images/facebook-image-post.jpg" as image%}
+{% include "include/metatags.html" with title=title description=description image=image %}
+{% endblock meta %}
+
 {% block content %}
 <section class="for-seo">
   <div class="container">

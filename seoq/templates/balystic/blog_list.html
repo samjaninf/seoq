@@ -1,6 +1,14 @@
 {% extends "balystic/base.html" %}
 {% load i18n staticfiles date_string %}
 {% block title %}Blog{% endblock title %}
+
+{% block meta %}
+{% trans "" as title %}
+{% trans "" as description %}
+{% static "images/facebook-image-post.jpg" as image%}
+{% include "include/metatags.html" with title=title description=description image=image %}
+{% endblock meta %}
+
 {% block content %}
   <div class="container">
     <div class="row">
@@ -28,6 +36,9 @@
             <p class="m-t-10">{{ entry.excerpt }}
               <a href="{% url 'balystic_blog_detail' entry.slug %}">{% trans "Read more..." %}</a>
             </p>
+            {% if entry.tags %}
+            <p>Tagged: <a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ entry.tags }}</span></a></p>
+            {% endif %}
           </div>
         </div>
       </div>

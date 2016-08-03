@@ -78,3 +78,45 @@
 .btn-danger-ligth {
   @include button-variant-ligth($btn-danger-color, $btn-danger-bg, $btn-danger-bg);
 }
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+    font-size: 15px;
+}
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+    color: #fff;
+}
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+    color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+    color: #d9534f;
+}
+.btn-muted{
+  @include button-variant-ligth($gray-light, $gray-light, $gray-light);
+  opacity: 0.5;
+  transition: all .5s;
+  &:hover{
+    color: #fff;
+  }
+  font-size: 15px;
+}
+

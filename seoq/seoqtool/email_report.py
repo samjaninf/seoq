@@ -1,8 +1,6 @@
 # 28 July 2016, Jessie Shen
 
 from django.core.mail import send_mail
-import json
-import request
 
 
 def sendSimpleEmail(emailto, reporturl):
@@ -11,7 +9,3 @@ def sendSimpleEmail(emailto, reporturl):
     emailfrom = 'freddie@seoq.com'
     sendto = [emailto]
     send_mail(subject, message, emailfrom, sendto)
-
-toemail = json.loads(request.POST.get('toemail'))
-urlreport = json.loads(request.POST.get('urlreport'))
-sendSimpleEmail(toemail, urlreport)

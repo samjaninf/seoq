@@ -1,0 +1,35 @@
+{% load static i18n %}
+<div class="row">
+      <div class="col-md-12 table-responsive text-center">
+      <table class="table">
+        <tr>
+          <th>{{numeric_info.credibility.success }}/{{numeric_info.credibility.total }}</th>
+          <th>Credibility</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>Description about credibility</td>
+          
+          <td>
+            <p>{% if report.analysis.credibility.backlinks_domain == "to improve" %}info about how to improve backlinks for the domain{% else %}your domain has a lot of backlinks{% endif %}</p>
+            <p>{% if report.analysis.credibility.backlinks_url == 'to improve' %}info about how to improve backlinks for the url{% else %}your url has a lot of backlinks{% endif %}</p>
+            <p>{% if report.analysis.credibility.edulinks_domain == 'to improve' %}info about how to improve .edu links for the domain{% else %}your domain has a lot of .edu backlinks{% endif %}</p>
+            <p>{% if report.analysis.credibility.edulinks_url == 'to improve' %}info about how to improve .edu links for the url{% else %}your url has a lot of .edu backlinks{% endif %}</p>
+            <p>{% if report.analysis.credibility.govlinks_domain == 'to improve' %}info about how to improve .gov links for the domain{% else %}your domain has a lot of .gov backlinks{% endif %}</p>
+            <p>{% if report.analysis.credibility.govlinks_url == 'to improve' %}info about how to improve .gov links for the url{% else %}your url has a lot of .gov backlinks{% endif %}</p>
+            <p>{% if report.analysis.credibility.https == 'error' %}Purchase an SSL license for your site{% else %}An SSL license was found for your site{% endif %}</p>
+            <p>{% if report.analysis.credibility.speed == 'to improve' %}improve your trustflow{% else %}your trust flow is fine{% endif %}</p>
+          </td>
+          <td>
+            {% if numeric_info.credibility.success == numeric_info.credibility.max %}
+              <img src="{% static "images/fish-2.gif" %}" alt="fish" class="center-block img-responsive">
+            {% elif numeric_info.credibility.to_improve == numeric_info.credibility.max %}
+              <img src="{% static "images/fish-3.gif" %}" alt="fish" class="center-block img-responsive">
+            {% else %}
+              <img src="{% static "images/fish-1.gif" %}" alt="fish" class="center-block img-responsive">
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+      </div>
+</div>
