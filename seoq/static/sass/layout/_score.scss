@@ -1,12 +1,23 @@
 .score{
   .container{
     .row{
+      h3{
+        color: #fff;
+      }
       #container {
         margin: 0 auto;
         width: 100px;
         height: 100px;
-        position: relative;
+        display: table;
         margin-top: 30px;
+        border:5px solid #fff;
+        border-radius:50%;
+        h2{
+          display: table-cell;
+          vertical-align: middle;
+          color: #fff;
+          font-size:40px;
+        }
       }
     }
   }
@@ -17,13 +28,13 @@
 }
 .btn-facebook {
   background: #2E609B;
-  &:hover{
+  &:hover,&:focus{
     color: #fff;
   }
 }
 .btn-twitter {
   background: #00C3F3;
-  &:hover{
+  &:hover,&:focus{
     color: #fff;
   }
 }
