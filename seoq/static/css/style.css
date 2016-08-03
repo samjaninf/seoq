@@ -8556,10 +8556,71 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
     margin-top: 10px;
     margin-bottom: 0px; }
 
-.plans table.plan_table {
+.plans-container table.plan_table {
   margin: 0 auto; }
-  .plans table.plan_table th, .plans table.plan_table td {
+  .plans-container table.plan_table th, .plans-container table.plan_table td {
     border: 1px solid; }
+
+@media (max-width: 768px) {
+  .plans-container .row {
+    margin: 0px; } }
+
+@media (min-width: 768px) {
+  .plans-container .row-centered {
+    margin-top: 80px; } }
+
+@media (min-width: 768px) {
+  .plans-container .row-centered .col-centered {
+    background-color: #F0F4F5;
+    box-shadow: 0 0 10px rgba(58, 127, 182, 0.2);
+    border-radius: 6px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border: 1px solid #d6cece; } }
+
+@media (max-width: 768px) {
+  .plans-container .row-centered .col-centered {
+    border: 2px solid;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    padding-top: 30px;
+    padding-bottom: 40px; } }
+
+.plans-container .row-centered .col-centered .change_plan.buy-plan {
+  margin-bottom: 30px; }
+
+.plans-container .row-centered .col-centered .plans .name-plan {
+  margin: 0px;
+  margin-bottom: 4px;
+  font-weight: bold;
+  font-size: 20px; }
+
+.plans-container .row-centered .col-centered .plans .price {
+  color: #ec971f;
+  margin: 0px;
+  margin-bottom: 20px; }
+
+.plans-container .row-centered .col-centered .plans .period-plan {
+  margin: 0px; }
+
+.plans-container .row-centered .col-centered .plans .buy {
+  margin-top: -15px;
+  margin-bottom: 25px; }
+
+@media (min-width: 768px) {
+  .plans-container .row-centered .col-centered.current {
+    margin-top: -20px;
+    margin-bottom: -20px;
+    padding-top: 40px;
+    z-index: 1000;
+    position: relative; } }
+
+.plans-container .row-centered .col-centered.current .plan_description {
+  margin: 0px; }
+
+.plans-container .row-centered .col-centered.current .current.current_plan {
+  color: #ec971f;
+  margin-bottom: 15px; }
 
 table.plan_table {
   margin: 0 auto; }
