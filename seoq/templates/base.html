@@ -112,13 +112,15 @@
 
       </div>
     </nav>
-    <section>
-      <div class="row">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
+    <section class="messages">
+      <div class="container">
+        <div class="row">
+          {% if messages %}
+              {% for message in messages %}
+                  <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+              {% endfor %}
+          {% endif %}
+        </div>
       </div>
     </section>
    {% block content %}

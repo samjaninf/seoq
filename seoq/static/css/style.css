@@ -8483,9 +8483,23 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
 
 .score .container .row .btn-facebook {
   background: #2E609B; }
+  .score .container .row .btn-facebook:hover {
+    color: #fff; }
 
 .score .container .row .btn-twitter {
   background: #00C3F3; }
+  .score .container .row .btn-twitter:hover {
+    color: #fff; }
+
+.plans table.plan_table {
+  margin: 0 auto; }
+  .plans table.plan_table th, .plans table.plan_table td {
+    border: 1px solid; }
+
+table.plan_table {
+  margin: 0 auto; }
+  table.plan_table th, table.plan_table td {
+    border: 1px solid; }
 
 .navbar-seoq {
   background-color: #7dd0e3;

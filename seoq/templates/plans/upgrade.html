@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block title %}Upgrade{% endblock title %}
+
+{% block content %}
+<section class="upgrade">
+  <div class="container">
+    <div class="row">
+      <h2>{% trans "Choose plan" %}</h2>
+      {% include "plans/plan_table.html" %}
+    </div>
+  </div>
+</section>
+{% endblock content %}
