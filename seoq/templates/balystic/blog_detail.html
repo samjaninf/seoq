@@ -18,8 +18,20 @@
         <img class="img-responsive center-block m-b-30" src="{% if entry.image %}{{ entry.image }}{% else %}{% static "images/default_small.jpg" %}{% endif %}" alt="Blog image {{ entry.title }}">
       </div>
     </div>
-    <div class="col-md-12 p-b-40">
-      {{ entry.content|safe }}
+    <div class="row">
+      <div class="col-md-12 p-b-40">
+        {{ entry.content|safe }}
+      </div>
+      {% if tags %}
+      <div class="row tags">
+        <div class ="col-md-12">
+        {% for tag in tags %}
+          <a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ tag }}</span></a>
+        {% endfor %}
+        </div>
+      </div>
+      {% endif %}
     </div>
+    
   </div>
 {% endblock content %}

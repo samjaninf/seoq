@@ -28,6 +28,8 @@
             <p class="m-t-10">{{ entry.excerpt }}
               <a href="{% url 'balystic_blog_detail' entry.slug %}">{% trans "Read more..." %}</a>
             </p>
+            <p>Tagged: {% for tag in tags %}<a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ tag }}</span></a>
+        {% endfor %}</p>
           </div>
         </div>
       </div>
