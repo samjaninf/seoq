@@ -136,8 +136,8 @@
               {{ analysis_message }}
             </span>
           {% endverbatim %}
-            <form name='report' ng-submit="startReport()" ng-if="!animation">
-              {% csrf_token %}
+            <form ng-submit="startReport()" ng-if="!animation">
+            {% csrf_token %}
               <div class="form-group">
                 <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
                 <input type="url" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" required>
