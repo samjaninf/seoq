@@ -12,14 +12,13 @@ from .forms import EditProfileForm
 
 from django.conf import settings
 
+
 class UserDetailView(LoginRequiredMixin, View):
     template_name = 'users/user_detail.html'
 
     def get(self, request, username):
         user = Client().get_user_detail(username)['user']
-        print user, settings.BALYSTIC_API_TOKEN
         return render(request, self.template_name, {'object': user})
-
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
