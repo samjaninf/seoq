@@ -1,20 +1,25 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+from django.shortcuts import render
 from django.core.urlresolvers import reverse
-from django.views.generic import DetailView, ListView, RedirectView, UpdateView
+from django.views.generic import DetailView, ListView, RedirectView, UpdateView, View
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from balystic.client import Client
 from .models import User
 from .forms import EditProfileForm
 
+from django.conf import settings
 
-class UserDetailView(LoginRequiredMixin, DetailView):
-    model = User
-    # These next two lines tell the view to index lookups by username
-    slug_field = 'username'
-    slug_url_kwarg = 'username'
+class UserDetailView(LoginRequiredMixin, View):
+    template_name = 'users/user_detail.html'
+
+    def get(self, request, username):
+        user = Client().get_user_detail(username)['user']
+        print user, settings.BALYSTIC_API_TOKEN
+        return render(request, self.template_name, {'object': user})
+
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
