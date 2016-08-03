@@ -169,9 +169,9 @@ hr{
       background: transparent;
     }
   }
-  .dropdown-menu{
-    top: 71px;
-  }
+  // .dropdown-menu{
+  //   top: 71px;
+  // }
 }
 .bg-gray{
   background-color: #f0f4f5;
@@ -181,4 +181,9 @@ hr{
 }
 .blue-link{
   color: #5bc0de;
+}
+@media (min-width: $screen-sm-min) {
+  ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+  }
 }
