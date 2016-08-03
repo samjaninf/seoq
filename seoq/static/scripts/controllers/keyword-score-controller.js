@@ -20,7 +20,7 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
     }
     return cookieValue;
   }
-  var csrftoken = getCookie('csrftoken');
+  var csrftoken = window.csrfmiddlewaretoken;//getCookie('csrftoken');
   console.log(csrftoken)
 	$scope.animation = false;
 	$scope.startReport = function(){
