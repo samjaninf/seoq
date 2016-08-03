@@ -67,7 +67,7 @@
               <a href="{% url 'about' %}">About</a>
             </li>
 
-            <li>
+            <li {% active_url 'owners' %} {% active_url 'professionals' %} {% active_url 'students' %}>
               <a href="#" type="hover" data-toggle="dropdown">
               Benefits <span class="caret"></span></a>
               <ul class="dropdown-menu">
