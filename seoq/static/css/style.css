@@ -232,8 +232,8 @@ p {
   font-size: 17px; }
 
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1304,7 +1304,6 @@ a {
     color: #485356;
     text-decoration: underline; }
   a:focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -2516,7 +2515,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -3021,7 +3019,6 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -8424,8 +8421,8 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
       background-color: #f0f4f5;
       padding-left: 15px;
       padding-right: 0; }
-      .about #what-is .resaltable:hover h3 {
-        color: #5bc0de; }
+    .about #what-is .resaltable a:hover {
+      text-decoration: none; }
   .about #what-is .about-image .full-hg {
     height: 100%; }
   .about #what-is .about-image .wrapper {
