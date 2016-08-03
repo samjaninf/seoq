@@ -10,9 +10,7 @@
 {% endblock meta %}
 
 {% block content %}
-<script type='text/javascript'>
-    window.csrfmiddlewaretoken = "{{ csrf_token }}";
-</script>
+<input type="hidden" value="{{ csrf_token }}" id="my_token">
 
   <section class="bg-primary fullscreen">
     <div class="container">
