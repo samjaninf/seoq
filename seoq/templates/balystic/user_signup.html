@@ -1,76 +1,74 @@
 {% extends "base.html" %}
+{% comment %}
+{% extends "account/base.html" %}
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+  <form class="login" method="POST" action="{% url 'balystic_login' %}">
+    {% csrf_token %}
+    {{ form|crispy }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <a class="button secondaryAction" href="">{% trans "Forgot Password?" %}</a>
+    <button class="primaryAction btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+  </form>
+{% endcomment %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
 {% load i18n staticfiles %}
 {% load crispy_forms_tags %}
 {% block title %}Join now{% endblock title %}
 {% block page_class %}join{% endblock page_class %}
-{% block logo %}
-<img src="{% static "images/logo-b.png" %}" alt="SEOQ Logo">
-{% endblock logo %}
 
-{% block meta %}
-{% trans "" as title %}
-{% trans "" as description %}
-{% static "images/facebook-image-post.jpg" as image%}
-{% include "include/metatags.html" with title=title description=description image=image %}
-{% endblock meta %}
 
 {% block content %}
+
+
 <section class="join-now p-b-40 p-t-50">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 col-md-6 m-b-50">
-      <h2 class="text-center m-b-30">Log in</h2>
-        <form class="login" method="POST" action="{% url 'account_login' %}" id="form-login">
+      <div class="col-sm-6 col-md-6 col-md-offset-3">
+      <h1>{% trans "Sign Up" %}</h1>
+      <p>Already have an account? Then please <a href="{% url 'balystic_login' %}">sign in</a>
+        <form action="{% url 'balystic_signup' %}" id="signup-form" class="popup-form ng-pristine ng-valid" method="post">
           {% csrf_token %}
           {% include "bootstrap3/errors.html" %}
           <div id="div_id_login" class="form-group has-feedback">
-            {{ form.email|as_crispy_field }}
-            <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
+          {{ form.email|as_crispy_field }}
+          <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
             <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
             <p class="help-block text-left" ></p>
           </div>
-          <div id="div_id_password" class="form-group has-feedback">
-            {{ form.password|as_crispy_field }}
-            <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
+          <div id="div_id_login" class="form-group has-feedback">
+          {{ form.first_name|as_crispy_field }}
+          <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
             <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
-            <p class="help-block text-left"></p>
+            <p class="help-block text-left" ></p>
           </div>
-          {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-          {% endif %}
-          <a class="button secondaryAction" href="">{% trans "Forgot Password?" %}</a><br><br>
-          <button class="primaryAction btn btn-primary-ligth" type="submit">{% trans "Sign In" %}</button>
-        </form>
-      </div>
-      <div class="col-sm-6 col-md-6">
-      <h2 class="text-center m-b-30">Signup</h2>
-        <form action="" id="signup"></form>
-        <form id="signup-form" class="popup-form ng-pristine ng-valid" method="post" action="/accounts/signup/?next=/">
-          <input type="hidden" name="csrfmiddlewaretoken" value="PKctUbeas9BFteiRfSV8x9rqZs9lWL2I">
-          <div class="form-group has-feedback">
-            <label for="id_email" class="control-label sr-only">Email *<small>(required)</small></label>
-            <input type="email" class="form-control fa" id="id_email" name="email" placeholder=" Email" required>
-            <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
+          <div id="div_id_login" class="form-group has-feedback">
+          {{ form.phone_number|as_crispy_field }}
+          <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
             <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
-            <p class="help-block text-left"></p>
+            <p class="help-block text-left" ></p>
           </div>
-          <div class="form-group has-feedback">
-            <label for="id_password1" class="control-label sr-only">Password *<small>(required)</small></label>
-            <input type="password" class="form-control fa" id="id_password1" name="password1" placeholder=" Password (min. 6 characters)" required>
-            <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
+          <div id="div_id_login" class="form-group has-feedback">
+          {{ form.password_1|as_crispy_field }}
+          <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
             <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
-            <p class="help-block text-left"></p>
+            <p class="help-block text-left" ></p>
           </div>
-          <div class="form-group has-feedback">
-            <label for="id_password2" class="control-label sr-only">Password (again) *<small>(required)</small></label>
-            <input type="password" class="form-control fa" id="id_password2" name="password2" placeholder=" Password (again)" required>
-            <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
+          <div id="div_id_login" class="form-group has-feedback">
+          {{ form.password_2|as_crispy_field }}
+          <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
             <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
-            <p class="help-block text-left"></p>
+            <p class="help-block text-left" ></p>
           </div>
+
+
           <div class="slider-on-off">
             <div class="onoffswitch">
-              <input type="checkbox" name="professional_account" class="onoffswitch-checkbox" id="myonoffswitch">
+              <input type="checkbox" name="is_pro" class="onoffswitch-checkbox" id="myonoffswitch">
               <label class="onoffswitch-label" for="myonoffswitch">
               <span class="onoffswitch-inner"></span>
               <span class="onoffswitch-switch"></span>
@@ -84,9 +82,15 @@
     </div>
   </div>
 </section>
-<link href="{% static 'css/style.css' %}" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script>
+{% endblock %}
+
+{% block extra_javascript %}
+  <script>
+  document.getElementById("id_email").placeholder = "Email";
+  document.getElementById("id_first_name").placeholder = "First name";
+  document.getElementById("id_phone_number").placeholder = "Phone number";
+  document.getElementById("id_password_1").placeholder = "Password";
+  document.getElementById("id_password_2").placeholder = "Password again";
   var login_error = true;
   var signup_error = true;
   var recovery_error = true;
@@ -114,37 +118,6 @@
   }
   return error;
 }
-  // Validation of each field
-  $('#form-login #id_email').change(function () {
-    var state = '';
-    var message = '';
-    if (isValidEmailAddress($(this).val())){
-      state = 'valid';
-    }
-    else{
-      state = 'invalid';
-      message = 'Please enter a valid email address';
-    }
-    login_error = changeState($(this), state, message);
-  });
-  $('#form-login  #id_password').change(function () {
-    var state = '';
-    var message = '';
-    if ($(this).val().length >= 6){
-      state = 'valid';
-    }
-    else{
-      state = 'invalid';
-      message = 'Password (min. 6 characters)';
-    }
-    login_error = changeState($(this), state, message);
-  });
-  $("#form-login").submit(function(e){
-    if (login_error){
-      e.preventDefault();
-      return false;
-    }
-  });
   $('#signup-form #id_email').change(function () {
     var state = '';
     var message = '';
@@ -194,4 +167,5 @@
     }
   });
 </script>
-{% endblock content %}
+
+{% endblock extra_javascript %}

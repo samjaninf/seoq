@@ -19,12 +19,12 @@ urlpatterns = [
     url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='account_login'),
     url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='balystic_login'),
     url(r'^accounts/logout/$', balystic_views.LogoutView.as_view(), name='balystic_logout'),
+    url(r'^users/edit/(?P<username>[-\w.]+)/$', balystic_views.CommunityUserUpdate.as_view(), name='balystic_user_update'),
+    url(r'^accounts/signup/$', balystic_views.UserSignupView.as_view(), name='balystic_signup'),
     url(r'^seo-directory/$', core_views.SEODirectoryUserList.as_view(),
         name='directory'),
     url(r'^website-owners/$', TemplateView.as_view(template_name='pages/owners.html'),
         name='owners'),
-    url(r'^google/$', TemplateView.as_view(template_name='embedapi.html')),
-
     # url(r'^join/$', TemplateView.as_view(template_name='pages/join.html'),
     #     name='join'),
     url(r'^seo-professionals/$', TemplateView.as_view
@@ -33,12 +33,6 @@ urlpatterns = [
     url(r'^seo-students/$', TemplateView.as_view
         (template_name='pages/students.html'),
         name='students'),
-    url(r'^seo-score/$', TemplateView.as_view
-        (template_name='seoqtool/score.html'),
-        name='score'),
-
-    url(r'^example-report/$', TemplateView.as_view(template_name='seoqtool/report_test.html'),
-        name='example_report'),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),

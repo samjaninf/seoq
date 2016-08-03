@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% load i18n staticfiles%}
-{% block empty_title %}SEO Quotient™ analysis tool, website analysis software, free SEO report{% endblock empty_title %}
+{% block empty_title %}{% trans "SEO Quotient™ analysis tool, website analysis software, free SEO report" %}{% endblock empty_title %}
+
+{% block meta %}
+{% trans "SEO Quotient™ analysis tool, website analysis software, free SEO report" as title %}
+{% trans "SEO Quotient™ provides SEO tools for both website owners and online marketing professionals to diagnose your website and create an action plan." as description %}
+{% static "images/facebook-image-post.jpg" as image%}
+{% include "include/metatags.html" with title=title description=description image=image %}
+{% endblock meta %}
+
 {% block content %}
 
   <section class="bg-primary fullscreen">
@@ -51,9 +59,9 @@
           <div class="col-sm-6 col-md-6">
             <h2 class="text-left" id="benefits-text"><strong>{% trans "What is SEOQ?"%}</strong></h2>
             <p>
-              SEO Quotient is a tool and an online community that helps you evaluate your website and find ways to improve it's internet presence. <br> Connect with experts or browse our community to make your website the biggest fish in the internet pond!
+              SEO Quotient is a tool and an online community that helps you evaluate your website and find ways to improve it's internet presence. <p> Connect with experts or browse our community to make your website the biggest fish in the internet pond!</p>
             </p>
-            <a href="{% url 'about' %}" class="btn btn-primary-ligth btn-lg">{% trans "Learn more about SEO" %}</a>
+            <a href="{% url 'about' %}" class="btn btn-primary-ligth btn-lg">{% trans "Learn more about SEOQ" %}</a>
           </div>
           <span class="clear pull-right scrollable" id="most-recent">
             <a href="#experts" title="{% trans "Most recent" %}" class="">{% trans "Most recent" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
@@ -69,16 +77,14 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="col-sm-6 col-md-6 pull-right">
             <h2 class="text-left" id="experts"><strong>{% trans "Featured SEO Professional" %}</strong></h2>
-            <p>Andrew has worked in SEO and digital marketing for 8 years, making data-driven decisions resulting in incredible growth.  He has earned over 150 verified #1 keyword rankings for his past Fortune 500 employers. <p>Join our community to get in touch with more experts like Andrew today!</p></p>
-            <a href="{% url 'account_login' %}" class="btn btn-primary-ligth btn-lg">{% trans "Create your profile" %}</a>
+            <p>Andrew has worked in SEO and digital marketing for 8 years, making data-driven decisions resulting in incredible growth.  He has earned over 150 verified #1 keyword rankings for his past Fortune 500 employers. <span>Join our community to get in touch with more experts like Andrew today!</p></p>
+            <a href="{% url 'balystic_signup' %}" class="btn btn-primary-ligth btn-lg">{% trans "Create your profile" %}</a>
           </div>
           <div class="col-sm-6 col-md-6">
             <div class="row">
               <div class="col-sm-12">
-                <img src="{% static "images/andrew-expert-1.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle"> 
+                <img src="{% static "images/andrew-expert-1.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
                 <center><strong>Andrew Bennik</strong></center>
-              </div>
-           
               </div>
             </div>
           </div>
@@ -86,13 +92,13 @@
       </div>
       <div class="row m-t-90 relative p-b-40" id="for-students">
         <div class="col-sm-12 col-md-8 col-md-offset-2 p-t-80">
-          <h2 class="text-center relative m-b-50"><strong>{% trans "For Students of SEO" %}</strong></h2>
+          <h2 class="text-center relative m-b-50"><strong>{% trans "Become Better at SEO" %}</strong></h2>
           <div class="col-sm-6 col-md-6">
             <div class="pull-right">
               <a href="#">
                 <img src="{% static "images/learn.png" %}" alt="learn" class="img-responsive center-block" width="130px">
-                <h3 class="text-center font-weight-bold-5 text-primary">{% trans "Learn more in" %}
-                <br>{% trans "our SEO University" %}</h3>
+                <h3 class="text-center font-weight-bold-5 text-primary">{% trans "Learn in our" %}
+                <br>{% trans " SEO Academy" %}</h3>
               </a>
             </div>
           </div>
@@ -120,7 +126,7 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-sm-6 col-md-6 m-b-50">
-            <h2 class="" id="how-website">{% trans "How does your" %}<br>{% trans "Website do for SEO?" %}</h2>
+            <h2 class="" id="how-website">{% trans "Find " %}<u>{% trans "your" %}</u>{% trans " SEO Quotient:" %}</h2>
           </div>
 
           <div class="col-sm-6 col-md-6 m-b-50 p-t-20" ng-controller="keywordScoreController">
