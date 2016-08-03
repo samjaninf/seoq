@@ -22,7 +22,7 @@ from .utils import get_expiration_and_creation_date,\
     get_built_with_information, get_total_time_and_ssl_certification
 from .algorithm import Algorithm
 from balystic.client import Client
-# Create your views here.
+from .email_report import send_simple_email
 
 
 class BasicQscraperUseView(View):
@@ -249,6 +249,14 @@ class ArchiveReportView(View):
         context['to_improve'] = success
         context['seo_professionals'] = self.client.get_users({'isPro':'1'})['users'][0:6]
         return render(request, self.template_name, context)
+
+    def post(self, request, netloc, year, month, day):
+        email = request.POST.get('email', None)
+        if email is not None:
+            send_simple_email(email, request.build_absolute_uri())
+        return redirect(reverse(
+            'seoqtool:archive_report',
+            args=[netloc, year, month, day]))
 
 
 class SEOQURLFriendlyDetail(View):
