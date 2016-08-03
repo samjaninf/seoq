@@ -16,6 +16,13 @@
         <h1>{% trans "Blog" %}</h1>
       </div>
     </div>
+    {% if request.user.is_authenticated %}
+      <div class="row">
+        <div class="col-md-12">
+          <a class="btn btn-primary pull-right" href="http://seoq.app.balystic.com/blog/new-entry/">Write a blog entry</a>
+        </div>
+      </div>
+    {% endif %}
     {% for entry in blog_entries %}
       <div class="row p-20">
         <div class="col-md-4">
