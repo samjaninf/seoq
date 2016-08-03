@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 p-t-20 p-b-70">
             <h3>{{ user.username }}</h3>
-            <form class="form-horizontal" enctype='multipart/form-data' method="post" 
+            <form class="form-horizontal" enctype='multipart/form-data' method="post"
                 action="">
                 {% csrf_token %}
                 {{ form|crispy }}
@@ -23,4 +23,8 @@
     </div>
 </div>
 {% endblock %}
-
+{% block extra_javascript %}
+<script>
+      document.getElementById("id_isPro").nextSibling.nodeValue = 'I am a SEO Professional';
+</script>
+{% endblock extra_javascript %}
