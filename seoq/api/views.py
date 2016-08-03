@@ -59,6 +59,7 @@ class KeywordsScoreView(APIView):
             report.netloc).getKeywordScore(report.netloc, keywords)
         report.refresh_from_db()
         report.keyword_score = keyword_score[0]
+        report.keywords = keywords
         report.analysis.update(keyword_score[1])
         report.save()
         return Response({'redirect_url': report.get_absolute_url()})
