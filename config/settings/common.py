@@ -44,6 +44,8 @@ THIRD_PARTY_APPS = (
     'rest_framework',
     'djsupervisor',
     'balystic',
+    'ordered_model',
+    'plans',
 )
 
 # Apps specific for this project go here.
@@ -276,5 +278,26 @@ MAX_DEPTH_VALUE = env('MAX_DEPTH_VALUE', default=2)
 
 BALYSTIC_API_TOKEN = env('BALYSTIC_API_TOKEN')
 BALYSTIC_API_PATH = env('BALYSTIC_API_PATH')
+
+
+# PLANS Configuration
+# ------------------------------------------------------------------------------
+PLANS_CURRENCY = 'USD'
+# PLANS_TAXATION_POLICY='plans.taxation.eu.EUTaxationPolicy'
+from decimal import Decimal
+PLANS_TAX = Decimal('23.0')
+PLANS_INVOICE_ISSUER = {
+    "issuer_name": "Joe Doe Company",
+    "issuer_street": "Django street, 34",
+    "issuer_zipcode": "123-3444",
+    "issuer_city": "Djangoko",
+    "issuer_country": "DJ",
+    "issuer_tax_number": "1222233334444555",
+}
+# PLANS_TAX_COUNTRY='US'
+SEND_PLANS_EMAILS = False
+PLANS_VALIDATORS = {
+    'WEBSITE': 'seoq.core.validators.web_site_validator',
+}
 
 FACEBOOK_ACCESS_TOKEN = env('FACEBOOK_ACCESS_TOKEN')
