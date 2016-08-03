@@ -67,3 +67,7 @@ tweepy==3.5.0
 facebook==0.0
 python-linkedin==4.1
 
+# Backport for https
+pyOpenSSL==16.0.0
+pyasn1==0.1.9
+ndg-httpsclient==0.4.2
