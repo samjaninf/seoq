@@ -1,6 +1,6 @@
 {% load static i18n %}
 <div class="col-md-10 col-md-offset-1 text-center m-t-50">
-	<p><span class="score-number">{{numeric_info.crawlability.success }}</span><small class="text-muted">/{{numeric_info.crawlability.total }}</small></p>
+	<p><span class="score-number">{{ numeric_info.crawlability.success }}</span><small class="text-muted">/{{ numeric_info.crawlability.total }}</small></p>
 	<h3 class="m-b-30">Crawlability</h3>
 	<p class="text-muted">{% if report.analysis.crawlability.robots == "error" %}Make sure no robots are disallowed{% else %}Robots file activated{% endif %}</p>
 	<p class="text-muted">{% if report.analysis.crawlability.sitemap == 'error' %}Make sure you have a sitemap{% else %}Sitemap found{% endif %}</p>
@@ -9,15 +9,15 @@
 	{% if numeric_info.crawlability.success == numeric_info.crawlability.max %}
 	<img src="{% static "images/fish-2.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
 	{% elif numeric_info.crawlability.to_improve == numeric_info.crawlability.max %}
-	<img src="{% static "images/fish-5.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
+	<img src="{% static "images/fish-3.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
 	{% else %}
-	<img src="{% static "images/fish-1.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
+	<img src="{% static "images/fish-5.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
 	{% endif %}
 
 	<div class="row">
 		<div class="col-sm-4">
 			<a class="btn 
-			{% if report.analysis.crawlability.speed == 'to improve' %}btn-danger
+			{% if report.analysis.crawlability.speed == 'to improve' %}btn-warning
 			{% else %}btn-success
 			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">Page loading time</a>
 		</div>

@@ -239,8 +239,8 @@ class ArchiveReportView(View):
                     local_improve += 1
                     improve += 1
             numeric_info[key]['errors'] = local_error
-            numeric_info[key]['to_improve'] = local_success
-            numeric_info[key]['success'] = local_improve
+            numeric_info[key]['to_improve'] = local_improve
+            numeric_info[key]['success'] = local_success
             numeric_info[key]['max'] = max(
                 local_error, local_success, local_improve)
         context['numeric_info'] = numeric_info

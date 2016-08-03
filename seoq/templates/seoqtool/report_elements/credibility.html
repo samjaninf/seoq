@@ -9,19 +9,47 @@
 	<p class="text-muted">{% if report.analysis.credibility.govlinks_domain == 'to improve' %}info about how to improve .gov links for the domain{% else %}your domain has a lot of .gov backlinks{% endif %}</p>
 	<p class="text-muted">{% if report.analysis.credibility.govlinks_url == 'to improve' %}info about how to improve .gov links for the url{% else %}your url has a lot of .gov backlinks{% endif %}</p>
 	<p class="text-muted">{% if report.analysis.credibility.https == 'error' %}Purchase an SSL license for your site{% else %}An SSL license was found for your site{% endif %}</p>
-	<p class="text-muted">{% if report.analysis.credibility.speed == 'to improve' %}improve your trustflow{% else %}your trust flow is fine{% endif %}</p>
+	<p class="text-muted">{% if report.analysis.credibility.trustflow == 'to improve' %}improve your trustflow{% else %}your trust flow is fine{% endif %}</p>
 
 	{% if numeric_info.credibility.success == numeric_info.credibility.max %}
 	  <img src="{% static "images/fish-2.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
 	{% elif numeric_info.credibility.to_improve == numeric_info.credibility.max %}
-	  <img src="{% static "images/fish-5.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
+	  <img src="{% static "images/fish-3.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
 	{% else %}
-	  <img src="{% static "images/fish-1.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
+	  <img src="{% static "images/fish-5.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
 	{% endif %}
 
 	<div class="row">
-		<div class="col-sm-4"><a class="btn btn-info btn-outline btn-lg btn-block" href="#" role="button">Backlinks.gov</a></div>
-		<div class="col-sm-4"><a class="btn btn-info btn-outline btn-lg btn-block" href="#" role="button">links.edu</a></div>
-		<div class="col-sm-4"><a class="btn btn-info btn-outline btn-lg btn-block" href="#" role="button">Links</a></div>
+		<div class="col-sm-4">
+			<a class="btn 
+			{% if report.analysis.credibility.backlinks_url == 'to improve' %}btn-warning
+			{% else %}btn-success
+			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">backlinks</a>
+		</div>
+		<div class="col-sm-4">
+			<a class="btn 
+			{% if report.analysis.credibility.edulinks_url == 'to improve' %}btn-warning
+			{% else %}btn-success
+			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">.edu backlinks</a>
+		</div>
+		<div class="col-sm-4">
+			<a class="btn 
+			{% if report.analysis.credibility.govlinks_url == 'to improve' %}btn-warning
+			{% else %}btn-success
+			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">.gov backlinks</a>
+		</div>
+		<div class="col-sm-4">
+			<a class="btn 
+			{% if report.analysis.credibility.https == 'error' %}btn-danger
+			{% else %}btn-success
+			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">https</a>
+		</div>
+		<div class="col-sm-4">
+			<a class="btn 
+			{% if report.analysis.credibility.trustflow == 'to improve' %}btn-danger
+			{% else %}btn-success
+			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">trustflow</a>
+		</div>
+
 	</div>
 </div>
