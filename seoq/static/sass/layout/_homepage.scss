@@ -286,6 +286,8 @@ section.scan-website{
   }
 }
 .animation-line:before{
-  top: -178px !important;
-  height: 215px !important;
+  @media(min-width:$screen-lg-min){
+    top: -178px !important;
+    height: 215px !important;
+  }
 }
