@@ -19,8 +19,12 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
     var headers = {
       'X-CSRFToken': csrftoken
     };
-		 $http.post(url, data, headers)
-            .success(function (data, status) {
+    $http({
+      method: 'POST',
+      url: url,
+      data: data,
+      headers:headers
+    }).success(function (data, status) {
             	$scope.animation = true;
             	$scope.analysis_message = "we are getting your site score";
             	var obtained_pk = data.report;
