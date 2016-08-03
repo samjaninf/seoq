@@ -16,6 +16,13 @@
         <h1>{% trans "Blog" %}</h1>
       </div>
     </div>
+    {% if request.user.is_authenticated %}
+      <div class="row">
+        <div class="col-md-12">
+          <a class="btn btn-primary pull-right" href="http://seoq.app.balystic.com/blog/new-entry/">Write a blog entry</a>
+        </div>
+      </div>
+    {% endif %}
     {% for entry in blog_entries %}
       <div class="row p-20">
         <div class="col-md-4">
@@ -36,8 +43,8 @@
             <p class="m-t-10">{{ entry.excerpt }}
               <a href="{% url 'balystic_blog_detail' entry.slug %}">{% trans "Read more..." %}</a>
             </p>
-            {% if entry.tags %}
-            <p>Tagged: <a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ entry.tags }}</span></a></p>
+            {% if entry.tags %}  
+            <p>Tagged: {% for tag in entry.tags_list %}<a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ entry.tag }}</span></a>{% endfor %}</p>
             {% endif %}
           </div>
         </div>

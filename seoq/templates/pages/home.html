@@ -20,15 +20,15 @@
       </div>
       <div class="row">
         <div class="col-sm-4 hidden-xs text-center">
-          <img src="{% static "images/fish-1.gif" %}" alt="" class="img-responsive"></img>
+          <a href="{% url 'owners' %}"><img src="{% static "images/fish-1.gif" %}" alt="" class="img-responsive"></img></a>
           <p class="text-brand m-t-20 h4"><a href="{% url 'owners' %}" class="text-brand">{% trans "I own a website" %}</a></p>
         </div>
         <div class="col-sm-4 hidden-xs text-center">
-          <img src="{% static "images/fish-2.gif" %}" alt="" class="img-responsive"></img>
+          <a href="{% url 'professionals' %}"><img src="{% static "images/fish-2.gif" %}" alt="" class="img-responsive"></img></a>
           <p class="text-brand m-t-20 h4"><a href="{% url 'professionals' %}" class="text-brand">{% trans "I am a SEO Expert" %}</a></p>
         </div>
         <div class="col-sm-4 hidden-xs text-center">
-          <img src="{% static "images/fish-3.gif" %}" alt="" class="img-responsive"></img>
+          <a href="{% url 'students' %}"><img src="{% static "images/fish-3.gif" %}" alt="" class="img-responsive"></img></a>
           <p class="text-brand m-t-20 h4"><a href="{% url 'students' %}" class="text-brand">{% trans "I study SEO" %}</a></p>
         </div>
         <div class="col-xs-12 visible-xs-block text-center m-t-30">
@@ -44,12 +44,16 @@
             <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I study SEO" %}</button>
           </a>
         </div>
-        <span id="discover-more" class="scrollable">
-          <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white hidden-xs">{% trans "Discover more" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
-        </span>
       </div>
     </div>
   </section>
+  <div class="container" id="discover-more">
+    <div class="row">
+      <span  class="scrollable">
+        <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white hidden-xs">{% trans "Discover more" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+      </span>
+    </div>
+  </div>
   <section class="benefits-seo p-t-80 p-b-40">
     <div class="container">
       <div class="row">
@@ -88,7 +92,7 @@
           <div class="col-sm-6 col-md-6">
             <div class="row">
               <div class="col-sm-12">
-                <img src="{% static "images/andrew-expert-1.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
+                <img src="{% static "images/andrew-expert-2.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
                 <center><strong>Andrew Bennik</strong></center>
               </div>
             </div>
@@ -116,19 +120,26 @@
           </div>
           <img src="{% static "images/tablet.png" %}" alt="tablet" class="center-block img-responsive" id="tablet">
         </div>
+
+      </div>
+    </div>
+    <img src="{% static "images/separator-block-bottom.png" %}" alt="separator block top" class="img-responsive center-block relative">
+  </section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
         <span class="clear center-block scrollable" id="give-try">
           <a href="#how-website" title="{% trans "Give it try" %}" class=""><i class="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp;{% trans "Give it try" %}</a>
         </span>
       </div>
     </div>
-    <img src="{% static "images/separator-block-bottom.png" %}" alt="separator block top" class="img-responsive center-block relative">
-  </section>
+  </div>
   <section class="scan-website p-t-50 m-t-50">
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-sm-6 col-md-6 m-b-50">
-            <h2 class="" id="how-website" ng-class="{'animation-line': animation}">{% trans "Find " %}<u>{% trans "your" %}</u>{% trans " SEO Quotient:" %}</h2>
+            <h2 id="how-website">{% trans "Find " %}{% trans "your" %}{% trans " SEO Quotient:" %}</h2>
           </div>
 
           <div class="col-sm-6 col-md-6 m-b-50 p-t-20" ng-controller="keywordScoreController">
@@ -137,6 +148,9 @@
             <span ng-if="animation">
               {{ analysis_message }}
             </span>
+            <span ng-if="bad_status_code">
+              {{ status_message }}
+            </span>
           {% endverbatim %}
             <form ng-submit="startReport()" ng-if="!animation">
             {% csrf_token %}
@@ -144,14 +158,16 @@
                 <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
                 <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" required>
               </div>
-              <div class="text-center text-block">
-                <h3>vs</h3>
-              </div>
-              <div class="form-group">
-                <label for="competitor-website" class="text-center">{% trans "Your Competitor" %}</label>
-                <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}" disabled>
-                <input type="text" ng-model="request_data.keyword" class="form-control text-center" id="keywords" placeholder="{% trans "What keyword phrase do you want to rank for?" %}"{% if request.user.is_authenticated %}required{% else %}disabled{% endif %}>
-              </div>
+
+                <div class="text-center text-block">
+                  <h3>vs</h3>
+                </div>
+                <div class="form-group">
+                  <label for="competitor-website" class="text-center">{% trans "Your Competitor" %}</label>
+                  <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}" disabled>
+                  <input type="text" ng-model="request_data.keyword" class="form-control text-center" id="keywords" placeholder="{% trans "What keyword phrase do you want to rank for?" %}"{% if request.user.is_authenticated %}required{% else %}disabled{% endif %}>
+                </div>
+
               <button type="submit" class="btn btn-warning-ligth btn-block">{% trans "Start" %}</button>
             </form>
           </div>

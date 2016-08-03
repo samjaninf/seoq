@@ -14,18 +14,62 @@
 <section class="for-seo">
   <div class="container">
     <div class="row">
+
+    <div class="col-md-12 text-center">
+        <h1 class="about-title">{% trans "SEO Professionals" %}</h1>
+      </div>
+
       <div class="col-sm-12 col-md-10 col-md-offset-1 p-t-30">
         <div class="col-sm-6 col-md-6">
-          <h3>For SEO professionals</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio deserunt dolor voluptas, unde voluptatibus perspiciatis earum velit nulla quibusdam nemo totam, provident est aut, dicta aperiam doloribus. Eius expedita, commodi!</p>
+          <h3>Generate Leads</h3>
+            <p>Regardless if you do freelance, work for an agency or are looking to generate additional income, SEO Quotient's active marketplace helps get you found. </p>
+            <a href="{% url 'about' %}" class="btn btn-primary-ligth btn-lg">{% trans "Find your website's SEO Quotient!" %}</a>
         </div>
         <div class="col-sm-6 col-md-6">
-          <img src="{% static "images/fish-2.gif" %}" alt="fish" class="center-block img-responsive">
+          <img src="{% static "images/fish-1.gif" %}" alt="fish" class="center-block img-responsive">
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<section class="for-seo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1 p-t-30">
+        <div class="col-sm-6 col-md-6">
+          <img src="{% static "images/fish-2.gif" %}" alt="fish" class="center-block img-responsive">
+        </div>
+          <div class="col-sm-6 col-md-6">
+            <h3>Streamline your workflow</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate. </p>
+            <a href="{% url 'about' %}" class="btn btn-primary-ligth btn-lg">{% trans "Browse the directory" %}</a>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="for-seo m-b-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1 p-t-30">
+        <div class="col-sm-6 col-md-6">
+          <h3>Get Verified</h3>
+            <p>Find out best practices, use cases and what other companies and website owners are doing to better market themselves online. Our vibrant Q&A platform can provide answers to your pressing SEO and digital marketing questions. By joining the SEO Quotient community, you can participate in discussions, monitor the status of your website, get alerts if your website ever drops in rank or search engines shake up their algorithm.  </p>
+            <a href="{% url 'about' %}" class="btn btn-primary-ligth btn-lg">{% trans "Join with a free account" %}</a>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <img src="{% static "images/fish-3.gif" %}" alt="fish" class="center-block img-responsive">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock content %}
 <section id="team" class="p-t-30 m-b-80">
   <div class="container">
     <div class="row">
@@ -65,4 +109,3 @@
     </div>
   </div>
 </section>
-{% endblock content %}

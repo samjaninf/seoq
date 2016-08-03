@@ -22,8 +22,11 @@
       <tr class="quota_row text-center">
         <th class="quota_header text-center">
           {% if quota_row.0.url %}<a href="{{ quota_row.0.url }}" class="info_link quota">{% endif %}
+          {% comment %}
           <span class="quota_name">{{ quota_row.0.name }}</span><br>
           <span class="quota_description">{{ quota_row.0.description }}</span>
+
+          {% endcomment %}
           {% if quota_row.0.url %}</a>{% endif %}
         </th>
         {% for plan_quota in quota_row.1 %}

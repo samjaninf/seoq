@@ -301,3 +301,9 @@ PLANS_VALIDATORS = {
 }
 
 FACEBOOK_ACCESS_TOKEN = env('FACEBOOK_ACCESS_TOKEN')
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
