@@ -13,6 +13,7 @@
   .row-centered{
     @media (min-width:$screen-sm-min){
       margin-top: 80px;
+      text-align: center;
     }
     .col-centered{
       @media (min-width:$screen-sm-min){
@@ -22,6 +23,8 @@
         padding-top:20px;
         padding-bottom: 40px;
         border: 1px solid #d6cece;
+        display: inline-block;
+        float: none;
       }
       @media (max-width:$screen-sm){
         border:2px solid;
