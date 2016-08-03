@@ -193,7 +193,7 @@ class Algorithm(object):
             score = score + self.listingVar
         else:
             score = score - self.listingVar
-        return int(score), report
+        return int(score / 1.2), report
 
     def getKeywordClass(self, url, keyword, ip=1223):
         self.scraper = QscraperSEOQTool(url, keyword, ip)
