@@ -13,6 +13,7 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
 	$scope.startReport = function(){
 		var keyword_disabled = document.getElementById('keywords').getAttribute('disabled')
 		var url = '/api/start-report/';
+    document.getElementById('how-website').className = "animation-line";
 		var data = {
 			url: $scope.request_data.url,
       csrfmiddlewaretoken: csrftoken
