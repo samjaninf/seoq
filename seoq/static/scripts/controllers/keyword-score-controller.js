@@ -34,8 +34,12 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
                 csrfmiddlewaretoken: csrftoken
             	}
 
-		 		$http.post(url, data, headers)
-            	.success(function (data, status) {
+		 		$http({
+          method: 'POST',
+          url: url,
+          data: data,
+          headers: headers
+        }).success(function (data, status) {
             		var redirect_url = data.redirect_url;
             		if (keyword_disabled != null) {
             			window.location.assign(redirect_url);
@@ -47,7 +51,12 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
                     csrfmiddlewaretoken: csrftoken,
             				pk: obtained_pk
             			}
-            			$http.post(url, data, headers)
+            			$http({
+                    method: 'POST',
+                    url: url,
+                    data: data,
+                    headers: headers
+                  })
             			.success(function (data, status) {
             				var redirect_url = data.redirect_url;
             				window.location.assign(redirect_url);
