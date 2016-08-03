@@ -62,3 +62,8 @@ django-balystic==0.1.12
 # django plans
 django-plans==0.8.11
 django-ordered-model==1.2.1
+
+tweepy==3.5.0
+facebook==0.0
+python-linkedin==4.1
+

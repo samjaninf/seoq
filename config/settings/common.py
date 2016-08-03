@@ -299,3 +299,5 @@ SEND_PLANS_EMAILS = False
 PLANS_VALIDATORS = {
     'WEBSITE': 'seoq.core.validators.web_site_validator',
 }
+
+FACEBOOK_ACCESS_TOKEN = env('FACEBOOK_ACCESS_TOKEN')

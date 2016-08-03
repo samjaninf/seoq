@@ -17,7 +17,7 @@ class UserDetailView(LoginRequiredMixin, View):
     template_name = 'users/user_detail.html'
 
     def get(self, request, username):
-        user = Client().get_user_detail(username)['user']
+        user = Client().get_user_detail(username)
         return render(request, self.template_name, {'object': user})
 
 
