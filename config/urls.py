@@ -9,9 +9,10 @@ from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from balystic import views as balystic_views
 from seoq.core import views as core_views
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='pages/home.html'),
+    url(r'^$', ensure_csrf_cookie(TemplateView.as_view(template_name='pages/home.html')),
         name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'),
         name='about'),

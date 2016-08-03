@@ -20,7 +20,8 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
     }
     return cookieValue;
   }
-  var csrftoken = getCookie('csrftoken');
+  var csrftoken = $('#my_token').val();
+  console.log(csrftoken)
 	$scope.animation = false;
 	$scope.startReport = function(){
 		var keyword_disabled = document.getElementById('keywords').getAttribute('disabled')
@@ -29,17 +30,20 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
 			url: $scope.request_data.url,
       csrfmiddlewaretoken: csrftoken
 		};
-		 $http.post(url, data)
+    var headers = {
+      'X-CSRFToken': csrftoken
+    };
+		 $http.post(url, data, headers)
             .success(function (data, status) {
             	$scope.animation = true;
             	$scope.analysis_message = "we are getting your site score";
             	var obtained_pk = data.report;
             	url = '/api/site-score/';
             	data = {
-            		pk: obtained_pk,
-                csrfmiddlewaretoken: csrftoken
+            		pk: obtained_pk
             	}
-		 		$http.post(url, data)
+
+		 		$http.post(url, data, headers)
             	.success(function (data, status) {
             		var redirect_url = data.redirect_url;
             		if (keyword_disabled != null) {
@@ -49,10 +53,9 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
             			url = '/api/kw-score/';
             			data = {
             				keywords: $scope.request_data.keyword,
-            				pk: obtained_pk,
-                    csrfmiddlewaretoken: csrftoken
+            				pk: obtained_pk
             			}
-            			$http.post(url, data)
+            			$http.post(url, data, headers)
             			.success(function (data, status) {
             				var redirect_url = data.redirect_url;
             				window.location.assign(redirect_url);
