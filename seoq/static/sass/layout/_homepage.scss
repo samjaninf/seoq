@@ -32,22 +32,23 @@ section.benefits-seo{
     border-bottom: 2px solid $brand-primary;
     position: absolute;
     @media (min-width: $screen-sm-min) and (max-width:$screen-sm-max){
-      height: 160px;
+      height: 342px;
       width: 22px;
       left: -16px;
-      top: -80px;
+      top: -304px;
+
     }
     @media (min-width: $screen-md-min) and (max-width:$screen-md-max){
       height: 160px;
       width: 45px;
       left: -55px;
-      top: -80px;
+      top: -105px;
     }
     @media (min-width: $screen-lg-min){
       height: 160px;
       width: 65px;
       left: -76px;
-      top: -80px;
+      top: -105px;
     }
   }
 }
@@ -136,6 +137,7 @@ section.seo-experts{
   }
 }
 section.scan-website{
+  min-height: 500px;
   .col-md-10{
     @media(min-width:$screen-sm-min){
       display: flex;
@@ -153,8 +155,8 @@ section.scan-website{
         display: block;
         position: absolute;
         @media(min-width:$screen-sm-min) and (max-width:832px){
-          height: 221px;
-          top: -168px;
+          height: 296px;
+          top: -240px;
           left: 0px;
           width: 13px;
         }
@@ -166,8 +168,8 @@ section.scan-website{
         }
         @media(min-width:$screen-md-min) and (max-width:$screen-md-max){
           width: 50px;
-          height: 293px;
-          top: -237px;
+          height: 300px;
+          top: -250px;
           left: -67px;
         }
         @media(min-width:$screen-lg-min){
@@ -217,6 +219,8 @@ section.scan-website{
   }
 }
 #give-try{
+  position: absolute;
+  top: -55px;
   @media(max-width:$screen-sm){
     display: none;
   }
