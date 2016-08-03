@@ -130,7 +130,21 @@
     }
     signup_error = changeState($(this), state, message);
   });
-  $('#signup-form #id_password1').change(function () {
+
+  $('#signup-form #id_first_name').change(function () {
+    var state = '';
+    var message = '';
+    if ($(this).val().length >= 6){
+      state = 'valid';
+    }
+    else{
+      state = 'invalid';
+      message = 'First name (min. 6 characters)';
+    }
+    signup_error = changeState($(this), state, message);
+  });
+
+  $('#signup-form #id_password_1').change(function () {
     var state = '';
     var message = '';
     if ($(this).val().length >= 6){
@@ -142,11 +156,12 @@
     }
     signup_error = changeState($(this), state, message);
   });
-  $('#signup-form #id_password2').change(function () {
+
+  $('#signup-form #id_password_2').change(function () {
     var state = '';
     var message = '';
     if ($(this).val().length >= 6){
-      if ($(this).val() == $('#signup-form #id_password1').val()) {
+      if ($(this).val() == $('#signup-form #id_password_1').val()) {
         state = 'valid';
       }
       else {
@@ -160,6 +175,23 @@
     }
     signup_error = changeState($(this), state, message);
   });
+
+  $('#signup-form #id_phone_number').change(function () {
+    var state = '';
+    var message = '';
+    if ($(this).val().length >= 7){
+      state = 'valid';
+    }
+    else{
+      state = 'invalid';
+      message = 'Phone number (min. 7 characters)';
+    }
+    signup_error = changeState($(this), state, message);
+  });
+
+
+
+
   $("#signup-form").submit(function(e){
     if (signup_error){
       e.preventDefault();
