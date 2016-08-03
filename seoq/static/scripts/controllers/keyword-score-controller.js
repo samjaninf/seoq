@@ -7,6 +7,7 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
 	}
 
   var csrftoken = $('#my_token').val();
+  console.log(csrftoken);
 	$scope.animation = false;
 	$scope.startReport = function(){
 		var keyword_disabled = document.getElementById('keywords').getAttribute('disabled')
