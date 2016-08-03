@@ -8571,7 +8571,8 @@ section.scan-website {
 
 @media (min-width: 768px) {
   .plans-container .row-centered {
-    margin-top: 80px; } }
+    margin-top: 80px;
+    text-align: center; } }
 
 @media (min-width: 768px) {
   .plans-container .row-centered .col-centered {
@@ -8580,7 +8581,9 @@ section.scan-website {
     border-radius: 6px;
     padding-top: 20px;
     padding-bottom: 40px;
-    border: 1px solid #d6cece; } }
+    border: 1px solid #d6cece;
+    display: inline-block;
+    float: none; } }
 
 @media (max-width: 768px) {
   .plans-container .row-centered .col-centered {
