@@ -1,0 +1,24 @@
+{% load static %}
+<div class="col-sm-12 col-md-8 col-md-offset-2 p-t-30">
+{% for object in object_list %}
+  <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+    <a href="{% url 'users:detail' object.username %}">
+    {% if object.avatar %}
+    <img src="{{ object.avatar }}" alt="Avatar" class="img-responsive img-circle center-block">
+    {% else %}
+    <img class="media-object img-circle center-block" src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="Placeholder" width="120" height="120">
+    {% endif %}
+    </a>
+
+    <a href="{% url 'users:detail' object.username %}">
+    {% if object.first_name and object.last_name %}
+    <p class="text-center">{{ object.first_name }} {{ object.last_name }}</p>
+    {% else %}
+    <p class="text-center">{{ object.username }}</p>
+    {% endif %}
+    </a>
+    <small class="text-center"></small>
+  </div>
+
+{% endfor %}
+</div>

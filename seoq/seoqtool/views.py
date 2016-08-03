@@ -21,9 +21,8 @@ from .mobilefriendlycheck import MobileFriendlyChecker
 from .utils import get_expiration_and_creation_date,\
     get_built_with_information, get_total_time_and_ssl_certification
 from .algorithm import Algorithm
+from balystic.client import Client
 from .email_report import send_simple_email
-
-# Create your views here.
 
 
 class BasicQscraperUseView(View):
@@ -187,8 +186,8 @@ class ReportView(View):
 
 
 class ArchiveReportView(View):
-
     template_name = 'seoqtool/score.html'
+    client = Client()
 
     def get(self, request, netloc, year, month, day):
         netloc = str(netloc)
@@ -248,6 +247,8 @@ class ArchiveReportView(View):
         context['error'] = error
         context['passed'] = improve
         context['to_improve'] = success
+        context['seo_professionals'] = self.client.get_users(
+            {'isPro': '1'})['users'][0:6]
         return render(request, self.template_name, context)
 
     def post(self, request, netloc, year, month, day):

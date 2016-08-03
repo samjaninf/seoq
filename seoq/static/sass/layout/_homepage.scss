@@ -239,8 +239,15 @@ section.scan-website{
   top: -40px; */
 }
 #discover-more{
-    position: relative;
-    top: 30px;
+  position: relative;
+  top: -30px;
+}
+
+.fullscreen{
+  height: calc(100vh - 90px);
+  min-height: 570px;
+  display: flex;
+  align-items: center;
 }
 
 #most-recent{

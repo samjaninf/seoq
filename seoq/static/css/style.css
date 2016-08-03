@@ -218,6 +218,11 @@ hr {
   .dropdown #user-dropdown:hover, .dropdown #user-dropdown:focus {
     text-decoration: none !important;
     background: transparent; }
+  .dropdown #user-dropdown .caret {
+    float: right;
+    position: relative;
+    top: -21px;
+    right: -11px; }
 
 .bg-gray {
   background-color: #f0f4f5; }
@@ -8347,7 +8352,15 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
 
 #discover-more {
   position: relative;
-  top: 30px; }
+  top: -30px; }
+
+.fullscreen {
+  height: calc(100vh - 90px);
+  min-height: 570px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center; }
 
 @media (max-width: 768px) {
   #most-recent {

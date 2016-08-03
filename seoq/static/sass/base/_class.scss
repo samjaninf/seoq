@@ -168,6 +168,12 @@ hr{
       text-decoration: none !important;
       background: transparent;
     }
+    .caret{
+      float: right;
+      position: relative;
+      top:-21px;
+      right: -11px;
+    }
   }
   // .dropdown-menu{
   //   top: 71px;
@@ -182,8 +188,10 @@ hr{
 .blue-link{
   color: #5bc0de;
 }
+
 @media (min-width: $screen-sm-min) {
   ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;
   }
 }
+
