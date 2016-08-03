@@ -12,16 +12,15 @@
     <div class="row">
       <p class="text-center m-0">Score for:</p>
       <h3 class="text-center text-white m-0">{{ netloc }}</h3>
-      <div id="container">{{ total_score }}</div>
+      <div id="container">
+        <h2 class="text-center text-white">{{ total_score }}</h2>
+      </div>
       <div class="m-t-10 text-center">
         <p class="m-b-10 m-t-10">Share score:</p>
         <a href="http://www.facebook.com/dialog/share?display=popup&amp;href={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}&amp;app_id=1533371110295720" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
           <i class="fa fa-facebook-f m-r-5"></i>
           Facebook
         </a>
-        <a href="https://twitter.com/intent/tweet" class="twitter-share-button" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg" data-show-count="true" data-size="large" data-text="Check out my SEO Quotient on SEOQ.com for {{ netloc }}!"> <i class="fa fa-twitter m-r-5"></i>
-          Twitter</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
         <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20SEOQ%20report%20on%20SEOQ.com%20for%20{{ netloc }}&amp;via=SEOQuotient&amp;lang=en" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
           <i class="fa fa-twitter m-r-5"></i>
           Twitter
@@ -152,62 +151,4 @@
 {% endblock content %}
 
 {% block extra_javascript %}
-<script>
-// progressbar.js@1.0.0 version is used
-// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
-  var bar = new ProgressBar.Circle(container, {
-
-    color: '#fff',
-    // This has to be the same size as the maximum width to
-    // prevent clipping
-    strokeWidth: 4,
-    trailWidth: 1,
-    easing: 'easeInOut',
-    duration: 1400,
-    text: {
-      autoStyleContainer: false
-    },
-    from: { color: '#fff', width: 1 },
-    to: { color: '#fff', width: 4 },
-    // Set default step function for all animate calls
-    step: function(state, circle) {
-      circle.path.setAttribute('stroke', state.color);
-      circle.path.setAttribute('stroke-width', state.width);
-
-      var value = Math.round(circle.value() * 100);
-      if (value === 0) {
-        circle.setText('');
-      } else {
-        circle.setText(value);
-      }
-
-    }
-  });
-  bar.text.style.fontSize = '4rem';
-  bar.text.style.fontWeight = 'bold';
-  bar.animate(1.0);  // Number from 0.0 to 1.0
-</script>
-<script>
-function sendReport() {
-    var email = prompt("Please enter your email", "");
-    
-    if (email != null) {
-    $.ajax({
-        type: 'POST',
-        url: "/seoq/seoqtool/email_report.py",
-        data: JSON.stringify({
-            toemail: email,
-            urlreport: window.location.href
-                    }),
-        dataType: 'json',
-        success: function(response){
-          console.log('yay! ajax call done')
-        }
-}).done(function(data){
-   console.log('yay! sendreport done!')
-});
-
-    }
-}
-</script>
 {% endblock extra_javascript %}
