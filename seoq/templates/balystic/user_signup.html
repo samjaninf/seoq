@@ -137,12 +137,12 @@
   $('#signup-form #id_first_name').change(function () {
     var state = '';
     var message = '';
-    if ($(this).val().length >= 6){
+    if ($(this).val().length >= 1){
       state = 'valid';
     }
     else{
       state = 'invalid';
-      message = 'First name (min. 6 characters)';
+      message = 'First name (min. 1 characters)';
     }
     signup_error = changeState($(this), state, message);
   });
