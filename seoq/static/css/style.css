@@ -8501,12 +8501,22 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
   .owners #team-owners .container .row .col-sm-12 .col-xs-6 img:hover {
     opacity: 1; }
 
+.score .container .row h3 {
+  color: #fff; }
+
 .score .container .row #container {
   margin: 0 auto;
   width: 100px;
   height: 100px;
-  position: relative;
-  margin-top: 30px; }
+  display: table;
+  margin-top: 30px;
+  border: 5px solid #fff;
+  border-radius: 50%; }
+  .score .container .row #container h2 {
+    display: table-cell;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 40px; }
 
 .score-number {
   font-size: 28px;
@@ -8514,12 +8524,12 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
 
 .btn-facebook {
   background: #2E609B; }
-  .btn-facebook:hover {
+  .btn-facebook:hover, .btn-facebook:focus {
     color: #fff; }
 
 .btn-twitter {
   background: #00C3F3; }
-  .btn-twitter:hover {
+  .btn-twitter:hover, .btn-twitter:focus {
     color: #fff; }
 
 .report h2, .report h3 {
