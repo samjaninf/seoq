@@ -20,14 +20,15 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
     }
     return cookieValue;
   }
-  var csrftoken = window.csrfmiddlewaretoken;//getCookie('csrftoken');
+  var csrftoken = $('#my_token').val();
   console.log(csrftoken)
 	$scope.animation = false;
 	$scope.startReport = function(){
 		var keyword_disabled = document.getElementById('keywords').getAttribute('disabled')
 		var url = '/api/start-report/';
 		var data = {
-			url: $scope.request_data.url
+			url: $scope.request_data.url,
+      csrfmiddlewaretoken: csrftoken
 		};
     var headers = {
       'X-CSRFToken': csrftoken
