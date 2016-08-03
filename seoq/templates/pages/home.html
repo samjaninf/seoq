@@ -59,9 +59,9 @@
           <div class="col-sm-6 col-md-6">
             <h2 class="text-left" id="benefits-text"><strong>{% trans "What is SEOQ?"%}</strong></h2>
             <p>
-              SEO Quotient is a tool and an online community that helps you evaluate your website and find ways to improve it's internet presence. <br> Connect with experts or browse our community to make your website the biggest fish in the internet pond!
+              SEO Quotient is a tool and an online community that helps you evaluate your website and find ways to improve it's internet presence. <p> Connect with experts or browse our community to make your website the biggest fish in the internet pond!</p>
             </p>
-            <a href="{% url 'about' %}" class="btn btn-primary-ligth btn-lg">{% trans "Learn more about SEO" %}</a>
+            <a href="{% url 'about' %}" class="btn btn-primary-ligth btn-lg">{% trans "Learn more about SEOQ" %}</a>
           </div>
           <span class="clear pull-right scrollable" id="most-recent">
             <a href="#experts" title="{% trans "Most recent" %}" class="">{% trans "Most recent" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
@@ -76,35 +76,15 @@
       <div class="row" id="experts">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-sm-6 col-md-6 pull-right">
-            <h2 class="text-left" id="experts"><strong>{% trans "This week SEO Experts" %}</strong></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente at eius vitae doloremque dolorum, deleniti non expedita id odio eum, dignissimos, quis, adipisci consectetur neque perspiciatis explicabo quo quia voluptatum.</p>
-            <a href="{% url 'account_login' %}" class="btn btn-primary-ligth btn-lg">{% trans "Create SEO profile" %}</a>
+            <h2 class="text-left" id="experts"><strong>{% trans "Featured SEO Professional" %}</strong></h2>
+            <p>Andrew has worked in SEO and digital marketing for 8 years, making data-driven decisions resulting in incredible growth.  He has earned over 150 verified #1 keyword rankings for his past Fortune 500 employers. <span>Join our community to get in touch with more experts like Andrew today!</p></p>
+            <a href="{% url 'balystic_signup' %}" class="btn btn-primary-ligth btn-lg">{% trans "Create your profile" %}</a>
           </div>
           <div class="col-sm-6 col-md-6">
             <div class="row">
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-1.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-2.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-3.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-4.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-5.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-6.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
+              <div class="col-sm-12">
+                <img src="{% static "images/andrew-expert-1.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
+                <center><strong>Andrew Bennik</strong></center>
               </div>
             </div>
           </div>
@@ -112,13 +92,13 @@
       </div>
       <div class="row m-t-90 relative p-b-40" id="for-students">
         <div class="col-sm-12 col-md-8 col-md-offset-2 p-t-80">
-          <h2 class="text-center relative m-b-50"><strong>{% trans "For Students of SEO" %}</strong></h2>
+          <h2 class="text-center relative m-b-50"><strong>{% trans "Become Better at SEO" %}</strong></h2>
           <div class="col-sm-6 col-md-6">
             <div class="pull-right">
               <a href="#">
                 <img src="{% static "images/learn.png" %}" alt="learn" class="img-responsive center-block" width="130px">
-                <h3 class="text-center font-weight-bold-5 text-primary">{% trans "Learn more in" %}
-                <br>{% trans "our SEO University" %}</h3>
+                <h3 class="text-center font-weight-bold-5 text-primary">{% trans "Learn in our" %}
+                <br>{% trans " SEO Academy" %}</h3>
               </a>
             </div>
           </div>
@@ -146,25 +126,33 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-sm-6 col-md-6 m-b-50">
-            <h2 class="" id="how-website">{% trans "How does your" %}<br>{% trans "Website do for SEO?" %}</h2>
+            <h2 class="" id="how-website">{% trans "Find " %}<u>{% trans "your" %}</u>{% trans " SEO Quotient:" %}</h2>
           </div>
-          <div class="col-sm-6 col-md-6 m-b-50 p-t-20">
-            <form action="">
+
+          <div class="col-sm-6 col-md-6 m-b-50 p-t-20" ng-controller="keywordScoreController">
+          <img src="{% static 'images/ajax-loader.gif' %}" ng-if="animation">
+          {% verbatim %}
+            <span ng-if="animation">
+              {{ analysis_message }}
+            </span>
+          {% endverbatim %}
+            <form ng-submit="startReport()" ng-if="!animation">
               <div class="form-group">
                 <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
-                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}">
+                <input type="url" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" required>
               </div>
               <div class="text-center text-block">
                 <h3>vs</h3>
               </div>
               <div class="form-group">
                 <label for="competitor-website" class="text-center">{% trans "Your Competitor" %}</label>
-                <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}">
-                <input type="text" class="form-control text-center" id="keywords" placeholder="{% trans "What keyword phrase do you want to rank for?" %}">
+                <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}" disabled>
+                <input type="text" ng-model="request_data.keyword" class="form-control text-center" id="keywords" placeholder="{% trans "What keyword phrase do you want to rank for?" %}"{% if request.user.is_authenticated %}required{% else %}disabled{% endif %}>
               </div>
               <button type="submit" class="btn btn-warning-ligth btn-block">{% trans "Start" %}</button>
             </form>
           </div>
+
         </div>
       </div>
     </div>

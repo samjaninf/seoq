@@ -58,4 +58,4 @@ djangorestframework==3.4.0
 celery==3.1.23
 django-celery==3.1.17
 django-supervisor==0.3.4
-django-balystic==0.1.9
+django-balystic==0.1.12

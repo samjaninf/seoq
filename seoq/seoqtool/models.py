@@ -1,4 +1,6 @@
 from __future__ import unicode_literals
+from django.core.urlresolvers import reverse
+from django.contrib.postgres.fields import JSONField
 from django.conf import settings
 from django.db import models
 
@@ -18,6 +20,18 @@ class Report(models.Model):
     site_score = models.FloatField(default=0)
     keyword_score = models.FloatField(default=0)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
+    analysis = JSONField(default={})
+
+    def get_absolute_url(self):
+        netloc = self.netloc.replace(
+            'www.', '').replace(
+            'https://', '').replace(
+            'http://', '').replace('/', '--')
+        return reverse(
+            'seoqtool:archive_report',
+            args=[netloc, self.created.strftime("%Y"),
+                  self.created.strftime("%m"),
+                  self.created.strftime("%d")])
 
 
 class ReportURL(models.Model):

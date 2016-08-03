@@ -8,11 +8,18 @@ than we are going to use in website
 .font-weight-bold{
   font-weight: bold;
 }
+.text-light{
+  font-weight: lighter;
+}
 .font-weight-bold-5{
   font-weight: 500;
 }
 .m-0{
   margin:0px;
+}
+.m-y-25{
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 .m-b-30{
   margin-bottom: 30px;
@@ -53,6 +60,9 @@ than we are going to use in website
 .m-t-90{
   margin-top: 90px;
 }
+.p-t-0{
+  padding-top:0px;
+}
 .p-0{
   padding:0px !important;
 }
@@ -61,6 +71,15 @@ than we are going to use in website
 }
 .p-20{
   padding: 20px;
+}
+.p-50-0{
+  padding:50px 0px;
+}
+.p-l-5{
+  padding-left: 5px !important;
+}
+.p-r-5{
+  padding-right: 5px !important;
 }
 .p-t-70{
   padding-top: 70px;
@@ -153,4 +172,7 @@ hr{
   .dropdown-menu{
     top: 71px;
   }
+}
+.bg-gray{
+  background-color: #f0f4f5;
 }

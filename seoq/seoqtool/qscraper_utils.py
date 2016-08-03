@@ -48,7 +48,7 @@ class QscraperSEOQTool(object):
     class to organize all qscraper seotool related
     methods
     """
-    def __init__(self, url, keywords, depth, ip, report=None):
+    def __init__(self, url, keywords, ip, depth=0, report=None):
         results = JSONPrint()
         self.url = url
         self.keywords = keywords
@@ -92,6 +92,15 @@ class QscraperSEOQTool(object):
         kw_length = len(self.keywords)
         # calculates the score (1-10)
         score = kw_in_title / float(kw_length) * 10
+        return score
+
+    def calculate_meta_description(self):
+        # get the url data
+        metaDescription = self.JSONObject['results']
+        kw_in_meta_description = metaDescription[
+            'meta_description']['total_of_kws_in_meta_description']
+        kw_length = len(self.keywords)
+        score = kw_in_meta_description / float(kw_length) * 10
         return score
 
     def calculate_url(self):

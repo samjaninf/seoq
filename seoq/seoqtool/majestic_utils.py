@@ -5,6 +5,10 @@ from django.conf import settings
 
 class MajesticBackLinks(object):
 
+    indexItemInfoDomainNameResponse = ''
+    indexItemInfoWebPageURLResponse = ''
+    backLinkDataReponse = ''
+
     def __init__(self, url):
         endpoint = settings.MAJESTIC_URL  # API
         app_api_key = settings.MAJESTIC_API_KEY  # put API key
