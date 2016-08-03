@@ -27,7 +27,8 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
 		var keyword_disabled = document.getElementById('keywords').getAttribute('disabled')
 		var url = '/api/start-report/';
 		var data = {
-			url: $scope.request_data.url
+			url: $scope.request_data.url,
+      csrfmiddlewaretoken: csrftoken
 		};
     var headers = {
       'X-CSRFToken': csrftoken
