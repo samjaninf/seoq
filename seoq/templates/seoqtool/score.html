@@ -12,6 +12,9 @@
     <div class="row">
       <p class="text-center m-0">Score for:</p>
       <h3 class="text-center text-white m-0">{{ netloc }}</h3>
+      {% if report.keywords %}
+        <h4 class="text-center text-white m-0">{{ report.keywords }}</h4>
+      {% endif %}
       <div id="container">
         <h2 class="text-center text-white">{{ total_score }}</h2>
       </div>
@@ -90,17 +93,30 @@
         {% endif %}
           <p class="text-center m-y-25">Share this report:</p>
           <div class="row">
-            <div class="col-sm-6">
-              <a href="http://www.facebook.com/dialog/share?display=popup&amp;href={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}&amp;app_id=1533371110295720" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg btn-block">
-                <i class="fa fa-facebook-f m-r-5"></i>
-                Facebook
+            <div class="col-sm-3">
+              <a href="http://www.facebook.com/dialog/share?display=popup&amp;href={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}&amp;app_id=554100534774985" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
+              <i class="fa fa-facebook-f m-r-5"></i>
+              Facebook
               </a>
             </div>
-            <div class="col-sm-6">
-              <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20web%20accessibility%20and%20Section%20508%20compliance%20report%20on%20508Q.com%20for%20{{ netloc }}&amp;via=inQbation&amp;lang=en" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg btn-block">
-                <i class="fa fa-twitter m-r-5"></i>
-                Twitter
-              </a>
+            <div class="col-sm-3">
+            <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20SEO%20report%20on%20SEOQ.com%20for%20{{ netloc }}!%20{{ request.build_absolute_uri }}&amp;via=SEOQuotient&amp;lang=en" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
+            <i class="fa fa-twitter m-r-5"></i>
+              Twitter
+            </a>
+            </div>
+            <div class="col-sm-3">
+              <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+              <script type="IN/Share"></script>
+            </div>
+            <div class="col-sm-3">
+              <form class="form-inline" action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                <input type="email" class="form-control" name="email" id='email_input' placeholder="Share this report via email" required>
+                </div>
+              <button type="submit" class="btn btn-primary">Send report</button>
+              </form>
             </div>
           </div>
         </div>
