@@ -1,7 +1,11 @@
 import json
 import requests
 import urllib2
+import tweepy
+import facebook
 from django.conf import settings
+from linkedin import linkedin
+
 
 # you can simplify a lot of this code using requests library! --jlariza
 
@@ -179,4 +183,33 @@ class QscraperSEOQTool(object):
         return url
 
     def get_social_data(self):
-        return self.JSONObject['social_data']
+        socialDict = self.JSONObject['social_data']
+        return socialDict
+
+    def get_facebook_likes(self):
+        access_token = settings.FACEBOOK_ACCESS_TOKEN
+        page_id = "idiotinside"
+        api_endpoint = "https://graph.facebook.com/v2.5/"
+        fb_graph_url = api_endpoint+page_id+"?fields=id,likes,link&access_token="+access_token
+        try:
+           api_request = urllib2.Request(fb_graph_url)
+           api_response = urllib2.urlopen(api_request)
+           
+           try:
+               return json.loads(api_response.read())
+           except (ValueError, KeyError, TypeError):
+               return "JSON error"
+
+        except IOError, e:
+           if hasattr(e, 'code'):
+               return e.code
+           elif hasattr(e, 'reason'):
+               return e.reason
+
+    def get_twitter_followers(self):
+        socialDict = self.JSONObject['social_data']
+        twitter = socialDict['twitter'][0].split("/")
+        phrase = str(twitter[-1])
+        auth = tweepy.OAuthHandler('auqkcMIRZXXkZzJT8pfilYTst', '7WB7moJ5KGaFiLb2rffUcE7hardWA0hPJomuLxW8C4QaUJxZB6')
+        api = tweepy.API(auth)
+        return api.get_user(phrase).followers_count
