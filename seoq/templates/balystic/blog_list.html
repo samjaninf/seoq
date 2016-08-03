@@ -44,7 +44,7 @@
               <a href="{% url 'balystic_blog_detail' entry.slug %}">{% trans "Read more..." %}</a>
             </p>
             {% if entry.tags %}  
-            <p>Tagged: {% for tag in entry.tags_list %}<a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ entry.tag }}</span></a>{% endfor %}</p>
+            <p>Tagged: {% for tag in entry.tags %}<a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ tag }}</span></a>{% endfor %}</p>
             {% endif %}
           </div>
         </div>
