@@ -18,6 +18,8 @@ class SiteFormView(APIView):
     def post(self, request):
         obtained_json = request.data
         url = obtained_json.get('url', None)
+        if 'http://' not in url and 'https://'not in url:
+            url = 'http://' + url
         response = requests.get(url, verify=False)
         if response.status_code == 403:
             return Response(
