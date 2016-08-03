@@ -13,6 +13,12 @@
       <p><strong>Last Name:</strong> {{ object.user.last_name }}</p>
       <p><strong>Email:</strong> {{ object.user.email }}</p>
       <p><strong>Bio:</strong> {{ object.user.bio }}</p>
+      {% if object.user.username == request.user.username %}
+      <!-- Action buttons -->
+        <a class="btn btn-primary" href="{% url 'balystic_user_update' object.user.username %}">Update profile</a>
+          <!-- Your Stuff: Custom user template urls -->
+      <!-- End Action buttons -->
+      {% endif %}
     </div>
     <div class="col-sm-6 col-md-6">
       <p><strong>{% trans "Account" %}:</strong> {{ user }}</p>
@@ -29,20 +35,6 @@
   </div>
 
 {{ object.error }}
-
-{% if object.user.username == request.user.username %}
-<!-- Action buttons -->
-<div class="row m-b-50">
-
-  <div class="col-sm-8 col-sm-offset-2 ">
-    <a class="btn btn-primary" href="{% url 'balystic_user_update' object.user.username %}">Update profile</a>
-    <!-- Your Stuff: Custom user template urls -->
-  </div>
-
-</div>
-<!-- End Action buttons -->
-{% endif %}
-
 
 </div>
 {% endblock content %}
