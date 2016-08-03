@@ -23,4 +23,8 @@
     </div>
 </div>
 {% endblock %}
-
+{% block extra_javascript %}
+<script>
+      document.getElementById("id_isPro").nextSibling.nodeValue = 'I am a SEO Professional';
+</script>
+{% endblock extra_javascript %}
