@@ -1,12 +1,23 @@
 .score{
   .container{
     .row{
+      h3{
+        color: #fff;
+      }
       #container {
         margin: 0 auto;
         width: 100px;
         height: 100px;
-        position: relative;
+        display: table;
         margin-top: 30px;
+        border:5px solid #fff;
+        border-radius:50%;
+        h2{
+          display: table-cell;
+          vertical-align: middle;
+          color: #fff;
+          font-size:40px;
+        }
       }
     }
   }
@@ -17,19 +28,46 @@
 }
 .btn-facebook {
   background: #2E609B;
-  &:hover{
+  &:hover,&:focus{
     color: #fff;
   }
 }
 .btn-twitter {
   background: #00C3F3;
-  &:hover{
+  &:hover,&:focus{
     color: #fff;
   }
 }
 .report{
-  h3{
+  h2, h3{
     color: $gray;
     font-weight: lighter;
+  }
+  @media(max-width: $screen-xs-max) {
+    .btn{
+      margin-bottom: 5px;
+    }
+  }
+  #team{
+    .container{
+      .row{
+        .col-md-8.col-md-offset-2{
+          .col-xs-6{
+            margin-bottom: 40px;
+            img{
+              opacity: 0.6;
+              border:3px solid #E0E4E5;
+              &:hover{
+                opacity: 1;
+              }
+            }
+            p{
+              margin-top: 10px;
+              margin-bottom: 0px;
+            }
+          }
+        }
+      }
+    }
   }
 }

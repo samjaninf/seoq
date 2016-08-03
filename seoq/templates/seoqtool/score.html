@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block title %}Report{% endblock title %}
+{% block page_class %}report{% endblock page_class %}
+{% block nav_class %}navbar-about{% endblock nav_class %}
+{% block logo %}
+<img src="{% static "images/logo-b.png" %}" alt="SEOQ Logo">
+{% endblock logo %}
+{% block content %}
+<section class="bg-primary p-50-0 score">
+  <div class="container">
+    <div class="row">
+      <p class="text-center m-0">Score for:</p>
+      <h3 class="text-center text-white m-0">{{ netloc }}</h3>
+      <div id="container">
+        <h2 class="text-center text-white">{{ total_score }}</h2>
+      </div>
+      <div class="m-t-10 text-center">
+        <p class="m-b-10 m-t-10">Share score:</p>
+        <a href="http://www.facebook.com/dialog/share?display=popup&amp;href={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}&amp;app_id=554100534774985" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
+          <i class="fa fa-facebook-f m-r-5"></i>
+          Facebook
+        </a>
+        <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20SEO%20report%20on%20SEOQ.com%20for%20{{ netloc }}!%20{{ request.build_absolute_uri }}&amp;via=SEOQuotient&amp;lang=en" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
+          <i class="fa fa-twitter m-r-5"></i>
+          Twitter
+        </a>
+
+        <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+        <script type="IN/Share"></script>
+        
+      </div>
+      <div class="col-sm-12 col-md-8 col-md-offset-2 p-t-30">
+        <div class="col-sm-4 col-md-4">
+          <img src="{% static "images/fish-2.png" %}" alt="fish" class="center-block img-responsive">
+          <p class="text-center m-0 m-t-10">{{ passed }} Passed</p>
+        </div>
+        <div class="col-sm-4 col-md-4">
+          <img src="{% static "images/fish-3.png" %}" alt="fish" class="center-block img-responsive">
+          <p class="text-center m-0 m-t-10">{{ to_improve }} To improve</p>
+          </div>
+        <div class="col-sm-4 col-md-4">
+          <img src="{% static "images/fish-5.png" %}" alt="fish" class="center-block img-responsive">
+          <p class="text-center m-0 m-t-10">{{ error }} Error</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      {% include "seoqtool/report_elements/crawlability.html" %}
+      {% include "seoqtool/report_elements/credibility.html" %}
+      {% comment %}
+      <div class="col-md-10 col-md-offset-1 text-center m-t-50">
+        <p><span class="score-number">3</span><small class="text-muted">/3</small></p>
+        <h3 class="m-b-30">Conversation</h3>
+        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae assumenda dolor asperiores soluta commodi temporibus cum minus ipsam, dolore voluptatum eius explicabo laudantium totam dolorum id sequi veniam, corporis laboriosam.</p>
+        <img src="{% static 'images/fish-3.png' %}" alt="Fish animation" class="img-responsive center-block m-y-25" width="190" height="140">
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-2"><a class="btn btn-info btn-outline btn-lg btn-block" href="#" role="button">Disqus extension</a></div>
+          <div class="col-sm-4"><a class="btn btn-danger btn-outline btn-lg btn-block" href="#" role="button">Social media links</a></div>
+        </div>
+      </div>
+      {% endcomment %}
+      {% include "seoqtool/report_elements/conversion.html" %}
+    </div>
+  </div>
+</section>
+<section class="bg-gray">
+  <div class="container">
+    <div class="row">
+        {% include "seoqtool/report_elements/content.html" %}
+        {% include "seoqtool/report_elements/code.html" %}
+        {% comment %}
+        <div class="col-md-10 col-md-offset-1 text-center m-t-50">
+          <h3 class="m-b-30">Competition</h3>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae assumenda dolor asperiores soluta commodi temporibus cum minus ipsam, dolore voluptatum eius explicabo laudantium totam dolorum id sequi veniam, corporis laboriosam.</p>
+          <img src="{% static 'images/fish-6.png' %}" alt="Fish animation" class="img-responsive center-block m-y-25" width="190" height="140">
+          <div class="row">
+            <div class="col-sm-4 col-sm-offset-2"><a class="btn btn-muted btn-lg btn-block" href="#" role="button">Link</a></div>
+            <div class="col-sm-4"><a class="btn btn-muted btn-lg btn-block" href="#" role="button">Link</a></div>
+          </div>
+        </div>
+        {% endcomment %}
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 m-t-70 m-b-40">
+        {% if not report.user %}
+          <a href="#" class="btn btn-block btn-info btn-outline btn-lg">Join now for a complete report</a>
+        {% endif %}
+          <p class="text-center m-y-25">Share this report:</p>
+          <div class="row">
+            <div class="col-sm-6">
+              <a href="http://www.facebook.com/dialog/share?display=popup&amp;href={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}&amp;app_id=1533371110295720" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg btn-block">
+                <i class="fa fa-facebook-f m-r-5"></i>
+                Facebook
+              </a>
+            </div>
+            <div class="col-sm-6">
+              <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20web%20accessibility%20and%20Section%20508%20compliance%20report%20on%20508Q.com%20for%20{{ netloc }}&amp;via=inQbation&amp;lang=en" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg btn-block">
+                <i class="fa fa-twitter m-r-5"></i>
+                Twitter
+              </a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+<section id="team" class="m-t-50">
+  <div class="container">
+    <div class="row">
+       <h2 class="text-center text-light m-b-30">{% trans "Need help improving your SEO?" %}</h2>
+       <p class="text-center text-light">
+        <span class="text-muted">Get help from </span><a class="blue-link" href="">SEO Professionals</a>
+      </p>
+       <div class="col-sm-12 col-md-8 col-md-offset-2 p-t-30">
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-1.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-2.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-3.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-4.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-5.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+           <img src="{% static "images/people-6.jpg" %}" alt="people" class="center-block img-responsive img-circle">
+           <p class="text-center">Lorem ipsum</p>
+           <small class="text-center">ABC</small>
+         </div>
+         <div class="col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1 m-t-20 m-b-50">
+           <a href="#" class="btn btn-outline btn-info btn-lg btn-block">I am a SEO Professional</a>
+         </div>
+       </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+
+{% block extra_javascript %}
+{% endblock extra_javascript %}

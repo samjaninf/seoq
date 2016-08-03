@@ -42,8 +42,11 @@
 				padding-left: 15px;
 				padding-right: 0;
 				h3{
-					color: $brand-info;
+					//color: $brand-info;
 				}
+			}
+			a:hover {
+				text-decoration: none;
 			}
 		}
 		.about-image{

@@ -68,6 +68,9 @@ than we are going to use in website
 .font-weight-bold {
   font-weight: bold; }
 
+.text-light {
+  font-weight: lighter; }
+
 .font-weight-bold-5 {
   font-weight: 500; }
 
@@ -222,6 +225,12 @@ hr {
 .bg-gray {
   background-color: #f0f4f5; }
 
+.btn[disabled] {
+  cursor: default; }
+
+.blue-link {
+  color: #5bc0de; }
+
 .text-brand {
   color: #2d5d81 !important; }
 
@@ -229,8 +238,8 @@ p {
   font-size: 17px; }
 
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1301,6 +1310,7 @@ a {
     color: #485356;
     text-decoration: underline; }
   a:focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -2512,6 +2522,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -3016,6 +3027,7 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -8379,6 +8391,11 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
   border-right: 2px solid #7dd0e3;
   border-bottom: 2px solid #7dd0e3; }
 
+@media (min-width: 1200px) {
+  .animation-line:before {
+    top: -178px !important;
+    height: 215px !important; } }
+
 .about h2, .about h3 {
   color: #555555;
   font-weight: lighter; }
@@ -8418,8 +8435,8 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
       background-color: #f0f4f5;
       padding-left: 15px;
       padding-right: 0; }
-      .about #what-is .resaltable:hover h3 {
-        color: #5bc0de; }
+    .about #what-is .resaltable a:hover {
+      text-decoration: none; }
   .about #what-is .about-image .full-hg {
     height: 100%; }
   .about #what-is .about-image .wrapper {
@@ -8484,12 +8501,22 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
   .owners #team-owners .container .row .col-sm-12 .col-xs-6 img:hover {
     opacity: 1; }
 
+.score .container .row h3 {
+  color: #fff; }
+
 .score .container .row #container {
   margin: 0 auto;
   width: 100px;
   height: 100px;
-  position: relative;
-  margin-top: 30px; }
+  display: table;
+  margin-top: 30px;
+  border: 5px solid #fff;
+  border-radius: 50%; }
+  .score .container .row #container h2 {
+    display: table-cell;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 40px; }
 
 .score-number {
   font-size: 28px;
@@ -8497,17 +8524,42 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
 
 .btn-facebook {
   background: #2E609B; }
-  .btn-facebook:hover {
+  .btn-facebook:hover, .btn-facebook:focus {
     color: #fff; }
 
 .btn-twitter {
   background: #00C3F3; }
-  .btn-twitter:hover {
+  .btn-twitter:hover, .btn-twitter:focus {
     color: #fff; }
 
-.report h3 {
+.report h2, .report h3 {
   color: #555555;
   font-weight: lighter; }
+
+@media (max-width: 767px) {
+  .report .btn {
+    margin-bottom: 5px; } }
+
+.report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 {
+  margin-bottom: 40px; }
+  .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img {
+    opacity: 0.6;
+    border: 3px solid #E0E4E5; }
+    .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img:hover {
+      opacity: 1; }
+  .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 p {
+    margin-top: 10px;
+    margin-bottom: 0px; }
+
+.plans table.plan_table {
+  margin: 0 auto; }
+  .plans table.plan_table th, .plans table.plan_table td {
+    border: 1px solid; }
+
+table.plan_table {
+  margin: 0 auto; }
+  table.plan_table th, table.plan_table td {
+    border: 1px solid; }
 
 .navbar-seoq {
   background-color: #7dd0e3;

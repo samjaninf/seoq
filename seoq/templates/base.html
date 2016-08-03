@@ -6,7 +6,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block empty_title %}{% block title %}{% endblock title %} | SEO Quotient™{% endblock empty_title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block meta %}
     <meta name="description" content="SEO Quotient™ provides SEO tools for both website owners and online marketing professionals to diagnose your website and create an action plan.">
+    {% endblock meta %}
     <meta name="author" content="">
     <link rel="apple-touch-icon" sizes="57x57" href="{% static "images/favicon.png" %}">
     <link rel="apple-touch-icon" sizes="60x60" href="{% static "images/favicon.png" %}">
@@ -69,14 +72,8 @@
             <li {% active_url 'directory' %}>
               <a href="{% url 'directory' %}">SEO Directory</a>
             </li>
-            <li {% active_url 'owners' %}>
-              <a href="{% url 'owners' %}">Website Owners</a>
-            </li>
-            <li {% active_url 'professionals' %}>
-              <a href="{% url 'professionals' %}">SEO Professionals</a>
-            </li>
-            <li {% active_url 'students' %}>
-              <a href="{% url 'students' %}">SEO Students</a>
+            <li {% active_url 'pricing' %}>
+              <a href="{% url 'pricing' %}">Plans</a>
             </li>
             {% if request.user.is_authenticated %}
             <li class="responsive">
@@ -102,7 +99,7 @@
               </li>
             {% else %}
             <li>
-              <a href="{% url 'account_login' %}" class="btn btn-lg btn-seoq">
+              <a href="{% url 'balystic_signup' %}" class="btn btn-lg btn-seoq">
                 Join now
               </a>
             </li>
@@ -112,13 +109,15 @@
 
       </div>
     </nav>
-    <section>
-      <div class="row">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
+    <section class="messages">
+      <div class="container">
+        <div class="row">
+          {% if messages %}
+              {% for message in messages %}
+                  <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+              {% endfor %}
+          {% endif %}
+        </div>
       </div>
     </section>
    {% block content %}
@@ -139,6 +138,9 @@
                   <a href="{% url 'balystic_blog' %}">Blog</a>
                 </li>
                 <li>
+                  <a href="{% url 'directory' %}">SEO Directory</a>
+                </li>
+                <li>
                   <a href="{% url 'owners' %}">Website Owners</a>
                 </li>
                 <li>
@@ -148,7 +150,7 @@
                   <a href="{% url 'students' %}">SEO Students</a>
                 </li>
                 <li class="pull-right">
-                  <a href="#Contact Us">Contact Us</a>
+                  <a href="http://m.me/SEOQuotient" target="_blank">Contact Us</a>
                 </li>
               </ul>
             </nav>

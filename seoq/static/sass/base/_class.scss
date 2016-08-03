@@ -8,6 +8,9 @@ than we are going to use in website
 .font-weight-bold{
   font-weight: bold;
 }
+.text-light{
+  font-weight: lighter;
+}
 .font-weight-bold-5{
   font-weight: 500;
 }
@@ -172,4 +175,10 @@ hr{
 }
 .bg-gray{
   background-color: #f0f4f5;
+}
+.btn[disabled] {
+    cursor: default;
+}
+.blue-link{
+  color: #5bc0de;
 }

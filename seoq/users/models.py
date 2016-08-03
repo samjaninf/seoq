@@ -6,6 +6,8 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
+from plans.signals import activate_user_plan
+from django.db.models import signals
 
 
 @python_2_unicode_compatible
@@ -21,6 +23,7 @@ class User(AbstractUser):
     about = models.TextField(_("About You"), blank=True, default='')
     profile_picture = models.ImageField(
         blank=True,
+        null=True,
         upload_to='profile/')
 
     def __str__(self):
@@ -28,3 +31,14 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
+
+
+def user_signed_up_(sender, instance, created, **kwargs):
+    """
+    Whenever a user signs up, they should be added
+    to the default plan.
+    """
+    activate_user_plan.send(sender=sender, user=instance)
+
+signals.post_save.connect(user_signed_up_, sender=User, weak=False,
+                          dispatch_uid='models.user_signed_up_')

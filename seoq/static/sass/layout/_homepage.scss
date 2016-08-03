@@ -285,3 +285,9 @@ section.scan-website{
     border-bottom: 2px solid $brand-primary;
   }
 }
+.animation-line:before{
+  @media(min-width:$screen-lg-min){
+    top: -178px !important;
+    height: 215px !important;
+  }
+}
