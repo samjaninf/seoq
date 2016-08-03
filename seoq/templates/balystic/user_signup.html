@@ -30,7 +30,7 @@
     <div class="row">
       <div class="col-sm-6 col-md-6 col-md-offset-3">
       <h1>{% trans "Sign Up" %}</h1>
-      <p>Already have an account? Then please <a href="{% url 'balystic_login' %}">sign in</a>
+      <p>Already have an account? Then please <a href="{% url 'balystic_login' %}" class="blue-link">sign in</a>.
         <form action="{% url 'balystic_signup' %}" id="signup-form" class="popup-form ng-pristine ng-valid" method="post">
           {% csrf_token %}
           {% include "bootstrap3/errors.html" %}
@@ -91,6 +91,9 @@
   document.getElementById("id_phone_number").placeholder = "Phone number";
   document.getElementById("id_password_1").placeholder = "Password";
   document.getElementById("id_password_2").placeholder = "Password again";
+  pass_confirmation_label = document.getElementById("div_id_password_2")
+    .getElementsByTagName('label')[0];
+  pass_confirmation_label.innerHTML = 'Confirm password <span class="asteriskField">*</span>'
   var login_error = true;
   var signup_error = true;
   var recovery_error = true;
@@ -130,7 +133,21 @@
     }
     signup_error = changeState($(this), state, message);
   });
-  $('#signup-form #id_password1').change(function () {
+
+  $('#signup-form #id_first_name').change(function () {
+    var state = '';
+    var message = '';
+    if ($(this).val().length >= 6){
+      state = 'valid';
+    }
+    else{
+      state = 'invalid';
+      message = 'First name (min. 6 characters)';
+    }
+    signup_error = changeState($(this), state, message);
+  });
+
+  $('#signup-form #id_password_1').change(function () {
     var state = '';
     var message = '';
     if ($(this).val().length >= 6){
@@ -142,11 +159,12 @@
     }
     signup_error = changeState($(this), state, message);
   });
-  $('#signup-form #id_password2').change(function () {
+
+  $('#signup-form #id_password_2').change(function () {
     var state = '';
     var message = '';
     if ($(this).val().length >= 6){
-      if ($(this).val() == $('#signup-form #id_password1').val()) {
+      if ($(this).val() == $('#signup-form #id_password_1').val()) {
         state = 'valid';
       }
       else {
@@ -160,6 +178,23 @@
     }
     signup_error = changeState($(this), state, message);
   });
+
+  $('#signup-form #id_phone_number').change(function () {
+    var state = '';
+    var message = '';
+    if ($(this).val().length >= 7){
+      state = 'valid';
+    }
+    else{
+      state = 'invalid';
+      message = 'Phone number (min. 7 characters)';
+    }
+    signup_error = changeState($(this), state, message);
+  });
+
+
+
+
   $("#signup-form").submit(function(e){
     if (signup_error){
       e.preventDefault();
