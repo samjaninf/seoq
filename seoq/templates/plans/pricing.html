@@ -6,6 +6,9 @@
   <section class="plans p-t-50 p-b-70">
     <div class="container">
       <div class="row">
+        {% if not request.user.is_authenticated %}
+        <p>{% trans "Please" %} <a href="{% url 'balystic_login' %}?next=/">{% trans "sign in " %}</a>{% trans " for than you can buy." %}</p>
+        {% endif %}
         <h2 class="text-center">{% trans "See our great value plans" %}</h2>
         {% include "plans/plan_table.html" %}
       </div>
