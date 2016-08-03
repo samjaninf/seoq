@@ -84,8 +84,13 @@
 </section>
 {% endblock %}
 
-{% block extra_javascrip %}
+{% block extra_javascript %}
   <script>
+  document.getElementById("id_email").placeholder = "Email";
+  document.getElementById("id_first_name").placeholder = "First name";
+  document.getElementById("id_phone_number").placeholder = "Phone number";
+  document.getElementById("id_password_1").placeholder = "Password";
+  document.getElementById("id_password_2").placeholder = "Password again";
   var login_error = true;
   var signup_error = true;
   var recovery_error = true;
@@ -163,4 +168,4 @@
   });
 </script>
 
-{% endblock extra_javascrip %}
+{% endblock extra_javascript %}
