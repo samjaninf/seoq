@@ -59,3 +59,6 @@ celery==3.1.23
 django-celery==3.1.17
 django-supervisor==0.3.4
 django-balystic==0.1.12
+tweepy==3.5.0
+facebook==0.0
+python-linkedin==4.1
