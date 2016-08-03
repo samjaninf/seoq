@@ -66,9 +66,21 @@
             <li {% active_url 'about' %} >
               <a href="{% url 'about' %}">About</a>
             </li>
+
+            <li>
+              <a href="#" type="hover" data-toggle="dropdown">
+              Benefits <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              <li><a href="{% url 'owners' %}">Website Owners</a></li>
+              <li><a href="{% url 'professionals' %}">SEO Professionals</a></li>
+              <li><a href="{% url 'students' %}">SEO Students</a></li>
+              </ul>
+            </li>
+
             <li {% active_url 'balystic_blog' %} >
               <a href="{% url 'balystic_blog' %}">Blog</a>
             </li>
+
             <li {% active_url 'directory' %}>
               <a href="{% url 'directory' %}">SEO Directory</a>
             </li>
