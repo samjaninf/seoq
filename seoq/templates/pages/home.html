@@ -126,7 +126,7 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-sm-6 col-md-6 m-b-50">
-            <h2 class="" id="how-website">{% trans "Find " %}<u>{% trans "your" %}</u>{% trans " SEO Quotient:" %}</h2>
+            <h2 class="" id="how-website" ng-class="{'animation-line': animation}">{% trans "Find " %}<u>{% trans "your" %}</u>{% trans " SEO Quotient:" %}</h2>
           </div>
 
           <div class="col-sm-6 col-md-6 m-b-50 p-t-20" ng-controller="keywordScoreController">
@@ -140,7 +140,7 @@
               {% csrf_token %}
               <div class="form-group">
                 <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
-                <input type="url" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" required>
+                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" required>
               </div>
               <div class="text-center text-block">
                 <h3>vs</h3>
