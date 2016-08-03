@@ -13,7 +13,7 @@
         <!-- start -->
         <div class="row-centered">
         {% for plan in plan_list %}
-          <div class="col-sm-4 col-md-4 col-centered {% ifequal forloop.counter0 current_userplan_index %}current{% endifequal %} text-center">
+          <div class="col-sm-3 col-md-3 col-centered {% ifequal forloop.counter0 current_userplan_index %}current{% endifequal %} text-center">
             <h2 class="text-center">
               {% if plan.url %}
                 <a href="{{ plan.url }}" class="info_link plan">{{  plan.name }}</a>
