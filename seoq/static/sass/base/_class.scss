@@ -157,6 +157,12 @@ hr{
     display: none !important;
   }
 }
+.responsive-big{
+  display: none !important;
+  @media(min-width:$screen-md-min){
+    display: block !important;
+  }
+}
 .form-horizontal .form-group{
   margin-left:0px !important;
   margin-right:0px !important;

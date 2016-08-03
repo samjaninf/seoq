@@ -209,6 +209,12 @@ hr {
   .responsive {
     display: none !important; } }
 
+.responsive-big {
+  display: none !important; }
+  @media (min-width: 992px) {
+    .responsive-big {
+      display: block !important; } }
+
 .form-horizontal .form-group {
   margin-left: 0px !important;
   margin-right: 0px !important; }
