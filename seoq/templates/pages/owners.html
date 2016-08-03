@@ -3,6 +3,14 @@
 
 {% block title %}Website Owners{% endblock title %}
 {% block page_class %}owners{% endblock page_class %}
+
+{% block meta %}
+{% trans "" as title %}
+{% trans "" as description %}
+{% static "images/facebook-image-post.jpg" as image%}
+{% include "include/metatags.html" with title=title description=description image=image %}
+{% endblock meta %}
+
 {% block content %}
 <section class="for-owners">
   <div class="container">
