@@ -20,35 +20,35 @@
 	{% endif %}
 
 	<div class="row">
-		<div class="col-sm-4">
+		<div class="col-sm-4 m-t-10">
 			<a class="btn 
 			{% if report.analysis.credibility.backlinks_url == 'to improve' %}btn-warning
 			{% else %}btn-success
-			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">backlinks</a>
+			{% endif %} btn-lg btn-block btn-outline" role="button" disabled>backlinks</a>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-4 m-t-10">
 			<a class="btn 
 			{% if report.analysis.credibility.edulinks_url == 'to improve' %}btn-warning
 			{% else %}btn-success
-			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">.edu backlinks</a>
+			{% endif %} btn-lg btn-block btn-outline" role="button" disabled>.edu backlinks</a>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-4 m-t-10">
 			<a class="btn 
 			{% if report.analysis.credibility.govlinks_url == 'to improve' %}btn-warning
 			{% else %}btn-success
-			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">.gov backlinks</a>
+			{% endif %} btn-lg btn-block btn-outline" role="button" disabled>.gov backlinks</a>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-4 m-t-10">
 			<a class="btn 
 			{% if report.analysis.credibility.https == 'error' %}btn-danger
 			{% else %}btn-success
-			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">https</a>
+			{% endif %} btn-lg btn-block btn-outline" role="button" disabled>https</a>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-4 m-t-10">
 			<a class="btn 
 			{% if report.analysis.credibility.trustflow == 'to improve' %}btn-danger
 			{% else %}btn-success
-			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">trustflow</a>
+			{% endif %} btn-lg btn-block btn-outline" role="button" disabled>trustflow</a>
 		</div>
 
 	</div>
