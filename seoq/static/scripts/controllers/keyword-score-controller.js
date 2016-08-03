@@ -5,23 +5,8 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
 		'url': '',
 		'keyword': ''
 	}
-  function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie != '') {
-      var cookies = document.cookie.split(';');
-      for (var i = 0; i < cookies.length; i++) {
-        var cookie = jQuery.trim(cookies[i]);
-        // Does this cookie string begin with the name we want?
-        if (cookie.substring(0, name.length + 1) == (name + '=')) {
-          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-          break;
-        }
-      }
-    }
-    return cookieValue;
-  }
+
   var csrftoken = $('#my_token').val();
-  console.log(csrftoken)
 	$scope.animation = false;
 	$scope.startReport = function(){
 		var keyword_disabled = document.getElementById('keywords').getAttribute('disabled')
@@ -40,7 +25,8 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
             	var obtained_pk = data.report;
             	url = '/api/site-score/';
             	data = {
-            		pk: obtained_pk
+            		pk: obtained_pk,
+                csrfmiddlewaretoken: csrftoken
             	}
 
 		 		$http.post(url, data, headers)
@@ -53,6 +39,7 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
             			url = '/api/kw-score/';
             			data = {
             				keywords: $scope.request_data.keyword,
+                    csrfmiddlewaretoken: csrftoken,
             				pk: obtained_pk
             			}
             			$http.post(url, data, headers)
