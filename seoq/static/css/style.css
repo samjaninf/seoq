@@ -5595,6 +5595,7 @@ button.close {
     @media all and (transform-3d), (-webkit-transform-3d) {
       .carousel-inner > .item {
         transition: transform 0.6s ease-in-out;
+        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         perspective: 1000px; }
         .carousel-inner > .item.next, .carousel-inner > .item.active.right {
@@ -8421,8 +8422,8 @@ section.scan-website .col-md-10 .col-sm-6 form .text-block {
       background-color: #f0f4f5;
       padding-left: 15px;
       padding-right: 0; }
-      .about #what-is .resaltable:hover h3 {
-        color: #5bc0de; }
+    .about #what-is .resaltable a:hover {
+      text-decoration: none; }
   .about #what-is .about-image .full-hg {
     height: 100%; }
   .about #what-is .about-image .wrapper {
