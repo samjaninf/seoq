@@ -243,6 +243,9 @@ hr {
   ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block; } }
 
+#signup-form #div_id_password_1 label {
+  display: none; }
+
 .text-brand {
   color: #2d5d81 !important; }
 
