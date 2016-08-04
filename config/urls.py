@@ -9,8 +9,11 @@ from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from balystic import views as balystic_views
 from seoq.core import views as core_views
+from seoq.users import views as users_views
+
 from django.views.decorators.csrf import ensure_csrf_cookie
 from seoq.payments_seoq import views as payments_seoq
+
 urlpatterns = [
     url(r'^$', ensure_csrf_cookie(TemplateView.as_view(template_name='pages/home.html')),
         name='home'),
@@ -44,7 +47,7 @@ urlpatterns = [
     url(settings.ADMIN_URL, include(admin.site.urls)),
 
     # User management
-    url(r'^users/', include('seoq.users.urls', namespace='users')),
+    url(r'^', include('seoq.users.urls', namespace='users')),
     url(r'^', include('balystic.urls')),
     url(r'^', include('seoq.seoqtool.urls', namespace='seoqtool')),
     url(r'^api/', include('seoq.api.urls', namespace='api')),
