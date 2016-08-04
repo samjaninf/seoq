@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import AlgorithmVariable, Report, ReportURL
 from balystic.client import Client
 from .email_report import send_simple_email
-
+from django.contrib import messages
 
 class CreateVariableView(CreateView):
 
@@ -101,7 +101,7 @@ class ArchiveReportView(View):
         email = request.POST.get('email', None)
         if email is not None:
             send_simple_email(email, request.build_absolute_uri())
-            messages.success(request, 'email sent to %s' % email)
+            messages.success(request, 'Your report was sent successfully to %s.' % email)
         return redirect(reverse(
             'seoqtool:archive_report',
             args=[netloc, year, month, day]))

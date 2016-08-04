@@ -8821,6 +8821,9 @@ table.plan_table {
 .btn-seoq a {
   color: #fff; }
 
+.alert {
+  margin-bottom: 0; }
+
 .btn-seoq {
   color: #FFF !important;
   background-color: #fe9a28;
