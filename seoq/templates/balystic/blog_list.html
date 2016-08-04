@@ -54,7 +54,7 @@
         </div>
       </div>
     {% endfor %}
-    <div class="pagination">
+    <div class="pagination text-center">
       <span class="step-links">
         {% if previous_page %}
             <a href="?page={{ previous_page }}"><< previous page</a>
@@ -63,7 +63,26 @@
         {% if next_page != 'None' %}
             <a href="?page={{ next_page }}">next page >></a>
         {% endif %}
+
+
+
       </span>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <nav aria-label="">
+          <ul class="pagination">
+            {% if previous_page %}
+            <li class=""><a href="?page={{ previous_page }}" aria-label="Previous"><span aria-hidden="true">&laquo; Previous</span></a></li>
+            {% endif %}
+            {% if next_page != 'None' %}
+            <li class=""><a href="?page={{ next_page }}" aria-label="Next"><span aria-hidden="true">Next &raquo;</span></a></li>
+            {% endif %}
+          </ul>
+        </nav>
+
+
+      </div>
     </div>
   </div>
 {% endblock content %}
