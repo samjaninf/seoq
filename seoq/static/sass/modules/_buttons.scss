@@ -129,3 +129,8 @@
     background-color: #0369a0 !important;
   }
 }
+.no-float-sm{
+  @media  (max-width: $screen-sm-max){
+    float: none !important;
+  }
+}
