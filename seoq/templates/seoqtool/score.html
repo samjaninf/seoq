@@ -75,8 +75,11 @@
 <section class="bg-gray">
   <div class="container">
     <div class="row">
+    {% if report.user != 'None' and not report.keywords %}
+      {% else %}
         {% include "seoqtool/report_elements/content.html" %}
         {% include "seoqtool/report_elements/code.html" %}
+    {% endif %}
         {% comment %}
         <div class="col-md-10 col-md-offset-1 text-center m-t-50">
           <h3 class="m-b-30">Competition</h3>
