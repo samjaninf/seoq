@@ -9195,7 +9195,8 @@ table.plan_table {
   background-color: transparent;
   color: inherit;
   transition: all .5s;
-  font-size: 15px; }
+  font-size: 15px;
+  white-space: normal; }
 
 .btn-primary.btn-outline:hover,
 .btn-success.btn-outline:hover,
@@ -9274,6 +9275,9 @@ table.plan_table {
 @media (max-width: 991px) {
   .no-float-sm {
     float: none !important; } }
+
+.btn-facebook, .btn-twitter, .btn-linkedin {
+  width: 135px; }
 
 footer {
   color: #6b7b80; }

@@ -83,6 +83,7 @@
     color: inherit;
     transition: all .5s;
     font-size: 15px;
+    white-space: normal; 
 }
 .btn-primary.btn-outline:hover,
 .btn-success.btn-outline:hover,
@@ -133,4 +134,7 @@
   @media  (max-width: $screen-sm-max){
     float: none !important;
   }
+}
+.btn-facebook, .btn-twitter, .btn-linkedin {
+    width: 135px;
 }

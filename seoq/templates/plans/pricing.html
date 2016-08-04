@@ -7,9 +7,13 @@
     <div class="container">
       <div class="row">
         {% if not request.user.is_authenticated %}
-        <p>{% trans "Please" %} <a href="{% url 'balystic_login' %}?next=/">{% trans "sign in " %}</a>{% trans " for than you can buy." %}</p>
+        <h2>{% trans "See our great Add On's" %}</h2>
+        <p>{% trans "Please" %}
+          <a href="{% url 'balystic_login' %}?next=/" class="blue-link">
+            {% trans "sign in" %}
+          </a> {% trans "to buy a plan." %}
+        </p>
         {% endif %}
-        <h2 class="text-center">{% trans "See our great Add On's" %}</h2>
         <!-- start -->
         <div class="row-centered">
         {% for plan in plan_list %}
