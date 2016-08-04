@@ -4,29 +4,22 @@ from .algorithm import Algorithm
 class AlgorithmRunner(object):
 
     def run(self):
-        one = Algorithm('en.wikipedia.org/wiki/Agile_software_development')
+        one = Algorithm('inqbation.com')
         print 'done 1'
-        two = Algorithm('howdesign.com/editors-picks/dont-go-chasing-waterfalls-agile-web-design/')
+        two = Algorithm('penncoursereview.com')
         print 'done 2'
-        three = Algorithm('sixrevisions.com/web-development/agile/')
+        three = Algorithm('doyouget-it.com')
         print 'done 3'
-        four = Algorithm('amazon.com/Agile-Development-Rails-Pragmatic-Programmers/dp/1934356549')
+        four = Algorithm('phantompilots.com')
         print 'done 4'
-        five = Algorithm('agileana.com/')
+        five = Algorithm('gojagsports.com')
         print 'done 5'
+        six = Algorithm('allafrica.com/soccer/')
+        print 'done 6'
 
-        one.getKeywordClass('en.wikipedia.org/wiki/Agile_software_development', ['agile', 'web', 'development'])
-        print 'done 1'
-        two.getKeywordClass('howdesign.com/editors-picks/dont-go-chasing-waterfalls-agile-web-design/', ['agile', 'web', 'development'])
-        print 'done 2'
-        three.getKeywordClass('sixrevisions.com/web-development/agile/', ['agile', 'web', 'development'])
-        print 'done 3'
-        four.getKeywordClass('amazon.com/Agile-Development-Rails-Pragmatic-Programmers/dp/1934356549', ['agile', 'web', 'development'])
-        print 'done 4'
-        five.getKeywordClass('agileana.com/', ['agile', 'web', 'development'])
-        print 'done 5'
-
-        algs = [one, two, three, four, five]
-        for count in range(5):
-            alg = algs[count]
-            print alg.getKeywordScore(['agile', 'web', 'development'])
+        print one.getSiteScore()[0]
+        print two.getSiteScore()[0]
+        print three.getSiteScore()[0]
+        print four.getSiteScore()[0]
+        print five.getSiteScore()[0]
+        print six.getSiteScore()[0]
