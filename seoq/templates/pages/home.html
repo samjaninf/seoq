@@ -156,7 +156,7 @@
             {% csrf_token %}
               <div class="form-group">
                 <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
-                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" required>
+                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" required http-prefix>
               </div>
                 {% comment %}
                   <div class="text-center text-block">
