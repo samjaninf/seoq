@@ -218,7 +218,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = (
     'balystic.authentication_backends.BalysticBackend',
-    #'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
     #'allauth.account.auth_backends.AuthenticationBackend',
 )
 
@@ -297,9 +297,6 @@ PLANS_INVOICE_ISSUER = {
 }
 # PLANS_TAX_COUNTRY='US'
 SEND_PLANS_EMAILS = False
-PLANS_VALIDATORS = {
-    'WEBSITE': 'seoq.core.validators.web_site_validator',
-}
 
 FACEBOOK_ACCESS_TOKEN = env('FACEBOOK_ACCESS_TOKEN')
 
