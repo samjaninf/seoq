@@ -11,7 +11,7 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
   $scope.bad_status_code = false;
   $scope.bad_url = true;
   $scope.validate_url = function(){
-    var qscraper_var = 'http://qscraper.7dhub.com/api/validation/url/?url='
+    var qscraper_var = 'https://qscraper.7dhub.com/api/validation/url/?url='
     $http({
       method: 'GET',
       url: qscraper_var + $scope.request_data.url,

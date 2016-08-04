@@ -18,8 +18,8 @@
           <i class="fa fa-calendar"></i>&nbsp;{{ entry.publication_date|date_string }}
         </small>
         <p>
-          {% if entry.tags %}
-              <a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ entry.tags }}</span></a>
+        {% if entry.tags %}  
+            <p>Tagged: {% for tag in entry.tags %}<a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ tag }}</span></a>{% endfor %}</p>
           {% endif %}
         </p>
       </div>
