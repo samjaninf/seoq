@@ -96,7 +96,7 @@
               <a href="{% url 'balystic_logout' %}?next=/">{% trans "Sign out" %}</a>
             </li>
             <!-- dropdown-menu -->
-            <li class="responsive-big">
+            <li class="responsive-big p-l-10">
               <a class="dropdown-toggle p-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="user-dropdown">
                 {% if object.user.avatar %}
                   <img src="{{ object.user.avatar.ur }}" alt="Profile picture" height="50" width="50" class="img-responsive img-circle">
