@@ -51,9 +51,11 @@
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
           {% endif %}
           <div class="checkbox">
+          {% comment %}
             <label for="id_remember">
                 <input id="id_remember" name="remember" type="checkbox">Remember me
             </label>
+          {% endcomment %}
             <a class="button secondaryAction pull-right" href="http://app.balystic.com/accounts/password/reset/">{% trans "Forgot Password?" %}</a>
           </div>
           <button class="primaryAction btn btn-primary-ligth" type="submit">{% trans "Sign In" %}</button>
