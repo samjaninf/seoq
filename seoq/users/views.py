@@ -27,7 +27,7 @@ class UserDetailView(View):
         return render(
             request,
             self.template_name,
-            {'object': user, 'userplan': plan, 'owner': owner})
+            {'user': user, 'userplan': plan, 'owner': owner})
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):

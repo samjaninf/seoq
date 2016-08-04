@@ -99,7 +99,7 @@
             <li class="responsive-big p-l-10">
               <a class="dropdown-toggle p-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="user-dropdown">
                 {% if object.user.avatar %}
-                  <img src="{{ object.user.avatar.ur }}" alt="Profile picture" height="50" width="50" class="img-responsive img-circle">
+                  <img src="{{ object.user.avatar }}" alt="Profile picture" height="50" width="50" class="img-responsive img-circle">
                 {% else %}
                   <img src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="Profile picture" class="img-responsive img-circle" width="44px" height="44px">
                 {% endif %}
