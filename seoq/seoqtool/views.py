@@ -94,6 +94,9 @@ class ArchiveReportView(View):
         return render(request, self.template_name, context)
 
     def post(self, request, netloc, year, month, day):
+        put = request.POST.get('put', None)
+        if put is not None:
+            return self.put(request, netloc, year, month, day)
         email = request.POST.get('email', None)
         if email is not None:
             send_simple_email(email, request.build_absolute_uri())
@@ -101,16 +104,18 @@ class ArchiveReportView(View):
             'seoqtool:archive_report',
             args=[netloc, year, month, day]))
 
-    # def put(self, request, netloc, year, month, day):
-    #     Report.objects.filter(
-    #         created__year=year,
-    #         created__month=month,
-    #         created__day=day,
-    #         netloc=netloc,
-    #         user=request.user).update(custom_information=True)
-    #     return redirect(reverse(
-    #         'seoqtool:archive_report',
-    #         args=[netloc, year, month, day]))
+    def put(self, request, netloc, year, month, day):
+        netloc = str(netloc)
+        netloc = netloc.replace('--', '/')
+        Report.objects.filter(
+            created__year=year,
+            created__month=month,
+            created__day=day,
+            netloc=netloc,
+            user=request.user).update(custom_information=True)
+        return redirect(reverse(
+            'seoqtool:archive_report',
+            args=[netloc.replace('/', '--'), year, month, day]))
 
 
 class CreateReportURLView(LoginRequiredMixin, CreateView):

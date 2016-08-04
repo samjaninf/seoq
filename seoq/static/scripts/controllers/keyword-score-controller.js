@@ -7,11 +7,10 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
 	}
 
   var csrftoken = $('#my_token').val();
-  console.log(csrftoken);
-	$scope.animation = false;
+  $scope.animation = false;
   $scope.bad_status_code = false;
-	$scope.startReport = function(){
-		var keyword_disabled = document.getElementById('keywords').getAttribute('disabled')
+  $scope.startReport = function(){
+    var keyword_disabled = document.getElementById('keywords_input').getAttribute('disabled');
 		var url = '/api/start-report/';
     document.getElementById('how-website').className = "animation-line";
 		var data = {
