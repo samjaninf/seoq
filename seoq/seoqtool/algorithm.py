@@ -20,7 +20,7 @@ class Algorithm(object):
     robotsVar = 5.5211267
     listingVar = 4.0422535
     keyVar = 1.521126761
-    averageVar = 9.94
+    averageVar = 25.94
 
     def __init__(self, netloc):
         self.netloc = str(netloc)
