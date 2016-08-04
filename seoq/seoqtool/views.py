@@ -12,6 +12,7 @@ from balystic.client import Client
 from .email_report import send_simple_email
 from django.contrib import messages
 
+
 class CreateVariableView(CreateView):
 
     model = AlgorithmVariable

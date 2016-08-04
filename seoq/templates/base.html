@@ -107,6 +107,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a href="{% url 'users:detail' request.user.username %}">{% trans "See Profile" %}</a></li>
+                <li><a href="{% url 'seoqtool:add_url' %}">{% trans "Create periodic reports" %}</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="{% url 'balystic_logout' %}?next=/">{% trans "Sign out" %}</a></li>
               </ul>

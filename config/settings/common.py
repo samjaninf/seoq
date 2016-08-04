@@ -271,7 +271,7 @@ CELERYBEAT_SCHEDULE = {
     },
 }
 
-
+BASE_URL = env('BASE_URL', default='https://www.seoq.com')
 QSCRAPER_URL = env('QSCRAPER_URL', default='http://qscraper.7dhub.com/')
 MAJESTIC_URL = env('MAJESTIC_URL', default='https://api.majestic.com/api_command')
 MAJESTIC_API_KEY = env('MAJESTIC_API_KEY', default='')
