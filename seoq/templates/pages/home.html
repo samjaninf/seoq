@@ -164,14 +164,16 @@
                   </div>
                 {% endcomment %}
                 <div class="form-group" id="keywords">
+                {% if not request.user.is_authenticated %}
                   <div class="pop-over">
                   <p>Keywords available only for registered user</p>
                   </div>
+                {% endif %}
                   {% comment %}
                   <label for="competitor-website" class="text-center">{% trans "Your Competitor" %}</label>
                   <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}" disabled>
                   {% endcomment %}
-                  <input type="text" ng-model="request_data.keyword" class="form-control text-center" id="keywords" placeholder="{% trans "What keyword phrase do you want to rank for?" %}"{% if request.user.is_authenticated %}required{% else %}disabled{% endif %}>
+                  <input type="text" ng-model="request_data.keyword" class="form-control text-center" id="keywords_input" placeholder="{% trans "What keyword phrase do you want to rank for?" %}"{% if request.user.is_authenticated %}required{% else %}disabled{% endif %}>
                 </div>
               <button type="submit" class="btn btn-warning-ligth btn-block">{% trans "Start" %}</button>
             </form>
