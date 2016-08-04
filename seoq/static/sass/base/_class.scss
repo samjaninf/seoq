@@ -152,7 +152,7 @@ hr{
     top: 25px !important;
   }
 }
-.responsive{
+.responsive, #item-responsive{
   @media(min-width:$screen-md-min){
     display: none !important;
   }
