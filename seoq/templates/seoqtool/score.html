@@ -107,10 +107,11 @@
             </a>
             </div>
             <div class="col-sm-4">
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title=Check%20Your%20SEO%20of%20Website&summary=Check%20out%20my%20SEO%20report%20on%20SEOQ.com%20for%20{{ netloc }}!%20via%20@SEOQuotient!%20&source={{ request.build_absolute_uri }}" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
-            <i class="fa fa-linkedin m-r-5" aria-hidden="true"></i>
-              Linkedin
-            </a>
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title=Check%20Your%20SEO%20of%20Website
+              &summary=Check%20out%20my%20SEO%20report%20on%20SEOQ.com%20for%20{{ netloc }}!%20via%20@SEOQuotient!%20&source={{ request.build_absolute_uri }}" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
+                <i class="fa fa-linkedin m-r-5" aria-hidden="true"></i>
+                  Linkedin
+              </a>
             </div>
             <div class="col-sm-8 col-sm-offset-2 m-t-20">
               <form class="form-inline" action="" method="POST">
@@ -171,16 +172,16 @@
       <small class="text-center"></small>
       </div>
       <p><strong>Email:</strong> {{ report.user.email }}</p>
-      {% if report.user.about %} 
+      {% if report.user.about %}
         <p><strong>About:</strong> {{ report.user.about }}</p>
       {% endif %}
-      {% if report.user.fb_account %} 
+      {% if report.user.fb_account %}
         <p><strong>Facebook:</strong> {{ report.user.fb_account }}</p>
       {% endif %}
-      {% if report.user.twitter_account %} 
+      {% if report.user.twitter_account %}
         <p><strong>Twitter:</strong> {{ report.user.twitter_account }}</p>
       {% endif %}
-      {% if report.user.linkedin_account %} 
+      {% if report.user.linkedin_account %}
         <p><strong>Linkedin:</strong> {{ report.user.linkedin_account }}</p>
       {% endif %}
     </div>
