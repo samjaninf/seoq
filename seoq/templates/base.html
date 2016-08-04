@@ -76,9 +76,9 @@
               <li {% active_url 'students' %}><a href="{% url 'students' %}">SEO Students</a></li>
               </ul>
             </li>
-            <li {% active_url 'owners' %} class="responsive"><a href="{% url 'owners' %}">Website Owners</a></li>
-              <li {% active_url 'professionals' %} class="responsive"><a href="{% url 'professionals' %}">SEO Professionals</a></li>
-              <li {% active_url 'students' %} class="responsive"><a href="{% url 'students' %}">SEO Students</a></li>
+            <li {% active_url 'owners' %} class="responsive" id="item-responsive"><a href="{% url 'owners' %}">Website Owners</a></li>
+              <li {% active_url 'professionals' %} class="responsive" id="item-responsive"><a href="{% url 'professionals' %}">SEO Professionals</a></li>
+              <li {% active_url 'students' %} class="responsive" id="item-responsive"><a href="{% url 'students' %}">SEO Students</a></li>
             <li {% active_url 'balystic_blog' %}>
               <a href="{% url 'balystic_blog' %}">Blog</a>
             </li>
@@ -95,26 +95,31 @@
             <li class="responsive">
               <a href="{% url 'balystic_logout' %}?next=/">{% trans "Sign out" %}</a>
             </li>
-            <li class="dropdown p-0-6">
-                <a href="javascript:;" id="user-dropdown" class="dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                   {% if object.user.avatar %}
-                      <img src="{{ object.user.avatar.ur }}" alt="Profile picture" height="50" width="50" class="img-responsive img-circle">
-                   {% else %}
-                      <img src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="Profile picture" class="img-responsive img-circle" width="44px" height="44px">
-                    {% endif %}
-                  <span class="caret"><span>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="user-dropdown">
-                  <li><a href="{% url 'users:detail' request.user.username %}">{% trans "See Profile" %}</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="{% url 'balystic_logout' %}?next=/">{% trans "Sign out" %}</a></li>
-                </ul>
-              </li>
+            <!-- dropdown-menu -->
+            <li class="responsive-big">
+              <a class="dropdown-toggle p-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="user-dropdown">
+                {% if object.user.avatar %}
+                  <img src="{{ object.user.avatar.ur }}" alt="Profile picture" height="50" width="50" class="img-responsive img-circle">
+                {% else %}
+                  <img src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="Profile picture" class="img-responsive img-circle" width="44px" height="44px">
+                {% endif %}
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'users:detail' request.user.username %}">{% trans "See Profile" %}</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="{% url 'balystic_logout' %}?next=/">{% trans "Sign out" %}</a></li>
+              </ul>
+            </li>
+            <!-- dropdown-menu -->
             {% else %}
-            <li>
+            <li class="hidden-xs hidden-sm">
               <a href="{% url 'balystic_signup' %}" class="btn btn-lg btn-seoq">
                 Join now
               </a>
+            </li>
+            <li>
+              <a href="{% url 'balystic_signup' %}" class="visible-xs visible-sm">Join now</a>
             </li>
             {% endif %}
           </ul>
@@ -123,11 +128,11 @@
       </div>
     </nav>
     <section class="messages">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
           {% if messages %}
               {% for message in messages %}
-                  <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+                  <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} text-center">{{ message }}</div>
               {% endfor %}
           {% endif %}
         </div>
@@ -255,6 +260,7 @@
       <!--Angular-->
       <script src="{% static 'scripts/app.js' %}"></script>
       <script src="{% static 'scripts/controllers/keyword-score-controller.js' %}"></script>
+      <script src="{% static 'scripts/directives/http_prefix.js' %}"></script>
       {% endcompress %}
 
     {% endblock javascript %}

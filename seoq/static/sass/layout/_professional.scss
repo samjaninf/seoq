@@ -10,6 +10,24 @@
         }
       }
     }
+    @media(max-width:$screen-sm){
+      .container{
+        .row{
+          .col-sm-12.col-md-10{
+            .col-sm-6{
+              text-align: center;
+              margin-bottom: 40px;
+              p{
+                text-align: left;
+              }
+              a{
+                white-space: inherit;
+              }
+            }
+          }
+        }
+      }
+    }
   }
   #team{
     .container{

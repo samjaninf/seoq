@@ -298,9 +298,3 @@ section.scan-website{
     border-bottom: 2px solid $brand-primary;
   }
 }
-.animation-line:before{
-  @media(min-width:$screen-lg-min){
-    top: -245px !important;
-    height: 300px !important;
-  }
-}

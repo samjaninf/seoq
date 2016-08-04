@@ -152,7 +152,7 @@ hr{
     top: 25px !important;
   }
 }
-.responsive{
+.responsive, #item-responsive{
   @media(min-width:$screen-md-min){
     display: none !important;
   }
@@ -167,7 +167,7 @@ hr{
   margin-left:0px !important;
   margin-right:0px !important;
 }
-.dropdown{
+.responsive-big{
   #user-dropdown{
     background: transparent;
     &:hover,&:focus{
@@ -253,5 +253,29 @@ hr{
       -moz-transition-delay: .25s;
       -o-transition-delay: .25s;
     }
+  }
+}
+.label.label-default{
+  margin: 5px;
+  display: inline-block;
+}
+.text-center-responsive{
+  @media  (max-width: $screen-sm-max){
+    text-align: center;
+  }
+}
+.text-lg-left{
+  @media  (min-width: $screen-lg-min){
+    text-align: left;
+  }
+}
+.text-md-right{
+  @media  (min-width: $screen-md-min){
+    text-align: right;
+  }
+}
+.center-block-responsive{
+  @media  (max-width: $screen-sm-max){
+    margin: 0 auto;
   }
 }
