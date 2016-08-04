@@ -1,4 +1,3 @@
-#Kunal Naik 8.2.16
 #The purpose of this file is to run the algorithm and get the SEOQ score with and without keyword
 
 import math
@@ -21,6 +20,7 @@ class Algorithm(object):
     robotsVar = 5.5211267
     listingVar = 4.0422535
     keyVar = 1.521126761
+    averageVar = 9.94
 
     def __init__(self, netloc):
         self.netloc = str(netloc)
@@ -42,7 +42,7 @@ class Algorithm(object):
 
     def getSiteScore(self):
         score = float(100)
-        avgTime = float(0.150895375)
+        avgTime = float(0.389142703)
         report = {
             'crawlability': {},
             'credibility': {},
@@ -193,7 +193,7 @@ class Algorithm(object):
             score = score + self.listingVar
         else:
             score = score - self.listingVar
-        return int(score), report
+        return int(score - self.averageVar), report
 
     def getKeywordClass(self, url, keyword, ip=1223):
         self.scraper = QscraperSEOQTool(url, keyword, ip)
@@ -270,4 +270,6 @@ class Algorithm(object):
         score = score + ((title_score - 5) * self.keyVar)
         score = score + ((url_score - 5) * self.keyVar)
         score = score + anchorLinks - 5
+        if score > 200:
+            score = 200
         return int(score), report

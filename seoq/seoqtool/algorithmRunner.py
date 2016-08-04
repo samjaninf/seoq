@@ -4,17 +4,17 @@ from .algorithm import Algorithm
 class AlgorithmRunner(object):
 
     def run(self):
-        one = Algorithm('inqbation.com')
+        one = Algorithm('agileana.com')
         print 'done 1'
-        two = Algorithm('penncoursereview.com')
+        two = Algorithm('cnn.com')
         print 'done 2'
-        three = Algorithm('doyouget-it.com')
+        three = Algorithm('espn.com')
         print 'done 3'
-        four = Algorithm('phantompilots.com')
+        four = Algorithm('apple.com')
         print 'done 4'
-        five = Algorithm('gojagsports.com')
+        five = Algorithm('ae.com')
         print 'done 5'
-        six = Algorithm('allafrica.com/soccer/')
+        six = Algorithm('google.com')
         print 'done 6'
 
         print one.getSiteScore()[0]
