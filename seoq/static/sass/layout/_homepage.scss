@@ -156,8 +156,8 @@ section.scan-website{
         display: block;
         position: absolute;
         @media(min-width:$screen-sm-min) and (max-width:832px){
-          height: 214px;
-          top: -157px;
+          height: 213px;
+          top: -155px;
           left: 0px;
           width: 19px;
           border-top: 2px solid #7dd0e3;
@@ -170,15 +170,15 @@ section.scan-website{
         }
         @media(min-width:$screen-md-min) and (max-width:$screen-md-max){
           width: 50px;
-          height: 300px;
-          top: -250px;
+          height: 320px;
+          top: -269px;
           left: -67px;
         }
         @media(min-width:$screen-lg-min){
           width: 70px;
-          height: 300px;
-          top: -258px;
-          left: -82px;
+          height: 330px;
+          top: -288px;
+          left: -70px;
         }
       }
       form{
@@ -222,7 +222,7 @@ section.scan-website{
 }
 #give-try{
   position: absolute;
-  top: -55px;
+  top: -75px;
   @media(max-width:$screen-sm){
     display: none;
   }
