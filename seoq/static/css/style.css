@@ -8456,11 +8456,6 @@ section.scan-website {
   border-right: 2px solid #7dd0e3;
   border-bottom: 2px solid #7dd0e3; }
 
-@media (min-width: 1200px) {
-  .animation-line:before {
-    top: -245px !important;
-    height: 300px !important; } }
-
 .about h2, .about h3 {
   color: #555555;
   font-weight: lighter; }
