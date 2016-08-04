@@ -288,7 +288,7 @@ BALYSTIC_API_PATH = env('BALYSTIC_API_PATH')
 PLANS_CURRENCY = 'USD'
 # PLANS_TAXATION_POLICY='plans.taxation.eu.EUTaxationPolicy'
 from decimal import Decimal
-PLANS_TAX = Decimal('23.0')
+PLANS_TAX = Decimal('0')
 PLANS_INVOICE_ISSUER = {
     "issuer_name": "Joe Doe Company",
     "issuer_street": "Django street, 34",
