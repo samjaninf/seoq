@@ -5,7 +5,7 @@
 {% endif %}
   <h3 class="m-b-30">Code</h3>
 {% if report.user %}
-  
+
   <p class="text-muted">{% if report.analysis.code.kw_in_meta_description == "to improve" %}Nice, you have some keywords in your meta description. info about how to improve keywords in meta description {% elif report.analysis.code.kw_in_meta_description == "error" %}info about how to improve keywords in meta description{% else %}your meta description contains a lot of keyword phrases{% endif %}</p>
 
   <p class="text-muted">{% if report.analysis.code.kw_in_url == "to improve" %}Nice, you have some keywords in your url. info about how to improve keywords in url {% elif report.analysis.code.kw_in_url == "error" %}info about how to improve keywords in url{% else %}your meta description contains a lot of keyword phrases{% endif %}</p>
@@ -20,14 +20,14 @@
 
   <div class="row">
     <div class="col-sm-4 col-sm-offset-2">
-      <a class="btn 
+      <a class="btn
       {% if report.analysis.code.kw_in_url == "to improve" %}btn-warning
       {% elif report.analysis.code.kw_in_url == "error" %}btn-danger
       {% else %}btn-success
       {% endif %} btn-lg btn-block btn-outline" role="button" disabled>Keywords in page URL</a>
       </div>
     <div class="col-sm-4">
-      <a class="btn 
+      <a class="btn
       {% if report.analysis.code.kw_in_meta_description == "to improve" %}btn-warning
       {% elif report.analysis.code.kw_in_meta_description == "error" %}btn-danger
       {% else %}btn-success
@@ -38,8 +38,11 @@
     {% endcomment %}
   </div>
   {% else %}
-
-  <img src="{% static "images/fish-5.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
+    {% if not request.user.is_authenticated %}
+      <img src="{% static "images/fish-3.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
+    {% else %}
+      <img src="{% static "images/fish-5.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
+    {% endif %}
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <a href="{% url 'balystic_signup' %}" class="btn btn-block btn-info btn-outline btn-lg">To get a full report, log in and rerun it with keyword phrases</a>
