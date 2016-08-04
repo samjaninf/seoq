@@ -16,6 +16,7 @@
       text-align: center;
     }
     .col-centered{
+      min-height: 430px;
       @media (min-width:$screen-sm-min){
         background-color: #F0F4F5;
         box-shadow: 0 0 10px rgba(58, 127, 182, 0.2);
