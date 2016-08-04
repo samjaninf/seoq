@@ -46,6 +46,7 @@ THIRD_PARTY_APPS = (
     'balystic',
     'ordered_model',
     'plans',
+    'payments',
     'sorl.thumbnail',
 )
 
@@ -56,6 +57,7 @@ LOCAL_APPS = (
     # Your stuff: custom apps go here
     'seoq.core',
     'seoq.seoqtool',
+    'seoq.payments_seoq',
 
 )
 
@@ -304,4 +306,15 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
     )
+}
+
+PAYMENT_HOST = 'localhost:8000'
+PAYMENT_USES_SSL = False
+PAYMENT_MODEL = 'payments_seoq.Payment'
+PAYMENT_VARIANTS = {
+    'default': ('payments.stripe.StripeProvider', {
+        'secret_key': env('STRIPE_API_KEY', default=''),
+        'public_key': env('STRIPE_PUBLISHABLE_KEY', default=''),
+        'name': 'seoq',
+    })
 }

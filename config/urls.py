@@ -10,7 +10,7 @@ from django.views import defaults as default_views
 from balystic import views as balystic_views
 from seoq.core import views as core_views
 from django.views.decorators.csrf import ensure_csrf_cookie
-
+from seoq.payments_seoq import views as payments_seoq
 urlpatterns = [
     url(r'^$', ensure_csrf_cookie(TemplateView.as_view(template_name='pages/home.html')),
         name='home'),
@@ -35,7 +35,11 @@ urlpatterns = [
     url(r'^seo-students/$', TemplateView.as_view
         (template_name='pages/students.html'),
         name='students'),
-
+    url(r'^order/(?P<pk>\d+)/$',
+        payments_seoq.OrderView.as_view(), name='order'),
+    url(r'^order/(?P<pk>\d+)/payment/success/$',
+        payments_seoq.OrderPaymentReturnView.as_view(status='success'),
+        name='order_payment_success'),
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),
 
