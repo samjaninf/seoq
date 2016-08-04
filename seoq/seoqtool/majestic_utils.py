@@ -253,8 +253,11 @@ class MajesticBackLinks(object):
             totalCitationFlow = 0
             for row in results.rows:
                 totalCitationFlow += int(row.get('SourceCitationFlow'))
-            return float(totalCitationFlow) / (float(len(results.rows)) * 10)
-
+            if float(len(results.rows)):
+                return float(totalCitationFlow) /\
+                    (float(len(results.rows)) * 10)
+            else:
+                return 0
         else:
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
