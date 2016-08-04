@@ -143,6 +143,7 @@ section.scan-website{
       display: flex;
       display: -webkit-flex;
       align-items: center;
+      min-height: 375px;
     }
     .col-sm-6{
       @media(max-width:$screen-sm){
@@ -298,7 +299,7 @@ section.scan-website{
 }
 .animation-line:before{
   @media(min-width:$screen-lg-min){
-    top: -178px !important;
-    height: 215px !important;
+    top: -245px !important;
+    height: 300px !important;
   }
 }

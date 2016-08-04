@@ -8270,7 +8270,8 @@ section.scan-website {
       display: flex;
       display: -webkit-flex;
       -ms-flex-align: center;
-          align-items: center; } }
+          align-items: center;
+      min-height: 375px; } }
   @media (max-width: 768px) {
     section.scan-website .col-md-10 .col-sm-6 {
       text-align: center; } }
@@ -8411,8 +8412,8 @@ section.scan-website {
 
 @media (min-width: 1200px) {
   .animation-line:before {
-    top: -178px !important;
-    height: 215px !important; } }
+    top: -245px !important;
+    height: 300px !important; } }
 
 .about h2, .about h3 {
   color: #555555;
