@@ -233,7 +233,11 @@ class MajesticBackLinks(object):
                 for word in keywords:
                     if row['AnchorText'].find(word) != -1:
                         numKeyWordsInAnchorText += 1
-            return float(numKeyWordsInAnchorText) / float(len(results.rows)) * 10
+            if float(len(results.rows)):
+                return float(numKeyWordsInAnchorText) /\
+                    float(len(results.rows)) * 10
+            else:
+                return float(0)
 
         else:
             print ('\nERROR MESSAGE:')
