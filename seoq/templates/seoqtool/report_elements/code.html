@@ -39,7 +39,7 @@
   </div>
   {% else %}
     {% if not request.user.is_authenticated %}
-      <img src="{% static "images/fish-3.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
+      <img src="{% static "images/fish-3.png" %}" alt="fish" class="img-responsive center-block m-y-25 gray-scale" width="190" height="140">
     {% else %}
       <img src="{% static "images/fish-5.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
     {% endif %}

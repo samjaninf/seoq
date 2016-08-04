@@ -298,6 +298,11 @@ hr {
     box-shadow: none;
     border-radius: 0px; }
 
+.gray-scale {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -o-filter: grayscale(100%); }
+
 .text-brand {
   color: #2d5d81 !important; }
 
