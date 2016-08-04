@@ -67,7 +67,7 @@
               <a href="{% url 'about' %}">About</a>
             </li>
 
-            <li {% active_url 'owners' %} {% active_url 'professionals' %} {% active_url 'students' %}>
+            <li {% active_url 'owners' %} {% active_url 'professionals' %} {% active_url 'students' %} class="responsive-big">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
               Benefits <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -76,11 +76,12 @@
               <li {% active_url 'students' %}><a href="{% url 'students' %}">SEO Students</a></li>
               </ul>
             </li>
-
-            <li {% active_url 'balystic_blog' %} >
+            <li {% active_url 'owners' %} class="responsive"><a href="{% url 'owners' %}">Website Owners</a></li>
+              <li {% active_url 'professionals' %} class="responsive"><a href="{% url 'professionals' %}">SEO Professionals</a></li>
+              <li {% active_url 'students' %} class="responsive"><a href="{% url 'students' %}">SEO Students</a></li>
+            <li {% active_url 'balystic_blog' %}>
               <a href="{% url 'balystic_blog' %}">Blog</a>
             </li>
-
             <li {% active_url 'directory' %}>
               <a href="{% url 'directory' %}">SEO Directory</a>
             </li>

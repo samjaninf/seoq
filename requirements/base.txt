@@ -56,7 +56,7 @@ djangorestframework==3.4.0
 celery==3.1.23
 django-celery==3.1.17
 django-supervisor==0.3.4
-django-balystic==0.1.13
+django-balystic==0.1.15
 
 
 # django plans
@@ -71,3 +71,6 @@ python-linkedin==4.1
 pyOpenSSL==16.0.0
 pyasn1==0.1.9
 ndg-httpsclient==0.4.2
+
+# SORL Thumbnail
+-e git://github.com/mariocesar/sorl-thumbnail.git#egg=sorl-thumbnail
