@@ -41,7 +41,7 @@ class ReportURL(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     frequency = models.CharField(choices=REPORT_FREQUENCY, max_length=7)
     url = models.URLField()
-    keywords = models.CharField(max_length=250)
+    keywords = models.CharField(max_length=250, blank=True)
     last_analyzed = models.DateTimeField()
 
 
