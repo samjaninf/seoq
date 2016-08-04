@@ -45,15 +45,26 @@
               <a href="" id="link-author">&nbsp;{{ entry.user.username|title }}</a>&nbsp;
               <i class="fa fa-calendar"></i>&nbsp;{{ entry.publication_date|date_string }}
             </small>
-            <p class="m-t-10">{{ entry.excerpt }}
+            <p class="m-t-10">{{ entry.excerpt|safe }}
               <a href="{% url 'balystic_blog_detail' entry.slug %}">{% trans "Read more..." %}</a>
             </p>
             {% if entry.tags %}  
-            <p>Tagged: {% for tag in entry.tags_list %}<a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ entry.tag }}</span></a>{% endfor %}</p>
+            <p>Tagged: {% for tag in entry.tags %}<a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ tag }}</span></a>{% endfor %}</p>
             {% endif %}
           </div>
         </div>
       </div>
     {% endfor %}
+    <div class="pagination">
+      <span class="step-links">
+        {% if previous_page %}
+            <a href="?page={{ previous_page }}"><< previous page</a>
+        {% endif %}
+        |
+        {% if next_page != 'None' %}
+            <a href="?page={{ next_page }}">next page >></a>
+        {% endif %}
+      </span>
+    </div>
   </div>
 {% endblock content %}
