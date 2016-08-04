@@ -59,7 +59,8 @@ class Algorithm(object):
             report['credibility']['https'] = 'passed'
         else:
             report['credibility']['https'] = 'error'
-
+        
+        print self.total_time_and_ssl
         time = self.total_time_and_ssl['speed_info']
         time = float(time['time_in_seconds'])
         if time > 0 and time <= avgTime:

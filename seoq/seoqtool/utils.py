@@ -44,7 +44,7 @@ def get_total_time_and_ssl_certification(url):
     else:
         ssl_certificate = False
     if 'http://' not in url and 'https://' not in url:
-        url = 'https://' + url
+        url = 'https://www.' + url
     try:
         response = requests.get(url)
         ssl_certificate = True
