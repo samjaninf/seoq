@@ -8302,8 +8302,8 @@ section.scan-website {
     position: absolute; }
     @media (min-width: 768px) and (max-width: 832px) {
       section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
-        height: 214px;
-        top: -157px;
+        height: 213px;
+        top: -155px;
         left: 0px;
         width: 19px;
         border-top: 2px solid #7dd0e3; } }
@@ -8316,15 +8316,15 @@ section.scan-website {
     @media (min-width: 992px) and (max-width: 1199px) {
       section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
         width: 50px;
-        height: 300px;
-        top: -250px;
+        height: 320px;
+        top: -269px;
         left: -67px; } }
     @media (min-width: 1200px) {
       section.scan-website .col-md-10 .col-sm-6 h2#how-website:before {
         width: 70px;
-        height: 300px;
-        top: -258px;
-        left: -82px; } }
+        height: 330px;
+        top: -288px;
+        left: -70px; } }
   section.scan-website .col-md-10 .col-sm-6 form .form-group label {
     width: 100%;
     color: #2d5d81; }
@@ -8355,7 +8355,7 @@ section.scan-website {
 
 #give-try {
   position: absolute;
-  top: -55px;
+  top: -75px;
   /* margin-left: 50px;
   position: relative;
   top: -40px; */ }
