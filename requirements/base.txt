@@ -61,6 +61,7 @@ django-balystic==0.1.15
 
 # django plans
 django-plans==0.8.11
+django-payments==0.9.4
 django-ordered-model==1.2.1
 
 tweepy==3.5.0

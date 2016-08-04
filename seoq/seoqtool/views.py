@@ -4,12 +4,13 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
+from django.contrib import messages
 from django.views.generic import CreateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import AlgorithmVariable, Report, ReportURL
 from balystic.client import Client
 from .email_report import send_simple_email
-
+from django.contrib import messages
 
 class CreateVariableView(CreateView):
 
@@ -94,29 +95,59 @@ class ArchiveReportView(View):
         return render(request, self.template_name, context)
 
     def post(self, request, netloc, year, month, day):
+        put = request.POST.get('put', None)
+        if put is not None:
+            return self.put(request, netloc, year, month, day)
         email = request.POST.get('email', None)
         if email is not None:
             send_simple_email(email, request.build_absolute_uri())
+            messages.success(request, 'Your report was sent successfully to %s.' % email)
         return redirect(reverse(
             'seoqtool:archive_report',
             args=[netloc, year, month, day]))
 
-    # def put(self, request, netloc, year, month, day):
-    #     Report.objects.filter(
-    #         created__year=year,
-    #         created__month=month,
-    #         created__day=day,
-    #         netloc=netloc,
-    #         user=request.user).update(custom_information=True)
-    #     return redirect(reverse(
-    #         'seoqtool:archive_report',
-    #         args=[netloc, year, month, day]))
+    def put(self, request, netloc, year, month, day):
+        if self.request.user.userplan.plan is None or\
+           self.request.user.userplan.plan.default:
+            messages.error(
+                self.request, 'you need a plan to perform this action')
+            return redirect(reverse('pricing'))
+        netloc = str(netloc)
+        netloc = netloc.replace('--', '/')
+        Report.objects.filter(
+            created__year=year,
+            created__month=month,
+            created__day=day,
+            netloc=netloc,
+            user=request.user).update(custom_information=True)
+        messages.success(request, 'You are sponsoring this report')
+        return redirect(reverse(
+            'seoqtool:archive_report',
+            args=[netloc.replace('/', '--'), year, month, day]))
 
 
 class CreateReportURLView(LoginRequiredMixin, CreateView):
     template_name = 'seoqtool/create_urls.html'
     fields = ['frequency', 'url', 'keywords']
     model = ReportURL
+
+    def get(self, *args, **kwargs):
+        if self.request.user.userplan.plan is None or\
+           self.request.user.userplan.plan.default:
+            messages.error(
+                self.request, 'you need a plan to perform this action')
+            return redirect(reverse('pricing'))
+        else:
+            return super(CreateReportURLView, self).get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        if self.request.user.userplan.plan is None or\
+           self.request.user.userplan.plan.default:
+            messages.error(
+                self.request, 'you need a plan to perform this action')
+            return redirect(reverse('pricing'))
+        else:
+            return super(CreateReportURLView, self).post(*args, **kwargs)
 
     def get_context_data(self, *args, **kwargs):
         context = super(CreateReportURLView, self).get_context_data(

@@ -43,7 +43,9 @@ class SiteFormView(APIView):
         netloc = url.replace(
             'https://', '').replace('www.', '').replace('http://', '')
         if request.user.is_authenticated():
-            report = Report.objects.create(netloc=netloc, user=request.user)
+            report = Report.objects.create(
+                netloc=netloc,
+                user=request.user)
         else:
             report = Report.objects.create(netloc=netloc)
         return Response({'report': report.pk})
@@ -58,6 +60,13 @@ class KeywordsScoreView(APIView):
         if keywords is None:
             raise Http404
         report = get_object_or_404(Report, pk=pk)
+        Report.objects.exclude(pk=report.pk).filter(
+            netloc=report.netloc,
+            user=report.user,
+            keywords=keywords,
+            created__year=report.created.year,
+            created__month=report.created.month,
+            created__day=report.created.day).delete()
         keyword_score = Algorithm(
             report.netloc).getKeywordScore(report.netloc, keywords)
         report.refresh_from_db()
