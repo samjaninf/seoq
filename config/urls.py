@@ -51,6 +51,12 @@ urlpatterns = [
     url(r'^', include('plans.urls')),
 
     # Your stuff: custom urls includes go here
+    # CompaniesRedirectView
+    url(r'^seo-companies/(?P<slug>[-\w.]+)/$',
+        core_views.CompaniesRedirectView.as_view(),
+        name='seo_companies_redirect'),
+    url(r'^(?P<slug>[-\w.]+)/$',
+        core_views.ArchivedBlogRedirectView.as_view(), name='archived_blog'),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

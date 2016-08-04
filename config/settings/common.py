@@ -282,6 +282,8 @@ MAX_DEPTH_VALUE = env('MAX_DEPTH_VALUE', default=2)
 BALYSTIC_API_TOKEN = env('BALYSTIC_API_TOKEN')
 BALYSTIC_API_PATH = env('BALYSTIC_API_PATH')
 
+SEOQ_COMPANIES_URL = env('SEOQ_COMPANIES_URL',
+                         default='https://www.seoq.com/seo-companies/')
 
 # PLANS Configuration
 # ------------------------------------------------------------------------------
