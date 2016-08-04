@@ -50,7 +50,7 @@
                 </p>
                 <p>
                     {% blocktrans %}
-                        If this data is not correct please <a href="{{ billing_info_url }}">edit billing data</a> before
+                        If this data is not correct please <a href="{{ billing_info_url }}" class="blue-link">edit billing data</a> before
                         making an order.
                     {% endblocktrans %}
                 </p>
@@ -58,7 +58,7 @@
                 <p class="alert alert-info">
                     {% blocktrans %}
                         Invoice will <b>not</b> be issued. If you need an invoice please provide
-                        <a href="{{ billing_info_url }}">billing data</a> before making an order.
+                        <a href="{{ billing_info_url }}" class="blue-link">billing data</a> before making an order.
                     {% endblocktrans %}
                 </p>
             {% endif %}
