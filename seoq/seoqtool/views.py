@@ -4,12 +4,13 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
+from django.contrib import messages
 from django.views.generic import CreateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import AlgorithmVariable, Report, ReportURL
 from balystic.client import Client
 from .email_report import send_simple_email
-
+from django.contrib import messages
 
 class CreateVariableView(CreateView):
 
@@ -100,6 +101,7 @@ class ArchiveReportView(View):
         email = request.POST.get('email', None)
         if email is not None:
             send_simple_email(email, request.build_absolute_uri())
+            messages.success(request, 'Your report was sent successfully to %s.' % email)
         return redirect(reverse(
             'seoqtool:archive_report',
             args=[netloc, year, month, day]))
@@ -113,6 +115,7 @@ class ArchiveReportView(View):
             created__day=day,
             netloc=netloc,
             user=request.user).update(custom_information=True)
+        messages.success(request, 'You are sponsoring this report')
         return redirect(reverse(
             'seoqtool:archive_report',
             args=[netloc.replace('/', '--'), year, month, day]))
