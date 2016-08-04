@@ -34,7 +34,7 @@
           <div class="panel-body">
             <div class="media">
               <div class="media-left">
-                <a href="#">
+                <a href="{% url 'users:detail' object.username %}">
                   {% if object.avatar %}
                     <img src="{{ object.avatar }}" alt="Avatar" class="img-responsive img-circle center-block">
                   {% else %}
@@ -43,7 +43,7 @@
                 </a>
               </div>
               <div class="media-body">
-                <a href="#">
+                <a href="{% url 'users:detail' object.username %}">
                   {% if object.first_name and object.last_name %}
                     <h4 class="media-heading">{{ object.first_name }} {{ object.last_name }}</h4>
                   {% else %}
