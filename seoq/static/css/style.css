@@ -249,48 +249,6 @@ hr {
 #signup-form #div_id_password_1 label {
   display: none; }
 
-#keywords {
-  position: relative; }
-  #keywords .pop-over {
-    opacity: 0;
-    box-shadow: 0 0 10px rgba(58, 127, 182, 0.2);
-    background-color: #F0F4F5;
-    border: 1px solid #d6cece;
-    text-align: center;
-    padding: 10px 20px;
-    margin: 0px;
-    padding-bottom: 0px;
-    -webkit-transition: all .5s ease-in-out 0s;
-    -moz-transition: all .5s ease-in-out 0s;
-    -o-transition: all .5s ease-in-out 0s;
-    position: absolute;
-    top: -55px;
-    width: 100%;
-    z-index: -1;
-    border-radius: 4px; }
-    @media (min-width: 768px) and (max-width: 1199px) {
-      #keywords .pop-over {
-        top: -85px; } }
-    @media (max-width: 451px) {
-      #keywords .pop-over {
-        top: -85px; } }
-    #keywords .pop-over:after {
-      content: '';
-      display: block;
-      width: 10px;
-      height: 10px;
-      position: absolute;
-      left: 50%;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 7px solid #ec971f; }
-  #keywords:hover .pop-over, #keywords:focus .pop-over {
-    opacity: 1;
-    z-index: 999;
-    -webkit-transition-delay: .25s;
-    -moz-transition-delay: .25s;
-    -o-transition-delay: .25s; }
-
 .label.label-default {
   margin: 5px;
   display: inline-block; }
@@ -310,6 +268,35 @@ hr {
 @media (max-width: 991px) {
   .center-block-responsive {
     margin: 0 auto; } }
+
+.form-pay .stripe-button-el {
+  background: transparent;
+  border: none;
+  color: #fff;
+  background-color: #7dd0e3;
+  border-color: #68c8de;
+  box-shadow: none;
+  border-radius: 0px;
+  padding: 6px 12px;
+  line-height: 0px;
+  border-radius: 4px;
+  border: 1px solid transparent; }
+  .form-pay .stripe-button-el:focus, .form-pay .stripe-button-el:active {
+    background-color: #7dd0e3 !important;
+    border: 1px solid #68c8de !important;
+    color: #fff !important; }
+    .form-pay .stripe-button-el:focus span, .form-pay .stripe-button-el:active span {
+      background: transparent !important;
+      color: #fff !important;
+      border: none !important;
+      border-top: none !important; }
+  .form-pay .stripe-button-el span {
+    background: transparent;
+    border: none;
+    text-shadow: none;
+    font-family: inherit;
+    box-shadow: none;
+    border-radius: 0px; }
 
 .text-brand {
   color: #2d5d81 !important; }
@@ -8384,6 +8371,47 @@ section.scan-website {
     font-size: 15px;
     border-radius: 2px;
     background: #F0F4F5; }
+  section.scan-website .col-md-10 .col-sm-6 form #keywords {
+    position: relative; }
+    section.scan-website .col-md-10 .col-sm-6 form #keywords .pop-over {
+      opacity: 0;
+      box-shadow: 0 0 10px rgba(58, 127, 182, 0.2);
+      background-color: #F0F4F5;
+      border: 1px solid #d6cece;
+      text-align: center;
+      padding: 10px 20px;
+      margin: 0px;
+      padding-bottom: 0px;
+      -webkit-transition: all .5s ease-in-out 0s;
+      -moz-transition: all .5s ease-in-out 0s;
+      -o-transition: all .5s ease-in-out 0s;
+      position: absolute;
+      top: -55px;
+      width: 100%;
+      z-index: -1;
+      border-radius: 4px; }
+      @media (min-width: 768px) and (max-width: 1199px) {
+        section.scan-website .col-md-10 .col-sm-6 form #keywords .pop-over {
+          top: -85px; } }
+      @media (max-width: 451px) {
+        section.scan-website .col-md-10 .col-sm-6 form #keywords .pop-over {
+          top: -85px; } }
+      section.scan-website .col-md-10 .col-sm-6 form #keywords .pop-over:after {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        left: 50%;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 7px solid #ec971f; }
+    section.scan-website .col-md-10 .col-sm-6 form #keywords:hover .pop-over, section.scan-website .col-md-10 .col-sm-6 form #keywords:focus .pop-over {
+      opacity: 1;
+      z-index: 999;
+      -webkit-transition-delay: .25s;
+      -moz-transition-delay: .25s;
+      -o-transition-delay: .25s; }
   section.scan-website .col-md-10 .col-sm-6 form button {
     height: 40px;
     font-size: 15px;

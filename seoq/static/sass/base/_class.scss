@@ -211,53 +211,6 @@ hr{
     }
   }
 }
-#keywords{
-  position:relative;
-  .pop-over{
-    opacity: 0;
-    box-shadow: 0 0 10px rgba(58, 127, 182, 0.2);
-    background-color: #F0F4F5;
-    border: 1px solid #d6cece;
-    text-align: center;
-    padding:10px 20px;
-    margin:0px;
-    padding-bottom:0px;
-    -webkit-transition: all .5s ease-in-out 0s;
-    -moz-transition: all .5s ease-in-out 0s;
-    -o-transition: all .5s ease-in-out 0s;
-    position: absolute;
-    top: -55px;
-    width: 100%;
-    z-index: -1;
-    border-radius:4px;
-    @media(min-width:$screen-sm-min) and (max-width: $screen-md-max){
-      top: -85px;
-    }
-    @media(max-width:451px){
-      top: -85px;
-    }
-    &:after{
-      content: '';
-      display: block;
-      width: 10px;
-      height: 10px;
-      position: absolute;
-      left: 50%;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 7px solid #ec971f;
-    }
-  }
-  &:hover,&:focus{
-    .pop-over{
-      opacity: 1;
-      z-index: 999;
-      -webkit-transition-delay: .25s;
-      -moz-transition-delay: .25s;
-      -o-transition-delay: .25s;
-    }
-  }
-}
 .label.label-default{
   margin: 5px;
   display: inline-block;
@@ -280,5 +233,39 @@ hr{
 .center-block-responsive{
   @media  (max-width: $screen-sm-max){
     margin: 0 auto;
+  }
+}
+.form-pay{
+  .stripe-button-el{
+    background:transparent;
+    border:none;
+    color: #fff;
+    background-color: #7dd0e3;
+    border-color: #68c8de;
+    box-shadow:none;
+    border-radius:0px;
+    padding: 6px 12px;
+    line-height: 0px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    &:focus,&:active{
+      background-color: #7dd0e3 !important;
+      border: 1px solid #68c8de !important;
+      color: #fff !important;
+      span{
+        background:transparent !important;
+        color: #fff !important;
+        border:none !important;
+        border-top:none !important;
+      }
+    }
+    span{
+      background:transparent;
+      border:none;
+      text-shadow: none;
+      font-family: inherit;
+      box-shadow:none;
+      border-radius:0px;
+    }
   }
 }

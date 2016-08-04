@@ -1,6 +1,7 @@
 {% extends "plans/base.html" %}
 {% load i18n %}
-
+{% block title %}Payment{% endblock title %}
+{% load crispy_forms_tags %}
 
 {% block head %}
     <script>
@@ -15,66 +16,60 @@
 
 
 {% block body %}
-    <h1>{% blocktrans with object.id as order_id and object.get_status_display as order_status %}Order #{{ order_id }}
-        (status: {{ order_status }}){% endblocktrans %}</h1>
+<section class="order-detail p-t-50 p-b-70">
+  <div class="container">
+    <div class="row">
+      <h1>{% blocktrans with object.id as order_id and object.get_status_display as order_status %}Order #{{ order_id }}
+        (status: {{ order_status }}){% endblocktrans %}
+      </h1>
 
     {# You should provide displaying django messages in this template #}
 
-    {% with object as order %}
+      {% with object as order %}
         {% include "plans/order_detail_table.html" %}
-    {% endwith %}
+      {% endwith %}
 
-    {% if object.get_all_invoices.count %}
+      {% if object.get_all_invoices.count %}
         <h2>{% trans "Printable documents" %}</h2>
         <ul id="order_printable_documents">
-            {% for invoice in object.get_all_invoices %}
-                <li><a href="{{ invoice.get_absolute_url }}"
-                       class="invoice">{{ invoice.get_type_display }} {{ invoice }}</a>
-
-            {% endfor %}
+          {% for invoice in object.get_all_invoices %}
+            <li><a href="{{ invoice.get_absolute_url }}" class="invoice">{{ invoice.get_type_display }} {{ invoice }}</a>
+            </li>
+          {% endfor %}
         </ul>
-    {% endif %}
+      {% endif %}
 
-
-
-    <h2>{% trans "Payment" %}</h2>
-    {% if object.completed %}
-
+      <h2>{% trans "Payment" %}</h2>
+      {% if object.completed %}
         <p class="alert alert-success">
-            {% blocktrans with  object.completed as completed %}
-                Payment completed on: {{ completed }}
-            {% endblocktrans %}
+          {% blocktrans with  object.completed as completed %}
+            Payment completed on: {{ completed }}
+          {% endblocktrans %}
         </p>
-    {% else %}
-
+      {% else %}
         {% if object.is_ready_for_payment %}
-            {% block payment_method %}
-
-                       <form action="{{ payment_form.action }}" method="{{ payment_form.method }}">
-                            {% csrf_token %}
-                            {{ payment_form.as_p }}
-                        </form>
-
-            {% endblock %}
+          {% block payment_method %}
+            <form action="{{ payment_form.action }}" method="{{ payment_form.method }}" class="form-pay">
+              {% csrf_token %}
+              {{ payment_form.as_p }}
+            </form>
+          {% endblock %}
         {% else %}
-
-            <p class="alert alert-warning">
-                {% blocktrans %}
-                    This order is expired. It will accept an incoming payment made earlier, but new payment cannot be
-                    initialized. Please make a new order if necessary.
-                {% endblocktrans %}
-            </p>
-
-        {% endif %}
-
-    {% endif %}
-
-    {% if object.status == object.STATUS.NOT_VALID %}
-        <p class="alert alert-danger">
+          <p class="alert alert-warning">
             {% blocktrans %}
-                This order could not be processed as it is not valid. Please contact with customer service.
+              This order is expired. It will accept an incoming payment made earlier, but new payment cannot be initialized. Please make a new order if necessary.
             {% endblocktrans %}
+          </p>
+        {% endif %}
+      {% endif %}
+      {% if object.status == object.STATUS.NOT_VALID %}
+        <p class="alert alert-danger">
+          {% blocktrans %}
+              This order could not be processed as it is not valid. Please contact with customer service.
+          {% endblocktrans %}
         </p>
-    {% endif %}
-
+      {% endif %}
+    </div>
+  </div>
+</section>
 {% endblock %}
