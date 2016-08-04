@@ -62,7 +62,6 @@ class Algorithm(object):
 
         time = self.total_time_and_ssl['speed_info']
         time = float(time['time_in_seconds'])
-        print time
         if time > 0 and time <= avgTime:
             report['crawlability']['speed'] = 'passed'
         else:
@@ -78,78 +77,80 @@ class Algorithm(object):
             backlinks = float(math.log(float(self.majestic.getNumBackLinksDomainName())))
             if backlinks > 12:
                 backlinks = 12
-                score = score + backlinks * self.backlinkVar
-                if backlinks > 10:
-                    report['credibility']['backlinks_domain'] = 'passed'
-                else:
-                    report['credibility']['backlinks_domain'] = 'to improve'
-        else:
+            score = score + backlinks * self.backlinkVar
+            if backlinks > 10:
+                report['credibility']['backlinks_domain'] = 'passed'
+            else:
                 report['credibility']['backlinks_domain'] = 'to improve'
+        else:
+            report['credibility']['backlinks_domain'] = 'to improve'
 
         backlinks = float(self.majestic.getNumBackLinksWebPageURL())
         if backlinks > 0:
-            backlinks = float(math.log(float(self.majestic.getNumBackLinksWebPageURL())))
+            backlinks = float(
+                math.log(float(self.majestic.getNumBackLinksWebPageURL())))
             if backlinks > 12:
                 backlinks = 12
                 score = score + backlinks * self.backlinkVar
-                if backlinks > 10:
-                    report['credibility']['backlinks_url'] = 'passed'
-                else:
-                    report['credibility']['backlinks_url'] = 'to improve'
-        else:
+            if backlinks > 10:
+                report['credibility']['backlinks_url'] = 'passed'
+            else:
                 report['credibility']['backlinks_url'] = 'to improve'
+
+        else:
+            report['credibility']['backlinks_url'] = 'to improve'
 
         govlinks = float(self.majestic.getNumGovBackLinksDomainName())
         if govlinks > 0:
             govlinks = float(math.log(float(self.majestic.getNumGovBackLinksDomainName())))
             if govlinks > 12:
                 govlinks = 12
-                score = score + govlinks * self.backlinkVar / 2
-                if govlinks > 5:
-                    report['credibility']['govlinks_domain'] = 'passed'
-                else:
-                    report['credibility']['govlinks_domain'] = 'to improve'
-        else:
+            score = score + govlinks * self.backlinkVar / 2
+            if govlinks > 5:
+                report['credibility']['govlinks_domain'] = 'passed'
+            else:
                 report['credibility']['govlinks_domain'] = 'to improve'
+        else:
+            report['credibility']['govlinks_domain'] = 'to improve'
 
         govlinks = float(self.majestic.getNumGovBackLinksWebPageURL())
         if govlinks > 0:
             govlinks = float(math.log(float(self.majestic.getNumGovBackLinksWebPageURL())))
             if govlinks > 12:
                 govlinks = 12
-                score = score + govlinks * self.backlinkVar / 2
-                if govlinks > 5:
-                    report['credibility']['govlinks_url'] = 'passed'
-                else:
-                    report['credibility']['govlinks_url'] = 'to improve'
-        else:
+            score = score + govlinks * self.backlinkVar / 2
+            if govlinks > 5:
+                report['credibility']['govlinks_url'] = 'passed'
+            else:
                 report['credibility']['govlinks_url'] = 'to improve'
+        else:
+            report['credibility']['govlinks_url'] = 'to improve'
 
         edulinks = float(self.majestic.getNumEduBackLinksDomainName())
         if edulinks > 0:
             edulinks = float(math.log(float(self.majestic.getNumEduBackLinksDomainName())))
             if edulinks > 12:
                 edulinks = 12
-                score = score + edulinks * self.backlinkVar / 3
-                if edulinks > 5:
-                    report['credibility']['edulinks_domain'] = 'passed'
-                else:
-                    report['credibility']['edulinks_domain'] = 'to improve'
-        else:
+            score = score + edulinks * self.backlinkVar / 3
+            if edulinks > 5:
+                report['credibility']['edulinks_domain'] = 'passed'
+            else:
                 report['credibility']['edulinks_domain'] = 'to improve'
+        else:
+            report['credibility']['edulinks_domain'] = 'to improve'
 
         edulinks = float(self.majestic.getNumEduBackLinksWebPageURL())
         if edulinks > 0:
             edulinks = float(math.log(float(self.majestic.getNumEduBackLinksWebPageURL())))
             if edulinks > 12:
                 edulinks = 12
-                score = score + edulinks * self.backlinkVar / 3
-                if edulinks > 5:
-                    report['credibility']['edulinks_url'] = 'passed'
-                else:
-                    report['credibility']['edulinks_url'] = 'to improve'
-        else:
+            score = score + edulinks * self.backlinkVar / 3
+            if edulinks > 5:
+                report['credibility']['edulinks_url'] = 'passed'
+            else:
                 report['credibility']['edulinks_url'] = 'to improve'
+        else:
+            report['credibility']['edulinks_url'] = 'to improve'
 
         trustFlow = float(self.majestic.getTrustFlow())
         if trustFlow > 0:
