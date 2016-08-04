@@ -53,6 +53,9 @@
             <p class="help-block text-left" ></p>
           </div>
           <div id="div_id_login" class="form-group has-feedback">
+          <label for="id_password_1" class="control-label  requiredField">
+            Password <span class="asteriskField">*</span>
+          </label>
           {{ form.password_1|as_crispy_field }}
           <span class="glyphicon glyphicon-ok-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>
             <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true" style="display:none;"></span>

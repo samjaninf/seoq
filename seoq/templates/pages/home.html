@@ -129,7 +129,7 @@
     <div class="row">
       <div class="col-md-12">
         <span class="clear center-block scrollable" id="give-try">
-          <a href="#how-website" title="{% trans "Give it try" %}" class=""><i class="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp;{% trans "Give it try" %}</a>
+          <a href="#how-website" title="{% trans "Give it a try" %}" class=""><i class="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp;{% trans "Give it a try" %}</a>
         </span>
       </div>
     </div>
@@ -158,16 +158,21 @@
                 <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
                 <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" required>
               </div>
-
-                <div class="text-center text-block">
-                  <h3>vs</h3>
-                </div>
-                <div class="form-group">
+                {% comment %}
+                  <div class="text-center text-block">
+                    <h3>vs</h3>
+                  </div>
+                {% endcomment %}
+                <div class="form-group" id="keywords">
+                  <div class="pop-over">
+                  <p>Keywords available only for registered user</p>
+                  </div>
+                  {% comment %}
                   <label for="competitor-website" class="text-center">{% trans "Your Competitor" %}</label>
                   <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}" disabled>
+                  {% endcomment %}
                   <input type="text" ng-model="request_data.keyword" class="form-control text-center" id="keywords" placeholder="{% trans "What keyword phrase do you want to rank for?" %}"{% if request.user.is_authenticated %}required{% else %}disabled{% endif %}>
                 </div>
-
               <button type="submit" class="btn btn-warning-ligth btn-block">{% trans "Start" %}</button>
             </form>
           </div>
