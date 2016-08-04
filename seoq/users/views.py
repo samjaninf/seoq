@@ -14,15 +14,20 @@ from plans.models import UserPlan
 from django.conf import settings
 
 
-class UserDetailView(LoginRequiredMixin, View):
+class UserDetailView(View):
     template_name = 'users/user_detail.html'
 
     def get(self, request, username):
-        plan = UserPlan.objects.get(
-            user=self.request.user)
+        plan = None
+        if self.request.user.is_authenticated():
+            plan = UserPlan.objects.get(
+                user=self.request.user)
         user = Client().get_user_detail(username)
         owner = Client().get_users({'userType': 'owner'})['owner']
-        return render(request, self.template_name, {'object': user, 'userplan': plan, 'owner': owner})
+        return render(
+            request,
+            self.template_name,
+            {'object': user, 'userplan': plan, 'owner': owner})
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):

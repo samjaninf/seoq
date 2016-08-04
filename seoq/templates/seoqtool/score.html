@@ -75,8 +75,11 @@
 <section class="bg-gray">
   <div class="container">
     <div class="row">
-    {% if report.user != 'None' and not report.keywords %}
-      {% else %}
+    {% if report.user and report.keywords %}
+        {% include "seoqtool/report_elements/content.html" %}
+        {% include "seoqtool/report_elements/code.html" %}
+    {% endif %}
+    {% if not report.user %}
         {% include "seoqtool/report_elements/content.html" %}
         {% include "seoqtool/report_elements/code.html" %}
     {% endif %}
