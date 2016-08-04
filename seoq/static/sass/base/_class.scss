@@ -208,3 +208,23 @@ hr{
     }
   }
 }
+#keywords{
+  .pop-over{
+    opacity: 0;
+    box-shadow: 0 0 10px rgba(58, 127, 182, 0.2);
+    background-color: #F0F4F5;
+    border: 1px solid #d6cece;
+    text-align: center;
+    padding:10px 20px;
+    margin:0px;
+    padding-bottom:0px;
+    transition: all .5s ease-in-out 0s;
+    position: absolute;
+  }
+  &:hover,&:focus{
+    .pop-over{
+      opacity: 1;
+      transition-delay: .25s;
+    }
+  }
+}

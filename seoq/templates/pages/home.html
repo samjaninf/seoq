@@ -158,13 +158,15 @@
                 <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
                 <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" required>
               </div>
-
                 {% comment %}
                   <div class="text-center text-block">
                     <h3>vs</h3>
                   </div>
                 {% endcomment %}
-                <div class="form-group">
+                <div class="form-group" id="keywords">
+                  <div class="pop-over">
+                  <p>Keywords available only for registered user</p>
+                  </div>
                   {% comment %}
                   <label for="competitor-website" class="text-center">{% trans "Your Competitor" %}</label>
                   <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}" disabled>
