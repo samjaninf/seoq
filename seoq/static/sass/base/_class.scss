@@ -229,3 +229,27 @@ hr{
     }
   }
 }
+.label.label-default{
+  margin: 5px;
+  display: inline-block;
+}
+.text-center-responsive{
+  @media  (max-width: $screen-sm-max){
+    text-align: center;
+  }
+}
+.text-lg-left{
+  @media  (min-width: $screen-lg-min){
+    text-align: left;
+  }
+}
+.text-md-right{
+  @media  (min-width: $screen-md-min){
+    text-align: right;
+  }
+}
+.center-block-responsive{
+  @media  (max-width: $screen-sm-max){
+    margin: 0 auto;
+  }
+}
