@@ -14,6 +14,8 @@ from seoq.users import views as users_views
 from django.views.decorators.csrf import ensure_csrf_cookie
 from seoq.payments_seoq import views as payments_seoq
 
+from django.views.generic.base import RedirectView
+
 urlpatterns = [
     url(r'^$', ensure_csrf_cookie(TemplateView.as_view(template_name='pages/home.html')),
         name='home'),
@@ -48,6 +50,7 @@ urlpatterns = [
 
     # User management
     url(r'^', include('seoq.users.urls', namespace='users')),
+    url(r'^qa/.*$', RedirectView.as_view(url='http://seoq.app.balystic.com/questions-and-answers/', permanent=False), name='balystic_qa'),
     url(r'^', include('balystic.urls')),
     url(r'^', include('seoq.seoqtool.urls', namespace='seoqtool')),
     url(r'^api/', include('seoq.api.urls', namespace='api')),

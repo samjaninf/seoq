@@ -20,7 +20,7 @@
 
         <form method="post" action="{% url "change_plan" pk=plan.pk %}">
             {% csrf_token %}
-            <input type="submit" class="btn btn-primary" value="{% trans "Continue" %}">
+            <input type="submit" class="btn btn-primary m-t-20" value="{% trans "Continue" %}">
         </form>
 
     {% else %}
@@ -65,7 +65,7 @@
 
             <p>
 
-                <input type="submit" class="btn btn-primary" value="{% trans "Continue" %}">
+                <input type="submit" class="btn btn-primary m-t-20" value="{% trans "Continue" %}">
 
 
                 {{ form.as_p }}
