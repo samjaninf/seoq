@@ -1,5 +1,5 @@
 {% load static i18n %}
-<div class="col-md-10 col-md-offset-1 text-center m-t-50">
+<div class="col-md-12 text-center m-t-50">
 {% if report.user %}
   <p><span class="score-number">{{numeric_info.content.success }}</span><small class="text-muted">/{{numeric_info.content.total }}</small></p>
 {% endif %}
@@ -62,8 +62,8 @@
 
   <img src="{% static "images/fish-5.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
   <div class="row">
-    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-      <a href="{% url 'balystic_signup' %}" class="btn btn-block btn-info btn-outline btn-lg">Join now for a complete report</a>
+    <div class="col-sm-6 col-sm-offset-3">
+      <a href="{% url 'balystic_signup' %}" class="btn btn-block btn-info btn-outline btn-lg">To get a full report, log in and rerun it with keyword phrases</a>
     </div>
   </div>
   {% endif %}
