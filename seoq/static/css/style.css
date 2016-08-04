@@ -8591,7 +8591,7 @@ section.scan-website {
     padding-top: 20px;
     padding-bottom: 40px;
     border: 1px solid #d6cece;
-    display: inline-block;
+    display: inline-table;
     float: none; } }
 
 @media (max-width: 768px) {
