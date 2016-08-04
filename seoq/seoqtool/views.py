@@ -107,6 +107,11 @@ class ArchiveReportView(View):
             args=[netloc, year, month, day]))
 
     def put(self, request, netloc, year, month, day):
+        if self.request.user.userplan.plan is None or\
+           self.request.user.userplan.plan.default:
+            messages.error(
+                self.request, 'you need a plan to perform this action')
+            return redirect(reverse('pricing'))
         netloc = str(netloc)
         netloc = netloc.replace('--', '/')
         Report.objects.filter(
@@ -125,6 +130,24 @@ class CreateReportURLView(LoginRequiredMixin, CreateView):
     template_name = 'seoqtool/create_urls.html'
     fields = ['frequency', 'url', 'keywords']
     model = ReportURL
+
+    def get(self, *args, **kwargs):
+        if self.request.user.userplan.plan is None or\
+           self.request.user.userplan.plan.default:
+            messages.error(
+                self.request, 'you need a plan to perform this action')
+            return redirect(reverse('pricing'))
+        else:
+            return super(CreateReportURLView, self).get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        if self.request.user.userplan.plan is None or\
+           self.request.user.userplan.plan.default:
+            messages.error(
+                self.request, 'you need a plan to perform this action')
+            return redirect(reverse('pricing'))
+        else:
+            return super(CreateReportURLView, self).post(*args, **kwargs)
 
     def get_context_data(self, *args, **kwargs):
         context = super(CreateReportURLView, self).get_context_data(

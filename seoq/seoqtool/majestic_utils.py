@@ -114,6 +114,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -128,6 +129,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -143,6 +145,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -158,6 +161,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -173,6 +177,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -188,6 +193,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -203,6 +209,7 @@ class MajesticBackLinks(object):
             return float(trustFlow) / 10
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -218,6 +225,7 @@ class MajesticBackLinks(object):
             return refIPs
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -240,6 +248,7 @@ class MajesticBackLinks(object):
                 return float(0)
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -259,5 +268,6 @@ class MajesticBackLinks(object):
             else:
                 return 0
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
