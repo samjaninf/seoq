@@ -206,7 +206,7 @@ hr {
   top: 25px !important; }
 
 @media (min-width: 992px) {
-  .responsive {
+  .responsive, #item-responsive {
     display: none !important; } }
 
 .responsive-big {
