@@ -11,5 +11,10 @@ class SEODirectoryUserList(View):
     client = Client()
 
     def get(self, request):
-        context = {'users': self.client.get_users(params={'isPro':'1'})}
+        query_term = request.GET.get('q', None)
+        if query_term is None:
+            params={'isPro':'1'}
+        else:
+            params={'isPro':'1','q':query_term}
+        context = {'users': self.client.get_users(params=params),'query_term': query_term}
         return render(request, self.template_name, context)

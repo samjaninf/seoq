@@ -1,0 +1,84 @@
+.plans-container{
+  table.plan_table{
+    margin:0 auto;
+    th,td{
+      border: 1px solid;
+    }
+  }
+  .row{
+    @media (max-width:$screen-sm){
+      margin:0px;
+    }
+  }
+  .row-centered{
+    @media (min-width:$screen-sm-min){
+      margin-top: 80px;
+      text-align: center;
+    }
+    .col-centered{
+      min-height: 430px;
+      @media (min-width:$screen-sm-min){
+        background-color: #F0F4F5;
+        box-shadow: 0 0 10px rgba(58, 127, 182, 0.2);
+        border-radius: 6px;
+        padding-top:20px;
+        padding-bottom: 40px;
+        border: 1px solid #d6cece;
+        display: inline-table;
+        float: none;
+      }
+      @media (max-width:$screen-sm){
+        border:2px solid;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        padding-top:30px;
+        padding-bottom:40px;
+      }
+      .change_plan.buy-plan{
+        margin-bottom: 30px;
+      }
+      .plans{
+        .name-plan{
+          margin:0px;
+          margin-bottom: 4px;
+          font-weight: bold;
+          font-size: 20px;
+        }
+        .price{
+          color:#ec971f;
+          margin:0px;
+          margin-bottom: 20px;
+        }
+        .period-plan{
+          margin:0px;
+        }
+        .buy{
+          margin-top: -15px;
+          margin-bottom: 25px;
+        }
+      }
+    }
+    .col-centered.current{
+      @media (min-width:$screen-sm-min){
+        margin-top: -20px;
+        margin-bottom: -20px;
+        padding-top: 40px;
+        z-index: 1000;
+        position: relative;
+      }
+      .plan_description{
+        margin:0px
+      }
+      .current.current_plan{
+        color:#ec971f;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+table.plan_table{
+    margin:0 auto;
+    th,td{
+      border: 1px solid;
+    }
+}

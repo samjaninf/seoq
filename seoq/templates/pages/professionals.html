@@ -14,18 +14,70 @@
 <section class="for-seo">
   <div class="container">
     <div class="row">
+
+    <div class="col-md-12 text-center">
+        <h1 class="about-title">{% trans "SEO Professionals" %}</h1>
+      </div>
+
       <div class="col-sm-12 col-md-10 col-md-offset-1 p-t-30">
         <div class="col-sm-6 col-md-6">
-          <h3>For SEO professionals</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio deserunt dolor voluptas, unde voluptatibus perspiciatis earum velit nulla quibusdam nemo totam, provident est aut, dicta aperiam doloribus. Eius expedita, commodi!</p>
+          <h3>Generate Leads</h3>
+            <p>Regardless if you do freelance, work for an agency or are looking to generate additional income, SEO Quotient's active marketplace helps get you found. Create your free profile today and get reccomended within our reporting platform to website owners and SEO students alike who can hire you to improve their website our teach them about SEO.  </p>
+            <a href="{% url 'home' %}#how-website" class="btn btn-primary-ligth btn-lg">{% trans "Find your website's SEO Quotient!" %}</a>
         </div>
         <div class="col-sm-6 col-md-6">
-          <img src="{% static "images/fish-2.gif" %}" alt="fish" class="center-block img-responsive">
+          <img src="{% static "images/leads.png" %}" alt="fish" class="center-block img-responsive">
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<section class="for-seo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1 p-t-30">
+        <div class="col-sm-6 col-md-6">
+          <img src="{% static "images/workflow.png" %}" alt="fish" class="center-block img-responsive">
+        </div>
+          <div class="col-sm-6 col-md-6">
+            <h3>Streamline your Workflow</h3>
+            <p>With SEO Quotient you can produce a list of action items for current and perspecitive clients and identify problems with websites that even their owners may be unaware of.  <br> Save time by using our report automation add-on so you can focus on your strengths - optimizing websites and making the web a better place.   </p>
+            <a href="{% url 'directory' %}" class="btn btn-primary-ligth btn-lg">{% trans "Browse the directory" %}</a>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="for-seo m-b-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1 p-t-30">
+        <div class="col-sm-6 col-md-6">
+          <h3>Get Verified</h3>
+            <p>You know about SEO, but how do you show that to others? By completing your SEOQ profile, being an active community leader and providing feedback on our tool we at SEO Quotient will endorse you as a certified SEO Expert who understands white hat SEO and is someone who runs parralel to the ethos of SEO Quotient in making the web a better place.</p>
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'users:detail' request.user %}" class="btn btn-primary-ligth btn-lg">
+                {% trans "Go to my profile" %}
+              </a>
+            {% else %}
+              <a href="{% url 'balystic_signup' %}" class="btn btn-primary-ligth btn-lg">
+                {% trans "Join with a free account" %}
+              </a>
+            {% endif %}
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <img src="{% static "images/verified.png" %}" alt="fish" class="center-block img-responsive">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock content %}
 <section id="team" class="p-t-30 m-b-80">
   <div class="container">
     <div class="row">
@@ -65,4 +117,3 @@
     </div>
   </div>
 </section>
-{% endblock content %}

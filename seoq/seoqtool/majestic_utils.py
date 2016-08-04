@@ -114,6 +114,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -128,6 +129,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -143,6 +145,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -158,6 +161,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -173,6 +177,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -188,6 +193,7 @@ class MajesticBackLinks(object):
             return numBackLinks
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -203,6 +209,7 @@ class MajesticBackLinks(object):
             return float(trustFlow) / 10
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -218,6 +225,7 @@ class MajesticBackLinks(object):
             return refIPs
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -233,9 +241,14 @@ class MajesticBackLinks(object):
                 for word in keywords:
                     if row['AnchorText'].find(word) != -1:
                         numKeyWordsInAnchorText += 1
-            return float(numKeyWordsInAnchorText) / float(len(results.rows)) * 10
+            if float(len(results.rows)):
+                return float(numKeyWordsInAnchorText) /\
+                    float(len(results.rows)) * 10
+            else:
+                return float(0)
 
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))
 
@@ -249,8 +262,12 @@ class MajesticBackLinks(object):
             totalCitationFlow = 0
             for row in results.rows:
                 totalCitationFlow += int(row.get('SourceCitationFlow'))
-            return float(totalCitationFlow) / (float(len(results.rows)) * 10)
-
+            if float(len(results.rows)):
+                return float(totalCitationFlow) /\
+                    (float(len(results.rows)) * 10)
+            else:
+                return 0
         else:
+            return 0
             print ('\nERROR MESSAGE:')
             print (str(response.get_error_message()))

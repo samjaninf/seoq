@@ -3,13 +3,12 @@
 {% block title %}{{entry.title}} - Blog{% endblock title %}
 
 {% block meta %}
-{% trans "" as description %}
 {% static "images/facebook-image-post.jpg" as image%}
 {% include "include/metatags.html" with title=entry.title description=entry.excerpt image=entry.image %}
 {% endblock meta %}
 
 {% block content %}
-  <div class="container">
+  <div class="container text-center-responsive">
     <div class="row">
       <div class="col-md-12 m-b-30">
         <h1>{{ entry.title }}</h1>
@@ -34,8 +33,8 @@
       <div class="col-md-12 p-b-40">
         {{ entry.content|safe }}
       </div>
-      
+
     </div>
-    
+
   </div>
 {% endblock content %}

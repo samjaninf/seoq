@@ -9,9 +9,10 @@ from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from balystic import views as balystic_views
 from seoq.core import views as core_views
-
+from django.views.decorators.csrf import ensure_csrf_cookie
+from seoq.payments_seoq import views as payments_seoq
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='pages/home.html'),
+    url(r'^$', ensure_csrf_cookie(TemplateView.as_view(template_name='pages/home.html')),
         name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'),
         name='about'),
@@ -19,7 +20,8 @@ urlpatterns = [
     url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='account_login'),
     url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='balystic_login'),
     url(r'^accounts/logout/$', balystic_views.LogoutView.as_view(), name='balystic_logout'),
-    url(r'^users/edit/(?P<username>[-\w.]+)/$', balystic_views.CommunityUserUpdate.as_view(), name='balystic_user_update'),
+    url(r'^users/edit/(?P<username>[-\w.]+)/$', balystic_views.CommunityUserUpdate.as_view(),
+        name='balystic_user_update'),
     url(r'^accounts/signup/$', balystic_views.UserSignupView.as_view(), name='balystic_signup'),
     url(r'^seo-directory/$', core_views.SEODirectoryUserList.as_view(),
         name='directory'),
@@ -33,7 +35,11 @@ urlpatterns = [
     url(r'^seo-students/$', TemplateView.as_view
         (template_name='pages/students.html'),
         name='students'),
-
+    url(r'^order/(?P<pk>\d+)/$',
+        payments_seoq.OrderView.as_view(), name='order'),
+    url(r'^order/(?P<pk>\d+)/payment/success/$',
+        payments_seoq.OrderPaymentReturnView.as_view(status='success'),
+        name='order_payment_success'),
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),
 
@@ -42,6 +48,7 @@ urlpatterns = [
     url(r'^', include('balystic.urls')),
     url(r'^', include('seoq.seoqtool.urls', namespace='seoqtool')),
     url(r'^api/', include('seoq.api.urls', namespace='api')),
+    url(r'^', include('plans.urls')),
 
     # Your stuff: custom urls includes go here
 

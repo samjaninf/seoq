@@ -1,5 +1,5 @@
 {% load static i18n %}
-<div class="col-md-10 col-md-offset-1 text-center m-t-50">
+<div class="col-md-12 text-center m-t-50">
 {% if report.user %}
   <p><span class="score-number">{{numeric_info.content.success }}</span><small class="text-muted">/{{numeric_info.content.total }}</small></p>
 {% endif %}
@@ -25,43 +25,46 @@
     {% endif %}
 
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-4 m-t-10">
       <a class="btn 
       {% if report.analysis.content.kw_in_title == "to improve" %}btn-warning
       {% elif report.analysis.content.kw_in_title == "error" %}btn-danger
       {% else %}btn-success
-      {% endif %} btn-lg btn-block btn-outline" href="#" role="button">Keywords in title</a>
+      {% endif %} btn-lg btn-block btn-outline" role="button" disabled>Keywords in title</a>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 m-t-10">
       <a class="btn 
       {% if report.analysis.content.kw_in_headers == "to improve" %}btn-warning
       {% elif report.analysis.content.kw_in_headers == "error" %}btn-danger
       {% else %}btn-success
-      {% endif %} btn-lg btn-block btn-outline" href="#" role="button">Keywords in headers</a>
+      {% endif %} btn-lg btn-block btn-outline" role="button" disabled>Keywords in headers</a>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 m-t-10">
       <a class="btn 
       {% if report.analysis.content.kw_in_anchor_links == "to improve" %}btn-warning
       {% elif report.analysis.content.kw_in_anchor_links == "error" %}btn-danger
       {% else %}btn-success
-      {% endif %} btn-lg btn-block btn-outline" href="#" role="button">Keywords in upstream links</a></div>
-    <div class="col-sm-4">
+      {% endif %} btn-lg btn-block btn-outline" role="button" disabled>Keywords in upstream links</a></div>
+    <div class="col-sm-4 m-t-10">
       <a class="btn 
       {% if report.analysis.content.kw_in_tlinks == "to improve" %}btn-warning
       {% elif report.analysis.content.kw_in_tlinks == "error" %}btn-danger
       {% else %}btn-success
-      {% endif %} btn-lg btn-block btn-outline" href="#" role="button">Keywords in downstream links</a></div>
-    <div class="col-sm-4">
+      {% endif %} btn-lg btn-block btn-outline" role="button" disabled>Keywords in downstream links</a></div>
+    <div class="col-sm-4 m-t-10">
       <a class="btn 
       {% if report.analysis.content.cms == "to improve" %}btn-warning
       {% elif report.analysis.content.cms == "error" %}btn-danger
       {% else %}btn-success
-      {% endif %} btn-lg btn-block btn-outline" href="#" role="button">cms</a></div>
+      {% endif %} btn-lg btn-block btn-outline" role="button" disabled>cms</a></div>
   </div>
   {% else %}
 
   <img src="{% static "images/fish-5.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
-  <a href="#" class="btn btn-block btn-info btn-outline btn-lg">Join now for a complete report</a>
-
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <a href="{% url 'balystic_signup' %}" class="btn btn-block btn-info btn-outline btn-lg">To get a full report, log in and rerun it with keyword phrases</a>
+    </div>
+  </div>
   {% endif %}
 </div>

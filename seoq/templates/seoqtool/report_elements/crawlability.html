@@ -19,19 +19,19 @@
 			<a class="btn 
 			{% if report.analysis.crawlability.speed == 'to improve' %}btn-warning
 			{% else %}btn-success
-			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">Page loading time</a>
+			{% endif %} btn-lg btn-block btn-outline" role="button" disabled>Page loading time</a>
 		</div>
 		<div class="col-sm-4">
 			<a class="btn 
 			{% if report.analysis.crawlability.robots == 'error' %}btn-danger
 			{% else %}btn-success
-			{% endif %}	btn-lg btn-block btn-outline" href="#" role="button">Robots file activated</a>
+			{% endif %}	btn-lg btn-block btn-outline" role="button" disabled>Robots file activated</a>
 		</div>
 		<div class="col-sm-4">
 			<a class="btn 
 			{% if report.analysis.crawlability.sitemap == 'error' %}btn-danger
 			{% else %}btn-success
-			{% endif %} btn-lg btn-block btn-outline" href="#" role="button">Sitemap</a>
+			{% endif %} btn-lg btn-block btn-outline" role="button" disabled>Sitemap</a>
 		</div>
 	</div>
 </div>

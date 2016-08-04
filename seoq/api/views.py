@@ -18,6 +18,11 @@ class SiteFormView(APIView):
     def post(self, request):
         obtained_json = request.data
         url = obtained_json.get('url', None)
+        url = url.replace('https://', 'http://')
+        if 'http://' not in url and 'https://'not in url:
+            url = 'http://' + url
+        if url.endswith('/'):
+            url = url[:len(url) - 1]
         response = requests.get(url, verify=False)
         if response.status_code == 403:
             return Response(
@@ -38,7 +43,9 @@ class SiteFormView(APIView):
         netloc = url.replace(
             'https://', '').replace('www.', '').replace('http://', '')
         if request.user.is_authenticated():
-            report = Report.objects.create(netloc=netloc, user=request.user)
+            report = Report.objects.create(
+                netloc=netloc,
+                user=request.user)
         else:
             report = Report.objects.create(netloc=netloc)
         return Response({'report': report.pk})
@@ -53,10 +60,18 @@ class KeywordsScoreView(APIView):
         if keywords is None:
             raise Http404
         report = get_object_or_404(Report, pk=pk)
+        Report.objects.exclude(pk=report.pk).filter(
+            netloc=report.netloc,
+            user=report.user,
+            keywords=keywords,
+            created__year=report.created.year,
+            created__month=report.created.month,
+            created__day=report.created.day).delete()
         keyword_score = Algorithm(
             report.netloc).getKeywordScore(report.netloc, keywords)
         report.refresh_from_db()
         report.keyword_score = keyword_score[0]
+        report.keywords = keywords
         report.analysis.update(keyword_score[1])
         report.save()
         return Response({'redirect_url': report.get_absolute_url()})
