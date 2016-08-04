@@ -21,7 +21,8 @@ class UserDetailView(LoginRequiredMixin, View):
         plan = UserPlan.objects.get(
             user=self.request.user)
         user = Client().get_user_detail(username)
-        return render(request, self.template_name, {'object': user, 'userplan': plan})
+        owner = Client().get_users({'userType': 'owner'})['owner']
+        return render(request, self.template_name, {'object': user, 'userplan': plan, 'owner': owner})
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):

@@ -158,7 +158,7 @@
             {% csrf_token %}
               <div class="form-group">
                 <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
-                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" required http-prefix ng-pattern="/^((?:http|ftp)s?:\/\/)(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::\d+)?(?:\/?|[\/?]\S+)$/i">
+                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" ng-change="validate_url()" required http-prefix ng-pattern="/^((?:http|ftp)s?:\/\/)(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::\d+)?(?:\/?|[\/?]\S+)$/i">
               </div>
                 {% comment %}
                   <div class="text-center text-block">
@@ -177,7 +177,7 @@
                   {% endcomment %}
                   <input type="text" ng-model="request_data.keyword" class="form-control text-center" id="keywords_input" placeholder="{% trans "What keyword phrase do you want to rank for?" %}"{% if request.user.is_authenticated %}{% else %}disabled{% endif %}>
                 </div>
-              <button type="submit" class="btn btn-warning-ligth btn-block">{% trans "Start" %}</button>
+              <button type="submit" ng-disabled="bad_url" class="btn btn-warning-ligth btn-block">{% trans "Start" %}</button>
             </form>
           </div>
 
