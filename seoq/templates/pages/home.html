@@ -145,9 +145,11 @@
           <div class="col-sm-6 col-md-6 m-b-50 p-t-20" ng-controller="keywordScoreController">
           <img src="{% static 'images/ajax-loader.gif' %}" ng-if="animation">
           {% verbatim %}
+            <p>
             <span ng-if="animation">
               {{ analysis_message }}
             </span>
+            </p>
             <span ng-if="bad_status_code">
               {{ status_message }}
             </span>
@@ -173,7 +175,7 @@
                   <label for="competitor-website" class="text-center">{% trans "Your Competitor" %}</label>
                   <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}" disabled>
                   {% endcomment %}
-                  <input type="text" ng-model="request_data.keyword" class="form-control text-center" id="keywords_input" placeholder="{% trans "What keyword phrase do you want to rank for?" %}"{% if request.user.is_authenticated %}required{% else %}disabled{% endif %}>
+                  <input type="text" ng-model="request_data.keyword" class="form-control text-center" id="keywords_input" placeholder="{% trans "What keyword phrase do you want to rank for?" %}"{% if request.user.is_authenticated %}{% else %}disabled{% endif %}>
                 </div>
               <button type="submit" class="btn btn-warning-ligth btn-block">{% trans "Start" %}</button>
             </form>

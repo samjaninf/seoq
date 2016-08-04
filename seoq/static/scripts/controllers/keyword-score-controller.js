@@ -28,7 +28,7 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
     }).success(function (data, status) {
             	$scope.animation = true;
               $scope.bad_status_code = false;
-            	$scope.analysis_message = "we are getting your site score";
+            	$scope.analysis_message = "we are getting your site score. It'll take some minutes to finish";
             	var obtained_pk = data.report;
             	url = '/api/site-score/';
             	data = {
@@ -43,10 +43,10 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
           headers: headers
         }).success(function (data, status) {
             		var redirect_url = data.redirect_url;
-            		if (keyword_disabled != null) {
+            		if (keyword_disabled != null || !$scope.request_data.keyword) {
             			window.location.assign(redirect_url);
             		}else{
-            			$scope.analysis_message = "we are done with your site score, now we are getting your keyword phrase score";
+            			$scope.analysis_message = "we are done with your site score, now we are getting your keyword phrase score. It'll take some minutes to finish";
             			url = '/api/kw-score/';
             			data = {
             				keywords: $scope.request_data.keyword,
