@@ -26,6 +26,8 @@
       <p><strong>Bio:</strong> {{ object.user.bio }}</p>
 
     </div>
+    {% if object.user.username == request.user.username %}
+      
     <div class="col-sm-5">
       <p><strong>{% trans "Account" %}:</strong> {{ user }}</p>
       <p><strong>{% trans "Plan" %}:</strong> {{ userplan.plan }} <a class="btn btn-sm btn-primary-ligth" href="{% url 'pricing' %}">{% trans "Upgrade" %}</a></p>
@@ -38,6 +40,7 @@
       </p>
       <p><strong>{% trans "Expiration date" %}:</strong> {{ userplan.expire }}</p>
     </div>
+    {% endif %}
   </div>
 
 
