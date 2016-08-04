@@ -28,7 +28,7 @@
         <div class="col-md-4">
           <a href="{% url 'balystic_blog_detail' entry.slug %}">
             {% thumbnail entry.image "200x150" crop='center' as im %}
-                <img class="img-responsive" src="/media/{{ im }}" width="{{ im.width }}" height="{{ im.height }}" alt="Blog image {{ entry.title }}">
+                <img class="img-responsive" src="{{ im }}" width="{{ im.width }}" height="{{ im.height }}" alt="Blog image {{ entry.title }}">
             {% empty %}
                 <img class="img-responsive" src="{% static 'images/default_small.jpg' %}" width="200" height="150" alt="Blog default image">
             {% endthumbnail %}
