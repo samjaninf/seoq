@@ -246,21 +246,47 @@ hr {
 #signup-form #div_id_password_1 label {
   display: none; }
 
-#keywords .pop-over {
-  opacity: 0;
-  box-shadow: 0 0 10px rgba(58, 127, 182, 0.2);
-  background-color: #F0F4F5;
-  border: 1px solid #d6cece;
-  text-align: center;
-  padding: 10px 20px;
-  margin: 0px;
-  padding-bottom: 0px;
-  transition: all .5s ease-in-out 0s;
-  position: absolute; }
-
-#keywords:hover .pop-over, #keywords:focus .pop-over {
-  opacity: 1;
-  transition-delay: .25s; }
+#keywords {
+  position: relative; }
+  #keywords .pop-over {
+    opacity: 0;
+    box-shadow: 0 0 10px rgba(58, 127, 182, 0.2);
+    background-color: #F0F4F5;
+    border: 1px solid #d6cece;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0px;
+    padding-bottom: 0px;
+    -webkit-transition: all .5s ease-in-out 0s;
+    -moz-transition: all .5s ease-in-out 0s;
+    -o-transition: all .5s ease-in-out 0s;
+    position: absolute;
+    top: -55px;
+    width: 100%;
+    z-index: -1;
+    border-radius: 4px; }
+    @media (min-width: 768px) and (max-width: 1199px) {
+      #keywords .pop-over {
+        top: -85px; } }
+    @media (max-width: 451px) {
+      #keywords .pop-over {
+        top: -85px; } }
+    #keywords .pop-over:after {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      left: 50%;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 7px solid #ec971f; }
+  #keywords:hover .pop-over, #keywords:focus .pop-over {
+    opacity: 1;
+    z-index: 999;
+    -webkit-transition-delay: .25s;
+    -moz-transition-delay: .25s;
+    -o-transition-delay: .25s; }
 
 .text-brand {
   color: #2d5d81 !important; }
@@ -8604,45 +8630,41 @@ section.scan-website {
     margin-top: 80px;
     text-align: center; } }
 
-@media (min-width: 768px) {
-  .plans-container .row-centered .col-centered {
-    background-color: #F0F4F5;
-    box-shadow: 0 0 10px rgba(58, 127, 182, 0.2);
-    border-radius: 6px;
-    padding-top: 20px;
-    padding-bottom: 40px;
-    border: 1px solid #d6cece;
-    display: inline-table;
-    float: none; } }
-
-@media (max-width: 768px) {
-  .plans-container .row-centered .col-centered {
-    border: 2px solid;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    padding-top: 30px;
-    padding-bottom: 40px; } }
-
-.plans-container .row-centered .col-centered .change_plan.buy-plan {
-  margin-bottom: 30px; }
-
-.plans-container .row-centered .col-centered .plans .name-plan {
-  margin: 0px;
-  margin-bottom: 4px;
-  font-weight: bold;
-  font-size: 20px; }
-
-.plans-container .row-centered .col-centered .plans .price {
-  color: #ec971f;
-  margin: 0px;
-  margin-bottom: 20px; }
-
-.plans-container .row-centered .col-centered .plans .period-plan {
-  margin: 0px; }
-
-.plans-container .row-centered .col-centered .plans .buy {
-  margin-top: -15px;
-  margin-bottom: 25px; }
+.plans-container .row-centered .col-centered {
+  min-height: 430px; }
+  @media (min-width: 768px) {
+    .plans-container .row-centered .col-centered {
+      background-color: #F0F4F5;
+      box-shadow: 0 0 10px rgba(58, 127, 182, 0.2);
+      border-radius: 6px;
+      padding-top: 20px;
+      padding-bottom: 40px;
+      border: 1px solid #d6cece;
+      display: inline-table;
+      float: none; } }
+  @media (max-width: 768px) {
+    .plans-container .row-centered .col-centered {
+      border: 2px solid;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      padding-top: 30px;
+      padding-bottom: 40px; } }
+  .plans-container .row-centered .col-centered .change_plan.buy-plan {
+    margin-bottom: 30px; }
+  .plans-container .row-centered .col-centered .plans .name-plan {
+    margin: 0px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    font-size: 20px; }
+  .plans-container .row-centered .col-centered .plans .price {
+    color: #ec971f;
+    margin: 0px;
+    margin-bottom: 20px; }
+  .plans-container .row-centered .col-centered .plans .period-plan {
+    margin: 0px; }
+  .plans-container .row-centered .col-centered .plans .buy {
+    margin-top: -15px;
+    margin-bottom: 25px; }
 
 @media (min-width: 768px) {
   .plans-container .row-centered .col-centered.current {
