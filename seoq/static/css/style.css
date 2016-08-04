@@ -8546,6 +8546,15 @@ section.scan-website {
     -ms-flex-align: center;
         align-items: center; } }
 
+@media (max-width: 768px) {
+  .professional .for-seo .container .row .col-sm-12.col-md-10 .col-sm-6 {
+    text-align: center;
+    margin-bottom: 40px; }
+    .professional .for-seo .container .row .col-sm-12.col-md-10 .col-sm-6 p {
+      text-align: left; }
+    .professional .for-seo .container .row .col-sm-12.col-md-10 .col-sm-6 a {
+      white-space: inherit; } }
+
 .professional #team .container .row .col-sm-12 .col-xs-6 img {
   opacity: 0.6;
   border: 3px solid #E0E4E5;
