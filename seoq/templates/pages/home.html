@@ -167,7 +167,6 @@
                   <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}" disabled>
                   <input type="text" ng-model="request_data.keyword" class="form-control text-center" id="keywords" placeholder="{% trans "What keyword phrase do you want to rank for?" %}"{% if request.user.is_authenticated %}required{% else %}disabled{% endif %}>
                 </div>
-
               <button type="submit" class="btn btn-warning-ligth btn-block">{% trans "Start" %}</button>
             </form>
           </div>
