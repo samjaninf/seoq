@@ -219,12 +219,12 @@ hr {
   margin-left: 0px !important;
   margin-right: 0px !important; }
 
-.dropdown #user-dropdown {
+.responsive-big #user-dropdown {
   background: transparent; }
-  .dropdown #user-dropdown:hover, .dropdown #user-dropdown:focus {
+  .responsive-big #user-dropdown:hover, .responsive-big #user-dropdown:focus {
     text-decoration: none !important;
     background: transparent; }
-  .dropdown #user-dropdown .caret {
+  .responsive-big #user-dropdown .caret {
     float: right;
     position: relative;
     top: -21px;
@@ -8745,10 +8745,6 @@ table.plan_table {
         margin-bottom: 100px; }
         .navbar-seoq #navbar .navbar-nav > li {
           border-bottom: 1px solid; }
-          .navbar-seoq #navbar .navbar-nav > li:last-child {
-            display: none; }
-          .navbar-seoq #navbar .navbar-nav > li:nth-child(6) {
-            border-bottom: none; }
         .navbar-seoq #navbar .navbar-nav li.active a {
           background: none; }
           .navbar-seoq #navbar .navbar-nav li.active a:focus, .navbar-seoq #navbar .navbar-nav li.active a:hover {
