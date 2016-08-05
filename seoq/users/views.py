@@ -4,7 +4,7 @@ from __future__ import absolute_import, unicode_literals
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, View
-
+from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from balystic.client import Client
 from .models import User
@@ -18,6 +18,9 @@ class UserDetailView(View):
     template_name = 'users/user_detail.html'
 
     def get(self, request, username):
+        if not request.user.is_authenticated() or\
+           request.user.username != str(username):
+            return redirect('public_profile', username=username)
         plan = None
         if self.request.user.is_authenticated():
             plan = UserPlan.objects.get(

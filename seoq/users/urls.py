@@ -22,7 +22,7 @@ urlpatterns = [
 
     # URL pattern for the UserDetailView
     url(
-        regex=r'^seo-directory/(?P<username>[\w.@+-]+)/$',
+        regex=r'^users/(?P<username>[\w.@+-]+)/$',
         view=views.UserDetailView.as_view(),
         name='detail'
     ),
