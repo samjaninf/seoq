@@ -31,12 +31,19 @@
 @import "layout/grid";
 @import "layout/homepage";
 @import "layout/about";
+@import "layout/professional";
+@import "layout/students";
+@import "layout/owners";
+@import "layout/score";
+@import "layout/pricing";
 // ----------------------------------------------------------------------
   // Modules
 // ----------------------------------------------------------------------
 @import "modules/navbar";
+@import "modules/alert";
 @import "modules/buttons";
 @import "modules/footer";
+@import "modules/slider-on-off";
 
 // ----------------------------------------------------------------------
   // Themes

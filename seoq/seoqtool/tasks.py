@@ -1,4 +1,5 @@
 from __future__ import absolute_import
+import requests
 from celery import shared_task
 from .models import Report, ReportURL
 from .algorithm import Algorithm
@@ -11,19 +12,34 @@ from django.utils import timezone
 @shared_task
 def run_report(report_url):
     report_url = ReportURL.objects.get(pk=report_url)
-    report = Report.objects.create(
-        site_score=Algorithm().getSiteScore(report_url.url),
-        netloc=report_url.url.replace('http://', '').replace(
-            'https://', '').replace('www.', ''),
-        keyword_score=Algorithm().getKeywordScore(
-            report_url.url, report_url.keywords),
-        user=report_url.user)
-    seoq_report_url = settings.BASE_URL + reverse(
-        'seoqtool:archive_report',
-        args=[report.netloc,
-              report.created.strftime("%Y"),
-              report.created.strftime("%m"),
-              report.created.strftime("%d")])
+    report = requests.post(
+        settings.BASE_URL +
+        reverse('api:start_report'), data={'url': report_url.url})
+    if report.status_code != 200:
+        error = report.json()['error']
+        subject = "One of the websites for your periodic report failed!"
+        message = "Your url " + report_url.url + 'returned a ' + str(error)
+        message += ' status code. Please, check everything is all right'
+        message += ' in your server'
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [report_url.user],
+            fail_silently=False,
+        )
+        return
+    pk = report.json()['report']
+    report = requests.post(
+        settings.BASE_URL +
+        reverse('api:site_score'), data={'pk': pk})
+    redirect_url = report.json()['redirect_url']
+    if report_url.keywords:
+        requests.post(
+            settings.BASE_URL +
+            reverse('api:keyword_score'),
+            data={'pk': pk, 'keywords': report_url.keywords})
+    seoq_report_url = settings.BASE_URL + redirect_url
     subject = report_url.frequency + " report for " + report_url.url
     message = 'the ' + subject + ' has been created. to access it, please go '
     message += 'to ' + seoq_report_url

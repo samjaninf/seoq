@@ -38,12 +38,16 @@ DJANGO_APPS = (
 )
 THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts
-    'allauth',  # registration
-    'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
+    #'allauth',  # registration
+    #'allauth.account',  # registration
+    #'allauth.socialaccount',  # registration
     'rest_framework',
     'djsupervisor',
     'balystic',
+    'ordered_model',
+    'plans',
+    'payments',
+    'sorl.thumbnail',
 )
 
 # Apps specific for this project go here.
@@ -51,7 +55,10 @@ LOCAL_APPS = (
     # custom users app
     'seoq.users.apps.UsersConfig',
     # Your stuff: custom apps go here
+    'seoq.core',
     'seoq.seoqtool',
+    'seoq.payments_seoq',
+
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -212,18 +219,19 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = (
+    'balystic.authentication_backends.BalysticBackend',
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    #'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 # Some really nice defaults
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
+#ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
-ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
-ACCOUNT_ADAPTER = 'seoq.users.adapters.AccountAdapter'
-SOCIALACCOUNT_ADAPTER = 'seoq.users.adapters.SocialAccountAdapter'
+#ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
+#ACCOUNT_ADAPTER = 'seoq.users.adapters.AccountAdapter'
+#SOCIALACCOUNT_ADAPTER = 'seoq.users.adapters.SocialAccountAdapter'
 
 # Custom user app defaults
 # Select the correct user model
@@ -263,7 +271,7 @@ CELERYBEAT_SCHEDULE = {
     },
 }
 
-
+BASE_URL = env('BASE_URL', default='https://www.seoq.com')
 QSCRAPER_URL = env('QSCRAPER_URL', default='http://qscraper.7dhub.com/')
 MAJESTIC_URL = env('MAJESTIC_URL', default='https://api.majestic.com/api_command')
 MAJESTIC_API_KEY = env('MAJESTIC_API_KEY', default='')
@@ -273,3 +281,42 @@ MAX_DEPTH_VALUE = env('MAX_DEPTH_VALUE', default=2)
 
 BALYSTIC_API_TOKEN = env('BALYSTIC_API_TOKEN')
 BALYSTIC_API_PATH = env('BALYSTIC_API_PATH')
+
+SEOQ_COMPANIES_URL = env('SEOQ_COMPANIES_URL',
+                         default='https://www.seoq.com/seo-companies/')
+
+# PLANS Configuration
+# ------------------------------------------------------------------------------
+PLANS_CURRENCY = 'USD'
+# PLANS_TAXATION_POLICY='plans.taxation.eu.EUTaxationPolicy'
+from decimal import Decimal
+PLANS_TAX = Decimal('0')
+PLANS_INVOICE_ISSUER = {
+    "issuer_name": "Joe Doe Company",
+    "issuer_street": "Django street, 34",
+    "issuer_zipcode": "123-3444",
+    "issuer_city": "Djangoko",
+    "issuer_country": "DJ",
+    "issuer_tax_number": "1222233334444555",
+}
+# PLANS_TAX_COUNTRY='US'
+SEND_PLANS_EMAILS = False
+
+FACEBOOK_ACCESS_TOKEN = env('FACEBOOK_ACCESS_TOKEN')
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
+
+PAYMENT_HOST = 'localhost:8000'
+PAYMENT_USES_SSL = False
+PAYMENT_MODEL = 'payments_seoq.Payment'
+PAYMENT_VARIANTS = {
+    'default': ('payments.stripe.StripeProvider', {
+        'secret_key': env('STRIPE_API_KEY', default=''),
+        'public_key': env('STRIPE_PUBLISHABLE_KEY', default=''),
+        'name': 'seoq',
+    })
+}

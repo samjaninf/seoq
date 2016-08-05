@@ -1,0 +1,31 @@
+{% load static i18n %}
+<div class="row">
+      <div class="col-md-12 table-responsive text-center">
+      <table class="table">
+        <tr>
+          <th>{{numeric_info.content.success }}/{{numeric_info.content.total }}</th>
+          <th>Content</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>Description about content</td>
+          <td>
+            <p>{% if report.analysis.content.kw_in_anchor_links == "to improve" %}Nice, you have some keywords in your anchor_links. info about how to improve kw in anchor links{% elif report.analysis.content.kw_in_anchor_links == "error" %}info about how to improve kw in anchor links{% else %}your anchor links has the keywords phrases{% endif %}</p>
+            <p>{% if report.analysis.content.kw_in_headers == "to improve" %}Nice, you have some keywords in your headers. info about how to improve keywords in the headers{% elif report.analysis.content.kw_in_headers == "error" %}{% else %}your headers contains keywords phrases{% endif %}</p>
+            <p>{% if report.analysis.content.kw_in_title == "to improve" %}Nice, you have some keywords in your title. info about how to improve keywords in title{% elif report.analysis.content.kw_in_title == "error" %}info about how to improve keywords in title{% else %}your title contains a lot of keyword phrases{% endif %}</p>
+            <p>{% if report.analysis.content.kw_in_tlinks == "to improve" %}Nice, you have some keywords in your tlinks. info about how to improve keywords in tlinks{% elif report.analysis.content.kw_in_tlinks == "error" %}info about how to improve keywords in tlinks{% else %}your tlinks has a lot of keywords phrases{% endif %}</p>
+            <p>{% if report.analysis.content.cms == 'passed' %}Congratulations, you have no issues related with cms{% elif report.analysis.content.cms == "to improve" %}Even your CMS is useful, you should consider moving your cms to WordPress{% else %}you should consider moving your cms to WordPress{% endif %}</p>
+          </td>
+          <td>
+            {% if numeric_info.content.success == numeric_info.content.max %}
+              <img src="{% static "images/fish-2.gif" %}" alt="fish" class="center-block img-responsive">
+            {% elif numeric_info.content.to_improve == numeric_info.content.max %}
+              <img src="{% static "images/fish-3.gif" %}" alt="fish" class="center-block img-responsive">
+            {% else %}
+              <img src="{% static "images/fish-1.gif" %}" alt="fish" class="center-block img-responsive">
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+      </div>
+</div>

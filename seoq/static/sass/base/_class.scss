@@ -8,11 +8,18 @@ than we are going to use in website
 .font-weight-bold{
   font-weight: bold;
 }
+.text-light{
+  font-weight: lighter;
+}
 .font-weight-bold-5{
   font-weight: 500;
 }
 .m-0{
   margin:0px;
+}
+.m-y-25{
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 .m-b-30{
   margin-bottom: 30px;
@@ -22,6 +29,9 @@ than we are going to use in website
 }
 .m-b-50{
   margin-bottom: 50px;
+}
+.m-b-80{
+  margin-bottom: 80px;
 }
 .m-t-10{
   margin-top: 10px;
@@ -50,11 +60,29 @@ than we are going to use in website
 .m-t-90{
   margin-top: 90px;
 }
+.p-t-0{
+  padding-top:0px;
+}
+.p-0{
+  padding:0px !important;
+}
 .p-0-6{
   padding:0 6px !important;
 }
 .p-20{
   padding: 20px;
+}
+.p-50-0{
+  padding:50px 0px;
+}
+.p-l-5{
+  padding-left: 5px !important;
+}
+.p-l-10{
+  padding-left:10px;
+}
+.p-r-5{
+  padding-right: 5px !important;
 }
 .p-t-70{
   padding-top: 70px;
@@ -70,6 +98,9 @@ than we are going to use in website
 }
 .p-t-20{
   padding-top:20px;
+}
+.p-t-50{
+  padding-top:50px;
 }
 .p-t-30{
   padding-top:30px;
@@ -118,4 +149,128 @@ hr{
 .fullscreen{
   height: calc(100vh - 90px);
   min-height: 570px;
+}
+#form-login{
+  .form-control-feedback{
+    top: 25px !important;
+  }
+}
+.responsive, #item-responsive{
+  @media(min-width:$screen-md-min){
+    display: none !important;
+  }
+}
+.responsive-big{
+  display: none !important;
+  @media(min-width:$screen-md-min){
+    display: block !important;
+  }
+}
+.form-horizontal .form-group{
+  margin-left:0px !important;
+  margin-right:0px !important;
+}
+.responsive-big{
+  #user-dropdown{
+    background: transparent;
+    &:hover,&:focus{
+      text-decoration: none !important;
+      background: transparent;
+    }
+    .caret{
+      float: right;
+      position: relative;
+      top:-21px;
+      right: -11px;
+    }
+  }
+  // .dropdown-menu{
+  //   top: 71px;
+  // }
+}
+.bg-gray{
+  background-color: #f0f4f5;
+}
+.btn[disabled] {
+    cursor: default;
+}
+.blue-link{
+  color: #5bc0de;
+}
+
+@media (min-width: $screen-sm-min) {
+  ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+  }
+}
+
+#signup-form{
+  #div_id_password_1{
+    label{
+      display: none;
+    }
+  }
+}
+.label.label-default{
+  margin: 5px;
+  display: inline-block;
+}
+.text-center-responsive{
+  @media  (max-width: $screen-sm-max){
+    text-align: center;
+  }
+}
+.text-lg-left{
+  @media  (min-width: $screen-lg-min){
+    text-align: left;
+  }
+}
+.text-md-right{
+  @media  (min-width: $screen-md-min){
+    text-align: right;
+  }
+}
+.center-block-responsive{
+  @media  (max-width: $screen-sm-max){
+    margin: 0 auto;
+  }
+}
+.form-pay{
+  .stripe-button-el{
+    background:transparent;
+    border:none;
+    color: #fff;
+    background-color: #7dd0e3;
+    border-color: #68c8de;
+    box-shadow:none;
+    border-radius:0px;
+    padding: 6px 12px;
+    line-height: 0px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    &:focus,&:active{
+      background-color: #7dd0e3 !important;
+      border: 1px solid #68c8de !important;
+      color: #fff !important;
+      span{
+        background:transparent !important;
+        color: #fff !important;
+        border:none !important;
+        border-top:none !important;
+      }
+    }
+    span{
+      background:transparent;
+      border:none;
+      text-shadow: none;
+      font-family: inherit;
+      box-shadow:none;
+      border-radius:0px;
+    }
+  }
+}
+.gray-scale{
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
 }

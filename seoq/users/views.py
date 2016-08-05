@@ -1,19 +1,33 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+from django.shortcuts import render
 from django.core.urlresolvers import reverse
-from django.views.generic import DetailView, ListView, RedirectView, UpdateView
+from django.views.generic import DetailView, ListView, RedirectView, UpdateView, View
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from balystic.client import Client
 from .models import User
+from .forms import EditProfileForm
+from plans.models import UserPlan
+
+from django.conf import settings
 
 
-class UserDetailView(LoginRequiredMixin, DetailView):
-    model = User
-    # These next two lines tell the view to index lookups by username
-    slug_field = 'username'
-    slug_url_kwarg = 'username'
+class UserDetailView(View):
+    template_name = 'users/user_detail.html'
+
+    def get(self, request, username):
+        plan = None
+        if self.request.user.is_authenticated():
+            plan = UserPlan.objects.get(
+                user=self.request.user)
+        user = Client().get_user_detail(username)
+        owner = Client().get_users({'userType': 'owner'})['owner']
+        return render(
+            request,
+            self.template_name,
+            {'user': user, 'userplan': plan, 'owner': owner})
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
@@ -26,7 +40,7 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
 
-    fields = ['name', ]
+    form_class = EditProfileForm
 
     # we already imported User in the view code above, remember?
     model = User

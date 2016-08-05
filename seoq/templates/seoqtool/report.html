@@ -235,6 +235,8 @@
 	{% endif %}
 </div>
 {% endblock content %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 <script>
 function sendReport() {
     var email = prompt("Please enter your email", "");
@@ -242,17 +244,17 @@ function sendReport() {
     if (email != null) {
     $.ajax({
         type: 'POST',
-        url: "../../seoqtool/email_report.py",
-        data: {
-        emailto:}, //passing some input here
-        dataType: "text",
+        url: "/seoq/seoqtool/email_report.py",
+        data: JSON.stringify({
+            toemail: email,
+            urlreport: window.location.href
+                    }),
+        dataType: 'json',
         success: function(response){
-           output = response;
-           alert(output);
+          console.log('yay! ajax call done')
         }
 }).done(function(data){
-    console.log(data);
-    alert(data);
+   console.log('yay! sendreport done!')
 });
 
     }

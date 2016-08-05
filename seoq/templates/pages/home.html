@@ -1,42 +1,59 @@
 {% extends "base.html" %}
 {% load i18n staticfiles%}
+{% block empty_title %}{% trans "SEO Quotient™ analysis tool, website analysis software, free SEO report" %}{% endblock empty_title %}
+
+{% block meta %}
+{% trans "SEO Quotient™ analysis tool, website analysis software, free SEO report" as title %}
+{% trans "SEO Quotient™ provides SEO tools for both website owners and online marketing professionals to diagnose your website and create an action plan." as description %}
+{% static "images/facebook-image-post.jpg" as image%}
+{% include "include/metatags.html" with title=title description=description image=image %}
+{% endblock meta %}
 
 {% block content %}
+<input type="hidden" value="{{ csrf_token }}" id="my_token">
 
   <section class="bg-primary fullscreen">
     <div class="container">
       <div class="row text-center">
         <h1 class="text-brand"><strong>{% trans "Want to rank higher on search engines?" %}</strong></h1>
-        <span class="h4 text-brand">{% trans "Let us help by telling who you are." %}</span>
+        <span class="h4 text-brand">{% trans "We'll help. Tell us who you are:" %}</span>
       </div>
       <div class="row">
         <div class="col-sm-4 hidden-xs text-center">
-          <img src="{% static "images/fish-1.gif" %}" alt="" class="img-responsive"></img>
-          <p class="text-brand m-t-20 h4">{% trans "I own a website" %}</p>
+          <a href="{% url 'owners' %}"><img src="{% static "images/fish-1.gif" %}" alt="" class="img-responsive"></img></a>
+          <p class="text-brand m-t-20 h4"><a href="{% url 'owners' %}" class="text-brand">{% trans "I own a website" %}</a></p>
         </div>
         <div class="col-sm-4 hidden-xs text-center">
-          <img src="{% static "images/fish-2.gif" %}" alt="" class="img-responsive"></img>
-          <p class="text-brand m-t-20 h4">{% trans "I am a SEO Expert" %}</p>
+          <a href="{% url 'professionals' %}"><img src="{% static "images/fish-2.gif" %}" alt="" class="img-responsive"></img></a>
+          <p class="text-brand m-t-20 h4"><a href="{% url 'professionals' %}" class="text-brand">{% trans "I am a SEO Expert" %}</a></p>
         </div>
         <div class="col-sm-4 hidden-xs text-center">
-          <img src="{% static "images/fish-3.gif" %}" alt="" class="img-responsive"></img>
-          <p class="text-brand m-t-20 h4">{% trans "I study SEO" %}</p>
+          <a href="{% url 'students' %}"><img src="{% static "images/fish-3.gif" %}" alt="" class="img-responsive"></img></a>
+          <p class="text-brand m-t-20 h4"><a href="{% url 'students' %}" class="text-brand">{% trans "I study SEO" %}</a></p>
         </div>
         <div class="col-xs-12 visible-xs-block text-center m-t-30">
-          <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I own a website" %}</button>
+          <a href="{% url 'owners' %}" class="text-brand"><button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I own a website" %}</button></a>
         </div>
         <div class="col-xs-12 visible-xs-block text-center m-t-30">
+        <a href="{% url 'professionals' %}" class="text-brand">
           <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I am a SEO Expert" %}</button>
+        </a>
         </div>
         <div class="col-xs-12 visible-xs-block text-center m-t-30">
-          <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I study SEO" %}</button>
+          <a href="{% url 'students' %}" class="text-brand">
+            <button class="btn btn-block btn-lg btn-seoq-lb">{% trans "I study SEO" %}</button>
+          </a>
         </div>
-        <span id="discover-more" class="scrollable">
-          <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white hidden-xs">{% trans "Discover more" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
-        </span>
       </div>
     </div>
   </section>
+  <div class="container" id="discover-more">
+    <div class="row">
+      <span  class="scrollable">
+        <a href="#benefits-text" title="{% trans "Discover more" %}" class="text-white hidden-xs">{% trans "Discover more" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+      </span>
+    </div>
+  </div>
   <section class="benefits-seo p-t-80 p-b-40">
     <div class="container">
       <div class="row">
@@ -45,14 +62,14 @@
             <img src="{% static "images/images-benefits.png" %}" alt="images benefits" class="center-block img-responsive">
           </div>
           <div class="col-sm-6 col-md-6">
-            <h2 class="text-left" id="benefits-text"><strong>{% trans "Benefits of SEO" %}</strong></h2>
+            <h2 class="text-left" id="benefits-text"><strong>{% trans "What is SEOQ?"%}</strong></h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore ad, nemo earum aspernatur laboriosam reprehenderit dolor amet vitae et debitis, veniam quisquam aut cupiditate nihil quaerat fuga iste, placeat explicabo!
+              SEO Quotient is a tool and an online community that helps you evaluate your website and find ways to improve it's internet presence. <p> Connect with experts or browse our community to make your website the biggest fish in the internet pond!</p>
             </p>
-            <a href="#" class="btn btn-primary-ligth btn-lg">{% trans "Learn more about SEO" %}</a>
+            <a href="{% url 'about' %}" class="btn btn-primary-ligth btn-lg">{% trans "Learn more about SEOQ" %}</a>
           </div>
           <span class="clear pull-right scrollable" id="most-recent">
-            <a href="#experts" title="{% trans "Most recent" %}" class="">{% trans "Most recent" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+            <a href="#experts" class="blue-link" title="{% trans "Most recent" %}" class="">{% trans "Most recent" %}&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
           </span>
         </div>
       </div>
@@ -64,35 +81,19 @@
       <div class="row" id="experts">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-sm-6 col-md-6 pull-right">
-            <h2 class="text-left" id="experts"><strong>{% trans "This week SEO Experts" %}</strong></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente at eius vitae doloremque dolorum, deleniti non expedita id odio eum, dignissimos, quis, adipisci consectetur neque perspiciatis explicabo quo quia voluptatum.</p>
-            <a href="#" class="btn btn-primary-ligth btn-lg">{% trans "Create SEO profile" %}</a>
+            <h2 class="text-left" id="experts"><strong>{% trans "Featured SEO Professional" %}</strong></h2>
+            <p>Andrew has worked in SEO and digital marketing for 8 years, making data-driven decisions resulting in incredible growth.  He has earned over 150 verified #1 keyword rankings for his past Fortune 500 employers. <span>Join our community to get in touch with more experts like Andrew today!</p></p>
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'users:detail' request.user.username %}" class="btn btn-primary-ligth btn-lg">{% trans "View your profile" %}</a>
+            {% else %}
+              <a href="{% url 'balystic_signup' %}" class="btn btn-primary-ligth btn-lg">{% trans "Create your profile" %}</a>
+            {% endif %}
           </div>
           <div class="col-sm-6 col-md-6">
             <div class="row">
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-1.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-2.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-3.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-4.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-5.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <img src="{% static "images/people-6.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
-                <p></p>
+              <div class="col-sm-12">
+                <img src="{% static "images/andrew-expert-2.jpg" %}" alt="experts of seo" class="center-block img-responsive img-circle">
+                <center><strong>Andrew Bennik</strong></center>
               </div>
             </div>
           </div>
@@ -100,59 +101,86 @@
       </div>
       <div class="row m-t-90 relative p-b-40" id="for-students">
         <div class="col-sm-12 col-md-8 col-md-offset-2 p-t-80">
-          <h2 class="text-center relative m-b-50"><strong>{% trans "For Students of SEO" %}</strong></h2>
+          <h2 class="text-center relative m-b-50"><strong>{% trans "Become Better at SEO" %}</strong></h2>
           <div class="col-sm-6 col-md-6">
             <div class="pull-right">
-              <a href="#">
-                <img src="{% static "images/learn.png" %}" alt="learn" class="img-responsive center-block" width="130px">
-                <h3 class="text-center font-weight-bold-5 text-primary">{% trans "Learn more in" %}
-                <br>{% trans "our SEO University" %}</h3>
-              </a>
+              <img src="{% static "images/learn.png" %}" alt="learn" class="img-responsive center-block" width="130px">
+              <h3 class="text-center font-weight-bold-5 text-primary">{% trans "Learn in our" %}
+                <br>{% trans " SEO Academy" %}
+              </h3>
             </div>
           </div>
           <div class="col-sm-6 col-md-6">
             <div class="pull-left">
-              <a href="#">
-                <img src="{% static "images/discussions.png" %}" alt="discussions" class="img-responsive  center-block" width="130px">
-                <h3 class="text-center font-weight-bold-5 text-primary">{% trans "Participate in our" %}
+              <img src="{% static "images/discussions.png" %}" alt="discussions" class="img-responsive  center-block" width="130px">
+              <h3 class="text-center font-weight-bold-5 text-primary">{% trans "Participate in our" %}
                 <br>{% trans "SEO Community" %}
-                </h3>
-              </a>
+              </h3>
             </div>
           </div>
           <img src="{% static "images/tablet.png" %}" alt="tablet" class="center-block img-responsive" id="tablet">
         </div>
-        <span class="clear center-block scrollable" id="give-try">
-          <a href="#how-website" title="{% trans "Give it try" %}" class=""><i class="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp;{% trans "Give it try" %}</a>
-        </span>
+
       </div>
     </div>
     <img src="{% static "images/separator-block-bottom.png" %}" alt="separator block top" class="img-responsive center-block relative">
   </section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <span class="clear center-block scrollable" id="give-try">
+          <a href="#how-website" class="blue-link" title="{% trans "Give it a try" %}" class=""><i class="fa fa-angle-double-down" aria-hidden="true"></i>&nbsp;{% trans "Give it a try" %}</a>
+        </span>
+      </div>
+    </div>
+  </div>
   <section class="scan-website p-t-50 m-t-50">
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-sm-6 col-md-6 m-b-50">
-            <h2 class="" id="how-website">{% trans "How does your" %}<br>{% trans "Website do for SEO?" %}</h2>
+            <h2 id="how-website">{% trans "Find " %}{% trans "your" %}{% trans " SEO Quotient:" %}</h2>
           </div>
-          <div class="col-sm-6 col-md-6 m-b-50 p-t-20">
-            <form action="">
+
+          <div class="col-sm-6 col-md-6 m-b-50 p-t-20" ng-controller="keywordScoreController">
+          <img src="{% static 'images/ajax-loader.gif' %}" ng-if="animation">
+          {% verbatim %}
+            <p>
+            <span ng-if="animation">
+              {{ analysis_message }}
+            </span>
+            </p>
+            <span ng-if="bad_status_code">
+              {{ status_message }}
+            </span>
+          {% endverbatim %}
+            <form ng-submit="startReport()" ng-if="!animation" id="myForm">
+            {% csrf_token %}
               <div class="form-group">
                 <label for="your-website" class="text-center">{% trans "Your Website" %}</label>
-                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}">
+                <input type="text" class="form-control text-center" id="your-website" placeholder="{% trans "What is your website? e.g. seoq.com" %}" ng-model="request_data.url" ng-change="validate_url()" required http-prefix ng-pattern="/^((?:http|ftp)s?:\/\/)(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::\d+)?(?:\/?|[\/?]\S+)$/i">
               </div>
-              <div class="text-center text-block">
-                <h3>vs</h3>
-              </div>
-              <div class="form-group">
-                <label for="competitor-website" class="text-center">{% trans "Your Competitor" %}</label>
-                <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}">
-                <input type="text" class="form-control text-center" id="keywords" placeholder="{% trans "What keyword phrase do you want to rank for?" %}">
-              </div>
-              <button type="submit" class="btn btn-warning-ligth btn-block">{% trans "Start" %}</button>
+                {% comment %}
+                  <div class="text-center text-block">
+                    <h3>vs</h3>
+                  </div>
+                {% endcomment %}
+                <div class="form-group" id="keywords">
+                  {% if not request.user.is_authenticated %}
+                    <div class="pop-over">
+                      <p>Keywords available only for registered users</p>
+                    </div>
+                  {% endif %}
+                  {% comment %}
+                  <label for="competitor-website" class="text-center">{% trans "Your Competitor" %}</label>
+                  <input type="text" class="form-control text-center" id="competitor-website" placeholder="{% trans "What website ranks higher than yours?" %}" disabled>
+                  {% endcomment %}
+                  <input type="text" ng-model="request_data.keyword" class="form-control text-center" id="keywords_input" placeholder="{% trans "What keyword phrase do you want to rank for?" %}"{% if request.user.is_authenticated %}{% else %}disabled{% endif %}>
+                </div>
+              <button type="submit" ng-disabled="bad_url" class="btn btn-warning-ligth btn-block">{% trans "Start" %}</button>
             </form>
           </div>
+
         </div>
       </div>
     </div>

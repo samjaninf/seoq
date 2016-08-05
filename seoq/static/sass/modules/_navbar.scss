@@ -1,5 +1,5 @@
 $navbar-seoq-color:             #777 !default;
-$navbar-seoq-bg:                #8fd1e1 !default;
+$navbar-seoq-bg:                #7dd0e3 !default;
 $navbar-seoq-border:            0 !default;
 
 // Navbar links
@@ -97,12 +97,6 @@ $navbar-seoq-toggle-border-color:       #FFF !default;
         margin-bottom: 100px;
         > li{
           border-bottom:1px solid;
-          &:last-child{
-            display: none;
-          }
-          &:nth-child(6){
-            border-bottom:none;
-          }
         }
         li.active a{
           background:none;
@@ -245,5 +239,10 @@ $navbar-seoq-toggle-border-color:       #FFF !default;
         color: $navbar-seoq-link-disabled-color;
       }
     }
+  }
+}
+.btn-seoq{
+  a{
+    color:#fff;
   }
 }

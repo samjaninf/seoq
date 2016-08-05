@@ -1,3 +1,5 @@
+#The purpose of this file is to run the algorithm and get the SEOQ score with and without keyword
+
 import math
 from .utils import get_built_with_information
 from .utils import get_total_time_and_ssl_certification
@@ -13,12 +15,22 @@ class Algorithm(object):
     """
     Has algorithm for score.
     """
-    score = 0
-    backlinkVar = 1
-    trustFlowVar = 1
-    robotsVar = 1
-    listingVar = 1
-    keyVar = 1
+    backlinkVar = 2.0140845
+    trustFlowVar = 2.0140845
+    robotsVar = 5.5211267
+    listingVar = 4.0422535
+    keyVar = 1.521126761
+    averageVar = 25.94
+
+    def __init__(self, netloc):
+        self.netloc = str(netloc)
+        self.majestic = MajesticBackLinks(netloc)
+        self.checker = Checker_Utils()
+        self.local = LocalListing()
+        self.mobile = MobileFriendlyChecker()
+        self.check_robots = self.checker.checkRobots(netloc)
+        self.total_time_and_ssl = get_total_time_and_ssl_certification(netloc)
+        self.cms = get_built_with_information(netloc).get('cms', [])
 
     def changeVar(self, backlinkVar, trustFlowVar,
                   robotsVar, listingVar, keyVar):
@@ -28,81 +40,238 @@ class Algorithm(object):
         self.listingVar = listingVar
         self.keyVar = keyVar
 
-    def getSiteScore(self, netloc):
-        netloc = str(netloc)
-        majestic = MajesticBackLinks()
-        checker = Checker_Utils()
-        local = LocalListing()
-        mobile = MobileFriendlyChecker()
+    def getSiteScore(self):
         score = float(100)
-        avgTime = float(0.150895375)
-        total_time_and_ssl = get_total_time_and_ssl_certification(netloc)
-        check_robots = checker.checkRobots(netloc)
-
-        if netloc.find('.gov') != -1:
+        avgTime = float(0.389142703)
+        report = {
+            'crawlability': {},
+            'credibility': {},
+            'conversation': {},
+            'competition': {},
+            'conversion': {}
+        }
+        if self.netloc.find('.gov') != -1:
             score = score + 6
-        elif netloc.find('.edu') != -1:
+        elif self.netloc.find('.edu') != -1:
             score = score + 3
-        if total_time_and_ssl['ssl_certificate']:
+        if self.total_time_and_ssl['ssl_certificate']:
             score = score + 5
-        time = total_time_and_ssl['speed_info']
+            report['credibility']['https'] = 'passed'
+        else:
+            report['credibility']['https'] = 'error'
+        
+        print self.total_time_and_ssl
+        time = self.total_time_and_ssl['speed_info']
         time = float(time['time_in_seconds'])
+        if time > 0 and time <= avgTime:
+            report['crawlability']['speed'] = 'passed'
+        else:
+            report['crawlability']['speed'] = 'to improve'
+
         if time > 0:
             score = score + (float(time) / float(2 * avgTime) - .5) / -10
-        if get_built_with_information(netloc).get('cms', []):
+        if self.cms:
             score = score + 5
-        backlinks = float(majestic.getNumBackLinksDomainName(netloc))
+
+        backlinks = float(self.majestic.getNumBackLinksDomainName())
         if backlinks > 0:
-            score = score + float(math.log(backlinks)) * self.backlinkVar
-        backlinks = float(majestic.getNumBackLinksWebPageURL(netloc))
+            backlinks = float(math.log(float(self.majestic.getNumBackLinksDomainName())))
+            if backlinks > 12:
+                backlinks = 12
+            score = score + backlinks * self.backlinkVar
+            if backlinks > 10:
+                report['credibility']['backlinks_domain'] = 'passed'
+            else:
+                report['credibility']['backlinks_domain'] = 'to improve'
+        else:
+            report['credibility']['backlinks_domain'] = 'to improve'
+
+        backlinks = float(self.majestic.getNumBackLinksWebPageURL())
         if backlinks > 0:
-            score = score + float(math.log(backlinks)) * self.backlinkVar
-        govlinks = float(majestic.getNumGovBackLinksDomainName(netloc))
+            backlinks = float(
+                math.log(float(self.majestic.getNumBackLinksWebPageURL())))
+            if backlinks > 12:
+                backlinks = 12
+                score = score + backlinks * self.backlinkVar
+            if backlinks > 10:
+                report['credibility']['backlinks_url'] = 'passed'
+            else:
+                report['credibility']['backlinks_url'] = 'to improve'
+
+        else:
+            report['credibility']['backlinks_url'] = 'to improve'
+
+        govlinks = float(self.majestic.getNumGovBackLinksDomainName())
         if govlinks > 0:
-            score = score + float(math.log(govlinks)) * self.backlinkVar / 2
-        govlinks = float(majestic.getNumGovBackLinksWebPageURL(netloc))
+            govlinks = float(math.log(float(self.majestic.getNumGovBackLinksDomainName())))
+            if govlinks > 12:
+                govlinks = 12
+            score = score + govlinks * self.backlinkVar / 2
+            if govlinks > 5:
+                report['credibility']['govlinks_domain'] = 'passed'
+            else:
+                report['credibility']['govlinks_domain'] = 'to improve'
+        else:
+            report['credibility']['govlinks_domain'] = 'to improve'
+
+        govlinks = float(self.majestic.getNumGovBackLinksWebPageURL())
         if govlinks > 0:
-            score = score + float(math.log(govlinks)) * self.backlinkVar / 2
-        edulinks = float(majestic.getNumEduBackLinksDomainName(netloc))
+            govlinks = float(math.log(float(self.majestic.getNumGovBackLinksWebPageURL())))
+            if govlinks > 12:
+                govlinks = 12
+            score = score + govlinks * self.backlinkVar / 2
+            if govlinks > 5:
+                report['credibility']['govlinks_url'] = 'passed'
+            else:
+                report['credibility']['govlinks_url'] = 'to improve'
+        else:
+            report['credibility']['govlinks_url'] = 'to improve'
+
+        edulinks = float(self.majestic.getNumEduBackLinksDomainName())
         if edulinks > 0:
-            score = score + float(math.log(edulinks)) * self.backlinkVar / 3
-        edulinks = float(majestic.getNumEduBackLinksWebPageURL(netloc))
+            edulinks = float(math.log(float(self.majestic.getNumEduBackLinksDomainName())))
+            if edulinks > 12:
+                edulinks = 12
+            score = score + edulinks * self.backlinkVar / 3
+            if edulinks > 5:
+                report['credibility']['edulinks_domain'] = 'passed'
+            else:
+                report['credibility']['edulinks_domain'] = 'to improve'
+        else:
+            report['credibility']['edulinks_domain'] = 'to improve'
+
+        edulinks = float(self.majestic.getNumEduBackLinksWebPageURL())
         if edulinks > 0:
-            score = score + float(math.log(edulinks)) * self.backlinkVar / 3
-        trustFlow = float(majestic.getTrustFlow(netloc))
+            edulinks = float(math.log(float(self.majestic.getNumEduBackLinksWebPageURL())))
+            if edulinks > 12:
+                edulinks = 12
+            score = score + edulinks * self.backlinkVar / 3
+            if edulinks > 5:
+                report['credibility']['edulinks_url'] = 'passed'
+            else:
+                report['credibility']['edulinks_url'] = 'to improve'
+        else:
+            report['credibility']['edulinks_url'] = 'to improve'
+
+        trustFlow = float(self.majestic.getTrustFlow())
         if trustFlow > 0:
             score = score + trustFlow - self.trustFlowVar
-        refIPS = float(majestic.getRefIPs(netloc))
+            if trustFlow > 5:
+                report['credibility']['trustflow'] = 'passed'
+            else:
+                report['credibility']['trustflow'] = 'to improve'
+        else:
+            report['credibility']['trustflow'] = 'to improve'
+
+        refIPS = float(self.majestic.getRefIPs())
         if refIPS > 0:
             score = score + float(math.log(refIPS))
-        if check_robots[0].find('Robots allowed') != -1:
+            if float(math.log(refIPS)) > 5:
+                report['credibility']['edulinks_url'] = 'passed'
+            else:
+                report['credibility']['edulinks_url'] = 'to improve'
+        else:
+                report['credibility']['edulinks_url'] = 'to improve'
+
+        if self.check_robots[0].find('Robots allowed') != -1:
             score = score + self.robotsVar
+            report['crawlability']['robots'] = 'passed'
         else:
             score = score - self.robotsVar * 3
-        if check_robots[1].find('Sitemap found') != -1:
+            report['crawlability']['robots'] = 'error'
+        if self.check_robots[1].find('Sitemap found') != -1:
             score = score + self.robotsVar
+            report['crawlability']['sitemap'] = 'passed'
         else:
             score = score - self.robotsVar * 2
-        if local.main(netloc) == 'This listing does exist':
+            report['crawlability']['sitemap'] = 'error'
+        if self.local.main(self.netloc) == 'This listing does exist':
+            score = score + self.listingVar
+            report['conversion']['google_listing'] = 'passed'
+        else:
+            score = score - self.listingVar
+            report['conversion']['google_listing'] = 'error'
+        if self.mobile.checkMobileFriendly(self.netloc) is True:
             score = score + self.listingVar
         else:
             score = score - self.listingVar
-        if mobile.checkMobileFriendly(netloc) is True:
-            score = score + self.listingVar
-        else:
-            score = score - self.listingVar
-        return int(score)
+        return int(score - self.averageVar), report
 
-    def getKeywordScore(self, url, keyword, ip=1223):
-        scraper = QscraperSEOQTool(url, keyword, 0, ip)
-        majestic = MajesticBackLinks()
+    def getKeywordClass(self, url, keyword, ip=1223):
+        self.scraper = QscraperSEOQTool(url, keyword, ip)
+
+    def getKeywordScore(self, url, keyword):
+        self.getKeywordClass(url, keyword)
+        report = {
+            'content': {},
+            'code': {},
+        }
+        url_score = self.scraper.calculate_url()
+        title_score = self.scraper.calculate_title()
+        tlinks_score = self.scraper.calc_tlinks()
+        headings_score = self.scraper.calculate_headings()
+        meta_description_score = self.scraper.calculate_meta_description()
+        anchorLinks = self.majestic.getAnchorTextBackLinks(keyword)
+
+        if title_score == 0:
+            report['content']['kw_in_title'] = 'error'
+        elif title_score < 5:
+            report['content']['kw_in_title'] = 'to improve'
+        else:
+            report['content']['kw_in_title'] = 'passed'
+
+        if headings_score == 0:
+            report['content']['kw_in_headers'] = 'error'
+        elif headings_score < 5:
+            report['content']['kw_in_headers'] = 'to improve'
+        else:
+            report['content']['kw_in_headers'] = 'passed'
+
+        if tlinks_score == 0:
+            report['content']['kw_in_tlinks'] = 'error'
+        elif tlinks_score < 5:
+            report['content']['kw_in_tlinks'] = 'to improve'
+        else:
+            report['content']['kw_in_tlinks'] = 'passed'
+
+        if anchorLinks == 0:
+            report['content']['kw_in_anchor_links'] = 'error'
+        elif anchorLinks < 5:
+            report['content']['kw_in_anchor_links'] = 'to improve'
+        else:
+            report['content']['kw_in_anchor_links'] = 'passed'
+
+        if not self.cms:
+            report['content']['cms'] = 'passed'
+        elif 'WordPress' in self.cms:
+            report['content']['cms'] = 'passed'
+        elif 'Drupal' in self.cms or 'Joomla' in self.cms:
+            report['content']['cms'] = 'to improve'
+        else:
+            report['content']['cms'] = 'error'
+
+        if url_score < 3:
+            report['code']['kw_in_url'] = 'error'
+        elif url_score < 7:
+            report['code']['kw_in_url'] = 'to improve'
+        else:
+            report['code']['kw_in_url'] = 'passed'
+
+        if meta_description_score < 3:
+            report['code']['kw_in_meta_description'] = 'error'
+        elif meta_description_score < 7:
+            report['code']['kw_in_meta_description'] = 'to improve'
+        else:
+            report['code']['kw_in_meta_description'] = 'passed'
+
         score = 100
-        score = self.getSiteScore(url)
-        score = score + ((scraper.calculate_headings() - 5) * self.keyVar / 2)
-        score = score + (scraper.calc_tlinks() - 5) * self.keyVar / 3
-        score = score + ((scraper.calculate_title() - 5) * self.keyVar)
-        score = score + ((scraper.calculate_url() - 5) * self.keyVar)
-        anchorLinks = majestic.getAnchorTextBackLinks(
-            url, keyword)
+        # score = self.getSiteScore(url)
+        score = score + (
+            (headings_score - 5) * self.keyVar / 2)
+        score = score + (tlinks_score - 5) * self.keyVar / 3
+        score = score + ((title_score - 5) * self.keyVar)
+        score = score + ((url_score - 5) * self.keyVar)
         score = score + anchorLinks - 5
-        return int(score)
+        if score > 200:
+            score = 200
+        return int(score), report
