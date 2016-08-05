@@ -12,7 +12,7 @@
 	<div class="row">
 	{% if netloc and keywords %}
 	<div class="col-md-12">
-		<h2>{{ keywords }} ScoreCard for {{ netloc }}</h2>
+		<h2>{{ keywords }} ScoreCard for {{ report.url }}</h2>
 	</div>
 	{% endif %}
 	{% if report %}
@@ -52,7 +52,22 @@
 				<p><a href="{% url 'seoqtool:seoq_url_friendly_detail' slug netloc %}?{{recent_report|date:'Y-m-d'}}">{{ recent_report }}</a></p>
 				{% endfor %}
 			</div>
-
+			<div class="col-md-4">
+			<strong>two word phrases</strong>
+			{% for phrase in report.results.density_data.twowordphrases %}
+					<p>{% for word in phrase %}
+						{{ word }}
+					{% endfor %}</p>
+			{% endfor %}
+			</div>
+			<div class="col-md-4">
+			<strong>three word phrases</strong>
+			{% for phrase in report.results.density_data.threewordphrases %}
+					<p>{% for word in phrase %}
+						{{ word }}
+					{% endfor %}</p>
+			{% endfor %}
+			</div>
 		{% if cms_information %}
 		<div class="col-md-12">
 			<table class='table'>
@@ -143,10 +158,45 @@
 			</tr>
 			</table>
 		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>Robots and Sitemap</strong></td>
+				<td align = "right">{{ robots }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>Local Listing</strong></td>
+				<td align = "right">{{ local_listing }}</td>
+			</tr>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<table class='table'>
+			<tr>
+				<td><strong>Mobile Friendly</strong></td>
+				<td align = "right">{{ mobile }}</td>
+			</tr>
+			</table>
+		</div>
 		<div class="col-md-8">
-			<p style="font-family:arial; color:#1a0dab; font-size:18px; margin:0">{{ page_title }}</p>
-			<p style="font-family:arial; color:#006621; font-size:14px; margin:0">{{ url }}</p>
-			<p style="font-family:arial; color:##545454; font-size:13px; margin:0">{{ metadescription }}</p>
+			<p style="font-family:arial; color:#1a0dab; font-size:18px; margin:0">
+			{{ page_title }}</p>
+			<p style="font-family:arial; color:#006621; font-size:14px; margin:0">
+			{{ url }}</p>
+			<p style="font-family:arial; color:##545454; font-size:13px; margin:0">
+			{% for word in metadescription %}
+				{% if word in keywordArray %}
+					<strong>{{ word }}</strong>
+				{% else %}
+					{{ word }}
+				{% endif %}
+			{% endfor %}
+			</p>
+
 		</div>
 
 		{% comment %}

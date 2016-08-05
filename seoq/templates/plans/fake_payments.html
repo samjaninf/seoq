@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% load crispy_forms_tags %}
+{% block title %}Payment{% endblock title %}
+
+{% block content %}
+<section class="payment p-t-50 p-b-70">
+  <div class="container">
+    <div class="row">
+      <h1>FakePayments™</h1>
+      <p> Please select desired status after performing payment for an <strong>{{ object }}</strong>. </p>
+      <form method="POST" action="">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Pay now</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock content %}

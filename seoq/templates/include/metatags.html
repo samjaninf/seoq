@@ -1,0 +1,25 @@
+{% load i18n %}
+<meta name="description" content="{{description}}">
+
+<!-- Facebook -->
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="{{image}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<!-- End Facebook -->
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="">
+<meta name="twitter:description" content="{{description}}">
+<meta name="twitter:image" content="{{image}}">
+<meta name="twitter:site" content="{{ request.build_absolute_uri }}">
+<meta name="twitter:title" content="{{title}}">
+<!-- End Twitter -->
+
+<!-- Google Plus -->
+<meta itemprop="description" content="{{description}}">
+<meta itemprop="image" content="{{image}}">
+<meta itemprop="name" content="{{title}}">
+<!-- End Google Plus -->

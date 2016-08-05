@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block title %}Account{% endblock title %}
+
+{% block content %}
+<section class="account p-t-50 p-b-70">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <h1>{% trans "Your account" %}</h1>
+        <div class="horizontal">
+          <p><strong>{% trans "Account" %}:</strong> {{ user }}</p>
+          <p><strong>{% trans "State" %}:</strong>
+            {% if userplan.active %}
+              {% trans "active" %}
+            {% else %}
+              {% trans "expired" %}
+            {% endif %}
+          </p>
+          <p><strong>{% trans "Expire" %}:</strong> {{ userplan.expire }}</p>
+          <p><strong>{% trans "Plan" %}:</strong> {{ userplan.plan }} <a href="{% url 'upgrade_plan' %}">{% trans "upgrade" %}</a></p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <h2>{% trans "Plan details" %}</h2>
+          {% include "plans/plan_table.html" %}
+      </div>
+      <h1>{% trans "Need more?" %}</h1>
+      {% url 'upgrade_plan' as upgrade_url %}
+      {% blocktrans %}
+        Please see other <a href="{{ upgrade_url }}">currently available plans</a>.
+      {% endblocktrans %}
+    </div>
+  </div>
+</section>
+{% endblock content %}

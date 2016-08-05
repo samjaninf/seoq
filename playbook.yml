@@ -1,0 +1,49 @@
+---
+- hosts: 127.0.0.1
+
+  #pre_tasks:
+    #- name: Update apt cache if needed
+    #  become: yes
+    #  apt: update_cache=yes cache_valid_time=86400
+
+  tasks:
+    - include_vars: system_requirements.yml
+
+    - name: Install system packages.
+      become: yes
+      apt: name={{ item }} state=present
+      with_items: "{{ system_requirements }}"
+
+    - name: Creates virtualenv.
+      command: >
+        virtualenv ~/.envs/seoq
+        creates="~/.envs/seoq"
+
+    - name: Install python requirements
+      pip:
+        requirements: /vagrant/requirements/local.txt
+        virtualenv: ~/.envs/seoq
+
+    - name: Create db user
+      postgresql_user:
+        name: "vagrant"
+        state: present
+      remote_user: root
+      become: yes
+      become_user: postgres
+
+    - name: Create database
+      postgresql_db:
+        name: seoq
+        owner: "vagrant"
+        state: present
+        encoding: "UTF-8"
+      become: yes
+      become_user: postgres
+                                       
+    - name: Sync DB
+      django_manage:
+        command: migrate
+        app_path: /vagrant/
+        virtualenv: ~/.envs/seoq
+        settings: config.settings.local

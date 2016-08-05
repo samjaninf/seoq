@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% load crispy_forms_tags %}
+{% block title %}Create Billing{% endblock title %}
+
+{% block content %}
+  <section class="create-billing">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 p-t-20 p-b-70">
+          <form action="{% url 'billing_info_create' %}" method="post" class="form">
+            <h2>{% trans "Provide billing data" %}</h2>
+              {% csrf_token %}
+              {{ form|crispy }}
+              <button type="submit" class="btn btn-primary-ligth">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

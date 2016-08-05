@@ -1,0 +1,42 @@
+{% extends "balystic/base.html" %}
+{% load staticfiles date_string %}
+{% block title %}{{entry.title}} - Blog{% endblock title %}
+
+{% block meta %}
+{% static "images/facebook-image-post.jpg" as image%}
+{% include "include/metatags.html" with title=entry.title description=entry.excerpt image=entry.image %}
+{% endblock meta %}
+
+{% block content %}
+  <div class="container text-center-responsive">
+    <div class="row">
+      <div class="col-md-12 m-b-30">
+        <h1>{{ entry.title }}</h1>
+        <small class="m-t-10" id="link-block">
+          <i class="fa fa-user"></i>
+          <a href="" id="link-author">&nbsp;{{ entry.user.username|title }}</a>&nbsp;
+          <i class="fa fa-calendar"></i>&nbsp;{{ entry.publication_date|date_string }}
+        </small>
+        <p>
+        {% if entry.tags %}  
+        <p>Tagged: {% for tag in entry.tags %}<a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ tag }}</span></a>{% endfor %}</p>
+        {% endif %}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+      {% if entry.image %}
+        <img class="img-responsive center-block m-b-30" src="{% if entry.image %}{{ entry.image }}{% else %}{% static "images/default_small.jpg" %}{% endif %}" alt="Blog image {{ entry.title }}">
+      {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 p-b-40">
+        {{ entry.content|safe }}
+      </div>
+
+    </div>
+
+  </div>
+{% endblock content %}

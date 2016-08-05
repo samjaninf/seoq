@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block title %}Pricing{% endblock title %}
+
+{% block content %}
+  <section class="plans-container p-t-50 p-b-70">
+    <div class="container">
+      <div class="row">
+        {% if not request.user.is_authenticated %}
+        <h2>{% trans "See our great Add On's" %}</h2>
+        <p>{% trans "Please" %}
+          <a href="{% url 'balystic_login' %}?next=/" class="blue-link">
+            {% trans "sign in" %}
+          </a> {% trans "to buy a plan." %}
+        </p>
+        {% endif %}
+        <!-- start -->
+        <div class="row-centered">
+        {% for plan in plan_list %}
+          <div class="col-sm-3 col-md-3 col-centered {% ifequal forloop.counter0 current_userplan_index %}current{% endifequal %} text-center">
+            <h2 class="text-center">
+              {% if plan.url %}
+                <a href="{{ plan.url }}" class="info_link plan">{{  plan.name }}</a>
+              {% else %}
+                {{  plan.name }}
+              {% endif %}
+            </h2>
+            <p class="plan_description text-center">{{ plan.description }}</p>
+              {% if plan == userplan.plan %}
+                <p class="current current_plan">{% trans "your current plan" %}</p>
+              {% endif %}
+              {% if user.is_authenticated %}
+                {% if plan != userplan.plan and not userplan.is_expired and not userplan.plan.is_free and userplan.plan %}
+                  <a href="{% url 'create_order_plan_change' pk=plan.id %}" class="change_plan buy-plan btn btn-primary-ligth">{% trans "Change" %}</a>
+                {% endif %}
+              {% endif %}
+            <div class="plans">
+              {% if plan.available %}
+                {% if not plan.is_free %}
+                  {% for plan_pricing in plan.planpricing_set.all %}
+                    {% if plan_pricing.pricing.url %}
+                      <a href="{{ plan_pricing.pricing.url }}" class="info_link pricing">{{ plan_pricing.pricing.name }}</a>
+                    {% endif %}
+                    <p class="name-plan">{{ plan_pricing.pricing.name }}</p>
+                    <p class="period-plan">
+                      {% if plan_pricing.pricing.period == 365 %}
+                        {% trans "1 Year" %}
+                      {% else %}
+                        ({{ plan_pricing.pricing.period }})&nbsp;{% trans "days" %}
+                      {% endif %}
+                    </p>
+                    <p class="price">{{ plan_pricing.price }}&nbsp;{{ CURRENCY }}</p>
+                    {% if user.is_authenticated %}
+                      {% if plan_pricing.plan == userplan.plan or userplan.is_expired or userplan.plan.is_free %}
+                        <a href="{% url 'create_order_plan' pk=plan_pricing.pk %}" class="buy btn btn-primary-ligth">{% trans "Buy" %}</a>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
+                  <div class="free-plan">
+                    <p class="plan_pricing_name">{% trans "Free" %}</p>
+                    <p class="plan_pricing_period">({% trans "no expiry" %})</p>
+                    <p class="plan_pricing_price">0&nbsp;{{ CURRENCY }}</p>
+                    {% if plan != userplan.plan or userplan.is_expired %}
+                      <a href="{% url 'create_order_plan_change' pk=plan.id %}" class="change_plan">
+                        {% if userplan.is_expired or not userplan.plan %}
+                          {% trans "Select" %}
+                        {% else %}
+                          {% trans "Change" %}
+                        {% endif %}
+                      </a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% else %}
+                <p class="plan_not_available">
+                  {% url 'upgrade_plan' as upgrade_url %}
+                    {% blocktrans %}
+                      This plan is not available anymore and cannot be extended.<p>
+                      You need to upgrade your account to any of <a href="{{ upgrade_url }}">currently available plans</a>.
+                  {% endblocktrans %}
+                </p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

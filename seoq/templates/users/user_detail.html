@@ -1,35 +1,59 @@
 {% extends "base.html" %}
-{% load static %}
+{% load i18n staticfiles %}
 
-{% block title %}User: {{ object.username }}{% endblock %}
+{% block title %}User: {{ user.username }}{% endblock %}
 
 {% block content %}
-<div class="container">
-
+<div class="container p-t-50">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-8 col-sm-offset-1 m-b-30">
 
-      <h2>{{ object.username }}</h2>
-      {% if object.name %}
-        <p>{{ object.name }}</p>
+      <h2>{{ user.user.username }}</h2>
+      {% if user.user.avatar %}
+      <img src="{{ user.user.avatar }}" alt="" width="200" height="200">
+      {% else %}
+      <img src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="" width="200" height="200">
       {% endif %}
+      <br>
+      {% if request.user.is_authenticated %}
+        
+      {% if user.user.username == request.user.username %}
+        <a class="btn btn-primary m-t-20" href="{% url 'balystic_user_update' user.user.username %}">Update profile</a>
+      {% endif %}
+      {% if owner.username == request.user.username %}
+      <a class="btn btn-primary m-t-20" href="http://seoq.app.balystic.com/customers/manage/seoq/">
+        {% trans "Manage Community" %}
+      </a>
+      {% endif %}
+      {% endif %}
+      
     </div>
+    <div class="col-sm-5 col-sm-offset-1 m-b-30">
+      <p><strong>Name:</strong> {{ user.user.first_name }}</p>
+      <p><strong>Last Name:</strong> {{ user.user.last_name }}</p>
+      <p><strong>Email:</strong> {{ user.user.email }}</p>
+      <p><strong>Bio:</strong> {{ user.user.bio }}</p>
+
+    </div>
+    {% if user.user.username == request.user.username %}
+
+    <div class="col-sm-5">
+      <p><strong>{% trans "Account" %}:</strong> {{ user.user.username }}</p>
+      <p><strong>{% trans "Plan" %}:</strong> {{ userplan.plan }} <a class="btn btn-sm btn-primary-ligth" href="{% url 'pricing' %}">{% trans "Upgrade" %}</a></p>
+      <p><strong>{% trans "State" %}:</strong>
+        {% if userplan.active %}
+          {% trans "Active" %}
+        {% else %}
+          {% trans "Expired" %}
+        {% endif %}
+      </p>
+      <p><strong>{% trans "Expiration date" %}:</strong> {{ userplan.expire }}</p>
+    </div>
+    {% endif %}
   </div>
 
-{% if object == request.user %}
-<!-- Action buttons -->
-<div class="row">
 
-  <div class="col-sm-12 ">
-    <a class="btn btn-primary" href="{% url 'users:update' %}">My Info</a>
-    <a class="btn btn-primary" href="{% url 'account_email' %}">E-Mail</a>
-    <!-- Your Stuff: Custom user template urls -->
-  </div>
-
-</div>
-<!-- End Action buttons -->
-{% endif %}
-
+{{ user.error }}
 
 </div>
 {% endblock content %}

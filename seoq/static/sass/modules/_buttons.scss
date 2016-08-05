@@ -1,0 +1,140 @@
+.btn-seoq{
+  $background: #fe9a28;
+  $border: #f18308;
+  $color: #FFF !important;
+  @include button-variant($color, $background, $border)
+  border-top: 0;
+  border-bottom: 0;
+  margin-left: 10px;
+  color: $color;
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 10%);
+  }
+  &:hover {
+    text-decoration: none !important;
+    color: $color;
+    background-color: darken($background, 10%) !important;
+        border-color: darken($border, 10%) !important;
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 10%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: darken($background, 17%);
+          border-color: darken($border, 17%);
+    }
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
+}
+.btn-seoq-lb{
+	@include button-variant(#FFF, #fe9a28, #cdb075)
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.btn-default-ligth {
+  @include button-variant-ligth($btn-default-color, $btn-default-bg, $btn-default-bg);
+}
+.btn-primary-ligth {
+  @include button-variant-ligth($btn-primary-color, $btn-primary-bg, $btn-primary-bg);
+}
+// Success appears as green
+.btn-success-ligth {
+  @include button-variant-ligth($btn-success-color, $btn-success-bg, $btn-success-bg);
+}
+// Info appears as blue-green
+.btn-info-ligth {
+  @include button-variant-ligth($btn-info-color, $btn-info-bg, $btn-info-bg);
+}
+// Warning appears as orange
+.btn-warning-ligth {
+  @include button-variant-ligth($btn-warning-color, $btn-warning-bg, $btn-warning-bg);
+}
+// Danger and error appear as red
+.btn-danger-ligth {
+  @include button-variant-ligth($btn-danger-color, $btn-danger-bg, $btn-danger-bg);
+}
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+    font-size: 15px;
+    white-space: normal; 
+}
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+    color: #fff;
+}
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+    color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+    color: #d9534f;
+}
+.btn-muted{
+  @include button-variant-ligth($gray-light, $gray-light, $gray-light);
+  opacity: 0.5;
+  transition: all .5s;
+  &:hover{
+    color: #fff;
+  }
+  font-size: 15px;
+}
+/* Workaround for LinkedIn button */
+.IN-widget > span{
+  background: #0077b5;
+  border-radius: 5px;
+  padding: 13px !important;
+  width: 118px;
+  &:hover{
+    background-color: #0369a0 !important;
+  }
+}
+.no-float-sm{
+  @media  (max-width: $screen-sm-max){
+    float: none !important;
+  }
+}
+.btn-facebook, .btn-twitter, .btn-linkedin {
+    width: 135px;
+}
