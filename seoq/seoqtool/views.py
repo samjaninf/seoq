@@ -89,8 +89,8 @@ class ArchiveReportView(View):
                 local_error, local_success, local_improve)
         context['numeric_info'] = numeric_info
         context['error'] = error
-        context['passed'] = improve
-        context['to_improve'] = success
+        context['passed'] = success
+        context['to_improve'] = improve
         context['seo_professionals'] = self.client.get_users(
             {'isPro': '1'})['users'][0:6]
         return render(request, self.template_name, context)
