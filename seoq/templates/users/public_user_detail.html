@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+
+{% block title %}User: {{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="container p-t-50">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-1 m-b-30">
+
+      <h2>{{ user.user.username }}</h2>
+      {% if user.user.avatar %}
+      <img src="{{ user.user.avatar }}" alt="" width="200" height="200">
+      {% else %}
+      <img src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="" width="200" height="200">
+      {% endif %}
+      <br>
+      
+    </div>
+    <div class="col-sm-5 col-sm-offset-1 m-b-30">
+      <p><strong>Name:</strong> {{ user.user.first_name }}</p>
+      <p><strong>Last Name:</strong> {{ user.user.last_name }}</p>
+      <p><strong>Email:</strong> {{ user.user.email }}</p>
+      <p><strong>Bio:</strong> {{ user.user.bio }}</p>
+
+    </div>
+
+  </div>
+
+
+{{ user.error }}
+
+</div>
+{% endblock content %}
+

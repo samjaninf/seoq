@@ -30,6 +30,10 @@ urlpatterns = [
     url(r'^accounts/signup/$', balystic_views.UserSignupView.as_view(), name='balystic_signup'),
     url(r'^seo-directory/$', core_views.SEODirectoryUserList.as_view(),
         name='directory'),
+
+    url(r'^seo-directory/(?P<username>[\w.@+-]+)/$', core_views.PublicUserDetailView.as_view(),
+        name='public_profile'),
+
     url(r'^website-owners/$', TemplateView.as_view(template_name='pages/owners.html'),
         name='owners'),
     # url(r'^join/$', TemplateView.as_view(template_name='pages/join.html'),
@@ -51,9 +55,6 @@ urlpatterns = [
     # User management
     url(r'^', include('seoq.users.urls', namespace='users')),
     url(r'^qa/.*$', RedirectView.as_view(url='http://seoq.app.balystic.com/questions-and-answers/', permanent=False), name='balystic_qa'),
-    url(r'^users/(?P<username>[-\w.+]+)/$',
-        RedirectView.as_view(pattern_name='users:detail',
-                             permanent=False)),
     url(r'^', include('balystic.urls')),
     url(r'^', include('seoq.seoqtool.urls', namespace='seoqtool')),
     url(r'^api/', include('seoq.api.urls', namespace='api')),

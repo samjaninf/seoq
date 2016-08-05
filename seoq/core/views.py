@@ -27,6 +27,17 @@ class SEODirectoryUserList(View):
         return render(request, self.template_name, context)
 
 
+class PublicUserDetailView(View):
+    template_name = 'users/public_user_detail.html'
+
+    def get(self, request, username):
+        user = Client().get_user_detail(username)
+        return render(
+            request,
+            self.template_name,
+            {'user': user})
+
+
 class ArchivedBlogRedirectView(RedirectView):
     """
     Redirect Original blog entries patterns to the new one
