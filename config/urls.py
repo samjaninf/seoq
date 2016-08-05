@@ -51,6 +51,9 @@ urlpatterns = [
     # User management
     url(r'^', include('seoq.users.urls', namespace='users')),
     url(r'^qa/.*$', RedirectView.as_view(url='http://seoq.app.balystic.com/questions-and-answers/', permanent=False), name='balystic_qa'),
+    url(r'^users/(?P<username>[-\w.+]+)/$',
+        RedirectView.as_view(pattern_name='users:detail',
+                             permanent=False)),
     url(r'^', include('balystic.urls')),
     url(r'^', include('seoq.seoqtool.urls', namespace='seoqtool')),
     url(r'^api/', include('seoq.api.urls', namespace='api')),
