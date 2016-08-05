@@ -38,7 +38,7 @@
     {% if user.user.username == request.user.username %}
 
     <div class="col-sm-5">
-      <p><strong>{% trans "Account" %}:</strong> {{ user }}</p>
+      <p><strong>{% trans "Account" %}:</strong> {{ user.user.username }}</p>
       <p><strong>{% trans "Plan" %}:</strong> {{ userplan.plan }} <a class="btn btn-sm btn-primary-ligth" href="{% url 'pricing' %}">{% trans "Upgrade" %}</a></p>
       <p><strong>{% trans "State" %}:</strong>
         {% if userplan.active %}
