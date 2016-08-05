@@ -10,4 +10,4 @@ register = template.Library()
 @register.filter
 @stringfilter
 def date_string(value):
-    return iso8601.parse_date(value)
+    return iso8601.parse_date(value).strftime("%d %B %Y")
