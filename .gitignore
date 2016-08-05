@@ -50,6 +50,9 @@ htmlcov
 # npm
 node_modules/
 
+# staticfiles
+staticfiles/
+
 # Compass
 .sass-cache
 
@@ -62,3 +65,4 @@ seoq/media/
 # Hitch directory
 tests/.hitch
 
+bower_components/
