@@ -134,7 +134,7 @@
   <div class="container">
     <div class="row">
       {% if request.user == report.user and not report.custom_information %}
-          <form action="" method="POST">
+          <form action="" method="POST" class="text-center">
             {% csrf_token %}
             <input type="text" name="put" value='put' id='email_input' hidden>
             <button type="submit" class="btn btn-primary">Sponsor this report</button>

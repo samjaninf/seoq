@@ -4,7 +4,7 @@
   <div class="col-xs-6 col-sm-4 col-md-4 text-center">
     <a href="{% url 'users:detail' object.username %}">
     {% if object.avatar %}
-    <img src="{{ object.avatar }}" alt="Avatar" class="img-responsive img-circle center-block">
+    <img class="media-object img-circle center-block" src="{{ object.avatar }}" alt="Avatar" width="120" height="120">
     {% else %}
     <img class="media-object img-circle center-block" src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="Placeholder" width="120" height="120">
     {% endif %}
