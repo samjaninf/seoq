@@ -6,6 +6,27 @@
 {% block content %}
 <div class="container p-t-50">
   <div class="row">
+    <div class="col-sm-12">
+      <label class="control-label">Share this profile on:</label>
+
+      <ul class="list-inline">
+        <li>
+          <a data-socialmedia="Facebook" href="http://www.facebook.com/sharer.php?s=100&p[title]=SEO Professional Profile for {{ user.user.first_name }} {{ user.user.last_name }}&p[url]=http://www.seoq.com/&p[images][0]=http://omega.seoq.com/media/profiles/email_campaign.jpg&p[summary]=Check out the SEO Professional Profile for {{ user.user.first_name }} {{ user.user.last_name }} on SEOQ.com" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3 blue-face"></i></a>
+        </li>
+        <li>
+          <a data-socialmedia="Twitter" href="https://twitter.com/share?text=Check out the SEO Professional Profile for {{ user.user.first_name }} {{ user.user.last_name }} on SEOQ.com&amp;via=SEOQuotient&amp;lang=en" title="Share on Twitter" target="_blank"><i class="fa fa-twitter-square fa-3 blue-twitter"></i></a>
+        </li>
+        <li>
+          <a data-socialmedia="Linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ request.build_absolute_uri }}/&amp;title=SEO Professional Profile for {{ user.user.first_name }} {{ user.user.last_name }}&amp;summary=Check out the SEO Professional Profile for {{ user.user.first_name }} {{ user.user.last_name }} on SEOQ.com" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3 blue-linkedin"></i></a>
+        </li>
+        <li>
+          <a data-socialmedia="GooglePlus" href="https://plus.google.com/share?url={{ request.build_absolute_uri }}/&amp;hl=en" target="_blank" title="Share on Google+"><i class="fa fa-google-plus-square fa-3 red-gplus"></i></a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-sm-12 col-md-9">
       <div class="panel panel-default">
         <div class="panel-body">

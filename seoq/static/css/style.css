@@ -307,6 +307,25 @@ hr {
   border-bottom: 1px solid #ddd;
   margin-bottom: 1em; }
 
+.list-inline {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0px; }
+  .list-inline i {
+    font-size: 3em; }
+
+.blue-face {
+  color: #2E609B; }
+
+.blue-twitter {
+  color: #55d9ff; }
+
+.blue-linkedin {
+  color: #1a6da1; }
+
+.red-gplus {
+  color: #d34836; }
+
 .text-brand {
   color: #2d5d81 !important; }
 
