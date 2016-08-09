@@ -303,6 +303,10 @@ hr {
   -moz-filter: grayscale(100%);
   -o-filter: grayscale(100%); }
 
+.border-bottom-line {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1em; }
+
 .text-brand {
   color: #2d5d81 !important; }
 

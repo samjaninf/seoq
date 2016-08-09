@@ -1,35 +1,87 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
 
-{% block title %}User: {{ user.username }}{% endblock %}
+{% block title %}SEO Professional: {{ user.user.first_name }}{% endblock %}
 
 {% block content %}
 <div class="container p-t-50">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-1 m-b-30">
-
-      <h2>{{ user.user.username }}</h2>
-      {% if user.user.avatar %}
-      <img src="{{ user.user.avatar }}" alt="" width="200" height="200">
-      {% else %}
-      <img src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="" width="200" height="200">
-      {% endif %}
-      <br>
-      
+    <div class="col-sm-12 col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              {% if user.user.avatar %}
+              <img src="{{ user.user.avatar }}" alt="" width="200" height="200" class="hidden-xs img-thumbnail media-object pull-left">
+              {% else %}
+              <img src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="" width="200" height="200" class="hidden-xs img-thumbnail media-object pull-left">
+              {% endif %}
+            </div>
+            <div class="media-body">
+              <div class="col-sm-12">
+                <h2>{{ user.user.first_name }} {{ user.user.last_name }}</h2>
+                <div class="col-md-12 border-bottom-line">
+                  <div class="row"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 hidden-sm hidden-md hidden-lg text-left m-b-30">
+                {% if user.user.avatar %}
+                <img src="{{ user.user.avatar }}" alt="" width="150" height="150" class="img-thumbnail">
+                {% else %}
+                <img src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="" width="150" height="150" class="img-thumbnail">
+                {% endif %}
+              </div>
+              <div class="col-md-12">
+                <p><strong>Email:</strong> {{ user.user.email }}</p>
+                <p><strong>Phone:</strong> {{ user.user.phone_number }}</p>
+                <p><strong>SEO Professional:</strong>
+                  {% if  user.user.isPro %}
+                    Yes
+                  {% endif %}
+                </p>
+                <p>
+                  {% if user.user.bio %}
+                    {{ user.user.bio }}
+                  {% endif %}
+                  </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-5 col-sm-offset-1 m-b-30">
-      <p><strong>Name:</strong> {{ user.user.first_name }}</p>
-      <p><strong>Last Name:</strong> {{ user.user.last_name }}</p>
-      <p><strong>Email:</strong> {{ user.user.email }}</p>
-      <p><strong>Bio:</strong> {{ user.user.bio }}</p>
-
+    <div class="col sm-12 col-md-3">
+      <div class="panel panel-default clear">
+        <div class="panel-body">
+          <h2>Contact</h2>
+          <form id="contact_seo_pro_form" action="#">
+            <div class="form-group">
+              <label class="sr-only" for="id_first_name">First name</label>
+              <input class="form-control" id="id_first_name" maxlength="127" name="first_name" placeholder="First name" required="required" title="" type="text" aria-required="true">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="id_last_name">Last name</label>
+              <input class="form-control" id="id_last_name" maxlength="127" name="last_name" placeholder="Last name" required="required" title="" type="text" aria-required="true">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="id_location">Location</label>
+              <input class="form-control" id="id_location" maxlength="127" name="location" placeholder="Location" required="required" title="" type="text" aria-required="true" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="id_phone">Phone</label>
+              <input class="form-control" id="id_phone" maxlength="32" name="phone" placeholder="Phone" required="required" title="" type="text" aria-required="true">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="id_email">Email</label>
+              <input class="form-control" id="id_email" maxlength="127" name="email" placeholder="Email" required="required" title="" type="text" aria-required="true">
+            </div>
+            <button type="submit" class="btn btn-primary">Contact this person</button>
+          </form>
+        </div>
+      </div>
     </div>
-
   </div>
-
-
 {{ user.error }}
-
 </div>
 {% endblock content %}
 
