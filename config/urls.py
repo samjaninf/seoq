@@ -9,32 +9,36 @@ from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from balystic import views as balystic_views
 from seoq.core import views as core_views
-from seoq.users import views as users_views
-
-from django.views.decorators.csrf import ensure_csrf_cookie
 from seoq.payments_seoq import views as payments_seoq
 
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    url(r'^$', ensure_csrf_cookie(TemplateView.as_view(template_name='pages/home.html')),
+    url(r'^$', core_views.HomeView.as_view(template_name='pages/home.html'),
         name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'),
         name='about'),
-    # Needed because django-braces uses the account prefix for LoginRequiredMixin
-    url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='account_login'),
-    url(r'^accounts/login/$', balystic_views.LoginView.as_view(), name='balystic_login'),
-    url(r'^accounts/logout/$', balystic_views.LogoutView.as_view(), name='balystic_logout'),
-    url(r'^users/edit/(?P<username>[-\w.]+)/$', balystic_views.CommunityUserUpdate.as_view(),
+    # Needed cause django-braces uses the account prefix for LoginRequiredMixin
+    url(r'^accounts/login/$',
+        balystic_views.LoginView.as_view(), name='account_login'),
+    url(r'^accounts/login/$',
+        balystic_views.LoginView.as_view(), name='balystic_login'),
+    url(r'^accounts/logout/$',
+        balystic_views.LogoutView.as_view(), name='balystic_logout'),
+    url(r'^users/edit/(?P<username>[-\w.]+)/$',
+        balystic_views.CommunityUserUpdate.as_view(),
         name='balystic_user_update'),
-    url(r'^accounts/signup/$', balystic_views.UserSignupView.as_view(), name='balystic_signup'),
+    url(r'^accounts/signup/$',
+        balystic_views.UserSignupView.as_view(), name='balystic_signup'),
     url(r'^seo-directory/$', core_views.SEODirectoryUserList.as_view(),
         name='directory'),
 
-    url(r'^seo-directory/(?P<username>[\w.@+-]+)/$', core_views.PublicUserDetailView.as_view(),
+    url(r'^seo-directory/(?P<username>[\w.@+-]+)/$',
+        core_views.PublicUserDetailView.as_view(),
         name='public_profile'),
 
-    url(r'^website-owners/$', TemplateView.as_view(template_name='pages/owners.html'),
+    url(r'^website-owners/$',
+        TemplateView.as_view(template_name='pages/owners.html'),
         name='owners'),
     # url(r'^join/$', TemplateView.as_view(template_name='pages/join.html'),
     #     name='join'),
@@ -54,7 +58,10 @@ urlpatterns = [
 
     # User management
     url(r'^', include('seoq.users.urls', namespace='users')),
-    url(r'^qa/.*$', RedirectView.as_view(url='http://seoq.app.balystic.com/questions-and-answers/', permanent=False), name='balystic_qa'),
+    url(r'^qa/.*$',
+        RedirectView.as_view(
+            url='http://seoq.app.balystic.com/questions-and-answers/',
+            permanent=False), name='balystic_qa'),
     url(r'^', include('balystic.urls')),
     url(r'^', include('seoq.seoqtool.urls', namespace='seoqtool')),
     url(r'^api/', include('seoq.api.urls', namespace='api')),

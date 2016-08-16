@@ -7,7 +7,7 @@ class KeywordChecker(object):
     def checkKeyword(self, keyword):
         query = keyword
         stopwords = []
-        with open("stop_words.txt", "r") as ins:
+        with open("seoq/seoqtool/stop_words.txt", "r") as ins:
             for line in ins:
                 stopwords.append(line)
         querywords = query.split()
@@ -18,7 +18,3 @@ class KeywordChecker(object):
         result = ' '.join(resultwords)
 
         print result
-
-kcobj = KeywordChecker()
-kwp = raw_input('Enter your keyword phrase: ')
-kcobj.checkKeyword(kwp)

@@ -191,43 +191,46 @@ class QscraperSEOQTool(object):
         socialDict = self.JSONObject['social_data']
         face = socialDict['facebook'][0].split("/")
         page_id = str(face[-1])
-        api_endpoint = "https://graph.facebook.com/v2.4/"
-        fb_graph_url = api_endpoint+page_id+"?fields=likes&access_token="+access_token
+        api_endpoint = settings.FACEBOOK_API_URL
+        fb_graph_url = api_endpoint + page_id +\
+            "?fields=likes&access_token=" + access_token
         try:
-           api_request = urllib2.Request(fb_graph_url)
-           api_response = urllib2.urlopen(api_request)
-           try:
-               return json.loads(api_response.read())['likes']
-           except (ValueError, KeyError, TypeError):
-               return "JSON error"
+            api_request = urllib2.Request(fb_graph_url)
+            api_response = urllib2.urlopen(api_request)
+            try:
+                return json.loads(api_response.read())['likes']
+            except (ValueError, KeyError, TypeError):
+                return "JSON error"
 
         except IOError, e:
-           if hasattr(e, 'code'):
-               return e.code
-           elif hasattr(e, 'reason'):
-               return e.reason
+            if hasattr(e, 'code'):
+                return e.code
+            elif hasattr(e, 'reason'):
+                return e.reason
 
     def get_twitter_followers(self):
         socialDict = self.JSONObject['social_data']
         twitter = socialDict['twitter'][0].split("/")
         phrase = str(twitter[-1])
-        auth = tweepy.OAuthHandler('auqkcMIRZXXkZzJT8pfilYTst', '7WB7moJ5KGaFiLb2rffUcE7hardWA0hPJomuLxW8C4QaUJxZB6')
+        auth = tweepy.OAuthHandler(settings.TWEEPY_CONSUMER_TOKEN,
+                                   settings.TWEEPY_CONSUMER_SECRET)
         api = tweepy.API(auth)
         return api.get_user(phrase).followers_count
 
     def get_instagram_followers(self):
-        api_endpoint = "https://api.instagram.com/v1/tags/nofilter/media/recent?access_token="
-        fb_graph_url = api_endpoint+access_token
+        access_token = settings.FACEBOOK_ACCESS_TOKEN
+        api_endpoint = settings.INSTAGRAM_API_URL
+        fb_graph_url = api_endpoint + access_token
         try:
-           api_request = urllib2.Request(fb_graph_url)
-           api_response = urllib2.urlopen(api_request)
-           try:
-               return json.loads(api_response.read())['followers']
-           except (ValueError, KeyError, TypeError):
-               return "JSON error"
+            api_request = urllib2.Request(fb_graph_url)
+            api_response = urllib2.urlopen(api_request)
+            try:
+                return json.loads(api_response.read())['followers']
+            except (ValueError, KeyError, TypeError):
+                return "JSON error"
 
         except IOError, e:
-           if hasattr(e, 'code'):
-               return e.code
-           elif hasattr(e, 'reason'):
-               return e.reason
+            if hasattr(e, 'code'):
+                return e.code
+            elif hasattr(e, 'reason'):
+                return e.reason

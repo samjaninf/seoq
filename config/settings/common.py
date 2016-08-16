@@ -284,6 +284,10 @@ BALYSTIC_API_PATH = env('BALYSTIC_API_PATH')
 
 SEOQ_COMPANIES_URL = env('SEOQ_COMPANIES_URL',
                          default='https://www.seoq.com/seo-companies/')
+TWEEPY_CONSUMER_TOKEN = env('TWEEPY_CONSUMER_TOKEN')
+TWEEPY_CONSUMER_SECRET = env('TWEEPY_CONSUMER_SECRET')
+INSTAGRAM_API_URL = env('INSTAGRAM_API_URL')
+FACEBOOK_API_URL = env('FACEBOOK_API_URL')
 
 # PLANS Configuration
 # ------------------------------------------------------------------------------
