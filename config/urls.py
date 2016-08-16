@@ -64,7 +64,6 @@ urlpatterns = [
             permanent=False), name='balystic_qa'),
     url(r'^', include('balystic.urls')),
     url(r'^', include('seoq.seoqtool.urls', namespace='seoqtool')),
-    url(r'^api/', include('seoq.api.urls', namespace='api')),
     url(r'^', include('plans.urls')),
 
     # Your stuff: custom urls includes go here

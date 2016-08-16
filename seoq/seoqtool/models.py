@@ -14,28 +14,6 @@ REPORT_FREQUENCY = (
 )
 
 
-class Report(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    netloc = models.URLField()
-    keywords = models.CharField(max_length=250, blank=True, default='')
-    site_score = models.FloatField(default=0)
-    keyword_score = models.FloatField(default=0)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
-    custom_information = models.BooleanField(default=False)
-    analysis = JSONField(default={})
-
-    def get_absolute_url(self):
-        netloc = self.netloc.replace(
-            'www.', '').replace(
-            'https://', '').replace(
-            'http://', '').replace('/', '--')
-        return reverse(
-            'seoqtool:archive_report',
-            args=[netloc, self.created.strftime("%Y"),
-                  self.created.strftime("%m"),
-                  self.created.strftime("%d")])
-
-
 class ReportURL(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL)

@@ -67,7 +67,7 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
               }).error(function (data, status) {
 
               });
-      }, 1000);
+      }, 2000);
     }).error(function (data, status) {
       if (status==400) {
         $scope.bad_status_code = true;
