@@ -1,3 +1,5 @@
+import requests
+from django.conf import settings
 from django.http import Http404
 from django.utils import timezone
 from django.shortcuts import render
@@ -7,10 +9,12 @@ from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.views.generic import CreateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import AlgorithmVariable, Report, ReportURL
+from .models import AlgorithmVariable, ReportURL
+from django.contrib.auth import get_user_model
 from balystic.client import Client
 from .email_report import send_simple_email
-from django.contrib import messages
+
+User = get_user_model()
 
 
 class CreateVariableView(CreateView):
@@ -35,25 +39,23 @@ class ArchiveReportView(View):
 
     def get(self, request, netloc, year, month, day):
         netloc = str(netloc)
-        netloc = netloc.replace('--', '/')
-        context = {'netloc': netloc}
-        url = netloc.replace(
-            'www.', '').replace(
-            'https://', 'http://')
-        if 'http://' not in url:
-            url = 'http://' + url
-        try:
-            report = Report.objects.filter(
-                created__year=year,
-                created__month=month,
-                created__day=day,
-                netloc=netloc).latest('created')
-        except Report.DoesNotExist:
+        report = requests.get(
+            settings.QSCRAPER_URL + '/api/' +
+            netloc + '/' + year + '/' + month + '/' +
+            day + '/')
+        if report.status_code == 404:
             raise Http404
-        context['score'] = report.site_score
-        context['keyword_score'] = report.keyword_score
-        context['total_score'] = int(report.site_score +
-                                     report.keyword_score)
+        report = report.json()
+        netloc = netloc.replace('--', '/')
+        context = {
+            'netloc': netloc}
+        context['score'] = report['site_score']
+        context['keyword_score'] = report['keyword_score']
+        context['total_score'] = int(report['site_score'] +
+                                     report['keyword_score'])
+        if report['user']:
+            report['user'] = User.objects.get(
+                username=report['user'])
         context['report'] = report
         error = 0
         improve = 0
@@ -67,7 +69,7 @@ class ArchiveReportView(View):
             'content': {},
             'code': {},
         }
-        for key, value in report.analysis.items():
+        for key, value in report['analysis'].items():
             numeric_info[key]['total'] = len(value)
             local_error = 0
             local_success = 0
@@ -102,7 +104,9 @@ class ArchiveReportView(View):
         email = request.POST.get('email', None)
         if email is not None:
             send_simple_email(email, request.build_absolute_uri())
-            messages.success(request, 'Your report was sent successfully to %s.' % email)
+            messages.success(
+                request,
+                'Your report was sent successfully to %s.' % email)
         return redirect(reverse(
             'seoqtool:archive_report',
             args=[netloc, year, month, day]))
@@ -114,17 +118,14 @@ class ArchiveReportView(View):
                 self.request, 'you need a plan to perform this action')
             return redirect(reverse('pricing'))
         netloc = str(netloc)
-        netloc = netloc.replace('--', '/')
-        Report.objects.filter(
-            created__year=year,
-            created__month=month,
-            created__day=day,
-            netloc=netloc,
-            user=request.user).update(custom_information=True)
+        requests.put(
+            settings.QSCRAPER_URL + '/api/' +
+            netloc + '/' + year + '/' + month + '/' +
+            day + '/', data={'username': request.user.username})
         messages.success(request, 'You are sponsoring this report')
         return redirect(reverse(
             'seoqtool:archive_report',
-            args=[netloc.replace('/', '--'), year, month, day]))
+            args=[netloc, year, month, day]))
 
 
 class CreateReportURLView(LoginRequiredMixin, CreateView):
