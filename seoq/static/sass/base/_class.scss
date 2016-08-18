@@ -150,11 +150,10 @@ hr{
   height: calc(100vh - 90px);
   min-height: 570px;
 }
-#form-login{
-  .form-control-feedback{
-    top: 25px !important;
-  }
+.form-control-feedback{
+  top: 25px !important;
 }
+
 .responsive, #item-responsive{
   @media(min-width:$screen-md-min){
     display: none !important;

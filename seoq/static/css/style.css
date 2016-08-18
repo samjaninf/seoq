@@ -205,7 +205,7 @@ hr {
   height: calc(100vh - 90px);
   min-height: 570px; }
 
-#form-login .form-control-feedback {
+.form-control-feedback {
   top: 25px !important; }
 
 @media (min-width: 992px) {
@@ -2899,7 +2899,7 @@ select[multiple].input-lg,
 
 .form-control-feedback {
   position: absolute;
-  top: 0;
+  top: 27px;
   right: 0;
   z-index: 2;
   display: block;
