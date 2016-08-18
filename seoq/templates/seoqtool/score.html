@@ -145,12 +145,12 @@
         <span class="text-muted">Get help from </span>
         {% if report.custom_information %}
           {% if report.user.first_name %}
-            <a class="blue-link" href="">{{ report.user.first_name }} {{ report.user.last_name }}</a>
+            <a class="blue-link" href="{% url 'public_profile' report.user.username %}">{{ report.user.first_name }} {{ report.user.last_name }}</a>
           {% else %}
-            <a class="blue-link" href="">{{ report.user.username }}</a>
+            <a class="blue-link" href="{% url 'public_profile'  report.user.username %}">{{ report.user.username }}</a>
           {% endif %}
         {% else %}
-        <a class="blue-link" href="">SEO Professionals</a>
+        <a class="blue-link" href="{% url 'directory' %}">SEO Professionals</a>
         {% endif %}
       </p>
     </div>
