@@ -40,7 +40,14 @@
             </div>
             <div class="media-body">
               <div class="col-sm-12">
-                <h2>{{ user.user.first_name }} {{ user.user.last_name }}</h2>
+                <h2>
+                {% if user.user.first_name and user.user.last_name %}
+                  {{ user.user.first_name }} {{ user.user.last_name }}
+                {% else %}
+                  {{ user.user.username }}
+                {% endif %}
+                </h2>
+                <small>{{ request.build_absolute_uri }}</small>
                 <div class="col-md-12 border-bottom-line">
                   <div class="row"></div>
                 </div>
@@ -53,16 +60,32 @@
                 {% endif %}
               </div>
               <div class="col-md-12">
+              {% if user.user.email %}
                 <p><strong>Email:</strong> {{ user.user.email }}</p>
-                <p><strong>Phone:</strong> {{ user.user.phone_number }}</p>
+              {% endif %}
+              {% if user.user.phone_number or user.user.generics.phone %}
+                <p><strong>Phone:</strong>
+                {% if user.user.phone_number %}
+                  {{ user.user.phone_number }}
+                {% else %}
+                  {{user.user.generics.phone}}
+                {% endif %}</p>
+              {% endif %}
                 <p><strong>SEO Professional:</strong>
                   {% if  user.user.isPro %}
                     Yes
+                  {% else %}
+                    No
                   {% endif %}
                 </p>
+                <p><strong>Location:</strong> {{ user.user.generics.location }}</p>
                 <p>
                   {% if user.user.bio %}
                     {{ user.user.bio }}
+                  {% else %}
+                    {% if user.user.generics.about %}
+                      {{ user.user.generics.about }}
+                    {% endif %}
                   {% endif %}
                   </p>
               </div>
