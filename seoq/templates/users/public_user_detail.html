@@ -78,13 +78,15 @@
                     No
                   {% endif %}
                 </p>
-                <p><strong>Location:</strong> {{ user.user.generics.location }}</p>
+                {% if user.user.generics.location %}
+                  <p><strong>Location:</strong> {{ user.user.generics.location }}</p>
+                {% endif %}
                 <p>
                   {% if user.user.bio %}
-                    {{ user.user.bio }}
+                    {{ user.user.bio|safe }}
                   {% else %}
                     {% if user.user.generics.about %}
-                      {{ user.user.generics.about }}
+                      {{ user.user.generics.about|safe }}
                     {% endif %}
                   {% endif %}
                   </p>
