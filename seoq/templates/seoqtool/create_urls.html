@@ -1,14 +1,23 @@
 {% extends "base.html" %}
-
+{% load i18n staticfiles %}
+{% load crispy_forms_tags %}
+{% block title %}Create periodic reports{% endblock title %}
 {% block content %}
-
-{% for report_url in user_urls %}
-	<p>{{ report_url.url }} - {{report_url.keywords}} - {{ report_url.frequency }}</p>
-{% endfor %}
-* keywords should be separated by commas
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Create" />
-</form>
-	
+<section class="create-url p-t-50 p-b-70">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <h2 class="m-b-30">Create periodic reports</h2>
+        {% for report_url in user_urls %}
+        	<p>{{ report_url.url }} - {{report_url.keywords}} - {{ report_url.frequency }}</p>
+        {% endfor %}
+        <p>* keywords should be separated by commas</p>
+        <form action="" method="post">{% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}

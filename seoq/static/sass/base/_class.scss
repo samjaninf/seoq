@@ -150,11 +150,10 @@ hr{
   height: calc(100vh - 90px);
   min-height: 570px;
 }
-#form-login{
-  .form-control-feedback{
-    top: 25px !important;
-  }
+.form-control-feedback{
+  top: 25px !important;
 }
+
 .responsive, #item-responsive{
   @media(min-width:$screen-md-min){
     display: none !important;
@@ -273,4 +272,28 @@ hr{
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -o-filter: grayscale(100%);
+}
+.border-bottom-line{
+  border-bottom:1px solid #ddd;
+  margin-bottom: 1em;
+}
+.list-inline{
+  display: inline-block;
+  vertical-align: middle;
+  margin:0px;
+  i{
+    font-size: 3em;
+  }
+}
+.blue-face {
+  color: #2E609B;
+}
+.blue-twitter {
+  color: #55d9ff;
+}
+.blue-linkedin {
+  color: #1a6da1;
+}
+.red-gplus {
+  color: #d34836;
 }

@@ -56,11 +56,10 @@ djangorestframework==3.4.0
 celery==3.1.23
 django-celery==3.1.17
 django-supervisor==0.3.4
-django-balystic==0.1.17
-
+django-balystic==0.1.19
 
 # django plans
-django-plans==0.8.11
+django-plans==0.8.12
 django-payments==0.9.4
 django-ordered-model==1.2.1
 

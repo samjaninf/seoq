@@ -16,7 +16,7 @@
       {% endif %}
       <br>
       {% if request.user.is_authenticated %}
-        
+
       {% if user.user.username == request.user.username %}
         <a class="btn btn-primary m-t-20" href="{% url 'balystic_user_update' user.user.username %}">Update profile</a>
       {% endif %}
@@ -26,7 +26,7 @@
       </a>
       {% endif %}
       {% endif %}
-      
+
     </div>
     <div class="col-sm-5 col-sm-offset-1 m-b-30">
       <p><strong>Name:</strong> {{ user.user.first_name }}</p>

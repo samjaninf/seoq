@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from django.views.generic.base import RedirectView
 from balystic.client import Client
 from django.http import Http404
@@ -27,6 +27,19 @@ class SEODirectoryUserList(View):
         return render(request, self.template_name, context)
 
 
+class PublicUserDetailView(View):
+    template_name = 'users/public_user_detail.html'
+
+    def get(self, request, username):
+        user = Client().get_user_detail(username)
+        if "error" in user:
+            raise Http404
+        return render(
+            request,
+            self.template_name,
+            {'user': user})
+
+
 class ArchivedBlogRedirectView(RedirectView):
     """
     Redirect Original blog entries patterns to the new one
@@ -52,3 +65,10 @@ class CompaniesRedirectView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         slug = self.kwargs.get('slug')
         return settings.SEOQ_COMPANIES_URL + slug
+
+
+class HomeView(TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['qscraper_url'] = settings.QSCRAPER_URL
+        return context

@@ -37,7 +37,14 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     {% endcompress %}
     {% endblock %}
-
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-3392604-7','auto');ga('send','pageview');
+    </script>
   </head>
   <body class="{% block page_class %}{% endblock page_class %}">
     <nav class="navbar navbar-seoq {% block nav_class %}{% endblock nav_class %}">
@@ -98,8 +105,8 @@
             <!-- dropdown-menu -->
             <li class="responsive-big p-l-10">
               <a class="dropdown-toggle p-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="user-dropdown">
-                {% if object.user.avatar %}
-                  <img src="{{ object.user.avatar }}" alt="Profile picture" height="50" width="50" class="img-responsive img-circle">
+                {% if request.user.generics.avatar %}
+                  <img src="{{ request.user.generics.avatar }}" alt="Profile picture" class="avatar img-circle" width="44px" height="44px">
                 {% else %}
                   <img src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="Profile picture" class="img-responsive img-circle" width="44px" height="44px">
                 {% endif %}
@@ -270,6 +277,7 @@
     {% endblock javascript %}
     {% block extra_javascript %}
     {% endblock extra_javascript %}
+
   </body>
 </html>
 

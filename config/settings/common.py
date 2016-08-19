@@ -272,18 +272,14 @@ CELERYBEAT_SCHEDULE = {
 }
 
 BASE_URL = env('BASE_URL', default='https://www.seoq.com')
-QSCRAPER_URL = env('QSCRAPER_URL', default='http://qscraper.7dhub.com/')
-MAJESTIC_URL = env('MAJESTIC_URL', default='https://api.majestic.com/api_command')
-MAJESTIC_API_KEY = env('MAJESTIC_API_KEY', default='')
-GOOGLE_PLACES_API_KEY = env('GOOGLE_PLACES_API_KEY', default='')
-GOOGLE_PLACES_URL = env('GOOGLE_PLACES_URL', default='https://maps.googleapis.com/maps/api/place/textsearch/json')
-MAX_DEPTH_VALUE = env('MAX_DEPTH_VALUE', default=2)
+QSCRAPER_URL = env('QSCRAPER_URL')
 
 BALYSTIC_API_TOKEN = env('BALYSTIC_API_TOKEN')
 BALYSTIC_API_PATH = env('BALYSTIC_API_PATH')
 
 SEOQ_COMPANIES_URL = env('SEOQ_COMPANIES_URL',
                          default='https://www.seoq.com/seo-companies/')
+
 
 # PLANS Configuration
 # ------------------------------------------------------------------------------
@@ -301,8 +297,6 @@ PLANS_INVOICE_ISSUER = {
 }
 # PLANS_TAX_COUNTRY='US'
 SEND_PLANS_EMAILS = False
-
-FACEBOOK_ACCESS_TOKEN = env('FACEBOOK_ACCESS_TOKEN')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
