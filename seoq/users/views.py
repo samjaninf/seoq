@@ -70,5 +70,6 @@ class UserListTempView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(UserListTempView, self).get_context_data(**kwargs)
-        context['users'] = User.objects.all().order_by('-view_count')[:3]
+        params = {'sort_type': 'view_count'}
+        context['users'] = Client().get_users(params)
         return context
