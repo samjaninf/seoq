@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
 from django.views.generic.base import RedirectView
 from balystic.client import Client
@@ -7,6 +7,7 @@ from django.http import Http404
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from seoq.users.models import User
+import json
 
 
 class SEODirectoryUserList(View):
@@ -34,14 +35,18 @@ class PublicUserDetailView(View):
 
     def get(self, request, username):
         user = Client().get_user_detail(username)
+        data = user['user'].copy()
+        data['generics'] = json.loads(data['generics'])
+        data.pop('avatar')
+        data.pop('username')
         if "error" in user:
             raise Http404
         try:
-            user_object = User.objects.get(username=user['user']['username'])
-            user_object.view_count += 1
-            user_object.save()
-        except User.DoesNotExist:
-            raise Http404
+            data['generics']['view_count'] += 1
+        except (KeyError, TypeError) as e:
+            data['generics']['view_count'] = 1
+        data['generics']=json.dumps(data['generics'])
+        Client().update_user(user['user']['username'], data)
         return render(
             request,
             self.template_name,
@@ -87,4 +92,15 @@ class HomeView(TemplateView):
 #    Overrides the default behaviour to include site specific
 #    data in the generics field.
 #    """
-#    def post(
+#    def get(self, request, username):
+#        data = self.client.get_user_detail(username)
+#        form = UpdateUserForm(initial=data['user'])
+#        return render(request, self.template_name, {'form': form})
+#
+#    def post(self, request, username):
+#        form = UpdateUserForm(request.POST)
+#        if form.is_valid():
+#            self.client.update_user(username, form.cleaned_data)
+#            return redirect(reverse('balystic_user_detail',
+#                            kwargs={'username': username}))
+#        return render(request, self.template_name, {'form': form})
