@@ -36,7 +36,9 @@ class PublicUserDetailView(View):
     def get(self, request, username):
         user = Client().get_user_detail(username)
         data = user['user'].copy()
-        data['generics'] = json.loads(data['generics'])
+        print data['generics'], 'asdasdasdadsda', type(data['generics'])
+        if not isinstance(data['generics'], dict):
+            data['generics'] = json.loads(data['generics'])
         data.pop('avatar')
         data.pop('username')
         if "error" in user:
