@@ -32,6 +32,8 @@ class PublicUserDetailView(View):
 
     def get(self, request, username):
         user = Client().get_user_detail(username)
+        if "error" in user:
+            raise Http404
         return render(
             request,
             self.template_name,

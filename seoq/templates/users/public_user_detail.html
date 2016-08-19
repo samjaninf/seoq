@@ -6,7 +6,7 @@
 {% block content %}
 <div class="container p-t-50">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-md-8 col-md-offset-2">
       <label class="control-label">Share this profile on:</label>
 
       <ul class="list-inline">
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-12 col-md-9">
+    <div class="col-sm-12 col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="media">
@@ -40,7 +40,14 @@
             </div>
             <div class="media-body">
               <div class="col-sm-12">
-                <h2>{{ user.user.first_name }} {{ user.user.last_name }}</h2>
+                <h2>
+                {% if user.user.first_name and user.user.last_name %}
+                  {{ user.user.first_name }} {{ user.user.last_name }}
+                {% else %}
+                  {{ user.user.username }}
+                {% endif %}
+                </h2>
+                <small>{{ request.build_absolute_uri }}</small>
                 <div class="col-md-12 border-bottom-line">
                   <div class="row"></div>
                 </div>
@@ -53,16 +60,34 @@
                 {% endif %}
               </div>
               <div class="col-md-12">
+              {% if user.user.email %}
                 <p><strong>Email:</strong> {{ user.user.email }}</p>
-                <p><strong>Phone:</strong> {{ user.user.phone_number }}</p>
+              {% endif %}
+              {% if user.user.phone_number or user.user.generics.phone %}
+                <p><strong>Phone:</strong>
+                {% if user.user.phone_number %}
+                  {{ user.user.phone_number }}
+                {% else %}
+                  {{user.user.generics.phone}}
+                {% endif %}</p>
+              {% endif %}
                 <p><strong>SEO Professional:</strong>
                   {% if  user.user.isPro %}
                     Yes
+                  {% else %}
+                    No
                   {% endif %}
                 </p>
+                {% if user.user.generics.location %}
+                  <p><strong>Location:</strong> {{ user.user.generics.location }}</p>
+                {% endif %}
                 <p>
                   {% if user.user.bio %}
-                    {{ user.user.bio }}
+                    {{ user.user.bio|safe }}
+                  {% else %}
+                    {% if user.user.generics.about %}
+                      {{ user.user.generics.about|safe }}
+                    {% endif %}
                   {% endif %}
                   </p>
               </div>
@@ -70,39 +95,120 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="col sm-12 col-md-3">
-      <div class="panel panel-default clear">
+      <div class="panel panel-default">
         <div class="panel-body">
-          <h2>Contact</h2>
-          <form id="contact_seo_pro_form" action="#">
-            <div class="form-group">
-              <label class="sr-only" for="id_first_name">First name</label>
-              <input class="form-control" id="id_first_name" maxlength="127" name="first_name" placeholder="First name" required="required" title="" type="text" aria-required="true">
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="id_last_name">Last name</label>
-              <input class="form-control" id="id_last_name" maxlength="127" name="last_name" placeholder="Last name" required="required" title="" type="text" aria-required="true">
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="id_location">Location</label>
-              <input class="form-control" id="id_location" maxlength="127" name="location" placeholder="Location" required="required" title="" type="text" aria-required="true" autocomplete="off">
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="id_phone">Phone</label>
-              <input class="form-control" id="id_phone" maxlength="32" name="phone" placeholder="Phone" required="required" title="" type="text" aria-required="true">
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="id_email">Email</label>
-              <input class="form-control" id="id_email" maxlength="127" name="email" placeholder="Email" required="required" title="" type="text" aria-required="true">
-            </div>
-            <button type="submit" class="btn btn-primary">Contact this person</button>
-          </form>
+          <div class="col-md-4">
+            <h3>{% trans "Digital Properties" %}</h3>
+            <ul>
+          {% if  user.user.generics.website_url  or  user.user.facebook or user.user.twitter or user.user.linkedin or user.user.generics.google_url%}
+              {% if user.user.generics.website_url %}
+              <li>
+                <i class="fa fa-globe fa-lg fa-fw"></i> <a href="{{ user.user.generics.website_url }}" target="_blank">
+                  Website</a>
+              </li>
+              {% endif %}
+              {% if user.user.facebook %}
+              <li>
+                <i class="fa fa-facebook-square fa-lg fa-fw"></i> <a href="{{ user.user.facebook }}" target="_blank">
+                  Facebook</a>
+              </li>
+              {% endif %}
+              {% if user.user.twitter %}
+              <li>
+                <i class="fa fa-twitter-square fa-lg fa-fw"></i> <a href="{{ user.user.twitter }}" target="_blank">
+                  Twitter</a>
+              </li>
+              {% endif %}
+              {% if user.user.linkedin %}
+              <li>
+                <i class="fa fa-linkedin-square fa-lg fa-fw"></i> <a href="{{ user.user.linkedin }}" target="_blank">
+                  Linkedin</a>
+              </li>
+              {% endif %}
+              {% if user.user.generics.google_url  %}
+              <li>
+                  <i class="fa fa-google-plus-square fa-lg fa-fw"></i> <a href="{{ user.user.generics.google_url }}" target="_blank">
+                  Google+</a>
+              </li>
+              {% endif %}
+            </ul>
+          {% else %}
+            <li>
+              <i class="fa fa-exclamation-circle fa-lg fa-fw"></i>
+              {% trans "Not filled yet" %}
+            </li>
+          {% endif %}
+          </div>
+
+          <div class="col-md-4">
+            <h3>{% trans "Areas of Expertise" %}</h3>
+            <ul>
+              {% for area in user.user.generics.areas_of_expertise %}
+                <li>
+                  <i class="fa fa-check fa-fw fa-lg"></i>{{ area }} <a href="#"></a>
+                </li>
+              {% empty %}
+                <li>
+                  <i class="fa fa-exclamation-circle fa-lg fa-fw"></i>
+                  {% trans "Not filled yet" %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <h3>{% trans "Languages" %}</h3>
+            <ul>
+              {% for language in user.user.generics.languages %}
+                <li>
+                  <i class="fa fa-globe fa-fw fa-lg"></i> {{ language }}<a href="#"></a>
+                </li>
+              {% empty %}
+                <li>
+                  <i class="fa fa-exclamation-circle fa-lg fa-fw"></i>
+                  {% trans "Not filled yet" %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
+
+    {% comment %}
+      <div class="col sm-12 col-md-3">
+        <div class="panel panel-default clear">
+          <div class="panel-body">
+            <h2>Contact</h2>
+            <form id="contact_seo_pro_form" action="#">
+              <div class="form-group">
+                <label class="sr-only" for="id_first_name">First name</label>
+                <input class="form-control" id="id_first_name" maxlength="127" name="first_name" placeholder="First name" required="required" title="" type="text" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="id_last_name">Last name</label>
+                <input class="form-control" id="id_last_name" maxlength="127" name="last_name" placeholder="Last name" required="required" title="" type="text" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="id_location">Location</label>
+                <input class="form-control" id="id_location" maxlength="127" name="location" placeholder="Location" required="required" title="" type="text" aria-required="true" autocomplete="off">
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="id_phone">Phone</label>
+                <input class="form-control" id="id_phone" maxlength="32" name="phone" placeholder="Phone" required="required" title="" type="text" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="id_email">Email</label>
+                <input class="form-control" id="id_email" maxlength="127" name="email" placeholder="Email" required="required" title="" type="text" aria-required="true">
+              </div>
+              <button type="submit" class="btn btn-primary">Contact this person</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endcomment %}
+
   </div>
-{{ user.error }}
 </div>
 {% endblock content %}
 
