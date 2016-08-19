@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView
 from django.views.generic.base import RedirectView
 from balystic.client import Client
+from balystic.views import CommunityUserUpdate as BalysticUserUpdate
 from django.http import Http404
 from django.core.urlresolvers import reverse
 from django.conf import settings
@@ -36,7 +37,7 @@ class PublicUserDetailView(View):
         if "error" in user:
             raise Http404
         try:
-            user_object = User.objects.get(username=username)
+            user_object = User.objects.get(username=user['user']['username'])
             user_object.view_count += 1
             user_object.save()
         except User.DoesNotExist:
@@ -79,3 +80,11 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['qscraper_url'] = settings.QSCRAPER_URL
         return context
+
+
+#class CommunityUserUpdate(BalysticUserUpdate):
+#    """
+#    Overrides the default behaviour to include site specific
+#    data in the generics field.
+#    """
+#    def post(
