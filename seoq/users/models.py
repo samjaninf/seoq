@@ -26,6 +26,7 @@ class User(AbstractUser):
         null=True,
         upload_to='profile/')
     generics = JSONField(default=dict)
+    view_count = models.PositiveIntegerField(default=0)
     def __str__(self):
         return self.username
 

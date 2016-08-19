@@ -5,6 +5,7 @@ from balystic.client import Client
 from django.http import Http404
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from seoq.users.models import User
 
 
 class SEODirectoryUserList(View):
@@ -33,6 +34,12 @@ class PublicUserDetailView(View):
     def get(self, request, username):
         user = Client().get_user_detail(username)
         if "error" in user:
+            raise Http404
+        try:
+            user_object = User.objects.get(username=username)
+            user_object.view_count += 1
+            user_object.save()
+        except User.DoesNotExist:
             raise Http404
         return render(
             request,
