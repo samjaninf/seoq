@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+
+{% block title %}SEO Directory{% endblock title %}
+{% block page_class %}user-directory{% endblock page_class %}
+
+{% block meta %}
+{% trans "" as title %}
+{% trans "" as description %}
+{% static "images/facebook-image-post.jpg" as image%}
+{% include "include/metatags.html" with title=title description=description image=image %}
+{% endblock meta %}
+
+{% block content %}
+<div class="container">
+  <h3>SEOQ Users Directory</h3>
+  <div class="search">
+    <div class="row">
+      <div class="col-md-6 p-20">
+        <form action="" method="get" class="form-inline ng-pristine ng-valid">
+          <input id="id_q" name="q" type="text" placeholder="Search by name " class="form-control"
+          value="{% if query_term %}{{ query_term }}{% endif %}">
+          <input type="submit" value="Search" class="btn btn-primary">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  {% for object in users %}
+      <!-- profesional-card -->
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="media">
+              <div class="media-left">
+                <a href="{% url 'public_profile' object.username %}">
+                  {% if object.avatar %}
+                    <img src="{{ object.avatar }}" alt="Avatar" class="media-object img-circle center-block" width="120" height="120">
+                  {% else %}
+                    <img class="media-object img-circle center-block" src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="Placeholder" width="120" height="120">
+                  {% endif %}
+                </a>
+              </div>
+              <div class="media-body">
+                <a href="{% url 'public_profile' object.username %}">
+                  {% if object.first_name and object.last_name %}
+                    <h4 class="media-heading">{{ object.first_name }} {{ object.last_name }}</h4>
+                  {% else %}
+                    <h4 class="media-heading">{{ object.username }}</h4>
+                  {% endif %}
+                </a>
+                {% comment %}
+                  <span>Put title here</span>
+                {% endcomment %}
+                {% if object.bio %}
+                  <p class="text-muted">{{ object.bio|truncatechars:100  }}</p>
+                {% endif %}
+                {% if  object.facebook or object.twitter or object.linkedin %}
+                <span class="text-follow">Follow:</span>
+                <span class="icons-social">
+                {% if object.facebook %}
+                  <a href="{{ object.facebook }}">
+                    <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+                  </a>
+                {% endif %}
+                {% if object.twitter %}
+                  <a href="{{ object.twitter }}">
+                    <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                  </a>
+                {% endif %}
+                {% if object.linkedin %}
+                  <a href="{{ object.linkedin }}">
+                    <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                  </a>
+                {% endif %}
+                </span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end profesional-card -->
+  {% empty %}
+    <div class="col-md-12">
+      <h3>Sorry, There are no results</h3>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock content %}
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object img-circle" src="{% static 'images/person_placeholder.jpg' %}" alt="Placeholder" width="120" height="120">
+              </a>
+            </div>
+            <div class="media-body">
+              <a href="#">
+                <h4 class="media-heading">Name of user</h4>
+              </a>
+              <span>Put title here</span>
+              <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis cum quidem consequuntur aliquid. Fuga nam mollitia dolorum voluptates ipsam assumenda tempora, quasi, illo ab earum possimus eveniet, necessitatibus esse amet.</p>
+              <span class="text-follow">Follow:</span>
+              <span class="icons-social">
+                <a href="#">
+                  <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object img-circle" src="{% static 'images/person_placeholder.jpg' %}" alt="Placeholder" width="120" height="120">
+              </a>
+            </div>
+            <div class="media-body">
+              <a href="#">
+                <h4 class="media-heading">Name of user</h4>
+              </a>
+              <span>Put title here</span>
+              <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis cum quidem consequuntur aliquid. Fuga nam mollitia dolorum voluptates ipsam assumenda tempora, quasi, illo ab earum possimus eveniet, necessitatibus esse amet.</p>
+              <span class="text-follow">Follow:</span>
+              <span class="icons-social">
+                <a href="#">
+                  <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object img-circle" src="{% static 'images/person_placeholder.jpg' %}" alt="Placeholder" width="120" height="120">
+              </a>
+            </div>
+            <div class="media-body">
+              <a href="#">
+                <h4 class="media-heading">Name of user</h4>
+              </a>
+              <span>Put title here</span>
+              <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis cum quidem consequuntur aliquid. Fuga nam mollitia dolorum voluptates ipsam assumenda tempora, quasi, illo ab earum possimus eveniet, necessitatibus esse amet.</p>
+              <span class="text-follow">Follow:</span>
+              <span class="icons-social">
+                <a href="#">
+                  <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object img-circle" src="{% static 'images/person_placeholder.jpg' %}" alt="Placeholder" width="120" height="120">
+              </a>
+            </div>
+            <div class="media-body">
+              <a href="#">
+                <h4 class="media-heading">Name of user</h4>
+              </a>
+              <span>Put title here</span>
+              <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis cum quidem consequuntur aliquid. Fuga nam mollitia dolorum voluptates ipsam assumenda tempora, quasi, illo ab earum possimus eveniet, necessitatibus esse amet.</p>
+              <span class="text-follow">Follow:</span>
+              <span class="icons-social">
+                <a href="#">
+                  <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object img-circle" src="{% static 'images/person_placeholder.jpg' %}" alt="Placeholder" width="120" height="120">
+              </a>
+            </div>
+            <div class="media-body">
+              <a href="#">
+                <h4 class="media-heading">Name of user</h4>
+              </a>
+              <span>Put title here</span>
+              <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis cum quidem consequuntur aliquid. Fuga nam mollitia dolorum voluptates ipsam assumenda tempora, quasi, illo ab earum possimus eveniet, necessitatibus esse amet.</p>
+              <span class="text-follow">Follow:</span>
+              <span class="icons-social">
+                <a href="#">
+                  <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
