@@ -19,7 +19,7 @@
     {% if request.user.is_authenticated %}
       <div class="row">
         <div class="col-md-12 text-md-right text-center-responsive">
-          <a class="btn btn-primary" href="http://seoq.app.balystic.com/blog/new-entry/">Write a blog entry</a>
+          <a class="btn btn-primary" href="{{ balystic_path }}/blog/new-entry/">Write a blog entry</a>
         </div>
       </div>
     {% endif %}
