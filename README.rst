@@ -79,14 +79,17 @@ Vagrant
     # This will download an ubuntu box, which could take a little
     # After you are done with that, you can go into the box with:
     vagrant ssh
+    
     # Install ansible with:
     sudo apt-get update
     sudo apt-get install python-pip libffi-dev libssl-dev python-dev
     sudo pip install ansible==2.0.2
     sudo pip install setuptools==11.3
+    
     # Now you run the playbook to setup your django project:
     cd /vagrant/
     ansible-playbook playbook.yml
+    
     # Once you have the instance running, you need to activate the virtualenv:
     source /home/vagrant/.envs/seoq/bin/activate
     # To run the server, run:
