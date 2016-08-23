@@ -1,10 +1,12 @@
 SEO Quotient
 ==============================
 
-Version 0.1.1
+Version 3.1.1
 
 Is an online community that provides information, education, and tools for website owners, search engine optimization (SEO) professionals, digital marketing professionals, and students aspiring to enhance their careers in SEO and digital marketing.
 
+.. image:: https://codeship.com/projects/b8565410-45f6-0134-7e3d-0aad117e5610/status?branch=master
+    :target: https://codeship.com/projects/168778
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
      :target: https://github.com/pydanny/cookiecutter-django/
