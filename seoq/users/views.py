@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
-from django.views.generic import DetailView, ListView, RedirectView, UpdateView, View
+from django.views.generic import DetailView, ListView, RedirectView, UpdateView, View, TemplateView
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from balystic.client import Client
@@ -63,3 +63,13 @@ class UserListView(LoginRequiredMixin, ListView):
     # These next two lines tell the view to index lookups by username
     slug_field = 'username'
     slug_url_kwarg = 'username'
+
+
+class UserListTempView(TemplateView):
+    template_name = 'pages/users_directory_temp.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UserListTempView, self).get_context_data(**kwargs)
+        params = {'sort_type': 'view_count'}
+        context['users'] = Client().get_users(params)
+        return context

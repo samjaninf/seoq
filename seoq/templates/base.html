@@ -121,6 +121,9 @@
             </li>
             <!-- dropdown-menu -->
             {% else %}
+            <li>
+              <a href="{% url 'balystic_login' %}">{% trans "Log in" %}</a>
+            </li>
             <li class="hidden-xs hidden-sm">
               <a href="{% url 'balystic_signup' %}" class="btn btn-lg btn-seoq">
                 Join now
