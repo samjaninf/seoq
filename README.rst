@@ -1,10 +1,12 @@
 SEO Quotient
 ==============================
 
-Version 0.1.1
+Version 3.1.1
 
 Is an online community that provides information, education, and tools for website owners, search engine optimization (SEO) professionals, digital marketing professionals, and students aspiring to enhance their careers in SEO and digital marketing.
 
+.. image:: https://codeship.com/projects/b8565410-45f6-0134-7e3d-0aad117e5610/status?branch=master
+    :target: https://codeship.com/projects/168778
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
      :target: https://github.com/pydanny/cookiecutter-django/
@@ -77,14 +79,17 @@ Vagrant
     # This will download an ubuntu box, which could take a little
     # After you are done with that, you can go into the box with:
     vagrant ssh
+    
     # Install ansible with:
     sudo apt-get update
     sudo apt-get install python-pip libffi-dev libssl-dev python-dev
     sudo pip install ansible==2.0.2
     sudo pip install setuptools==11.3
+    
     # Now you run the playbook to setup your django project:
     cd /vagrant/
     ansible-playbook playbook.yml
+    
     # Once you have the instance running, you need to activate the virtualenv:
     source /home/vagrant/.envs/seoq/bin/activate
     # To run the server, run:
