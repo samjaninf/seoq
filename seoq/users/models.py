@@ -8,10 +8,25 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from plans.signals import activate_user_plan
 from django.db.models import signals
-from django.contrib.postgres.fields import JSONField
+from django.contrib.postgres.fields import JSONField, ArrayField
 
 @python_2_unicode_compatible
 class User(AbstractUser):
+
+    EXPERTISE_CHOICES = (
+        ('Technical SEO', 'Technical SEO'),
+        ('Writer/Blogger', 'Writer/Blogger'),
+        ('Google Analytics', 'Google Analytics'),
+        ('Link Builder', 'Link Builder'),
+        ('SEO Training', 'SEO Training'),
+        ('Social Media', 'Social Media'),
+    )
+
+    LANGUAGE_CHOICES = (
+        ('English', 'English'),
+        ('French', 'French'),
+        ('Spanish', 'Spanish'),
+    )
 
     # First Name and Last Name do not cover name patterns
     # around the globe.
@@ -26,6 +41,24 @@ class User(AbstractUser):
         null=True,
         upload_to='profile/')
     generics = JSONField(default=dict)
+    website_url = models.URLField(blank=True, max_length=255)
+    website_url1 = models.URLField(blank=True, max_length=255)
+    website_url2 = models.URLField(blank=True, max_length=255)
+    website_url3 = models.URLField(blank=True, max_length=255)
+    website_url4 = models.URLField(blank=True, max_length=255)
+    areas_of_expertise = ArrayField(
+            models.CharField(max_length=50, blank=True,
+                             choices=EXPERTISE_CHOICES, default=''),
+            default=list
+        )
+    areas_of_expertise_other = models.CharField(max_length=50, blank=True, default='')
+    languages = ArrayField(
+            models.CharField(max_length=50, blank=True,
+                             choices=LANGUAGE_CHOICES, default=''),
+            default=list
+        )
+    languages_other = models.CharField(max_length=50, blank=True, default='')
+
     def __str__(self):
         return self.username
 
