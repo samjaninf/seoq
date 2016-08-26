@@ -13,12 +13,20 @@
           <input type="hidden" name="upvote" value="on">
           <button type="submit" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Vote Up this answer"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
         </form>
-          <form action="{% url 'balystic_qa_vote_question' question.pk %}" method="POST">
+        <form action="{% url 'balystic_qa_vote_question' question.pk %}" method="POST">
           {% csrf_token %}
           <input type="hidden" name="next" value="{{ request.path }}">
           <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Vote Down this answer"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
         </form>
       </div>
+    {% endif %}
+    {% if request.user.is_authenticated and question.user.username == request.user.username %}
+
+      <form action="{% url 'balystic_qa_delete_question' question.pk %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Delete Question" />
+      </form>
+
     {% endif %}
     <div class="col-sm-10">
       <small class="pull-right">Posted by {{ question.user.username }}, {{ question.pub_date }}</small>
