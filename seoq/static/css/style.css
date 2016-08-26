@@ -8396,6 +8396,8 @@ section.scan-website {
     font-size: 15px;
     border-radius: 2px;
     background: #F0F4F5; }
+  section.scan-website .col-md-10 .col-sm-6 form .form-group .form-control-feedback {
+    top: 29px !important; }
   section.scan-website .col-md-10 .col-sm-6 form #keywords {
     position: relative; }
     section.scan-website .col-md-10 .col-sm-6 form #keywords .pop-over {
