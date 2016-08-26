@@ -100,28 +100,29 @@
           <div class="col-md-4">
             <h3>{% trans "Digital Properties" %}</h3>
             <ul>
-          {% if  user.user.generics.website_url  or  user.user.facebook or user.user.twitter or user.user.linkedin or user.user.generics.google_url%}
-              {% if user.user.generics.website_url %}
+              {{ user_local.website_url }}
+          {% if  user_local.website_url  or  user_local.facebook or user_local.twitter or user_local.linkedin or user_local.google_url %}
+              {% if user_local.website_url %}
               <li>
-                <i class="fa fa-globe fa-lg fa-fw"></i> <a href="{{ user.user.generics.website_url }}" target="_blank">
+                <i class="fa fa-globe fa-lg fa-fw"></i> <a href="{{ user_local.website_url }}" target="_blank">
                   Website</a>
               </li>
               {% endif %}
-              {% if user.user.facebook %}
+              {% if user_local.facebook %}
               <li>
-                <i class="fa fa-facebook-square fa-lg fa-fw"></i> <a href="{{ user.user.facebook }}" target="_blank">
+                <i class="fa fa-facebook-square fa-lg fa-fw"></i> <a href="{{ user_local.facebook }}" target="_blank">
                   Facebook</a>
               </li>
               {% endif %}
-              {% if user.user.twitter %}
+              {% if user_local.twitter %}
               <li>
-                <i class="fa fa-twitter-square fa-lg fa-fw"></i> <a href="{{ user.user.twitter }}" target="_blank">
+                <i class="fa fa-twitter-square fa-lg fa-fw"></i> <a href="{{ user_local.twitter }}" target="_blank">
                   Twitter</a>
               </li>
               {% endif %}
-              {% if user.user.linkedin %}
+              {% if user_local.linkedin %}
               <li>
-                <i class="fa fa-linkedin-square fa-lg fa-fw"></i> <a href="{{ user.user.linkedin }}" target="_blank">
+                <i class="fa fa-linkedin-square fa-lg fa-fw"></i> <a href="{{ user_local.linkedin }}" target="_blank">
                   Linkedin</a>
               </li>
               {% endif %}
@@ -143,7 +144,7 @@
           <div class="col-md-4">
             <h3>{% trans "Areas of Expertise" %}</h3>
             <ul>
-              {% for area in user.user.generics.areas_of_expertise %}
+              {% for area in user_local.areas_of_expertise %}
                 <li>
                   <i class="fa fa-check fa-fw fa-lg"></i>{{ area }} <a href="#"></a>
                 </li>
@@ -159,7 +160,7 @@
           <div class="col-md-4">
             <h3>{% trans "Languages" %}</h3>
             <ul>
-              {% for language in user.user.generics.languages %}
+              {% for language in user_local.languages %}
                 <li>
                   <i class="fa fa-globe fa-fw fa-lg"></i> {{ language }}<a href="#"></a>
                 </li>
@@ -174,39 +175,6 @@
         </div>
       </div>
     </div>
-
-    {% comment %}
-      <div class="col sm-12 col-md-3">
-        <div class="panel panel-default clear">
-          <div class="panel-body">
-            <h2>Contact</h2>
-            <form id="contact_seo_pro_form" action="#">
-              <div class="form-group">
-                <label class="sr-only" for="id_first_name">First name</label>
-                <input class="form-control" id="id_first_name" maxlength="127" name="first_name" placeholder="First name" required="required" title="" type="text" aria-required="true">
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="id_last_name">Last name</label>
-                <input class="form-control" id="id_last_name" maxlength="127" name="last_name" placeholder="Last name" required="required" title="" type="text" aria-required="true">
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="id_location">Location</label>
-                <input class="form-control" id="id_location" maxlength="127" name="location" placeholder="Location" required="required" title="" type="text" aria-required="true" autocomplete="off">
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="id_phone">Phone</label>
-                <input class="form-control" id="id_phone" maxlength="32" name="phone" placeholder="Phone" required="required" title="" type="text" aria-required="true">
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="id_email">Email</label>
-                <input class="form-control" id="id_email" maxlength="127" name="email" placeholder="Email" required="required" title="" type="text" aria-required="true">
-              </div>
-              <button type="submit" class="btn btn-primary">Contact this person</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    {% endcomment %}
 
   </div>
 </div>

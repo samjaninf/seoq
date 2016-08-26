@@ -35,11 +35,10 @@ class PublicUserDetailView(View):
     def get(self, request, username):
         user = Client().get_user_detail(username)
         data = user['user'].copy()
-        print data['generics'], 'asdasdasdadsda', type(data['generics'])
         if not isinstance(data['generics'], dict):
             data['generics'] = json.loads(data['generics'])
         data.pop('avatar')
-        data.pop('username')
+        username = data.pop('username')
         if "error" in user:
             raise Http404
         try:
@@ -48,10 +47,11 @@ class PublicUserDetailView(View):
             data['generics']['view_count'] = 1
         data['generics']=json.dumps(data['generics'])
         Client().update_user(user['user']['username'], data)
+        user_local = User.objects.get(username=username)
         return render(
             request,
             self.template_name,
-            {'user': user})
+            {'user': user, 'user_local': user_local})
 
 
 class ArchivedBlogRedirectView(RedirectView):
