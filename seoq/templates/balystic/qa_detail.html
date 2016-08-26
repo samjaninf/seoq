@@ -1,33 +1,167 @@
 {% extends "balystic/base.html" %}
 {% block content %}
-{{ question }}
-{% for answer in question.answer_set  %}
-	<p>{{ answer }}</p>
-      <div class ="col-md-1">
-        <div class="row">
-          <div class ="col-sm-1"><big class="pull-left custom-big"><b>{{ answer.total_points }}</b></big></div>
-          <div class ="col-sm-1">
-          <form action="{% url 'balystic_qa_vote_answer' answer.pk %}" method="POST">
+<div class="jumbotron">
+  <div class="row">
+    {% if request.user.is_authenticated and question.user.username != request.user.username %}
+      <div class ="col-sm-1">
+        <big class="pull-left custom-big"><b>{{ question.total_points }}</b></big>
+      </div>
+      <div class ="col-sm-1">
+        <form action="{% url 'balystic_qa_vote_question' question.pk %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <input type="hidden" name="upvote" value="on">
+          <button type="submit" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Vote Up this answer"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+        </form>
+        <form action="{% url 'balystic_qa_vote_question' question.pk %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Vote Down this answer"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+        </form>
+      </div>
+    {% endif %}
+    {% if request.user.is_authenticated and question.user.username == request.user.username %}
+
+      <form action="{% url 'balystic_qa_delete_question' question.pk %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Delete Question" />
+      </form>
+      <a href="{% url 'balystic_qa_edit_question' question.pk %}">EDIT</a>
+    {% endif %}
+    <div class="col-sm-10">
+      <small class="pull-right">Posted by {{ question.user.username }}, {{ question.pub_date }}</small>
+      <h3><cool>Q: </cool>{{ question.title }}</h3>
+      <h4>{{ question.description }}</h4>
+    </div>
+  </div>
+  <h3>answers</h3>
+  {% for answer in question.answer_set %}
+    <div class="row">
+
+      <div class="col-md-2">
+      {% if request.user.is_authenticated and answer.user.username == request.user.username %}
+        <form action="{% url 'balystic_qa_delete_answer' answer.pk %}?next={{ request.path }}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Delete Answer" />
+        </form>
+      <button data-toggle="collapse" data-target="#answer-{{ answer.pk }}">edit</button>
+      
+      <div id="answer-{{ answer.pk }}" class="collapse">
+        <form action="{% url 'balystic_qa_edit_answer' answer.pk %}?next={{ request.path }}" method="post">
+            {% csrf_token %}
+            <input type="text" name="answer_text" value="{{ answer.answer_text }}">
+            <input type="submit" value="Submit" />
+        </form>
+      </div>
+      {% endif %}
+
+        <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="upvote" value="on">
+          <button class="action pull-right text-muted like" type="submit" {% if not request.user.is_authenticated or answer.user.username == request.user.username %}disabled{% endif %}><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="top" title="Vote up this answer"></i>{{ answer.positive_votes }}</button>
+        </form>
+        <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
+          {% csrf_token %}
+          <button class="action pull-right text-muted dislike" type="submit" {% if not request.user.is_authenticated or answer.user.username == request.user.username %}disabled{% endif %}><i class="fa fa-thumbs-down" data-toggle="tooltip" data-placement="bottom" title="Vote down this answer" ></i>{{ answer.negative_votes }}</button>
+        </form>
+      </div>
+      <div class ="col-md-8">
+        <div id="ans" class="alert alert-primary" role="alert">
+        {{ answer.answer_text }}
+        </div>
+      </div>
+      <div class="col-md-2">
+        {{ answer.user.username }}
+      </div>
+    </div>
+    <h4>replies</h4>
+    {% for comment in answer.answercomment_set %}
+
+      <div class="row">
+      {% if request.user.username == comment.user.username %}
+      <div class="col-md-2">
+        <form action="{% url 'balystic_qa_delete_comment' 'answer' comment.pk %}?next={{ request.path }}" method="post">
+          {% csrf_token %}
+            <input type="submit" value="delete reply" />
+        </form>
+        
+        <button data-toggle="collapse" data-target="#answer-comment-{{ comment.pk }}">edit</button>
+      
+        <div id="answer-comment-{{ comment.pk }}" class="collapse">
+          <form action="{% url 'balystic_qa_edit_comment' 'answer' comment.pk %}?next={{ request.path }}" method="post">
               {% csrf_token %}
-              <input type="hidden" name="next" value="{{ request.path }}">
-              <input type="hidden" name="upvote" value="on">
-              <button type="submit" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Vote Up this answer"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-          </form>
-          <form action="{% url 'balystic_qa_vote_answer' answer.pk %}" method="POST">
-              {% csrf_token %}
-              <input type="hidden" name="next" value="{{ request.path }}">
-              <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Vote Down this answer"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div>
+              <input type="text" name="comment_text" value="{{ comment.comment_text }}">
+              <input type="submit" value="Submit" />
           </form>
         </div>
       </div>
-{% endfor %}
-{% if request.user.is_authenticated %}
-	<h2>answer this question</h2>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
-</form>
-
-{% endif %}
+      {% endif %}
+        <div class ="col-md-8">
+          <div id="ans" class="alert alert-primary" role="alert">
+          {{ comment.comment_text }}
+          </div>
+        </div>
+        <div class="col-md-2">
+          {{ comment.user.username }}
+        </div>
+      </div>
+    {% endfor %}
+    <h4>reply answer</h4>
+    {% if request.user.is_authenticated %}
+      <form action="{% url 'balystic_qa_comment' 'answer' answer.pk %}?next={{ request.path }}" method="post">
+          {% csrf_token %}
+          <input type="text" name="comment_text">
+          <input type="submit" value="Submit" />
+      </form>
+    {% endif %}
+  {% endfor %}
+  <h3>comments</h3>
+  {% for comment in question.questioncomment_set %}
+    <div class="row">
+    {% if request.user.username == comment.user.username %}
+      <div class="col-md-2">
+        <form action="{% url 'balystic_qa_delete_comment' 'question' comment.pk %}?next={{ request.path }}" method="post">
+          {% csrf_token %}
+            <input type="submit" value="delete comment" />
+        </form>
+        <button data-toggle="collapse" data-target="#question-comment-{{ comment.pk }}">edit</button>
+      
+        <div id="question-comment-{{ comment.pk }}" class="collapse">
+          <form action="{% url 'balystic_qa_edit_comment' 'question' comment.pk %}?next={{ request.path }}" method="post">
+              {% csrf_token %}
+              <input type="text" name="comment_text" value="{{ comment.comment_text }}">
+              <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    {% endif %}
+      <div class ="col-md-8">
+        <div id="ans" class="alert alert-primary" role="alert">
+        {{ comment.comment_text }}
+        </div>
+      </div>
+      <div class="col-md-2">
+        {{ comment.user.username }}
+      </div>
+    </div>
+  {% endfor %}
+  <div class="row">
+    <div class="col-md-12">
+      {% if request.user.is_authenticated %}
+        <h2>answer this question</h2>
+      <form action="" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Submit" />
+      </form>
+      <h2>comment this question</h2>
+      <form action="{% url 'balystic_qa_comment' 'question' question.pk %}?next={{ request.path }}" method="post">
+          {% csrf_token %}
+          <input type="text" name="comment_text">
+          <input type="submit" value="Submit" />
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</div>
 {% endblock content %}

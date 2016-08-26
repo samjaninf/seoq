@@ -181,6 +181,10 @@ section.scan-website{
           left: -70px;
         }
       }
+      #scan-help-block{
+        color: #a94442;
+        padding: 10px;
+      }
       form{
         .form-group{
           label{
@@ -194,6 +198,9 @@ section.scan-website{
             font-size: 15px;
             border-radius:2px;
             background:#F0F4F5;
+          }
+          .form-control-feedback {
+              top: 29px !important;
           }
         }
         #keywords{

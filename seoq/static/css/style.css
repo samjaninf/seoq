@@ -175,7 +175,7 @@ than we are going to use in website
   position: relative; }
 
 .text-white {
-  color: #fff; }
+  color: #fff !important; }
 
 .b-b-1 {
   border-bottom: 1px solid #eeeeee; }
@@ -2899,7 +2899,7 @@ select[multiple].input-lg,
 
 .form-control-feedback {
   position: absolute;
-  top: 27px;
+  top: 0;
   right: 0;
   z-index: 2;
   display: block;
@@ -5696,7 +5696,6 @@ button.close {
     @media all and (transform-3d), (-webkit-transform-3d) {
       .carousel-inner > .item {
         transition: transform 0.6s ease-in-out;
-        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         perspective: 1000px; }
         .carousel-inner > .item.next, .carousel-inner > .item.active.right {
@@ -8387,6 +8386,9 @@ section.scan-website {
         height: 330px;
         top: -288px;
         left: -70px; } }
+  section.scan-website .col-md-10 .col-sm-6 #scan-help-block {
+    color: #a94442;
+    padding: 10px; }
   section.scan-website .col-md-10 .col-sm-6 form .form-group label {
     width: 100%;
     color: #2d5d81; }
@@ -8397,6 +8399,8 @@ section.scan-website {
     font-size: 15px;
     border-radius: 2px;
     background: #F0F4F5; }
+  section.scan-website .col-md-10 .col-sm-6 form .form-group .form-control-feedback {
+    top: 29px !important; }
   section.scan-website .col-md-10 .col-sm-6 form #keywords {
     position: relative; }
     section.scan-website .col-md-10 .col-sm-6 form #keywords .pop-over {
