@@ -44,6 +44,15 @@
           {% csrf_token %}
           <input type="submit" value="Delete Answer" />
         </form>
+      <button data-toggle="collapse" data-target="#answer-{{ answer.pk }}">edit</button>
+      
+      <div id="answer-{{ answer.pk }}" class="collapse">
+        <form action="{% url 'balystic_qa_edit_answer' answer.pk %}?next={{ request.path }}" method="post">
+            {% csrf_token %}
+            <input type="text" name="answer_text" value="{{ answer.answer_text }}">
+            <input type="submit" value="Submit" />
+        </form>
+      </div>
       {% endif %}
 
         <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
