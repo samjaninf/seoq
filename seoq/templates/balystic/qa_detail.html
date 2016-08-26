@@ -64,8 +64,15 @@
     </div>
     <h4>replies</h4>
     {% for comment in answer.answercomment_set %}
+
       <div class="row">
-        <div class ="col-md-9">
+      <div class="col-md-2">
+        <form action="{% url 'balystic_qa_delete_comment' 'answer' comment.pk %}?next={{ request.path }}" method="post">
+          {% csrf_token %}
+            <input type="submit" value="delete reply" />
+        </form>
+      </div>
+        <div class ="col-md-8">
           <div id="ans" class="alert alert-primary" role="alert">
           {{ comment.comment_text }}
           </div>
@@ -85,7 +92,13 @@
   <h3>comments</h3>
   {% for comment in question.questioncomment_set %}
     <div class="row">
-      <div class ="col-md-9">
+      <div class="col-md-2">
+        <form action="{% url 'balystic_qa_delete_comment' 'question' comment.pk %}?next={{ request.path }}" method="post">
+          {% csrf_token %}
+            <input type="submit" value="delete comment" />
+        </form>
+      </div>
+      <div class ="col-md-8">
         <div id="ans" class="alert alert-primary" role="alert">
         {{ comment.comment_text }}
         </div>
