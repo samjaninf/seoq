@@ -47,7 +47,10 @@ class PublicUserDetailView(View):
             data['generics']['view_count'] = 1
         data['generics']=json.dumps(data['generics'])
         Client().update_user(user['user']['username'], data)
-        user_local = User.objects.get(username=username)
+        try:
+            user_local = User.objects.get(username=username)
+        except User.DoesNotExist:
+            user_local = User()
         return render(
             request,
             self.template_name,
