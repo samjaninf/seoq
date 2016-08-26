@@ -10,6 +10,7 @@ from django.views import defaults as default_views
 from balystic import views as balystic_views
 from seoq.core import views as core_views
 from seoq.payments_seoq import views as payments_seoq
+from seoq.users.views import UserUpdateRedirect
 
 from django.views.generic.base import RedirectView
 
@@ -26,7 +27,7 @@ urlpatterns = [
     url(r'^accounts/logout/$',
         balystic_views.LogoutView.as_view(), name='balystic_logout'),
     url(r'^users/edit/(?P<username>[-\w.]+)/$',
-        balystic_views.CommunityUserUpdate.as_view(),
+        UserUpdateRedirect.as_view(),
         name='balystic_user_update'),
     url(r'^accounts/signup/$',
         balystic_views.UserSignupView.as_view(), name='balystic_signup'),
