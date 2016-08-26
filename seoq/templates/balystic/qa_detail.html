@@ -38,21 +38,24 @@
   {% for answer in question.answer_set %}
     <div class="row">
 
-    <div class="col-md-2">
-    <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
-        {% csrf_token %}
-        <input type="hidden" name="upvote" value="on">
-        <button class="action pull-right text-muted like" type="submit" {% if not request.user.is_authenticated or answer.user.username == request.user.username %}disabled{% endif %}><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="top" title="Vote up this answer"></i>{{ answer.positive_votes }}</button>
-    </form>
-    <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
-      {% csrf_token %}
-      <button class="action pull-right text-muted dislike" type="submit" {% if not request.user.is_authenticated or answer.user.username == request.user.username %}disabled{% endif %}><i class="fa fa-thumbs-down" data-toggle="tooltip" data-placement="bottom" title="Vote down this answer" ></i>{{ answer.negative_votes }}</button>
-    </form>
-    </div>
-      <form action="{% url 'balystic_qa_delete_answer' answer.pk %}?next={{ request.path }}" method="post">
+      <div class="col-md-2">
+      {% if request.user.is_authenticated and answer.user.username == request.user.username %}
+        <form action="{% url 'balystic_qa_delete_answer' answer.pk %}?next={{ request.path }}" method="post">
           {% csrf_token %}
           <input type="submit" value="Delete Answer" />
-      </form>
+        </form>
+      {% endif %}
+
+        <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="upvote" value="on">
+          <button class="action pull-right text-muted like" type="submit" {% if not request.user.is_authenticated or answer.user.username == request.user.username %}disabled{% endif %}><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="top" title="Vote up this answer"></i>{{ answer.positive_votes }}</button>
+        </form>
+        <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
+          {% csrf_token %}
+          <button class="action pull-right text-muted dislike" type="submit" {% if not request.user.is_authenticated or answer.user.username == request.user.username %}disabled{% endif %}><i class="fa fa-thumbs-down" data-toggle="tooltip" data-placement="bottom" title="Vote down this answer" ></i>{{ answer.negative_votes }}</button>
+        </form>
+      </div>
       <div class ="col-md-8">
         <div id="ans" class="alert alert-primary" role="alert">
         {{ answer.answer_text }}
@@ -66,12 +69,14 @@
     {% for comment in answer.answercomment_set %}
 
       <div class="row">
+      {% if request.user.username == comment.user.username %}
       <div class="col-md-2">
         <form action="{% url 'balystic_qa_delete_comment' 'answer' comment.pk %}?next={{ request.path }}" method="post">
           {% csrf_token %}
             <input type="submit" value="delete reply" />
         </form>
       </div>
+      {% endif %}
         <div class ="col-md-8">
           <div id="ans" class="alert alert-primary" role="alert">
           {{ comment.comment_text }}
@@ -83,21 +88,25 @@
       </div>
     {% endfor %}
     <h4>reply answer</h4>
+    {% if request.user.is_authenticated %}
       <form action="{% url 'balystic_qa_comment' 'answer' answer.pk %}?next={{ request.path }}" method="post">
           {% csrf_token %}
           <input type="text" name="comment_text">
           <input type="submit" value="Submit" />
       </form>
+    {% endif %}
   {% endfor %}
   <h3>comments</h3>
   {% for comment in question.questioncomment_set %}
     <div class="row">
+    {% if request.user.username == comment.user.username %}
       <div class="col-md-2">
         <form action="{% url 'balystic_qa_delete_comment' 'question' comment.pk %}?next={{ request.path }}" method="post">
           {% csrf_token %}
             <input type="submit" value="delete comment" />
         </form>
       </div>
+    {% endif %}
       <div class ="col-md-8">
         <div id="ans" class="alert alert-primary" role="alert">
         {{ comment.comment_text }}
