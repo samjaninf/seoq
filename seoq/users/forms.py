@@ -1,23 +1,21 @@
 from django import forms
 from .models import User
-from balystic.forms import SignupForm
+from .widgets import ArraySelect, ArrayWidget
+
 
 class EditProfileForm(forms.ModelForm):
-    first_name = forms.CharField(required=True)
-    last_name = forms.CharField(required=True)
-    profile_picture = forms.ImageField(
-        required=False)
+    #profile_picture = forms.ImageField(
+    #    required=False)
+
+    areas_of_expertise = ArraySelect(forms.CharField(max_length=50), widget=ArrayWidget(choices=User.EXPERTISE_CHOICES))
+    languages = ArraySelect(forms.CharField(max_length=50), widget=ArrayWidget(choices=User.LANGUAGE_CHOICES))
 
     class Meta:
         model = User
-        fields = ["first_name", "last_name", 
-        		 'fb_account', 'twitter_account',
-             	 'linkedin_account', 'title', 'about',
-             	 'profile_picture']
-"""
-class SEOQSignupForm(SignupForm):
-
-    def __init__(self, *args, **kwargs):
-        super(SEOQSignupForm, self).__init__(*args, **kwargs):
-        self.fields['password_2'].label = "Confirm password"
-"""
+        fields = ["first_name", "last_name", 'fb_account',
+                  'twitter_account', 'linkedin_account',
+                  'title', 'about', 'profile_picture',
+                  'website_url', 'website_url1', 'website_url2',
+                  'website_url3', 'website_url4',
+                  'areas_of_expertise', 'areas_of_expertise_other',
+                  'languages', 'languages_other']

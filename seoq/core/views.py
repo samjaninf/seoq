@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
 from django.views.generic.base import RedirectView
 from balystic.client import Client
-from balystic.views import CommunityUserUpdate as BalysticUserUpdate
 from django.http import Http404
 from django.core.urlresolvers import reverse
 from django.conf import settings
@@ -87,22 +86,3 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['qscraper_url'] = settings.QSCRAPER_URL
         return context
-
-
-#class CommunityUserUpdate(BalysticUserUpdate):
-#    """
-#    Overrides the default behaviour to include site specific
-#    data in the generics field.
-#    """
-#    def get(self, request, username):
-#        data = self.client.get_user_detail(username)
-#        form = UpdateUserForm(initial=data['user'])
-#        return render(request, self.template_name, {'form': form})
-#
-#    def post(self, request, username):
-#        form = UpdateUserForm(request.POST)
-#        if form.is_valid():
-#            self.client.update_user(username, form.cleaned_data)
-#            return redirect(reverse('balystic_user_detail',
-#                            kwargs={'username': username}))
-#        return render(request, self.template_name, {'form': form})
