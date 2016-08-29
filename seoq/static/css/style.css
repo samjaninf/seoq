@@ -8387,8 +8387,33 @@ section.scan-website {
         top: -288px;
         left: -70px; } }
   section.scan-website .col-md-10 .col-sm-6 #scan-help-block {
-    color: #a94442;
-    padding: 10px; }
+    border-radius: 4px;
+    color: #333;
+    padding: 5px 2px;
+    position: relative;
+    border: 2px solid #dadada; }
+    section.scan-website .col-md-10 .col-sm-6 #scan-help-block:after, section.scan-website .col-md-10 .col-sm-6 #scan-help-block:before {
+      top: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none; }
+    section.scan-website .col-md-10 .col-sm-6 #scan-help-block:before {
+      border-color: rgba(218, 218, 218, 0);
+      border-top-color: #dadada;
+      border-width: 11px;
+      margin-left: -11px; }
+    section.scan-website .col-md-10 .col-sm-6 #scan-help-block:after {
+      border-color: rgba(255, 255, 255, 0);
+      border-top-color: #fff;
+      border-width: 8px;
+      margin-left: -8px; }
+    section.scan-website .col-md-10 .col-sm-6 #scan-help-block i.fa {
+      color: #ffa800;
+      margin-right: 5px; }
   section.scan-website .col-md-10 .col-sm-6 form .form-group label {
     width: 100%;
     color: #2d5d81; }

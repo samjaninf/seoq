@@ -150,7 +150,9 @@
               {{ analysis_message }}
             </span>
             </p>
-            <p class="help-block text-center" id="scan-help-block" ng-if="bad_status_code">{{ status_message }}</p>
+            <p class="help-block text-center" id="scan-help-block" ng-if="bad_status_code">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+              {{ status_message }}</p>
           {% endverbatim %}
             <form ng-submit="startReport('{{ qscraper_url }}', '{{ request.user.username }}')" ng-if="!animation" id="myForm" name="myForm">
             {% csrf_token %}
