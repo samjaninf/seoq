@@ -74,11 +74,22 @@ class UserListView(LoginRequiredMixin, ListView):
     slug_url_kwarg = 'username'
 
 
-class UserListTempView(TemplateView):
-    template_name = 'pages/users_directory_temp.html'
+# class UserListTempView(TemplateView):
+#     template_name = 'pages/users_directory_temp.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(UserListTempView, self).get_context_data(**kwargs)
-        params = {'sort_type': 'view_count'}
-        context['users'] = Client().get_users(params)
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super(UserListTempView, self).get_context_data(**kwargs)
+#         params = {'sort_type': 'view_count'}
+#         context['users'] = Client().get_users(params)
+#         return context
+
+
+# class UserListMostRecentTempView(TemplateView):
+#     template_name = 'pages/users_directory_temp.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super(
+#             UserListMostRecentTempView, self).get_context_data(**kwargs)
+#         params = {'sort_type': 'last_created'}
+#         context['users'] = Client().get_users(params)
+#         return context

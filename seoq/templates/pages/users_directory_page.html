@@ -27,6 +27,131 @@
   </div>
 
   <div class="row">
+    <div class="col-md-6">
+      <h3>Most Recent</h3>
+      {% for object in most_recent_users %}
+        <div class="row">
+      <!-- profesional-card -->
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="media">
+              <div class="media-left">
+                <a href="{% url 'public_profile' object.username %}">
+                  {% if object.avatar %}
+                    <img src="{{ object.avatar }}" alt="Avatar" class="media-object img-circle center-block" width="120" height="120">
+                  {% else %}
+                    <img class="media-object img-circle center-block" src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="Placeholder" width="120" height="120">
+                  {% endif %}
+                </a>
+              </div>
+              <div class="media-body">
+                <a href="{% url 'public_profile' object.username %}">
+                  {% if object.first_name and object.last_name %}
+                    <h4 class="media-heading">{{ object.first_name }} {{ object.last_name }}</h4>
+                  {% else %}
+                    <h4 class="media-heading">{{ object.username }}</h4>
+                  {% endif %}
+                </a>
+                {% comment %}
+                  <span>Put title here</span>
+                {% endcomment %}
+                {% if object.bio %}
+                  <p class="text-muted">{{ object.bio|truncatechars:100  }}</p>
+                {% endif %}
+                {% if  object.facebook or object.twitter or object.linkedin %}
+                <span class="text-follow">Follow:</span>
+                <span class="icons-social">
+                {% if object.facebook %}
+                  <a href="{{ object.facebook }}">
+                    <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+                  </a>
+                {% endif %}
+                {% if object.twitter %}
+                  <a href="{{ object.twitter }}">
+                    <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                  </a>
+                {% endif %}
+                {% if object.linkedin %}
+                  <a href="{{ object.linkedin }}">
+                    <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                  </a>
+                {% endif %}
+                </span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end profesional-card -->
+        </div>
+      {% endfor %}
+    </div>
+    <div class="col-md-6">
+      <h3>Most Viewed</h3>
+      {% for object in most_view_users %}
+        <div class="row">
+      <!-- profesional-card -->
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="media">
+              <div class="media-left">
+                <a href="{% url 'public_profile' object.username %}">
+                  {% if object.avatar %}
+                    <img src="{{ object.avatar }}" alt="Avatar" class="media-object img-circle center-block" width="120" height="120">
+                  {% else %}
+                    <img class="media-object img-circle center-block" src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="Placeholder" width="120" height="120">
+                  {% endif %}
+                </a>
+              </div>
+              <div class="media-body">
+                <a href="{% url 'public_profile' object.username %}">
+                  {% if object.first_name and object.last_name %}
+                    <h4 class="media-heading">{{ object.first_name }} {{ object.last_name }}</h4>
+                  {% else %}
+                    <h4 class="media-heading">{{ object.username }}</h4>
+                  {% endif %}
+                </a>
+                {% comment %}
+                  <span>Put title here</span>
+                {% endcomment %}
+                {% if object.bio %}
+                  <p class="text-muted">{{ object.bio|truncatechars:100  }}</p>
+                {% endif %}
+                {% if  object.facebook or object.twitter or object.linkedin %}
+                <span class="text-follow">Follow:</span>
+                <span class="icons-social">
+                {% if object.facebook %}
+                  <a href="{{ object.facebook }}">
+                    <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+                  </a>
+                {% endif %}
+                {% if object.twitter %}
+                  <a href="{{ object.twitter }}">
+                    <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                  </a>
+                {% endif %}
+                {% if object.linkedin %}
+                  <a href="{{ object.linkedin }}">
+                    <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                  </a>
+                {% endif %}
+                </span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end profesional-card -->
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="row">
+  <h3>SEOQ Professionals</h3>
   {% for object in users.users %}
       <!-- profesional-card -->
       <div class="col-sm-6">

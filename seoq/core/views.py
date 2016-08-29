@@ -26,6 +26,10 @@ class SEODirectoryUserList(View):
             'users': self.client.get_users(params=params),
             'query_term': query_term
         }
+        context['most_view_users'] = Client().get_users(
+            {'sort_type': 'view_count'})['users'][:3]
+        context['most_recent_users'] = Client().get_users(
+            {'sort_type': 'last_created'})['users'][:3]
         return render(request, self.template_name, context)
 
 
@@ -43,9 +47,9 @@ class PublicUserDetailView(View):
             raise Http404
         try:
             data['generics']['view_count'] += 1
-        except (KeyError, TypeError) as e:
+        except (KeyError, TypeError):
             data['generics']['view_count'] = 1
-        data['generics']=json.dumps(data['generics'])
+        data['generics'] = json.dumps(data['generics'])
         Client().update_user(user['user']['username'], data)
         try:
             user_local = User.objects.get(username=username)
