@@ -74,3 +74,6 @@ ndg-httpsclient==0.4.2
 
 # SORL Thumbnail
 -e git://github.com/mariocesar/sorl-thumbnail.git#egg=sorl-thumbnail
+
+django-ckeditor==5.1.0
+django-markdown==0.8.4
