@@ -37,6 +37,7 @@ class Command(BaseCommand):
                 user.google_account = temp['google_url']
                 user.location = temp['location']
                 user.phone_number = temp['phone']
+                user.company_name = temp['company_name']
                 user.save()
             except KeyError:
                 continue

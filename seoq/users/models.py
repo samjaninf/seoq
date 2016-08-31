@@ -46,6 +46,7 @@ class User(AbstractUser):
         null=True,
         upload_to='profile/')
     generics = JSONField(default=dict)
+    company_name = models.CharField(blank=True, max_length=255)
     website_url = models.URLField(blank=True, max_length=255)
     areas_of_expertise = ArrayField(
         models.CharField(max_length=50, blank=True,
