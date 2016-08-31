@@ -1564,7 +1564,7 @@ mark,
 .text-right {
   text-align: right; }
 
-.text-center {
+.text-center, .qa .ask {
   text-align: center; }
 
 .text-justify {
@@ -1825,24 +1825,24 @@ pre {
   max-height: 340px;
   overflow-y: scroll; }
 
-.container {
+.container, .qa {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, .container:after {
+  .container:before, .qa:before, .container:after, .qa:after {
     content: " ";
     display: table; }
-  .container:after {
+  .container:after, .qa:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container {
+    .container, .qa {
       width: 750px; } }
   @media (min-width: 992px) {
-    .container {
+    .container, .qa {
       width: 970px; } }
   @media (min-width: 1200px) {
-    .container {
+    .container, .qa {
       width: 1170px; } }
 
 .container-fluid {
@@ -1856,22 +1856,22 @@ pre {
   .container-fluid:after {
     clear: both; }
 
-.row, .new-question {
+.row, .new-question, #qa-list .question {
   margin-left: -15px;
   margin-right: -15px; }
-  .row:before, .new-question:before, .row:after, .new-question:after {
+  .row:before, .new-question:before, #qa-list .question:before, .row:after, .new-question:after, #qa-list .question:after {
     content: " ";
     display: table; }
-  .row:after, .new-question:after {
+  .row:after, .new-question:after, #qa-list .question:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .new-question .question-box, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, #qa-list, .col-sm-10, .new-question .question-box, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .qa .ask, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, #qa-list, .col-xs-11, .col-xs-12, .qa .ask {
   float: left; }
 
 .col-xs-1 {
@@ -1901,13 +1901,13 @@ pre {
 .col-xs-9 {
   width: 75%; }
 
-.col-xs-10 {
+.col-xs-10, #qa-list {
   width: 83.33333%; }
 
 .col-xs-11 {
   width: 91.66667%; }
 
-.col-xs-12 {
+.col-xs-12, .qa .ask {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1991,7 +1991,7 @@ pre {
 .col-xs-offset-0 {
   margin-left: 0%; }
 
-.col-xs-offset-1 {
+.col-xs-offset-1, #qa-list {
   margin-left: 8.33333%; }
 
 .col-xs-offset-2 {
@@ -4021,15 +4021,15 @@ tbody.collapse.in {
     .navbar-fixed-bottom .navbar-collapse {
       max-height: 200px; } }
 
-.container > .navbar-header,
-.container > .navbar-collapse,
+.container > .navbar-header, .qa > .navbar-header,
+.container > .navbar-collapse, .qa > .navbar-collapse,
 .container-fluid > .navbar-header,
 .container-fluid > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px; }
   @media (min-width: 991px) {
-    .container > .navbar-header,
-    .container > .navbar-collapse,
+    .container > .navbar-header, .qa > .navbar-header,
+    .container > .navbar-collapse, .qa > .navbar-collapse,
     .container-fluid > .navbar-header,
     .container-fluid > .navbar-collapse {
       margin-right: 0;
@@ -4073,7 +4073,7 @@ tbody.collapse.in {
   .navbar-brand > img {
     display: block; }
   @media (min-width: 991px) {
-    .navbar > .container .navbar-brand,
+    .navbar > .container .navbar-brand, .navbar > .qa .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
       margin-left: -15px; } }
 
@@ -4598,18 +4598,18 @@ a.badge:hover, a.badge:focus {
     font-weight: 200; }
   .jumbotron > hr {
     border-top-color: #d5d5d5; }
-  .container .jumbotron,
+  .container .jumbotron, .qa .jumbotron,
   .container-fluid .jumbotron {
     border-radius: 6px;
     padding-left: 15px;
     padding-right: 15px; }
-  .jumbotron .container {
+  .jumbotron .container, .jumbotron .qa {
     max-width: 100%; }
   @media screen and (min-width: 768px) {
     .jumbotron {
       padding-top: 48px;
       padding-bottom: 48px; }
-      .container .jumbotron,
+      .container .jumbotron, .qa .jumbotron,
       .container-fluid .jumbotron {
         padding-left: 60px;
         padding-right: 60px; }
@@ -8613,14 +8613,14 @@ section.scan-website {
     -ms-flex-align: center;
         align-items: center; }
 
-.about #team .container .row .col-md-8.col-md-offset-2 .col-xs-6, .about #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 {
+.about #team .container .row .col-md-8.col-md-offset-2 .col-xs-6, .about #team .qa .row .col-md-8.col-md-offset-2 .col-xs-6, .about #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6, .about #team .qa .new-question .col-md-8.col-md-offset-2 .col-xs-6, .about #team .container #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6, #qa-list .about #team .container .question .col-md-8.col-md-offset-2 .col-xs-6, .about #team .qa #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6, #qa-list .about #team .qa .question .col-md-8.col-md-offset-2 .col-xs-6 {
   margin-bottom: 40px; }
-  .about #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img, .about #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 img {
+  .about #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img, .about #team .qa .row .col-md-8.col-md-offset-2 .col-xs-6 img, .about #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 img, .about #team .qa .new-question .col-md-8.col-md-offset-2 .col-xs-6 img, .about #team .container #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 img, #qa-list .about #team .container .question .col-md-8.col-md-offset-2 .col-xs-6 img, .about #team .qa #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 img, #qa-list .about #team .qa .question .col-md-8.col-md-offset-2 .col-xs-6 img {
     opacity: 0.6;
     border: 3px solid #E0E4E5; }
-    .about #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .about #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 img:hover {
+    .about #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .about #team .qa .row .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .about #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .about #team .qa .new-question .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .about #team .container #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 img:hover, #qa-list .about #team .container .question .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .about #team .qa #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 img:hover, #qa-list .about #team .qa .question .col-md-8.col-md-offset-2 .col-xs-6 img:hover {
       opacity: 1; }
-  .about #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 p, .about #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 p {
+  .about #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 p, .about #team .qa .row .col-md-8.col-md-offset-2 .col-xs-6 p, .about #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 p, .about #team .qa .new-question .col-md-8.col-md-offset-2 .col-xs-6 p, .about #team .container #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 p, #qa-list .about #team .container .question .col-md-8.col-md-offset-2 .col-xs-6 p, .about #team .qa #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 p, #qa-list .about #team .qa .question .col-md-8.col-md-offset-2 .col-xs-6 p {
     margin-top: 10px;
     margin-bottom: 0px; }
 
@@ -8628,69 +8628,69 @@ section.scan-website {
   margin-top: 30px; }
 
 @media (min-width: 992px) {
-  .professional .for-seo .container .row .col-sm-12.col-md-10, .professional .for-seo .container .new-question .col-sm-12.col-md-10 {
+  .professional .for-seo .container .row .col-sm-12.col-md-10, .professional .for-seo .qa .row .col-sm-12.col-md-10, .professional .for-seo .container .new-question .col-sm-12.col-md-10, .professional .for-seo .qa .new-question .col-sm-12.col-md-10, .professional .for-seo .container #qa-list .question .col-sm-12.col-md-10, #qa-list .professional .for-seo .container .question .col-sm-12.col-md-10, .professional .for-seo .qa #qa-list .question .col-sm-12.col-md-10, #qa-list .professional .for-seo .qa .question .col-sm-12.col-md-10 {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
         align-items: center; } }
 
 @media (max-width: 768px) {
-  .professional .for-seo .container .row .col-sm-12.col-md-10 .col-sm-6, .professional .for-seo .container .new-question .col-sm-12.col-md-10 .col-sm-6 {
+  .professional .for-seo .container .row .col-sm-12.col-md-10 .col-sm-6, .professional .for-seo .qa .row .col-sm-12.col-md-10 .col-sm-6, .professional .for-seo .container .new-question .col-sm-12.col-md-10 .col-sm-6, .professional .for-seo .qa .new-question .col-sm-12.col-md-10 .col-sm-6, .professional .for-seo .container #qa-list .question .col-sm-12.col-md-10 .col-sm-6, #qa-list .professional .for-seo .container .question .col-sm-12.col-md-10 .col-sm-6, .professional .for-seo .qa #qa-list .question .col-sm-12.col-md-10 .col-sm-6, #qa-list .professional .for-seo .qa .question .col-sm-12.col-md-10 .col-sm-6 {
     text-align: center;
     margin-bottom: 40px; }
-    .professional .for-seo .container .row .col-sm-12.col-md-10 .col-sm-6 p, .professional .for-seo .container .new-question .col-sm-12.col-md-10 .col-sm-6 p {
+    .professional .for-seo .container .row .col-sm-12.col-md-10 .col-sm-6 p, .professional .for-seo .qa .row .col-sm-12.col-md-10 .col-sm-6 p, .professional .for-seo .container .new-question .col-sm-12.col-md-10 .col-sm-6 p, .professional .for-seo .qa .new-question .col-sm-12.col-md-10 .col-sm-6 p, .professional .for-seo .container #qa-list .question .col-sm-12.col-md-10 .col-sm-6 p, #qa-list .professional .for-seo .container .question .col-sm-12.col-md-10 .col-sm-6 p, .professional .for-seo .qa #qa-list .question .col-sm-12.col-md-10 .col-sm-6 p, #qa-list .professional .for-seo .qa .question .col-sm-12.col-md-10 .col-sm-6 p {
       text-align: left; }
-    .professional .for-seo .container .row .col-sm-12.col-md-10 .col-sm-6 a, .professional .for-seo .container .new-question .col-sm-12.col-md-10 .col-sm-6 a {
+    .professional .for-seo .container .row .col-sm-12.col-md-10 .col-sm-6 a, .professional .for-seo .qa .row .col-sm-12.col-md-10 .col-sm-6 a, .professional .for-seo .container .new-question .col-sm-12.col-md-10 .col-sm-6 a, .professional .for-seo .qa .new-question .col-sm-12.col-md-10 .col-sm-6 a, .professional .for-seo .container #qa-list .question .col-sm-12.col-md-10 .col-sm-6 a, #qa-list .professional .for-seo .container .question .col-sm-12.col-md-10 .col-sm-6 a, .professional .for-seo .qa #qa-list .question .col-sm-12.col-md-10 .col-sm-6 a, #qa-list .professional .for-seo .qa .question .col-sm-12.col-md-10 .col-sm-6 a {
       white-space: inherit; } }
 
-.professional #team .container .row .col-sm-12 .col-xs-6 img, .professional #team .container .new-question .col-sm-12 .col-xs-6 img {
+.professional #team .container .row .col-sm-12 .col-xs-6 img, .professional #team .qa .row .col-sm-12 .col-xs-6 img, .professional #team .container .new-question .col-sm-12 .col-xs-6 img, .professional #team .qa .new-question .col-sm-12 .col-xs-6 img, .professional #team .container #qa-list .question .col-sm-12 .col-xs-6 img, #qa-list .professional #team .container .question .col-sm-12 .col-xs-6 img, .professional #team .qa #qa-list .question .col-sm-12 .col-xs-6 img, #qa-list .professional #team .qa .question .col-sm-12 .col-xs-6 img {
   opacity: 0.6;
   border: 3px solid #E0E4E5;
   transition: opacity 0.5s ease-out; }
-  .professional #team .container .row .col-sm-12 .col-xs-6 img:hover, .professional #team .container .new-question .col-sm-12 .col-xs-6 img:hover {
+  .professional #team .container .row .col-sm-12 .col-xs-6 img:hover, .professional #team .qa .row .col-sm-12 .col-xs-6 img:hover, .professional #team .container .new-question .col-sm-12 .col-xs-6 img:hover, .professional #team .qa .new-question .col-sm-12 .col-xs-6 img:hover, .professional #team .container #qa-list .question .col-sm-12 .col-xs-6 img:hover, #qa-list .professional #team .container .question .col-sm-12 .col-xs-6 img:hover, .professional #team .qa #qa-list .question .col-sm-12 .col-xs-6 img:hover, #qa-list .professional #team .qa .question .col-sm-12 .col-xs-6 img:hover {
     opacity: 1; }
 
 @media (min-width: 992px) {
-  .students .for-students .container .row .col-sm-12.col-md-10, .students .for-students .container .new-question .col-sm-12.col-md-10 {
+  .students .for-students .container .row .col-sm-12.col-md-10, .students .for-students .qa .row .col-sm-12.col-md-10, .students .for-students .container .new-question .col-sm-12.col-md-10, .students .for-students .qa .new-question .col-sm-12.col-md-10, .students .for-students .container #qa-list .question .col-sm-12.col-md-10, #qa-list .students .for-students .container .question .col-sm-12.col-md-10, .students .for-students .qa #qa-list .question .col-sm-12.col-md-10, #qa-list .students .for-students .qa .question .col-sm-12.col-md-10 {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
         align-items: center; } }
 
-.students #team-students .container .row .col-sm-12 .col-xs-6 img, .students #team-students .container .new-question .col-sm-12 .col-xs-6 img {
+.students #team-students .container .row .col-sm-12 .col-xs-6 img, .students #team-students .qa .row .col-sm-12 .col-xs-6 img, .students #team-students .container .new-question .col-sm-12 .col-xs-6 img, .students #team-students .qa .new-question .col-sm-12 .col-xs-6 img, .students #team-students .container #qa-list .question .col-sm-12 .col-xs-6 img, #qa-list .students #team-students .container .question .col-sm-12 .col-xs-6 img, .students #team-students .qa #qa-list .question .col-sm-12 .col-xs-6 img, #qa-list .students #team-students .qa .question .col-sm-12 .col-xs-6 img {
   opacity: 0.6;
   border: 3px solid #E0E4E5;
   transition: opacity 0.5s ease-out; }
-  .students #team-students .container .row .col-sm-12 .col-xs-6 img:hover, .students #team-students .container .new-question .col-sm-12 .col-xs-6 img:hover {
+  .students #team-students .container .row .col-sm-12 .col-xs-6 img:hover, .students #team-students .qa .row .col-sm-12 .col-xs-6 img:hover, .students #team-students .container .new-question .col-sm-12 .col-xs-6 img:hover, .students #team-students .qa .new-question .col-sm-12 .col-xs-6 img:hover, .students #team-students .container #qa-list .question .col-sm-12 .col-xs-6 img:hover, #qa-list .students #team-students .container .question .col-sm-12 .col-xs-6 img:hover, .students #team-students .qa #qa-list .question .col-sm-12 .col-xs-6 img:hover, #qa-list .students #team-students .qa .question .col-sm-12 .col-xs-6 img:hover {
     opacity: 1; }
 
 @media (min-width: 992px) {
-  .owners .for-owners .container .row .col-sm-12.col-md-10, .owners .for-owners .container .new-question .col-sm-12.col-md-10 {
+  .owners .for-owners .container .row .col-sm-12.col-md-10, .owners .for-owners .qa .row .col-sm-12.col-md-10, .owners .for-owners .container .new-question .col-sm-12.col-md-10, .owners .for-owners .qa .new-question .col-sm-12.col-md-10, .owners .for-owners .container #qa-list .question .col-sm-12.col-md-10, #qa-list .owners .for-owners .container .question .col-sm-12.col-md-10, .owners .for-owners .qa #qa-list .question .col-sm-12.col-md-10, #qa-list .owners .for-owners .qa .question .col-sm-12.col-md-10 {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
         align-items: center; } }
 
 @media (max-width: 768px) {
-  .owners .for-owners .container .row .col-sm-12.col-md-10 .col-sm-6, .owners .for-owners .container .new-question .col-sm-12.col-md-10 .col-sm-6 {
+  .owners .for-owners .container .row .col-sm-12.col-md-10 .col-sm-6, .owners .for-owners .qa .row .col-sm-12.col-md-10 .col-sm-6, .owners .for-owners .container .new-question .col-sm-12.col-md-10 .col-sm-6, .owners .for-owners .qa .new-question .col-sm-12.col-md-10 .col-sm-6, .owners .for-owners .container #qa-list .question .col-sm-12.col-md-10 .col-sm-6, #qa-list .owners .for-owners .container .question .col-sm-12.col-md-10 .col-sm-6, .owners .for-owners .qa #qa-list .question .col-sm-12.col-md-10 .col-sm-6, #qa-list .owners .for-owners .qa .question .col-sm-12.col-md-10 .col-sm-6 {
     text-align: center;
     margin-bottom: 40px; }
-    .owners .for-owners .container .row .col-sm-12.col-md-10 .col-sm-6 p, .owners .for-owners .container .new-question .col-sm-12.col-md-10 .col-sm-6 p {
+    .owners .for-owners .container .row .col-sm-12.col-md-10 .col-sm-6 p, .owners .for-owners .qa .row .col-sm-12.col-md-10 .col-sm-6 p, .owners .for-owners .container .new-question .col-sm-12.col-md-10 .col-sm-6 p, .owners .for-owners .qa .new-question .col-sm-12.col-md-10 .col-sm-6 p, .owners .for-owners .container #qa-list .question .col-sm-12.col-md-10 .col-sm-6 p, #qa-list .owners .for-owners .container .question .col-sm-12.col-md-10 .col-sm-6 p, .owners .for-owners .qa #qa-list .question .col-sm-12.col-md-10 .col-sm-6 p, #qa-list .owners .for-owners .qa .question .col-sm-12.col-md-10 .col-sm-6 p {
       text-align: left; }
-    .owners .for-owners .container .row .col-sm-12.col-md-10 .col-sm-6 a, .owners .for-owners .container .new-question .col-sm-12.col-md-10 .col-sm-6 a {
+    .owners .for-owners .container .row .col-sm-12.col-md-10 .col-sm-6 a, .owners .for-owners .qa .row .col-sm-12.col-md-10 .col-sm-6 a, .owners .for-owners .container .new-question .col-sm-12.col-md-10 .col-sm-6 a, .owners .for-owners .qa .new-question .col-sm-12.col-md-10 .col-sm-6 a, .owners .for-owners .container #qa-list .question .col-sm-12.col-md-10 .col-sm-6 a, #qa-list .owners .for-owners .container .question .col-sm-12.col-md-10 .col-sm-6 a, .owners .for-owners .qa #qa-list .question .col-sm-12.col-md-10 .col-sm-6 a, #qa-list .owners .for-owners .qa .question .col-sm-12.col-md-10 .col-sm-6 a {
       white-space: inherit; } }
 
-.owners #team-owners .container .row .col-sm-12 .col-xs-6 img, .owners #team-owners .container .new-question .col-sm-12 .col-xs-6 img {
+.owners #team-owners .container .row .col-sm-12 .col-xs-6 img, .owners #team-owners .qa .row .col-sm-12 .col-xs-6 img, .owners #team-owners .container .new-question .col-sm-12 .col-xs-6 img, .owners #team-owners .qa .new-question .col-sm-12 .col-xs-6 img, .owners #team-owners .container #qa-list .question .col-sm-12 .col-xs-6 img, #qa-list .owners #team-owners .container .question .col-sm-12 .col-xs-6 img, .owners #team-owners .qa #qa-list .question .col-sm-12 .col-xs-6 img, #qa-list .owners #team-owners .qa .question .col-sm-12 .col-xs-6 img {
   opacity: 0.6;
   border: 3px solid #E0E4E5;
   transition: opacity 0.5s ease-out; }
-  .owners #team-owners .container .row .col-sm-12 .col-xs-6 img:hover, .owners #team-owners .container .new-question .col-sm-12 .col-xs-6 img:hover {
+  .owners #team-owners .container .row .col-sm-12 .col-xs-6 img:hover, .owners #team-owners .qa .row .col-sm-12 .col-xs-6 img:hover, .owners #team-owners .container .new-question .col-sm-12 .col-xs-6 img:hover, .owners #team-owners .qa .new-question .col-sm-12 .col-xs-6 img:hover, .owners #team-owners .container #qa-list .question .col-sm-12 .col-xs-6 img:hover, #qa-list .owners #team-owners .container .question .col-sm-12 .col-xs-6 img:hover, .owners #team-owners .qa #qa-list .question .col-sm-12 .col-xs-6 img:hover, #qa-list .owners #team-owners .qa .question .col-sm-12 .col-xs-6 img:hover {
     opacity: 1; }
 
-.score .container .row h3, .score .container .new-question h3 {
+.score .container .row h3, .score .qa .row h3, .score .container .new-question h3, .score .qa .new-question h3, .score .container #qa-list .question h3, #qa-list .score .container .question h3, .score .qa #qa-list .question h3, #qa-list .score .qa .question h3 {
   color: #fff; }
 
-.score .container .row #container, .score .container .new-question #container {
+.score .container .row #container, .score .qa .row #container, .score .container .new-question #container, .score .qa .new-question #container, .score .container #qa-list .question #container, #qa-list .score .container .question #container, .score .qa #qa-list .question #container, #qa-list .score .qa .question #container {
   margin: 0 auto;
   width: 100px;
   height: 100px;
@@ -8698,7 +8698,7 @@ section.scan-website {
   margin-top: 30px;
   border: 5px solid #fff;
   border-radius: 50%; }
-  .score .container .row #container h2, .score .container .new-question #container h2 {
+  .score .container .row #container h2, .score .qa .row #container h2, .score .container .new-question #container h2, .score .qa .new-question #container h2, .score .container #qa-list .question #container h2, #qa-list .score .container .question #container h2, .score .qa #qa-list .question #container h2, #qa-list .score .qa .question #container h2 {
     display: table-cell;
     vertical-align: middle;
     color: #fff;
@@ -8726,14 +8726,14 @@ section.scan-website {
   .report .btn {
     margin-bottom: 5px; } }
 
-.report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6, .report #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 {
+.report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6, .report #team .qa .row .col-md-8.col-md-offset-2 .col-xs-6, .report #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6, .report #team .qa .new-question .col-md-8.col-md-offset-2 .col-xs-6, .report #team .container #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6, #qa-list .report #team .container .question .col-md-8.col-md-offset-2 .col-xs-6, .report #team .qa #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6, #qa-list .report #team .qa .question .col-md-8.col-md-offset-2 .col-xs-6 {
   margin-bottom: 40px; }
-  .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img, .report #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 img {
+  .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img, .report #team .qa .row .col-md-8.col-md-offset-2 .col-xs-6 img, .report #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 img, .report #team .qa .new-question .col-md-8.col-md-offset-2 .col-xs-6 img, .report #team .container #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 img, #qa-list .report #team .container .question .col-md-8.col-md-offset-2 .col-xs-6 img, .report #team .qa #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 img, #qa-list .report #team .qa .question .col-md-8.col-md-offset-2 .col-xs-6 img {
     opacity: 0.6;
     border: 3px solid #E0E4E5; }
-    .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .report #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 img:hover {
+    .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .report #team .qa .row .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .report #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .report #team .qa .new-question .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .report #team .container #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 img:hover, #qa-list .report #team .container .question .col-md-8.col-md-offset-2 .col-xs-6 img:hover, .report #team .qa #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 img:hover, #qa-list .report #team .qa .question .col-md-8.col-md-offset-2 .col-xs-6 img:hover {
       opacity: 1; }
-  .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 p, .report #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 p {
+  .report #team .container .row .col-md-8.col-md-offset-2 .col-xs-6 p, .report #team .qa .row .col-md-8.col-md-offset-2 .col-xs-6 p, .report #team .container .new-question .col-md-8.col-md-offset-2 .col-xs-6 p, .report #team .qa .new-question .col-md-8.col-md-offset-2 .col-xs-6 p, .report #team .container #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 p, #qa-list .report #team .container .question .col-md-8.col-md-offset-2 .col-xs-6 p, .report #team .qa #qa-list .question .col-md-8.col-md-offset-2 .col-xs-6 p, #qa-list .report #team .qa .question .col-md-8.col-md-offset-2 .col-xs-6 p {
     margin-top: 10px;
     margin-bottom: 0px; }
 
@@ -8743,7 +8743,7 @@ section.scan-website {
     border: 1px solid; }
 
 @media (max-width: 768px) {
-  .plans-container .row, .plans-container .new-question {
+  .plans-container .row, .plans-container .new-question, .plans-container #qa-list .question, #qa-list .plans-container .question {
     margin: 0px; } }
 
 @media (min-width: 768px) {
@@ -8811,6 +8811,326 @@ table.plan_table {
 
 .new-question .btn-seoq {
   margin: 0; }
+
+.qa .ask {
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+.media {
+  /* 	border: 1px solid #eee; */
+  padding: 5px; }
+
+#question-tabs {
+  width: auto;
+  margin-left: -15px;
+  margin-right: -15px;
+  border-bottom: 1px solid #ddd; }
+  #question-tabs li {
+    width: auto;
+    bottom: -1px; }
+    #question-tabs li a, #question-tabs li a:hover, #question-tabs li a:focus {
+      color: #7dd0e3; }
+    #question-tabs li a.active {
+      color: #fe9a28; }
+    #question-tabs li a:hover {
+      border: 1px solid #ddd; }
+    #question-tabs li .badge {
+      background-color: #fe9a28; }
+
+.tab-content {
+  padding-top: 20px;
+  clear: both;
+  text-align: left; }
+
+.question-list {
+  /*overflow: auto;*/ }
+
+.question {
+  overflow: hidden;
+  width: auto;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  margin-bottom: 15px;
+  display: -ms-flexbox;
+  display: flex; }
+  .question .stat {
+    text-align: center;
+    font-size: 13px;
+    background: #fff;
+    border-right: 1px solid #eee;
+    color: #777;
+    width: 60px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-pack: center;
+        justify-content: center; }
+    .question .stat .fa-reply {
+      color: #639208; }
+    .question .stat .fa-eye {
+      color: #0077B5; }
+  .question .question-stats {
+    cursor: pointer;
+    vertical-align: top;
+    float: left;
+    margin-right: 10px;
+    width: 18%;
+    background: #fff; }
+    .question .question-stats .stat {
+      text-align: center;
+      display: inline-block;
+      height: 38px;
+      font-size: 11px;
+      padding: 5px; }
+  .question .summary {
+    float: left;
+    width: 80%;
+    font-size: 14px;
+    padding: 10px; }
+    .question .summary h3 {
+      line-height: 1.3;
+      margin-bottom: 0.35em;
+      font-size: 18px; }
+      .question .summary h3 a {
+        color: #7dd0e3; }
+    .question .summary .comments {
+      line-height: 10px;
+      float: left; }
+    .question .summary .started {
+      white-space: nowrap;
+      float: right; }
+      .question .summary .started a {
+        color: #999; }
+
+@media (max-width: 767px) {
+  .question {
+    overflow: initial;
+    /*
+		display: block;
+		text-align: center;*/
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    height: 126px; }
+    .question .stat {
+      padding: 8px; }
+    .question .summary {
+      float: none;
+      height: 100%; }
+      .question .summary h3 {
+        margin-top: 0; }
+      .question .summary .started {
+        float: none;
+        white-space: initial; }
+      .question .summary .comments {
+        display: block;
+        float: none;
+        margin-bottom: 10px;
+        clear: both; } }
+
+.count {
+  font-size: 25px;
+  font-weight: 300;
+  margin-left: -15px;
+  margin-right: -15px; }
+
+.tag {
+  margin: 5px 4px; }
+  .tag:visited {
+    color: #333; }
+
+.top-users img, .top-users h3, .top-users h5 {
+  float: left; }
+
+.question-detail {
+  border: 2px solid #EEE;
+  border-radius: 5px; }
+  .question-detail tag {
+    text-decoration: underline; }
+  .question-detail .info {
+    padding: 20px; }
+  .question-detail .question-text {
+    padding: 20px;
+    font-size: 15px; }
+  .question-detail .tags {
+    padding-bottom: 2.25em;
+    padding-top: 1em; }
+    .question-detail .tags a {
+      text-decoration: none;
+      text-transform: capitalize;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 0px 5px;
+      color: #777; }
+      .question-detail .tags a:hover {
+        text-decoration: underline;
+        color: #4C4C4C; }
+
+.user {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #777; }
+
+.image, .user-info, .reply-input {
+  display: inline-block;
+  vertical-align: middle; }
+
+.image {
+  padding-right: 10px; }
+
+.form-post {
+  width: 85%;
+  display: inline-block; }
+  .form-post .reply-input {
+    width: 100%;
+    max-width: 1070px;
+    padding: 5px 10px;
+    height: 35px; }
+    .form-post .reply-input.active {
+      height: 120px; }
+  .form-post .post {
+    display: none;
+    margin-top: 10px;
+    padding: 8px 30px;
+    border-radius: 2px; }
+
+.options a.text-danger:visited {
+  color: #a94442; }
+
+.options a.text-muted:visited {
+  color: #777; }
+
+.action {
+  margin-right: 15px; }
+  .action i {
+    padding-right: 0.5em; }
+
+.likes button {
+  background: none;
+  border: none; }
+
+.likes button.like:hover {
+  color: green; }
+
+.likes button.dislike:hover {
+  color: red; }
+
+.answer {
+  border: 2px solid #EEE;
+  border-radius: 5px;
+  margin-top: 10px; }
+  .answer:hover .user .action {
+    display: inline-block; }
+  .answer .answer-wrapper {
+    padding: 0 20px; }
+  .answer .user {
+    padding-top: 10px; }
+    .answer .user .action {
+      display: none; }
+  .answer .answer-text {
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    .answer .answer-text button {
+      display: none;
+      padding: 8px 30px;
+      border-radius: 2px;
+      margin: 10px 0px; }
+    .answer .answer-text textarea {
+      width: 100%;
+      min-height: 80px; }
+  .answer .options, .answer .likes {
+    padding-bottom: 20px; }
+
+div.reply {
+  border-bottom: 2px solid #eee;
+  margin: 0px;
+  padding: 10px; }
+  div.reply .reply-text {
+    padding-top: 10px;
+    padding-bottom: 10px; }
+
+.arrow-box {
+  position: relative;
+  background: #fff;
+  border: none;
+  border-radius: 0 0 5px 5px;
+  border-top: 2px solid #eee;
+  padding: 15px; }
+  .arrow-box .image {
+    vertical-align: top;
+    margin-bottom: 10px; }
+
+.arrow-box:after, .arrow-box:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none; }
+
+.arrow-box:after {
+  border-color: rgba(247, 247, 247, 0);
+  border-bottom-color: #fff;
+  border-width: 7px;
+  margin-left: -7px; }
+
+.arrow-box:before {
+  border-color: rgba(238, 238, 238, 0);
+  border-bottom-color: #eee;
+  border-width: 10px;
+  margin-left: -10px; }
+
+.hide-replies {
+  font-size: 13px;
+  cursor: pointer; }
+  .hide-replies i {
+    margin-right: 2px; }
+  .hide-replies:visited {
+    color: #777; }
+
+.answer-replies {
+  margin-bottom: 10px; }
+
+.new-question {
+  padding: 20px; }
+
+.content .alert-success {
+  border-color: green; }
+
+@media (max-width: 423px) {
+  .qa-box .form_search {
+    width: 100%; }
+  .qa-box input[type="text"] {
+    width: 100% !important;
+    margin-bottom: 5px; }
+  .qa-box input[type="submit"] {
+    float: none;
+    clear: both;
+    margin: 0 auto;
+    display: block; } }
+
+/*MarkItUp fix*/
+.markItUp {
+  width: 100% !important; }
+  .markItUp .markItUpEditor {
+    width: 100%; }
+
+.q-comment {
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  padding: 6px 0px; }
+
+.answer-replies .row:first-of-type .q-comment, .answer-replies .new-question:first-of-type .q-comment, .answer-replies #qa-list .question:first-of-type .q-comment, #qa-list .answer-replies .question:first-of-type .q-comment {
+  border-top: none; }
+
+/*popup form validation styles*/
+.select2-container {
+  width: 100% !important;
+  min-width: 100% !important; }
 
 .navbar-seoq {
   background-color: #7dd0e3;
@@ -9377,10 +9697,10 @@ table.plan_table {
 
 footer {
   color: #6b7b80; }
-  footer .container.p-t-20 {
+  footer .container.p-t-20, footer .p-t-20.qa {
     padding-bottom: 20px; }
     @media (min-width: 992px) {
-      footer .container.p-t-20 .row, footer .container.p-t-20 .new-question {
+      footer .container.p-t-20 .row, footer .p-t-20.qa .row, footer .container.p-t-20 .new-question, footer .p-t-20.qa .new-question, footer .container.p-t-20 #qa-list .question, #qa-list footer .container.p-t-20 .question, footer .p-t-20.qa #qa-list .question, #qa-list footer .p-t-20.qa .question {
         display: -ms-flexbox;
         display: flex;
         -ms-flex-align: center;
@@ -9413,31 +9733,31 @@ footer {
         margin-bottom: 20px; }
       footer nav ul li.pull-right {
         float: none !important; }
-    footer .container.p-t-20 {
+    footer .container.p-t-20, footer .p-t-20.qa {
       text-align: center; }
-      footer .container.p-t-20 .row .col-xs-12.col-md-6:first-child, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:first-child {
+      footer .container.p-t-20 .row .col-xs-12.col-md-6:first-child, footer .p-t-20.qa .row .col-xs-12.col-md-6:first-child, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:first-child, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:first-child, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:first-child, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:first-child, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:first-child, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:first-child, footer .container.p-t-20 .row .qa .col-md-6.ask:first-child, .qa footer .container.p-t-20 .row .col-md-6.ask:first-child, footer .p-t-20.qa .row .col-md-6.ask:first-child, footer .container.p-t-20 .new-question .qa .col-md-6.ask:first-child, .qa footer .container.p-t-20 .new-question .col-md-6.ask:first-child, footer .p-t-20.qa .new-question .col-md-6.ask:first-child, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:first-child, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:first-child, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:first-child, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:first-child, footer .p-t-20.qa #qa-list .question .col-md-6.ask:first-child, #qa-list footer .p-t-20.qa .question .col-md-6.ask:first-child {
         margin-top: 20px;
         margin-bottom: 30px; }
-      footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li {
+      footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li, #qa-list .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .p-t-20.qa .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li, #qa-list .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .p-t-20.qa .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li {
         display: block; }
-        footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right {
+        footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .p-t-20.qa .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .p-t-20.qa .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li .pull-right {
           float: none !important; }
-        footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li img {
+        footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li img, #qa-list .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .p-t-20.qa .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li img, #qa-list .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .p-t-20.qa .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li img {
           display: block;
           margin: 0 auto;
           clear: both;
           max-height: 40px; }
-        footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child {
+        footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .p-t-20.qa .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .p-t-20.qa .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child {
           text-align: center; }
-          footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img {
+          footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .p-t-20.qa .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .p-t-20.qa .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child img {
             margin-top: 30px;
             margin-bottom: 30px;
             display: inline-block; }
-          footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social {
+          footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .row .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .row .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .row .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .new-question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .row .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .p-t-20.qa .row .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa .new-question .col-md-6.ask:last-child #qa-list .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .p-t-20.qa .new-question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .question .col-sm-12 ul.list-inline.text-right li:last-child div.content-social {
             width: 100px;
             display: inline-block;
             vertical-align: middle; }
-      footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-md-2, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-md-2, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-md-2, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-md-2 {
+      footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .row .col-md-2, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .row .col-md-2, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .row .col-md-2, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .row .col-md-2, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .row .col-md-2, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .row .col-md-2, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .row .col-md-2, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .row .col-md-2, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .row .col-md-2, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .row .col-md-2, footer .p-t-20.qa .row .col-md-6.ask:last-child .row .col-md-2, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .row .col-md-2, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .row .col-md-2, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .row .col-md-2, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .row .col-md-2, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .row .col-md-2, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .row .col-md-2, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .row .col-md-2, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .row .col-md-2, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .row .col-md-2, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .new-question .col-md-2, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .new-question .col-md-2, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .new-question .col-md-2, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .new-question .col-md-2, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-md-2, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .new-question .col-md-2, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .new-question .col-md-2, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .new-question .col-md-2, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .new-question .col-md-2, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .new-question .col-md-2, footer .p-t-20.qa .row .col-md-6.ask:last-child .new-question .col-md-2, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .new-question .col-md-2, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .new-question .col-md-2, footer .p-t-20.qa .new-question .col-md-6.ask:last-child .new-question .col-md-2, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .new-question .col-md-2, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .new-question .col-md-2, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .new-question .col-md-2, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .new-question .col-md-2, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .new-question .col-md-2, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .new-question .col-md-2, footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child #qa-list .question .col-md-2, #qa-list footer .container.p-t-20 .row .col-xs-12.col-md-6:last-child .question .col-md-2, footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child #qa-list .question .col-md-2, #qa-list footer .p-t-20.qa .row .col-xs-12.col-md-6:last-child .question .col-md-2, footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-md-2, #qa-list footer .container.p-t-20 .new-question .col-xs-12.col-md-6:last-child .question .col-md-2, footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child #qa-list .question .col-md-2, #qa-list footer .p-t-20.qa .new-question .col-xs-12.col-md-6:last-child .question .col-md-2, footer .container.p-t-20 #qa-list .question .col-xs-12.col-md-6:last-child .question .col-md-2, #qa-list footer .container.p-t-20 .question .col-xs-12.col-md-6:last-child .question .col-md-2, footer .p-t-20.qa #qa-list .question .col-xs-12.col-md-6:last-child .question .col-md-2, #qa-list footer .p-t-20.qa .question .col-xs-12.col-md-6:last-child .question .col-md-2, footer .container.p-t-20 .row .qa .col-md-6.ask:last-child #qa-list .question .col-md-2, #qa-list footer .container.p-t-20 .row .qa .col-md-6.ask:last-child .question .col-md-2, .qa footer .container.p-t-20 .row .col-md-6.ask:last-child #qa-list .question .col-md-2, #qa-list .qa footer .container.p-t-20 .row .col-md-6.ask:last-child .question .col-md-2, footer .p-t-20.qa .row .col-md-6.ask:last-child #qa-list .question .col-md-2, #qa-list footer .p-t-20.qa .row .col-md-6.ask:last-child .question .col-md-2, footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child #qa-list .question .col-md-2, #qa-list footer .container.p-t-20 .new-question .qa .col-md-6.ask:last-child .question .col-md-2, .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child #qa-list .question .col-md-2, #qa-list .qa footer .container.p-t-20 .new-question .col-md-6.ask:last-child .question .col-md-2, footer .p-t-20.qa .new-question .col-md-6.ask:last-child #qa-list .question .col-md-2, #qa-list footer .p-t-20.qa .new-question .col-md-6.ask:last-child .question .col-md-2, footer .container.p-t-20 #qa-list .question .qa .col-md-6.ask:last-child .question .col-md-2, .qa footer .container.p-t-20 #qa-list .question .col-md-6.ask:last-child .question .col-md-2, #qa-list footer .container.p-t-20 .question .qa .col-md-6.ask:last-child .question .col-md-2, .qa #qa-list footer .container.p-t-20 .question .col-md-6.ask:last-child .question .col-md-2, footer .p-t-20.qa #qa-list .question .col-md-6.ask:last-child .question .col-md-2, #qa-list footer .p-t-20.qa .question .col-md-6.ask:last-child .question .col-md-2 {
         display: none; } }
 
 .slider-on-off {

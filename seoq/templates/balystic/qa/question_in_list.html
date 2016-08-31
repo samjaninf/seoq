@@ -1,0 +1,25 @@
+{% load date_string %}
+{% for question in pane %}
+<div class="question">
+  <div class="stat">
+    <div class="ques">{{ question.answers }}</div>
+    <i class="fa fa-reply"></i>
+    <small>Answers</small>
+  </div>
+  <div class="stat">
+    <div class="ques">{{ question.views }}</div>
+    <i class="fa fa-eye"></i>
+    <small>Views</small>
+  </div>
+  <div class="summary">
+    <h3><a href="{% url 'balystic_qa_detail' question.pk %}">{{ question.title }}</a></h3>
+    <br/>
+    {% comment %}
+    {% for tag in question.tags %}
+        <a href="#"><tag>{{ tag }}</tag></a>
+    {% endfor %}
+    {% endcomment %}
+    <small class="pull-right">{{ question.user.username }} on {{ question.pub_date|date_string }}</small>
+  </div>
+</div>
+{% endfor %}
