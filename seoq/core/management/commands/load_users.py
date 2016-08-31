@@ -34,6 +34,9 @@ class Command(BaseCommand):
                 user.areas_of_expertise_other = temp['areas_of_expertise_other']
                 user.languages = temp['languages']
                 user.languages_other = temp['languages_other']
+                user.google_account = temp['google_url']
+                user.location = temp['location']
+                user.phone_number = temp['phone']
                 user.save()
             except KeyError:
                 continue

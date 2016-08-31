@@ -32,11 +32,15 @@ class User(AbstractUser):
     # First Name and Last Name do not cover name patterns
     # around the globe.
     name = models.CharField(_('Name of User'), blank=True, max_length=255)
+    phone_number = models.CharField(blank=True, max_length=50)
     fb_account = models.URLField(blank=True, max_length=255)
     twitter_account = models.URLField(blank=True, max_length=255)
     linkedin_account = models.URLField(blank=True, max_length=255)
+    google_account = models.URLField(blank=True, max_length=255)
+    skype = models.CharField(max_length=50, blank=True, default='')
     title = models.CharField(blank=True, max_length=255)
     about = models.TextField(_("About You"), blank=True, default='')
+    location = models.CharField(blank=True, max_length=255)
     profile_picture = models.ImageField(
         blank=True,
         null=True,
