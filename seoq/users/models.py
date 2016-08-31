@@ -42,20 +42,16 @@ class User(AbstractUser):
         upload_to='profile/')
     generics = JSONField(default=dict)
     website_url = models.URLField(blank=True, max_length=255)
-    website_url1 = models.URLField(blank=True, max_length=255)
-    website_url2 = models.URLField(blank=True, max_length=255)
-    website_url3 = models.URLField(blank=True, max_length=255)
-    website_url4 = models.URLField(blank=True, max_length=255)
     areas_of_expertise = ArrayField(
-            models.CharField(max_length=50, blank=True,
-                             choices=EXPERTISE_CHOICES, default=''),
-            default=list
+        models.CharField(max_length=50, blank=True,
+                         choices=EXPERTISE_CHOICES, default=''),
+        default=list
         )
     areas_of_expertise_other = models.CharField(max_length=50, blank=True, default='')
     languages = ArrayField(
-            models.CharField(max_length=50, blank=True,
-                             choices=LANGUAGE_CHOICES, default=''),
-            default=list
+        models.CharField(max_length=50, blank=True,
+                         choices=LANGUAGE_CHOICES, default=''),
+        default=list
         )
     languages_other = models.CharField(max_length=50, blank=True, default='')
 
