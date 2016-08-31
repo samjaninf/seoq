@@ -1,7 +1,14 @@
-from django.core.management.base import BaseCommand
-from seoq.users.models import User
-from balystic.client import Client
 import json
+import requests
+import os
+from django.core.files import File
+
+import tempfile
+
+from django.core.management.base import BaseCommand
+from balystic.client import Client
+from seoq.users.models import User
+
 
 class Command(BaseCommand):
     help = 'Moves the data from generics field to local user model'
@@ -13,7 +20,10 @@ class Command(BaseCommand):
         users = User.objects.all()
         for user in user_list_fixed:
             temp = users.filter(username=user['username'])
-            generics = json.loads(user['generics'])
+            if not isinstance(user['generics'], dict):
+                generics = json.loads(user['generics'])
+            else:
+                generics = user['generics']
             if len(temp) == 0:
                 User.objects.create(username=user['username'],
                                     email=user['email'],
@@ -38,6 +48,28 @@ class Command(BaseCommand):
                 user.location = temp['location']
                 user.phone_number = temp['phone']
                 user.company_name = temp['company_name']
+                image = temp['company_logo']
+                if image:
+                    image = 'https://omega.seoq.com/media/' + image
+                    # http://stackoverflow.com/questions/16174022/download-a-remote-image-and-save-it-to-a-django-model
+                    result = requests.get(
+                        image, stream=True)
+
+                    lf = tempfile.NamedTemporaryFile()
+                    file_name = image.split('/')[-1]
+
+                    for block in result.iter_content(1024 * 8):
+
+                        # If no more file then stop
+                        if not block:
+                            break
+                        lf.write(block)
+
+                    user.company_logo.save(
+                        file_name,
+                        File(lf))
+                else:
+                    user.company_logo = ''
                 user.save()
             except KeyError:
                 continue
