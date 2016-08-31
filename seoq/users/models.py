@@ -20,6 +20,7 @@ class User(AbstractUser):
         ('Link Builder', 'Link Builder'),
         ('SEO Training', 'SEO Training'),
         ('Social Media', 'Social Media'),
+        ('Keyword Analyst', 'Keyword Analyst'),
     )
 
     LANGUAGE_CHOICES = (
