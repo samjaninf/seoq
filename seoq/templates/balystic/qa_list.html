@@ -1,128 +1,89 @@
-{% extends "balystic/base.html" %}
-
-{% load staticfiles %}
+{% extends "balystic/qa/base.html" %}
+{% block title %}Q&A{% endblock title %}
+{% load staticfiles date_string %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <a href="{% url 'balystic_qa_create_question' %}">ask question</a>
-    </div>
-  </div>
-    <ul class="nav nav-tabs nav-justified">
-        <li role="presentation" class="active"><a href="#latest" data-toggle="tab"><span class="glyphicon glyphicon-th-list"></span> Latest</a></li>
-        <li role="presentation"><a href="#unans" data-toggle="tab"><span class="glyphicon glyphicon-question-sign"></span> Unanswered <span class="badge">{{ totalnoans }}</span></a></li>
-        <li role="presentation"><a href="#reward" data-toggle="tab"><span class="glyphicon glyphicon-star"></span> Most Rewarding <span class="badge">{{ reward | length }}</span></a></li>
-    </ul>
-
-<div class="tab-content">
-<!-- Questions -->
-<div class="tab-pane active" id="latest">
-{% if questions %}
-  {% for question in questions %}
+<main class="qa">
     <div class="row">
-      <div class="col-sm-1 ans"><small><div class="ques">{{ question.answers }}</div>Answers</small></div>
-      <div class="col-sm-1 ans"><small><div class="ques">{{ question.views }}</div>Views</small></div>
-      <p>
-        {% if question.reward %}<span class="glyphicon glyphicon-fire" aria-hidden="true"></span>{% endif %}
-        <h3><a href="{% url 'balystic_qa_detail' question.pk %}">{{ question.title }}</a></h3>
-        <br/>
-        {% for tag in question.tags.all %}
-            <a href="{% url 'qa_tag' tag.slug %}"><tag>{{ tag.slug }}</tag></a>
-        {% endfor %}
-        <small> {{ question.pub_date }}</small>
-      </p>
-    </div>
-    <hr>
-  {% endfor %}
-
-<div class="pagination">
-  {% if is_paginated %}
-      <div class="pagination">
-          <span class="page-links">
-              {% if page_obj.has_previous %}
-                  <a href="{% url 'qa_index' %}?page={{ page_obj.previous_page_number }}">previous</a>
-              {% endif %}
-              <span class="page-current">
-                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-              </span>
-              {% if page_obj.has_next %}
-                  <a href="{% url 'qa_index' %}?page={{ page_obj.next_page_number }}">next</a>
-              {% endif %}
-          </span>
+      <div class="ask">
+        <a class="btn btn-lg btn-seoq" href="{% url 'balystic_qa_create_question' %}">Ask a question</a>
       </div>
-  {% endif %}
-</div>
+    </div>
+    <div class="row">
+    <section id="qa-list">
+      <ul id="question-tabs" class="nav nav-tabs nav-justified" role="tablist">
+          <li role="presentation" class="active"><a href="#latest" data-toggle="tab">Latest</a></li>
+          <li role="presentation"><a href="#unans" data-toggle="tab">Unanswered <span class="badge">{{ total_noans }}</span></a></li>
+          <li role="presentation"><a href="#reward" data-toggle="tab">Most Rewarding <span class="badge">{{ reward | length }}</span></a></li>
+      </ul>
 
-{% else %}
-<div class="alert alert-warning" role="alert">No Questions are available!</div>
-{% endif %}
-</div>
-<!-- End of Questions -->
+    <div class="tab-content">
+    <!-- Questions -->
+    <div class="tab-pane active" id="latest">
+    {% if questions %}
+      {% include "balystic/qa/question_in_list.html" with pane=questions %}
 
-<!-- No Answers -->
-<div class="tab-pane" id="unans">
-{% if noans %}
-  {% for question in noans %}
-  <div class="row">
-  <div class="col-sm-1 ans"><small><div class="ques">{{ question.answers }}</div>Answers</small></div>
-  <div class="col-sm-1 ans"><small><div class="ques">{{ question.views }}</div>Views</small></div>
-  <p>
-    {% if question.answers %}<span class="glyphicon glyphicon-fire" aria-hidden="true"></span>{% endif %} <a class="ques" href="{% url 'balystic_qa_detail' question.pk %}">{{ question.title }}</a>
-    <br/>
-    {% for tag in question.tags.all %}
-        <a href="{% url 'qa_tag' tag.slug %}"><tag>{{ tag.slug }}</tag></a>
-    {% endfor %}
-    <small> {{ question.pub_date }}</small>
-  </p>
-</div>
-<hr>
-  {% endfor %}
+      <div class="pagination">
+      {% if is_paginated %}
+        <div class="pagination">
+          <span class="page-links">
+          {% if page_obj.has_previous %}
+            <a href="{% url 'qa_index' %}?page={{ page_obj.previous_page_number }}">previous</a>
+          {% endif %}
+            <span class="page-current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+          {% if page_obj.has_next %}
+            <a href="{% url 'qa_index' %}?page={{ page_obj.next_page_number }}">next</a>
+          {% endif %}
+          </span>
+        </div>
+      {% endif %}
+      </div>
 
-{% else %}
-<div class="alert alert-warning" role="alert">No Questions are available!</div>
-{% endif %}
-<div class="pagination">
-    <span class="step-links">
-        {% if noans.has_previous %}
+    {% else %}
+      {% include "balystic/qa/no_question.html "%}
+    {% endif %}
+    </div>
+    <!-- End of Questions -->
+
+    <!-- No Answers -->
+    <div class="tab-pane" id="unans">
+    {% if noans %}
+      {% include "balystic/qa/question_in_list.html" with pane=noans %}
+    {% else %}
+      {% include "balystic/qa/no_question.html "%}
+    {% endif %}
+      <div class="pagination">
+        <span class="step-links">
+          {% if noans.has_previous %}
             <a href="?noans_page={{ noans.previous_page_number }}&active_tab=unans">previous</a>
-        {% endif %}
+          {% endif %}
 
-        <span class="current">
-            Page {{ noans.number }} of {{ noans.paginator.num_pages }}.
-        </span>
+          <span class="current">
+              Page {{ noans.number }} of {{ noans.paginator.num_pages }}.
+          </span>
 
-        {% if noans.has_next %}
+          {% if noans.has_next %}
             <a href="?noans_page={{ noans.next_page_number }}&active_tab=unans">next</a>
-        {% endif %}
-    </span>
+          {% endif %}
+        </span>
+      </div>
+    </div>
+    <!--End of No Answers-->
+    <!-- Rewards -->
+    <div class="tab-pane" id="reward">
+    {% if reward %}
+        {% include "balystic/qa/question_in_list.html" with pane=reward %}
+    {% else %}
+      {% include "balystic/qa/no_question.html "%}
+    {% endif %}
+    </div>
+    <!-- End Rewards -->
+      
+    </section>
+    </div>
+  </main>
 </div>
-</div>
-<!--End of No Answers-->
-<!-- Rewards -->
-<div class="tab-pane" id="reward">
-{% if reward %}
-  {% for question in reward %}
-  <div class="row">
-  <div class="col-sm-1 ans"><small><div class="ques">{{ question.answers }}</div>Answers</small></div>
-  <div class="col-sm-1 ans"><small><div class="ques">{{ question.views }}</div>Views</small></div>
-  <p>
-    {% if question.answers %}<span class="glyphicon glyphicon-fire" aria-hidden="true"></span>{% endif %} <a class="ques" href="{% url 'balystic_qa_detail' question.pk %}">{{ question.title }}</a>
-    <br/>
-    {% for tag in question.tags.all %}
-        <a href="{% url 'qa_tag' tag.slug %}"><tag>{{ tag.slug }}</tag></a>
-    {% endfor %}
-    <small> {{ question.pub_date }}</small>
-  </p>
-</div>
-<hr>
-  {% endfor %}
 
-{% else %}
-<div class="alert alert-warning" role="alert">No Questions are available!</div>
-{% endif %}
-</div>
-<!-- End Rewards -->
-  </div>
-</div>
 {% endblock content %}

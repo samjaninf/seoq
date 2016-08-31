@@ -20,6 +20,7 @@ class User(AbstractUser):
         ('Link Builder', 'Link Builder'),
         ('SEO Training', 'SEO Training'),
         ('Social Media', 'Social Media'),
+        ('Keyword Analyst', 'Keyword Analyst'),
     )
 
     LANGUAGE_CHOICES = (
@@ -31,31 +32,32 @@ class User(AbstractUser):
     # First Name and Last Name do not cover name patterns
     # around the globe.
     name = models.CharField(_('Name of User'), blank=True, max_length=255)
+    phone_number = models.CharField(blank=True, max_length=50)
     fb_account = models.URLField(blank=True, max_length=255)
     twitter_account = models.URLField(blank=True, max_length=255)
     linkedin_account = models.URLField(blank=True, max_length=255)
+    google_account = models.URLField(blank=True, max_length=255)
+    skype = models.CharField(max_length=50, blank=True, default='')
     title = models.CharField(blank=True, max_length=255)
     about = models.TextField(_("About You"), blank=True, default='')
+    location = models.CharField(blank=True, max_length=255)
     profile_picture = models.ImageField(
         blank=True,
         null=True,
         upload_to='profile/')
     generics = JSONField(default=dict)
+    company_name = models.CharField(blank=True, max_length=255)
     website_url = models.URLField(blank=True, max_length=255)
-    website_url1 = models.URLField(blank=True, max_length=255)
-    website_url2 = models.URLField(blank=True, max_length=255)
-    website_url3 = models.URLField(blank=True, max_length=255)
-    website_url4 = models.URLField(blank=True, max_length=255)
     areas_of_expertise = ArrayField(
-            models.CharField(max_length=50, blank=True,
-                             choices=EXPERTISE_CHOICES, default=''),
-            default=list
+        models.CharField(max_length=50, blank=True,
+                         choices=EXPERTISE_CHOICES, default=''),
+        default=list
         )
     areas_of_expertise_other = models.CharField(max_length=50, blank=True, default='')
     languages = ArrayField(
-            models.CharField(max_length=50, blank=True,
-                             choices=LANGUAGE_CHOICES, default=''),
-            default=list
+        models.CharField(max_length=50, blank=True,
+                         choices=LANGUAGE_CHOICES, default=''),
+        default=list
         )
     languages_other = models.CharField(max_length=50, blank=True, default='')
 

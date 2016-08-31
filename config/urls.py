@@ -8,6 +8,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from balystic import views as balystic_views
+from ckeditor_uploader import views as ckeditor_views
 from seoq.core import views as core_views
 from seoq.payments_seoq import views as payments_seoq
 from seoq.users.views import UserUpdateRedirect
@@ -56,6 +57,11 @@ urlpatterns = [
         name='order_payment_success'),
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),
+    url(r'^ckeditor/upload/',
+        ckeditor_views.upload, name='ckeditor_upload'),
+    url(r'^ckeditor/browse/', ckeditor_views.browse, name='ckeditor_browse'),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url('^markdown/', include( 'django_markdown.urls')),
 
     # User management
     url(r'^', include('seoq.users.urls', namespace='users')),

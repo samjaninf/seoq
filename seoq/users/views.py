@@ -27,10 +27,14 @@ class UserDetailView(View):
                 user=self.request.user)
         user = Client().get_user_detail(username)
         owner = Client().get_users({'userType': 'owner'})['owner']
+        try:
+            local_user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            pass
         return render(
             request,
             self.template_name,
-            {'user': user, 'userplan': plan, 'owner': owner})
+            {'user': user, 'userplan': plan, 'owner': owner, 'local_user': local_user})
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
