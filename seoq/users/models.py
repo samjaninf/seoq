@@ -10,6 +10,7 @@ from plans.signals import activate_user_plan
 from django.db.models import signals
 from django.contrib.postgres.fields import JSONField, ArrayField
 
+
 @python_2_unicode_compatible
 class User(AbstractUser):
 
@@ -46,17 +47,14 @@ class User(AbstractUser):
     website_url2 = models.URLField(blank=True, max_length=255)
     website_url3 = models.URLField(blank=True, max_length=255)
     website_url4 = models.URLField(blank=True, max_length=255)
-    areas_of_expertise = ArrayField(
-            models.CharField(max_length=50, blank=True,
-                             choices=EXPERTISE_CHOICES, default=''),
-            default=list
-        )
-    areas_of_expertise_other = models.CharField(max_length=50, blank=True, default='')
-    languages = ArrayField(
-            models.CharField(max_length=50, blank=True,
-                             choices=LANGUAGE_CHOICES, default=''),
-            default=list
-        )
+    areas_of_expertise = ArrayField(models.CharField(max_length=50, blank=True,
+                                    choices=EXPERTISE_CHOICES, default=''),
+                                    default=list)
+    areas_of_expertise_other = models.CharField(
+        max_length=50, blank=True, default='')
+    languages = ArrayField(models.CharField(max_length=50, blank=True,
+                           choices=LANGUAGE_CHOICES, default=''),
+                           default=list)
     languages_other = models.CharField(max_length=50, blank=True, default='')
 
     def __str__(self):
