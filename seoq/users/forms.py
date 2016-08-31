@@ -14,8 +14,8 @@ class EditProfileForm(forms.ModelForm):
         model = User
         fields = ["first_name", "last_name", 'fb_account',
                   'twitter_account', 'linkedin_account',
+                  'google_account', 'skype', 'location', 'phone_number',
                   'title', 'about', 'profile_picture',
-                  'website_url', 'website_url1', 'website_url2',
-                  'website_url3', 'website_url4',
+                  'website_url',
                   'areas_of_expertise', 'areas_of_expertise_other',
-                  'languages', 'languages_other']
+                  'languages', 'languages_other', 'company_name']

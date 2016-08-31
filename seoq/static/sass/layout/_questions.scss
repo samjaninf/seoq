@@ -1,0 +1,10 @@
+.new-question{
+	@extend .row;
+	.question-box{
+		@extend .col-sm-10, .col-sm-offset-1, .well; 
+		padding: 20px;
+	}
+	.btn-seoq{
+		margin: 0;
+	}
+}

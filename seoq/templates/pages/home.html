@@ -143,14 +143,16 @@
           </div>
 
           <div class="col-sm-6 col-md-6 m-b-50 p-t-20" ng-controller="keywordScoreController">
-          <img src="{% static 'images/ajax-loader.gif' %}" ng-if="animation">
+          <img src="{% static 'images/preloader.gif' %}" ng-if="animation">
           {% verbatim %}
             <p>
             <span ng-if="animation">
               {{ analysis_message }}
             </span>
             </p>
-            <p class="help-block text-center" id="scan-help-block" ng-if="bad_status_code">{{ status_message }}</p>
+            <p class="help-block text-center" id="scan-help-block" ng-if="bad_status_code">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+              {{ status_message }}</p>
           {% endverbatim %}
             <form ng-submit="startReport('{{ qscraper_url }}', '{{ request.user.username }}')" ng-if="!animation" id="myForm" name="myForm">
             {% csrf_token %}
