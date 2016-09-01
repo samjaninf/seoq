@@ -17,9 +17,10 @@ class SEODirectoryUserList(View):
     client = Client()
 
     def get(self, request):
+        alphabetical = request.GET.get('alphabetical', None)
         query_term = request.GET.get('q', None)
         if query_term is None:
-            params = {'isPro': '1'}
+            params = {'isPro': '1', 'alphabetical': '1'}
         else:
             params = {'isPro': '1', 'q': query_term}
         context = {
