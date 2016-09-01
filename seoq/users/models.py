@@ -10,6 +10,7 @@ from plans.signals import activate_user_plan
 from django.db.models import signals
 from django.contrib.postgres.fields import JSONField, ArrayField
 
+
 @python_2_unicode_compatible
 class User(AbstractUser):
 
@@ -47,18 +48,23 @@ class User(AbstractUser):
         upload_to='profile/')
     generics = JSONField(default=dict)
     company_name = models.CharField(blank=True, max_length=255)
+    company_logo = models.ImageField(
+        blank=True,
+        null=True,
+        upload_to='profile/')
     website_url = models.URLField(blank=True, max_length=255)
     areas_of_expertise = ArrayField(
         models.CharField(max_length=50, blank=True,
                          choices=EXPERTISE_CHOICES, default=''),
         default=list
-        )
-    areas_of_expertise_other = models.CharField(max_length=50, blank=True, default='')
+    )
+    areas_of_expertise_other = models.CharField(
+        max_length=50, blank=True, default='')
     languages = ArrayField(
         models.CharField(max_length=50, blank=True,
                          choices=LANGUAGE_CHOICES, default=''),
         default=list
-        )
+    )
     languages_other = models.CharField(max_length=50, blank=True, default='')
 
     def __str__(self):

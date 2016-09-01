@@ -13,7 +13,7 @@
 	}
 }
 
-$qa-gray: #fff;
+$qa-gray: #F7F7F7;
 
 .media{
 /* 	border: 1px solid #eee; */
@@ -75,6 +75,9 @@ $qa-gray: #fff;
 		.fa-eye{
 			color: #0077B5;
 		}
+		.ques{
+			font-size: 25px;
+		}
 	}
 	.question-stats{
 		cursor: pointer;
@@ -129,10 +132,14 @@ $qa-gray: #fff;
 		height: 126px;
 		.stat{
 			padding: 8px;
+			.ques{
+				font-size: inherit;
+			}
 		}
 		.summary{
 			float: none;
 			height: 100%;
+			position: relative;
 			h3{
 				margin-top: 0;
 			}
@@ -145,6 +152,11 @@ $qa-gray: #fff;
     			float: none;
     			margin-bottom: 10px;
     			clear: both;
+			}
+			small.pull-right{
+				float: none !important;
+				position: absolute;
+				bottom: 5px;
 			}
 		}
 	}
@@ -170,6 +182,7 @@ $qa-br: 5px;
 
 .question-detail
 {
+	@extend .row;
 	border: 2px solid #EEE;
     border-radius: $qa-br;
 	tag{

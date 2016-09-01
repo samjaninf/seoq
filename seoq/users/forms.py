@@ -18,4 +18,5 @@ class EditProfileForm(forms.ModelForm):
                   'title', 'about', 'profile_picture',
                   'website_url',
                   'areas_of_expertise', 'areas_of_expertise_other',
-                  'languages', 'languages_other', 'company_name']
+                  'languages', 'languages_other', 'company_name',
+                  'company_logo']
