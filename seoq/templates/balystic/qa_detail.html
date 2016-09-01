@@ -1,5 +1,292 @@
-{% extends "balystic/base.html" %}
-{% block content %}
+{% extends "balystic/qa/base.html" %}
+{% block title %}{{ question.title }}{% endblock title %}
+{% load staticfiles date_string django_markdown %}
+{% block qa %}
+<div class="question-detail">
+  <!-- begin info -->
+  <div class="info">
+    <div class="col-md-12 title">
+      <h2>{{ question.title }}</h2>
+    </div>
+    <div class="col-md-12 user">
+      <div class="image">
+        <img class="img-circle" width="50px" height="50px" src="{% if question.user.avatar %}{{ question.user.avatar }}{% else %}http://placehold.it/350x150{% endif %}"> 
+      </div>
+      <div class="user-info">
+          <a href="{% url 'users:detail' question.user.username %}">{{ question.user.username }}</a> on {{ question.pub_date|date_string }} {% if question.user.location %}&nbsp;&nbsp;<i class="fa fa-map-marker" aria-hidden="true"></i> {{ question.user.location }}{% endif %}
+      </div>
+    </div>
+    <div class="col-md-12 question-text">
+      {{ question.description }}
+    </div>
+    <div class="col-md-12 tags text-muted">
+        <i class="fa fa-tag fa-flip-horizontal" aria-hidden="true"></i>
+        {% for tag in question.tags %}
+            <a href="#">{{ tag }}</a>
+        {% endfor %}
+    </div>
+  </div>
+  <!-- begin arrow-box -->
+  <div class="col-md-12 options arrow-box">
+    {% if question.closed %}
+      <div class="alert alert-danger">This Question has been closed.</div>
+    {% elif user.is_authenticated and question.user = user %}
+      <a class="action pull-right text-muted" 
+          href="{% url 'qa_update_question' question.id %}" 
+          role="button">
+        <i class="fa fa-pencil"></i>Edit question </a>
+      <form action="{% url 'qa_delete_question' question.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="action pull-right btn-delete text-danger"><i class="fa fa-trash"></i>Delete question </button>
+      </form>
+      <br>
+      <br>
+    {% endif %}
+      <div class="image">
+          <img class="img-circle" width="50px" height="50px" src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}http://placehold.it/350x150{% endif %}"> 
+        </div>
+        {% if user.is_authenticated %}
+        <form method="post" class="form-post" action="">
+          {% csrf_token %}
+          <textarea id="id_answer_text" name="answer_text" class="reply-input" placeholder="Your answer"></textarea>
+          <button class="btn btn-primary post"
+                  {% if user.is_authenticated %}
+                  type="submit"
+                  {% else %}
+                  type="button" data-toggle="modal" data-target="#signup-modal"
+                  {% endif %}>Post Reply</button>
+        </form>
+        {% else %}
+          <button class="btn btn-primary post"
+            type="button" data-toggle="modal" data-target="#signup-modal">Post Reply</button>
+        {% endif %}
+  </div>
+
+  <!-- end arrow-box -->
+</div>
+<div class="row">
+  <a class="action pull-right text-muted" id="add-comment-button" role="button" {% if user.is_authenticated %}onclick="showSection('add-comment-form');hideSection('add-comment-button')"{% else %}type="button" data-toggle="modal" data-target="#signup-modal"{% endif %}>
+    <i class="fa fa-comment"></i> Add a comment
+  </a>
+
+  <form class="form-post ng-pristine ng-valid" style="display:none" id="add-comment-form" method="post" action="{% url 'balystic_qa_comment' 'question' question.pk %}?next={{ request.path }}">
+    {% csrf_token %}
+    <textarea maxlength="250" class="reply-input" name="comment_text"></textarea>
+    <button style="display: inline-block;" class="btn btn-primary" type="submit">Add Comment</button>
+  </form>
+</div>
+<!-- Comments -->
+{% if question.questioncomment_set %}
+<h3>Comments</h3>
+  {% for comment in question.questioncomment_set %}
+    <div class="row">
+    {% if request.user.username == comment.user.username %}
+      <div class="col-md-2">
+        <form action="{% url 'balystic_qa_delete_comment' 'question' comment.pk %}?next={{ request.path }}" method="post">
+          {% csrf_token %}
+            <input type="submit" value="delete comment" />
+        </form>
+        <button data-toggle="collapse" data-target="#question-comment-{{ comment.pk }}">edit</button>
+      
+        <div id="question-comment-{{ comment.pk }}" class="collapse">
+          <form action="{% url 'balystic_qa_edit_comment' 'question' comment.pk %}?next={{ request.path }}" method="post">
+              {% csrf_token %}
+              <input type="text" name="comment_text" value="{{ comment.comment_text }}">
+              <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    {% endif %}
+      <div class ="col-md-8">
+        <div id="ans" class="alert alert-primary" role="alert">
+        {{ comment.comment_text }}
+        </div>
+      </div>
+      <div class="col-md-2">
+        {{ comment.user.username }} on {{ comment.pub_date|date_string }}
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}
+<!-- end comments -->
+<!-- Answers -->
+<h3>Answers ({{ answers|length }})</h3>
+{% for answer in question.answer_set %}
+  <div class="row">
+
+    <!-- begin answer row -->
+    <div class="row answer">
+      <!-- begin answer-wrapper -->
+      <div class="answer-wrapper">
+        <!-- begin user -->
+        <div class="col-md-12 user options">
+          <div class="image">
+            <img class="img-circle" width="50px" height="50px" src="{% if answer.user.avatar %}{{ answer.user.avatar }}{% else %}http://placehold.it/350x150{% endif %}"> 
+          </div>
+          <div class="user-info">
+              <a href="{% url 'users:detail' answer.user.username %}" name="answer-{{ answer.user.username }}-{{ answer.pk }}">{{ answer.user.username }}</a> {{ answer.pub_date|date_string }}{% if answer.updated %}&nbsp;(Updated {{ answer.updated|date_string }}){% endif %}
+          </div>
+          {% if request.user.is_authenticated and answer.user.username == request.user.username %}
+            <a class="action pull-right text-muted" 
+                id="edit-ans-{{answer.pk}}"
+                role="button">
+              <i class="fa fa-pencil"></i>Edit answer </a>
+            <form action="{% url 'balystic_qa_delete_answer' answer.pk %}?next={{ request.path }}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="action pull-right text-danger"><i class="fa fa-trash"></i>Delete answer</button>
+            </form>
+          {% endif %}
+        </div>
+        <!-- end user -->
+        <!-- begin answer-text -->
+        <form class="update" method="post" action="{% url 'balystic_qa_edit_answer' answer.pk %}?next={{ request.path }}">
+        {% csrf_token %}
+        <div class="col-md-12 answer-text">
+          <div id="ans-{{answer.id}}">{{ answer.answer_text }}</div>
+          <button class="btn btn-primary" type="submit">Update answer</button>
+        </div>
+        </form>
+        <!-- end answer-text -->
+        <!-- begin options -->
+        <div class="col-md-9 options">
+          <a class="action pull-left text-muted reply" 
+              {% comment %}{% url 'qa_create_answer_comment' answer.id %}{% endcomment %}
+              role="button"
+              {% if user.is_authenticated %}
+              data-target="#reply-{{ answer.pk }}" 
+              data-toggle="collapse"
+              {% else %}
+              type="button" data-toggle="modal" data-target="#signup-modal"
+              {% endif %}>
+            <i class="fa fa-mail-reply"></i>Reply</a>
+            {% comment %}
+          <div onmouseenter="hideShare('answer',{{ answer.id }})" onmouseleave="showShare('answer',{{ answer.id }})">
+            <a class="action pull-left text-muted share"
+                id="share-answer-{{ answer.id }}" 
+                name="qa-answer-{{ answer.id }}" 
+                role="button">
+              <i class="fa fa-share-square-o"></i>Share
+            </a><div class="addthis_native_toolbox" data-url="{{ request.build_absolute_uri }}#answer-{{ answer.user.username }}-{{ answer.id }}" id="share-media-answer-{{ answer.id }}" style="display:none"></div>
+          </div>
+          {% endcomment %}
+        </div>
+        <div class="col-md-3 likes">
+            <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="upvote" value="on">
+              <button class="action pull-right text-muted like" type="submit" {% if not request.user.is_authenticated or answer.user.username == request.user.username %}disabled{% endif %}><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="top" title="Vote up this answer"></i>{{ answer.positive_votes }}</button>
+            </form>
+            <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
+              {% csrf_token %}
+              <button class="action pull-right text-muted dislike" type="submit" {% if not request.user.is_authenticated or answer.user.username == request.user.username %}disabled{% endif %}><i class="fa fa-thumbs-down" data-toggle="tooltip" data-placement="bottom" title="Vote down this answer" ></i>{{ answer.negative_votes }}</button>
+            </form>
+        </div>
+        <!-- end options -->
+      </div>
+      <!-- end answer-wrapper -->
+      <!-- begin arrow-box -->
+      <div id="reply-{{answer.pk}}" class="col-md-12 arrow-box collapse"> 
+        <div class="image">
+          <img class="img-circle" width="50px" height="50px" src="{% if user.avatar %}{{ user.avatar }}{% else %}http://placehold.it/350x150{% endif %}"> 
+        </div>
+        <form method="post" class="form-post" action="{% url 'balystic_qa_comment' 'answer' answer.pk %}?next={{ request.path }}">
+          {% csrf_token %}
+          <textarea id="id_comment_text" name="comment_text" class="reply-input" placeholder="Your reply"></textarea>
+          <button class="btn btn-primary post"
+                  {% if user.is_authenticated %}
+                  type="submit"
+                  {% else %}
+                  type="button" data-toggle="modal" data-target="#signup-modal"
+                  {% endif %}>Post Reply</button>
+        </form>
+      </div>
+      <!-- end arrow-box -->
+    </div>
+    <!-- end answer row -->
+    
+    <div class="col-md-2">
+    {% if request.user.is_authenticated and answer.user.username == request.user.username %}
+      <form action="{% url 'balystic_qa_delete_answer' answer.pk %}?next={{ request.path }}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete Answer" />
+      </form>
+    <button data-toggle="collapse" data-target="#answer-{{ answer.pk }}">edit</button>
+    
+    <div id="answer-{{ answer.pk }}" class="collapse">
+      <form action="{% url 'balystic_qa_edit_answer' answer.pk %}?next={{ request.path }}" method="post">
+          {% csrf_token %}
+          <input type="text" name="answer_text" value="{{ answer.answer_text }}">
+          <input type="submit" value="Submit" />
+      </form>
+    </div>
+    {% endif %}
+
+      <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="upvote" value="on">
+        <button class="action pull-right text-muted like" type="submit" {% if not request.user.is_authenticated or answer.user.username == request.user.username %}disabled{% endif %}><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="top" title="Vote up this answer"></i>{{ answer.positive_votes }}</button>
+      </form>
+      <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
+        {% csrf_token %}
+        <button class="action pull-right text-muted dislike" type="submit" {% if not request.user.is_authenticated or answer.user.username == request.user.username %}disabled{% endif %}><i class="fa fa-thumbs-down" data-toggle="tooltip" data-placement="bottom" title="Vote down this answer" ></i>{{ answer.negative_votes }}</button>
+      </form>
+    </div>
+    <div class ="col-md-8">
+      <div id="ans" class="alert alert-primary" role="alert">
+      {{ answer.answer_text }}
+      </div>
+    </div>
+    <div class="col-md-2">
+      {{ answer.user.username }}
+    </div>
+  </div>
+
+  <!--- replieeees -->
+  <hr>
+  {% for comment in answer.answercomment_set %}
+    <div class="row">
+    {% if request.user.username == comment.user.username %}
+    <div class="col-md-2">
+      <form action="{% url 'balystic_qa_delete_comment' 'answer' comment.pk %}?next={{ request.path }}" method="post">
+        {% csrf_token %}
+          <input type="submit" value="delete reply" />
+      </form>
+      
+      <button data-toggle="collapse" data-target="#answer-comment-{{ comment.pk }}">edit</button>
+    
+      <div id="answer-comment-{{ comment.pk }}" class="collapse">
+        <form action="{% url 'balystic_qa_edit_comment' 'answer' comment.pk %}?next={{ request.path }}" method="post">
+            {% csrf_token %}
+            <input type="text" name="comment_text" value="{{ comment.comment_text }}">
+            <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+    {% endif %}
+      <div class ="col-md-8">
+        <div id="ans" class="alert alert-primary" role="alert">
+        {{ comment.comment_text }}
+        </div>
+      </div>
+      <div class="col-md-2">
+        {{ comment.user.username }}
+      </div>
+    </div>
+  {% endfor %}
+  <h4>reply answer</h4>
+  {% if request.user.is_authenticated %}
+    <form action="{% url 'balystic_qa_comment' 'answer' answer.pk %}?next={{ request.path }}" method="post">
+        {% csrf_token %}
+        <input type="text" name="comment_text">
+        <input type="submit" value="Submit" />
+    </form>
+  {% endif %}
+{% endfor %}
+<!-- end answers -->
+
+
+
+{% comment %}
 <div class="jumbotron">
   <div class="row">
     {% if request.user.is_authenticated and question.user.username != request.user.username %}
@@ -74,6 +361,8 @@
         {{ answer.user.username }}
       </div>
     </div>
+
+    <!--- replieeees -->
     <h4>replies</h4>
     {% for comment in answer.answercomment_set %}
 
@@ -164,4 +453,5 @@
     </div>
   </div>
 </div>
-{% endblock content %}
+{% endcomment %}
+{% endblock qa %}
