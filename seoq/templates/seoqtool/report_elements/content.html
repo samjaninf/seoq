@@ -64,10 +64,12 @@
     {% else %}
       <img src="{% static "images/fish-5.png" %}" alt="fish" class="img-responsive center-block m-y-25" width="190" height="140">
     {% endif %}
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <a href="{% url 'balystic_signup' %}" class="btn btn-block btn-info btn-outline btn-lg">To get a full report, log in and rerun it with keyword phrases</a>
-    </div>
-  </div>
+    {% comment %}  
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <a href="{% url 'balystic_signup' %}" class="btn btn-block btn-info btn-outline btn-lg">To get a full report, log in and rerun it with keyword phrases</a>
+        </div>
+      </div>
+    {% endcomment %}
   {% endif %}
 </div>
