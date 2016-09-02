@@ -47,7 +47,7 @@
           <br>
         {% endif %}
           <div class="image">
-              <img class="img-circle" width="50px" height="50px" src="{% if request.user.generics.avatar %}{{ request.user.generics.avatar }}{% else %}{% static 'images/profile-default-thumbnail.jpg' %}{% endif %}"> 
+              <img class="img-circle" width="50px" height="50px" src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static 'images/profile-default-thumbnail.jpg' %}{% endif %}"> 
             </div>
             {% if user.is_authenticated %}
             <form method="post" class="form-post" action="">
@@ -214,8 +214,8 @@
             <!-- end answer-wrapper -->
             <!-- begin arrow-box -->
             <div id="reply-{{answer.pk}}" class="arrow-box collapse"> 
-              <div class="image">
-                <img class="img-circle" width="50px" height="50px" src="{% if request.user.generics.avatar %}{{ request.user.generics.avatar }}{% else %}{% static 'images/profile-default-thumbnail.jpg' %}{% endif %}"> 
+              <div class="image">request.user.profile_picture
+                <img class="img-circle" width="50px" height="50px" src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static 'images/profile-default-thumbnail.jpg' %}{% endif %}"> 
               </div>
               <form method="post" class="form-post" action="{% url 'balystic_qa_comment' 'answer' answer.pk %}?next={{ request.path }}">
                 {% csrf_token %}
