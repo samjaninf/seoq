@@ -84,35 +84,7 @@
     <section class="comments-wrapper">
       <h3>Comments</h3>
         {% for comment in question.questioncomment_set %}
-          {% comment %}
-          <div class="row">
-          {% if request.user.username == comment.user.username %}
-            <div class="col-md-2">
-              <form action="{% url 'balystic_qa_delete_comment' 'question' comment.pk %}?next={{ request.path }}" method="post">
-                {% csrf_token %}
-                  <input type="submit" value="delete comment" />
-              </form>
-              <button data-toggle="collapse" data-target="#question-comment-{{ comment.pk }}">edit</button>
-            
-              <div id="question-comment-{{ comment.pk }}" class="collapse">
-                <form action="{% url 'balystic_qa_edit_comment' 'question' comment.pk %}?next={{ request.path }}" method="post">
-                    {% csrf_token %}
-                    <input type="text" name="comment_text" value="{{ comment.comment_text }}">
-                    <input type="submit" value="Submit" />
-                </form>
-              </div>
-            </div>
-          {% endif %}
-            <div class ="col-md-8">
-              <div id="ans" class="alert alert-primary" role="alert">
-              {{ comment.comment_text }}
-              </div>
-            </div>
-            <div class="col-md-2">
-              {{ comment.user.username }} on {{ comment.pub_date|date_string }}
-            </div>
-          </div>
-          {% endcomment %}
+
 
           <div class="row" style="padding-right: 15px">
             <div class="q-comment">
@@ -214,7 +186,7 @@
             <!-- end answer-wrapper -->
             <!-- begin arrow-box -->
             <div id="reply-{{answer.pk}}" class="arrow-box collapse"> 
-              <div class="image">request.user.profile_picture
+              <div class="image">
                 <img class="img-circle" width="50px" height="50px" src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static 'images/profile-default-thumbnail.jpg' %}{% endif %}"> 
               </div>
               <form method="post" class="form-post" action="{% url 'balystic_qa_comment' 'answer' answer.pk %}?next={{ request.path }}">
