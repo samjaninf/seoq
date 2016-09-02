@@ -27,7 +27,7 @@ urlpatterns = [
         balystic_views.LoginView.as_view(), name='balystic_login'),
     url(r'^accounts/logout/$',
         balystic_views.LogoutView.as_view(), name='balystic_logout'),
-    url(r'^users/edit/(?P<username>[-\w.]+)/$',
+    url(r'^users/edit/(?P<username>[-\w.+]+)/$',
         UserUpdateRedirect.as_view(),
         name='balystic_user_update'),
     url(r'^accounts/signup/$',
