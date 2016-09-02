@@ -5,7 +5,8 @@
 {% endif %}
   <h3 class="m-b-30">Content</h3>
   {% if report.user %}
-
+    <p class="text-muted">Your content can make or break your website. Having unique content and good keywords in all the right places are the primary focus of every website so they can rank higher.</p>
+    
     <p class="text-muted">{% if report.analysis.content.kw_in_anchor_links == "to improve" %}Nice, you have some keywords in your anchor_links. info about how to improve kw in anchor links{% elif report.analysis.content.kw_in_anchor_links == "error" %}info about how to improve kw in anchor links{% else %}your anchor links has the keywords phrases{% endif %}</p>
 
     <p class="text-muted">{% if report.analysis.content.kw_in_headers == "to improve" %}Nice, you have some keywords in your headers. info about how to improve keywords in the headers{% elif report.analysis.content.kw_in_headers == "error" %}{% else %}your headers contains keywords phrases{% endif %}</p>
