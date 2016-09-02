@@ -316,6 +316,7 @@ $qa-br: 5px;
 	}
 }
 .answer{
+	@extend .row;
 	border: 2px solid #EEE;
     border-radius: $qa-br;
     margin-top: 10px;
@@ -326,6 +327,7 @@ $qa-br: 5px;
     	padding: 0 20px;
     }
     .user {
+    	@extend .col-md-12;
     	padding-top: 10px;
     	.action{
     		display: none;
@@ -347,6 +349,12 @@ $qa-br: 5px;
     }
     .options, .likes{
     	padding-bottom: 20px;
+    }
+    .reply-answer{
+    	@extend .col-xs-5;
+    }
+    .likes{
+    	@extend .col-xs-7;
     }
 }
 

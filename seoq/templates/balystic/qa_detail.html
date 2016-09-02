@@ -115,16 +115,16 @@
       {% for answer in question.answer_set %}
 
           <!-- begin answer row -->
-          <div class="row answer">
+          <div class="answer">
             <!-- begin answer-wrapper -->
             <div class="answer-wrapper">
               <!-- begin user -->
-              <div class="col-md-12 user options">
+              <div class="user options">
                 <div class="image">
                   <img class="img-circle" width="50px" height="50px" src="{% if answer.user.avatar %}{{ answer.user.avatar }}{% else %}{% static 'images/profile-default-thumbnail.jpg' %}{% endif %}"> 
                 </div>
                 <div class="user-info">
-                    <a class="blue-link" href="{% url 'users:detail' answer.user.username %}" name="answer-{{ answer.user.username }}-{{ answer.pk }}">{{ answer.user.username }}</a> {{ answer.pub_date|date_string }}{% if answer.updated %}&nbsp;(Updated {{ answer.updated|date_string }}){% endif %}
+                    <a class="blue-link" href="{% url 'users:detail' answer.user.username %}" name="answer-{{ answer.user.username }}-{{ answer.pk }}">{{ answer.user.username }}</a> on {{ answer.pub_date|date_string }}{% if answer.updated %}&nbsp;(Updated {{ answer.updated|date_string }}){% endif %}
                 </div>
                 {% if request.user.is_authenticated and answer.user.username == request.user.username %}
                   <a class="action pull-right text-muted" 
@@ -148,7 +148,7 @@
               </form>
               <!-- end answer-text -->
               <!-- begin options -->
-              <div class="col-md-9 options">
+              <div class="options reply-answer">
                 <a class="action pull-left text-muted reply" 
                     {% comment %}{% url 'qa_create_answer_comment' answer.id %}{% endcomment %}
                     role="button"
@@ -170,7 +170,7 @@
                 </div>
                 {% endcomment %}
               </div>
-              <div class="col-md-3 likes">
+              <div class="likes">
                   <form action="{% url 'balystic_qa_vote_answer' answer.pk %}?next={{ request.path }}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="upvote" value="on">
