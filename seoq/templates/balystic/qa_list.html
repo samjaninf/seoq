@@ -18,7 +18,7 @@
 
     <div class="tab-content">
       <!-- Questions -->
-      <div class="tab-pane {% if active_tab == 'questions' %}active{% endif %}" id="latest">
+      <div class="tab-pane fade in {% if active_tab == 'questions' %}active{% endif %}" id="latest">
       {% if questions %}
         {% include "balystic/qa/question_in_list.html" with pane=questions %}
 
@@ -47,7 +47,7 @@
       <!-- End of Questions -->
 
       <!-- No Answers -->
-      <div class="tab-pane {% if active_tab == 'noans' %}active{% endif %}" id="unans">
+      <div class="tab-pane fade {% if active_tab == 'noans' %}active{% endif %}" id="unans">
       {% if noans %}
         {% include "balystic/qa/question_in_list.html" with pane=noans %}
       {% else %}
@@ -71,7 +71,7 @@
       </div>
       <!--End of No Answers-->
       <!-- Rewards -->
-      <div class="tab-pane {% if active_tab == 'reward' %}active{% endif %}" id="reward">
+      <div class="tab-pane fade {% if active_tab == 'reward' %}active{% endif %}" id="reward">
       {% if reward %}
           {% include "balystic/qa/question_in_list.html" with pane=reward %}
       {% else %}

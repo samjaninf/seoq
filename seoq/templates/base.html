@@ -251,10 +251,6 @@
       </div>
     </footer>
     {% block modal %}{% endblock modal %}
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     {% block javascript %}
       <!-- place project specific Javascript in this file -->
       {% compress js %}
@@ -263,13 +259,9 @@
       <script src="{% static 'scripts/app.js' %}"></script>
       <script src="{% static 'scripts/controllers/keyword-score-controller.js' %}"></script>
       <script src="{% static 'scripts/directives/http_prefix.js' %}"></script>
-
       <!--Project-->
       <script src="{% static 'js/project.js' %}"></script>
       {% endcompress %}
-
-
-
     {% endblock javascript %}
     {% block extra_javascript %}
     {% endblock extra_javascript %}

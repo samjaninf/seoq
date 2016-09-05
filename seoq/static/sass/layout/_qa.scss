@@ -51,7 +51,7 @@ $qa-gray: #F7F7F7;
 		a, a:hover, a:focus{
 			color: $brand-primary;
 		}
-		a.active{
+		&.active a{
 			color: $seoq-orange;
 		}
 		a:hover{

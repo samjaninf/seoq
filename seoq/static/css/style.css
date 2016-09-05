@@ -8843,7 +8843,7 @@ article.question-wrapper {
     bottom: -1px; }
     #question-tabs li a, #question-tabs li a:hover, #question-tabs li a:focus {
       color: #7dd0e3; }
-    #question-tabs li a.active {
+    #question-tabs li.active a {
       color: #fe9a28; }
     #question-tabs li a:hover {
       border: 1px solid #ddd; }
