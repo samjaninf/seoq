@@ -2,7 +2,7 @@
 {% load django_markdown %}
 {% block title %}Ask a question {% endblock title %}
 {% block qa %}
-<main class="new-question">
+<section class="new-question">
 	<h3 class="text-center">Ask a question.</h3>
 	  <div class="question-box">
 	    <form method="post" action="">
@@ -44,7 +44,7 @@
 	      <button class="btn btn-seoq" type="submit">Submit question</button>
 	    </form>
 	  </div>
-</main>
+</section>
 {{ form.media }}
 {% markdown_editor "#new" %}
 {% markdown_media %}

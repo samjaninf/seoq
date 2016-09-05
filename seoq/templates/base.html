@@ -105,8 +105,8 @@
             <!-- dropdown-menu -->
             <li class="responsive-big p-l-10">
               <a class="dropdown-toggle p-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="user-dropdown">
-                {% if request.user.generics.avatar %}
-                  <img src="{{ request.user.generics.avatar }}" alt="Profile picture" class="avatar img-circle" width="44px" height="44px">
+                {% if request.user.profile_picture %}
+                <img src="{{ request.user.profile_picture.url }}" alt="Profile picture" class="avatar img-circle" width="44px" height="44px">
                 {% else %}
                   <img src="{% static 'images/profile-default-thumbnail.jpg' %}" alt="Profile picture" class="img-responsive img-circle" width="44px" height="44px">
                 {% endif %}
@@ -122,7 +122,7 @@
             <!-- dropdown-menu -->
             {% else %}
             <li>
-              <a href="{% url 'balystic_login' %}" class="text-white">{% trans "Sign in" %}</a>
+              <a href="{% url 'balystic_login' %}" class="text-white text-dark-blue">{% trans "Sign in" %}</a>
             </li>
             <li class="hidden-xs hidden-sm">
               <a href="{% url 'balystic_signup' %}" class="btn btn-lg btn-seoq">

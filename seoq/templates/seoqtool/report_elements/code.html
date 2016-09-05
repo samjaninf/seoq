@@ -5,6 +5,7 @@
 {% endif %}
   <h3 class="m-b-30">Code</h3>
 {% if report.user %}
+  <p class="text-muted m-b-30">Poor code in a website leads to being overlooked by search engines. Validating your HTML and CSS will boost your credibility and get your website up in the big leagues.</p>
 
   <p class="text-muted">{% if report.analysis.code.kw_in_meta_description == "to improve" %}Nice, you have some keywords in your meta description. info about how to improve keywords in meta description {% elif report.analysis.code.kw_in_meta_description == "error" %}info about how to improve keywords in meta description{% else %}your meta description contains a lot of keyword phrases{% endif %}</p>
 
