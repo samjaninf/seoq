@@ -111,7 +111,7 @@
     {% endif %}
     <!-- Answers -->
     <section class="answers">
-      <h3>Answers ({{ answers|length }})</h3>
+      <h3>Answers ({{ question.answer_set|length }})</h3>
       {% for answer in question.answer_set %}
 
           <!-- begin answer row -->
@@ -235,7 +235,11 @@
           </div>
           <!-- end answer-replies -->
           {% endif %}
+          {% empty %}
+          <hr>
+          <p class="text-center m-t-20">There are no answers yet.</p>
       {% endfor %}
+
     </section>
     <!-- end answers -->
   </article>
