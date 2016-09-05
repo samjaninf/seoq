@@ -329,6 +329,9 @@ hr {
 .red-gplus {
   color: #d34836; }
 
+.form-group .form-group {
+  margin: 0px; }
+
 .text-brand {
   color: #2d5d81 !important; }
 
