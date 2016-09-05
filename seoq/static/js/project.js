@@ -1,9 +1,5 @@
 /* Project specific Javascript goes here. */
 // Q&A Scripts
-$('#question-tabs a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-});
 // Character count in New Question fields
 function showLength(id){
   document.getElementById(id+'-span').innerHTML = document.getElementById(id).value.length;
