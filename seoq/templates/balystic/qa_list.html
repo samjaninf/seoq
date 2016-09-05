@@ -11,14 +11,14 @@
 <div class="row">
   <section id="qa-list">
     <ul id="question-tabs" class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation" class="active"><a href="#latest" data-toggle="tab">Latest</a></li>
-        <li role="presentation"><a href="#unans" data-toggle="tab">Unanswered <span class="badge">{{ total_noans }}</span></a></li>
-        <li role="presentation"><a href="#reward" data-toggle="tab">Most Rewarding <span class="badge">{{ reward | length }}</span></a></li>
+        <li role="presentation" class="{% if active_tab == 'questions' %}active{% endif %}"><a href="#latest" data-toggle="tab">Latest</a></li>
+        <li role="presentation" class="{% if active_tab == 'noans' %}active{% endif %}"><a href="#unans" data-toggle="tab">Unanswered <span class="badge">{{ total_noans }}</span></a></li>
+        <li role="presentation" class="{% if active_tab == 'reward' %}active{% endif %}"><a href="#reward" data-toggle="tab">Most Rewarding <span class="badge">{{ reward | length }}</span></a></li>
     </ul>
 
     <div class="tab-content">
       <!-- Questions -->
-      <div class="tab-pane active" id="latest">
+      <div class="tab-pane {% if active_tab == 'questions' %}active{% endif %}" id="latest">
       {% if questions %}
         {% include "balystic/qa/question_in_list.html" with pane=questions %}
 
@@ -47,7 +47,7 @@
       <!-- End of Questions -->
 
       <!-- No Answers -->
-      <div class="tab-pane" id="unans">
+      <div class="tab-pane {% if active_tab == 'noans' %}active{% endif %}" id="unans">
       {% if noans %}
         {% include "balystic/qa/question_in_list.html" with pane=noans %}
       {% else %}
@@ -56,7 +56,7 @@
         <div class="pagination">
           <span class="step-links">
             {% if noans.has_previous %}
-              <a href="?noans_page={{ noans.previous_page_number }}&active_tab=unans">previous</a>
+              <a href="?noans_page={{ noans.previous_page_number }}&active_tab=noans">previous</a>
             {% endif %}
 
             <span class="current">
@@ -64,14 +64,14 @@
             </span>
 
             {% if noans.has_next %}
-              <a href="?noans_page={{ noans.next_page_number }}&active_tab=unans">next</a>
+              <a href="?noans_page={{ noans.next_page_number }}&active_tab=noans">next</a>
             {% endif %}
           </span>
         </div>
       </div>
       <!--End of No Answers-->
       <!-- Rewards -->
-      <div class="tab-pane" id="reward">
+      <div class="tab-pane {% if active_tab == 'reward' %}active{% endif %}" id="reward">
       {% if reward %}
           {% include "balystic/qa/question_in_list.html" with pane=reward %}
       {% else %}
