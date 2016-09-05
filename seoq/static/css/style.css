@@ -177,6 +177,9 @@ than we are going to use in website
 .text-white {
   color: #fff !important; }
 
+.navbar-about .text-dark-blue {
+  color: #2d5d81 !important; }
+
 .b-b-1 {
   border-bottom: 1px solid #eeeeee; }
 
@@ -5696,6 +5699,7 @@ button.close {
     @media all and (transform-3d), (-webkit-transform-3d) {
       .carousel-inner > .item {
         transition: transform 0.6s ease-in-out;
+        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         perspective: 1000px; }
         .carousel-inner > .item.next, .carousel-inner > .item.active.right {
