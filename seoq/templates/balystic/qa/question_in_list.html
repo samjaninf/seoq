@@ -13,7 +13,7 @@
   </div>
   <div class="summary">
     <h3><a href="{% url 'balystic_qa_detail' question.pk %}">{{ question.title }}</a></h3>
-    <br/>
+    <i class="fa fa-comment-o" aria-hidden="true"></i> {{ question.comments }} {% if question.comments == 1 %}comment{% else %}comments{% endif %}
     {% comment %}
     {% for tag in question.tags %}
         <a href="#"><tag>{{ tag }}</tag></a>
