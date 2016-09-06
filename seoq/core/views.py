@@ -73,6 +73,7 @@ class PublicUserDetailView(View):
     def post(self, request, username):
         form = self.form_class(data=request.POST)
         if form.is_valid():
+            user_email = Client().get_user_detail(username)['user']['email']
             first_name = request.POST.get('first_name')
             last_name = request.POST.get('last_name')
             location = request.POST.get('location')
@@ -91,7 +92,7 @@ class PublicUserDetailView(View):
                 first_name + " wants to contact you!",
                 None,
                 settings.DEFAULT_FROM_EMAIL,
-                [form.cleaned_data['email']],
+                [user_email],
                 html_message=template,
                 fail_silently=False)
             messages.success(request, 'Email sent to ' + username)
