@@ -2905,7 +2905,7 @@ select[multiple].input-lg,
 
 .form-control-feedback {
   position: absolute;
-  top: 27px;
+  top: 0;
   right: 0;
   z-index: 2;
   display: block;
