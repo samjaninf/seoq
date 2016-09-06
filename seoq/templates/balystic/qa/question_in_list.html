@@ -13,13 +13,13 @@
   </div>
   <div class="summary">
     <h3><a href="{% url 'balystic_qa_detail' question.pk %}">{{ question.title }}</a></h3>
-    <br/>
+    <i class="fa fa-comment-o" aria-hidden="true"></i> {{ question.comments }} {% if question.comments == 1 %}comment{% else %}comments{% endif %}
     {% comment %}
     {% for tag in question.tags %}
         <a href="#"><tag>{{ tag }}</tag></a>
     {% endfor %}
     {% endcomment %}
-    <small class="pull-right">{{ question.user.username }} on {{ question.pub_date|date_string }}</small>
+    <small class="pull-right"><a class="blue-link" href="{% url 'users:detail' question.user.username %}">{{ question.user.username }}</a> on {{ question.pub_date|date_string }}</small>
   </div>
 </div>
 {% endfor %}

@@ -83,7 +83,7 @@
     {% if question.questioncomment_set %}
     <!-- Comments -->
     <section class="comments-wrapper">
-      <h3>Comments</h3>
+      <h3>Comments ({{ question.questioncomment_set |length }})</h3>
         {% for comment in question.questioncomment_set %}
 
 
