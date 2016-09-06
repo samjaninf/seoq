@@ -19,7 +19,7 @@
         <a href="#"><tag>{{ tag }}</tag></a>
     {% endfor %}
     {% endcomment %}
-    <small class="pull-right">{{ question.user.username }} on {{ question.pub_date|date_string }}</small>
+    <small class="pull-right"><a class="blue-link" href="{% url 'users:detail' question.user.username %}">{{ question.user.username }}</a> on {{ question.pub_date|date_string }}</small>
   </div>
 </div>
 {% endfor %}
