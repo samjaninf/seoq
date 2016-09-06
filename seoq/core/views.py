@@ -1,14 +1,16 @@
+import json
 from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
 from django.views.generic.base import RedirectView
-from balystic.client import Client
 from django.http import Http404
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.contrib import messages
+from balystic.client import Client
 from seoq.users.models import User
 from .forms import UserContactForm
-import json
 
 
 class SEODirectoryUserList(View):
@@ -77,25 +79,23 @@ class PublicUserDetailView(View):
             phone = request.POST.get('phone')
             email = request.POST.get('email')
             content = request.POST.get('content')
-            template = get_template('users/contact_template.txt')
-            context = Context({
-                'first_name': first_name,
-                'last_name': last_name,
-                'location': location,
-                'phone': phone,
-                'email': email,
-                'content': content,
-            })
-            content = template.render(context)
-            email = EmailMessage(
+            template = 'users/contact_template.html'
+            template = render_to_string(
+                template,
+                {'form_content': content,
+                 'contact_name': first_name + ' ' + last_name,
+                 'contact_email': email,
+                 'location': location,
+                 'phone': phone})
+            send_mail(
                 first_name + " wants to contact you!",
-                content,
-                to = ['youremail@gmail.com'],
-                headers = {'Reply-To': email }
-            )
-            email.send()
+                None,
+                settings.DEFAULT_FROM_EMAIL,
+                [form.cleaned_data['email']],
+                html_message=template,
+                fail_silently=False)
             messages.success(request, 'Email sent to ' + username)
-            return redirect('public_profile', username: username})
+            return redirect('public_profile', args={'username': username})
 
 
 class ArchivedBlogRedirectView(RedirectView):
