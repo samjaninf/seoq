@@ -1,14 +1,9 @@
-Contact Name:
-{{ contact_name }}
+<p>{{ contact_name }} ({{ contact_email }}) says:</p>
+<br>
+<p>{{ form_content|safe|striptags }}</p>
+<br>
+<p>
+Location: {{ location }}<br>
+Phone: {{ phone }}<br>
+</p>
 
-Email:
-{{ contact_email }}
-
-Location:
-{{ location }}
-
-Phone:
-{{ phone }}
-
-Content:
-{{ form_content|safe|striptags }}
