@@ -95,7 +95,7 @@ class PublicUserDetailView(View):
             )
             email.send()
             messages.success(request, 'Email sent to ' + username)
-            return redirect('public_profile', username: username})
+            return redirect(reverse('public_profile',kwargs={'username': username}))
 
 
 class ArchivedBlogRedirectView(RedirectView):
