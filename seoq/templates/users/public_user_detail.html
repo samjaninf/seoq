@@ -6,7 +6,7 @@
 {% block content %}
 <div class="container p-t-50">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-7 col-md-offset-1">
       <label class="control-label">Share this profile on:</label>
 
       <ul class="list-inline">
@@ -24,11 +24,7 @@
         </li>
 
       </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
+            <div class="panel panel-default">
         <div class="panel-body">
           <div class="media">
             <div class="media-left">
@@ -175,7 +171,19 @@
         </div>
       </div>
     </div>
-
+    <div class="col-md-3 m-b-30">
+      <h3>Contact</h3>
+      <form role="form" action="" method="post">
+          {% csrf_token %}
+          {% for field in form %}
+          <fieldset class="form-group">
+            {{ field.errors }}
+            {{ field }}
+          </fieldset>
+          {% endfor %}
+          <button class="btn btn-primary" type="submit">Contact this person</button>
+      </form>
+    </div>
   </div>
 </div>
 {% endblock content %}

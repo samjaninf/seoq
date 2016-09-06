@@ -6,6 +6,7 @@ from django.http import Http404
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from seoq.users.models import User
+from .forms import UserContactForm
 import json
 
 
@@ -40,6 +41,7 @@ class SEODirectoryUserList(View):
 
 class PublicUserDetailView(View):
     template_name = 'users/public_user_detail.html'
+    form_class = UserContactForm
 
     def get(self, request, username):
         user = Client().get_user_detail(username)
@@ -63,7 +65,7 @@ class PublicUserDetailView(View):
         return render(
             request,
             self.template_name,
-            {'user': user, 'user_local': user_local})
+            {'user': user, 'user_local': user_local, 'form': self.form_class})
 
 
 class ArchivedBlogRedirectView(RedirectView):
