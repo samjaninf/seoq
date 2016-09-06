@@ -251,32 +251,17 @@
       </div>
     </footer>
     {% block modal %}{% endblock modal %}
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     {% block javascript %}
-      <!-- Latest JQuery -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-
-      <!-- Tether - a requirement for Bootstrap tooltips -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
-
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
-
-      <!-- Your stuff: Third-party javascript libraries go here -->
-
       <!-- place project specific Javascript in this file -->
       {% compress js %}
       <script src="{% static 'js/components.js' %}"></script>
-      <script src="{% static 'js/project.js' %}"></script>
       <!--Angular-->
       <script src="{% static 'scripts/app.js' %}"></script>
       <script src="{% static 'scripts/controllers/keyword-score-controller.js' %}"></script>
       <script src="{% static 'scripts/directives/http_prefix.js' %}"></script>
+      <!--Project-->
+      <script src="{% static 'js/project.js' %}"></script>
       {% endcompress %}
-
     {% endblock javascript %}
     {% block extra_javascript %}
     {% endblock extra_javascript %}

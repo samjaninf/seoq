@@ -1,6 +1,32 @@
 {% extends "base.html" %}
 {% load static i18n %}
 {% block title %}Report{% endblock title %}
+{% block meta %}
+<meta name="description" content="{% trans 'Check out this SEO report for' %} {{ netloc }} {% trans "on" %} {{request.get_host}}">
+
+<!-- Facebook -->
+<meta property="og:description" content="{% trans 'Check out this SEO report for' %} {{ netloc }} {% trans "on" %} {{request.get_host}}">
+<meta property="og:image" content="{% static 'images/social-image.jpg' %}">
+<meta property="og:title" content="{% trans 'SEOQ Website Report' %}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<!-- End Facebook -->
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@SEOQuotient">
+<meta name="twitter:description" content="{% trans 'Check out this SEO report for' %} {{ netloc }} {% trans "on" %} {{request.get_host}}">
+<meta name="twitter:image" content="{% static 'images/social-image.jpg' %}">
+<meta name="twitter:site" content="{{ request.build_absolute_uri }}">
+<meta name="twitter:title" content="{% trans 'SEOQ Website Report' %}">
+<!-- End Twitter -->
+
+<!-- Google Plus -->
+<meta itemprop="description" content="{% trans 'Check out this SEO report for' %} {{ netloc }} {% trans "on" %} {{request.get_host}}">
+<meta itemprop="image" content="{% static 'images/social-image.jpg' %}">
+<meta itemprop="name" content="{% trans 'SEOQ Website Report' %}">
+<!-- End Google Plus -->
+{% endblock meta %}
 {% block page_class %}report{% endblock page_class %}
 {% block nav_class %}navbar-about{% endblock nav_class %}
 {% block logo %}

@@ -1,9 +1,6 @@
+    // Code that uses jQuery's $ can follow here.
 /* Project specific Javascript goes here. */
 // Q&A Scripts
-$('#question-tabs a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-});
 // Character count in New Question fields
 function showLength(id){
   document.getElementById(id+'-span').innerHTML = document.getElementById(id).value.length;
@@ -11,7 +8,6 @@ function showLength(id){
 // Form for answer question
 $('form.form-post .reply-input').focus(function() {
 	$(this).addClass('active');
-
 	$(this).parent().find('.post').show();
 });
 // Hide or show replies
@@ -19,7 +15,7 @@ $('.hide-replies').click(function () {
   var element = $(this).parent().next();
   var hidden = element.hasClass('in');
   if (hidden) {
-    $(this).html('<i class="fa fa-angle-down"></i>Show replies'); 
+    $(this).html('<i class="fa fa-angle-down"></i>Show replies');
   }
   else{
     $(this).html('<i class="fa fa-angle-up"></i>Hide replies');

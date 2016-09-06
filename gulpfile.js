@@ -104,9 +104,10 @@ gulp.task('watch', ['default'], function() {
 // Javascript minification
 gulp.task('scripts-vendor', function() {
   return gulp.src([
-      paths.vendor + '/jquery/dist/jquery.js',
-      paths.vendor + '/bootstrap/dist/js/bootstrap.js',
       paths.vendor + '/angular/angular.js',
+      paths.vendor + '/jquery/dist/jquery.js',
+      paths.vendor + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+      paths.vendor + '/bootstrap-tagsinput/src/bootstrap-tagsinput.js',
       paths.vendor + '/progressbar.js/dist/progressbar.js'
     ])
     .pipe(plumber()) // Checks for errors

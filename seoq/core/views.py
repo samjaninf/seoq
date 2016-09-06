@@ -33,6 +33,8 @@ class SEODirectoryUserList(View):
             {'sort_type': 'last_created'})['users'][:3]
         context['most_votes_answer_users'] = Client().get_users(
             {'sort_type': 'answer_vote_count'})['users'][:3]
+        context['verified_users'] = Client().get_users(
+            {'sort_type': 'verified'})['users'][:3]
         return render(request, self.template_name, context)
 
 

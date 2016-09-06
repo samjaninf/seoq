@@ -12,7 +12,7 @@
 	    	          name="title"
 	    	          type="text"
 	    	          value="{% if form.title.value != None %}{{ form.title.value }}{% endif %}"
-	    	          maxlength="125" 
+	    	          maxlength="125"
 	    	          class="form-control"
 	    	          oninput="showLength('id_title')"
 	    	          placeholder="Be as clear and concise as you can">
@@ -28,7 +28,7 @@
 	    	            name="description"
 	    	            class="form-control"
 	    	            oninput='showLength("id_description")'
-	    	            rows="4" 
+	    	            rows="4"
 	    	            placeholder="Be as specific as you need to">{% if form.description.value != None %}{{ form.description.value }}{% endif %}</textarea>
 	    	  {% for error in form.description.errors %}
 	    	      <span class="help-block">
@@ -46,11 +46,18 @@
 	  </div>
 </section>
 {{ form.media }}
-{% markdown_editor "#new" %}
-{% markdown_media %}
 <script>
 document.getElementById("id_title").className = 'form-control';
 document.getElementById("id_description").className = 'form-control';
-document.getElementById("id_tags").className = 'form-control';
+
 </script>
 {% endblock qa %}
+{% block extra_javascript %}
+{% markdown_editor "#new" %}
+{% markdown_media %}
+<script>
+  $('#id_tags').tagsinput();
+  document.getElementById("id_tags").className = 'form-control';
+</script>
+{% endblock extra_javascript %}
+
