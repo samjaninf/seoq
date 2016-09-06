@@ -77,3 +77,4 @@ ndg-httpsclient==0.4.2
 
 django-ckeditor==5.1.0
 django-markdown==0.8.4
+django-markdown-deux==1.0.5
