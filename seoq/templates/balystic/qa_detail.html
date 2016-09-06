@@ -1,6 +1,7 @@
 {% extends "balystic/qa/base.html" %}
 {% block title %}{{ question.title }}{% endblock title %}
 {% load staticfiles date_string django_markdown %}
+{% load markdown_deux_tags %}
 {% block qa %}
 
 <div class="row">
@@ -21,7 +22,7 @@
           </div>
         </div>
         <div class="question-text">
-          {{ question.description }}
+          {{ question.description|markdown }}
         </div>
         <div class="tags">
             <i class="fa fa-tag fa-flip-horizontal" aria-hidden="true"></i>

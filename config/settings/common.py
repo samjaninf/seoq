@@ -51,6 +51,7 @@ THIRD_PARTY_APPS = (
     'ckeditor',
     'ckeditor_uploader',
     'django_markdown',
+    'markdown_deux',
 )
 
 # Apps specific for this project go here.

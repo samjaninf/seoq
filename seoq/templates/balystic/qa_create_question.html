@@ -53,7 +53,7 @@ document.getElementById("id_description").className = 'form-control';
 </script>
 {% endblock qa %}
 {% block extra_javascript %}
-{% markdown_editor "#new" %}
+{% markdown_editor "#id_description" %}
 {% markdown_media %}
 <script>
   $('#id_tags').tagsinput();
