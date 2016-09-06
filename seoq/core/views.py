@@ -5,6 +5,7 @@ from balystic.client import Client
 from django.http import Http404
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.contrib import messages
 from seoq.users.models import User
 from .forms import UserContactForm
 import json
@@ -66,6 +67,35 @@ class PublicUserDetailView(View):
             request,
             self.template_name,
             {'user': user, 'user_local': user_local, 'form': self.form_class})
+
+    def post(self, request, username):
+        form = self.form_class(data=request.POST)
+        if form.is_valid():
+            first_name = request.POST.get('first_name')
+            last_name = request.POST.get('last_name')
+            location = request.POST.get('location')
+            phone = request.POST.get('phone')
+            email = request.POST.get('email')
+            content = request.POST.get('content')
+            template = get_template('users/contact_template.txt')
+            context = Context({
+                'first_name': first_name,
+                'last_name': last_name,
+                'location': location,
+                'phone': phone,
+                'email': email,
+                'content': content,
+            })
+            content = template.render(context)
+            email = EmailMessage(
+                first_name + " wants to contact you!",
+                content,
+                to = ['youremail@gmail.com'],
+                headers = {'Reply-To': email }
+            )
+            email.send()
+            messages.success(request, 'Email sent to ' + username)
+            return redirect('public_profile', username: username})
 
 
 class ArchivedBlogRedirectView(RedirectView):
