@@ -48,11 +48,11 @@
       </div>
       <div class="col-xs-10 col-xs-offset-1 m-t-10 text-center">
         <p class="m-b-10 m-t-10">Share score:</p>
-        <a href="http://www.facebook.com/dialog/share?display=popup&amp;href={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}&amp;app_id=554100534774985" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
           <i class="fa fa-facebook-f m-r-5"></i>
           Facebook
         </a>
-        <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20SEO%20report%20for%20{{ netloc }}%20on%20SEOQ.com&amp;via=SEOQuotient&amp;lang=en" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
+        <a href="https://twitter.com/home?status=Check%20out%20this%20SEO%20report%20for {{ netloc }} on {{request.get_host}} %20&amp;via=SEOQuotient" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
           <i class="fa fa-twitter m-r-5"></i>
           Twitter
         </a>
@@ -126,23 +126,23 @@
           <p class="text-center m-y-25">Share this report:</p>
           <div class="row">
             <div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1 text-center">
-              <a href="http://www.facebook.com/dialog/share?display=popup&amp;href={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}&amp;app_id=554100534774985" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
-              <i class="fa fa-facebook-f m-r-5"></i>
-              Facebook
-              </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
+            <i class="fa fa-facebook-f m-r-5"></i>
+            Facebook
+          </a>
             </div>
             <div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1 text-center">
-            <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20SEO%20report%20on%20SEOQ.com%20for%20{{ netloc }}!%20{{ request.build_absolute_uri }}&amp;via=SEOQuotient&amp;lang=en" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
+          <a href="https://twitter.com/home?status=Check%20out%20this%20SEO%20report%20for {{ netloc }} on {{request.get_host}} %20&amp;via=SEOQuotient" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
             <i class="fa fa-twitter m-r-5"></i>
-              Twitter
-            </a>
+            Twitter
+          </a>
             </div>
             <div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1 text-center">
-              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title=Check%20Your%20SEO%20of%20Website
-              &summary=Check%20out%20my%20SEO%20report%20on%20SEOQ.com%20for%20{{ netloc }}!%20via%20@SEOQuotient!%20&source={{ request.build_absolute_uri }}" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
-                <i class="fa fa-linkedin m-r-5" aria-hidden="true"></i>
-                  Linkedin
-              </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title=Check%20Your%20SEO%20of%20Website
+          &summary=Check%20out%20my%20SEO%20report%20on%20SEOQ.com%20for%20{{ netloc }}!%20via%20@SEOQuotient!%20&source={{ request.build_absolute_uri }}" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
+            <i class="fa fa-linkedin m-r-5" aria-hidden="true"></i>
+            Linkedin
+          </a>
             </div>
             <div class="col-sm-12 text-center m-t-20">
               <form class="form-inline" action="" method="POST">
@@ -155,6 +155,7 @@
             </div>
           </div>
         </div>
+
     </div>
   </div>
 </section>

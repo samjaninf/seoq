@@ -74,7 +74,9 @@
                     No
                   {% endif %}
                 </p>
-                {% if user.user.generics.location %}
+                {% if user_local.location %}
+                  <p><strong>Location:</strong> {{ user_local.location }}</p>
+                {% elif user.user.generics.location %}
                   <p><strong>Location:</strong> {{ user.user.generics.location }}</p>
                 {% endif %}
                 <p>
