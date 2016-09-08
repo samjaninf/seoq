@@ -21,7 +21,7 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
       $scope.bad_status_code = $scope.bad_url;
       if ($scope.bad_url) {
           $scope.bad_status_code = true;
-          $scope.status_message = 'Invalid url. Try adding www.'
+          $scope.status_message = 'Please enter a valid URL.'
       };
     }).error(function(data, status){
 

@@ -181,6 +181,41 @@ section.scan-website{
           left: -70px;
         }
       }
+      #scan-help-block{
+        border-radius: 4px;
+        color: #333;
+        font-size: 15px;
+        margin-bottom: 15px;
+        padding: 5px 2px;
+        position: relative;
+        border: 2px solid #dadada;
+        &:after, &:before{
+          top: 100%;
+          left: 50%;
+          border: solid transparent;
+          content: " ";
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+        }
+        &:before{
+          border-color: rgba(218, 218, 218, 0);
+          border-top-color: #dadada;
+          border-width: 11px;
+          margin-left: -11px;
+        }
+        &:after{
+          border-color: rgba(255, 255, 255, 0);
+          border-top-color: #fff;
+          border-width: 8px;
+          margin-left: -8px;
+        }
+        i.fa{
+          color: #ffa800;
+          margin-right: 5px;
+        }
+      }
       form{
         .form-group{
           label{
@@ -194,6 +229,9 @@ section.scan-website{
             font-size: 15px;
             border-radius:2px;
             background:#F0F4F5;
+          }
+          .form-control-feedback {
+              top: 29px !important;
           }
         }
         #keywords{

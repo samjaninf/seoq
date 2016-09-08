@@ -27,10 +27,14 @@ class UserDetailView(View):
                 user=self.request.user)
         user = Client().get_user_detail(username)
         owner = Client().get_users({'userType': 'owner'})['owner']
+        try:
+            local_user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            pass
         return render(
             request,
             self.template_name,
-            {'user': user, 'userplan': plan, 'owner': owner})
+            {'user': user, 'userplan': plan, 'owner': owner, 'local_user': local_user})
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
@@ -39,6 +43,14 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     def get_redirect_url(self):
         return reverse('users:detail',
                        kwargs={'username': self.request.user.username})
+
+
+class UserUpdateRedirect(RedirectView):
+    permanent = False
+
+    def get_redirect_url(self, **kwargs):
+        print 'reached this far?'
+        return reverse('users:update')
 
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
@@ -50,12 +62,14 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     # send the user back to their own page after a successful update
     def get_success_url(self):
-        return reverse('users:detail',
-                       kwargs={'username': self.request.user.username})
+        return reverse('users:detail', kwargs={'username': self.request.user.username})
 
     def get_object(self):
         # Only get the User record for the user making the request
         return User.objects.get(username=self.request.user.username)
+
+    def get(self, request, **kwargs):
+        return super(UserUpdateView, self).post(self, request, **kwargs)
 
 
 class UserListView(LoginRequiredMixin, ListView):
@@ -65,11 +79,22 @@ class UserListView(LoginRequiredMixin, ListView):
     slug_url_kwarg = 'username'
 
 
-class UserListTempView(TemplateView):
-    template_name = 'pages/users_directory_temp.html'
+# class UserListTempView(TemplateView):
+#     template_name = 'pages/users_directory_temp.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(UserListTempView, self).get_context_data(**kwargs)
-        params = {'sort_type': 'view_count'}
-        context['users'] = Client().get_users(params)
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super(UserListTempView, self).get_context_data(**kwargs)
+#         params = {'sort_type': 'view_count'}
+#         context['users'] = Client().get_users(params)
+#         return context
+
+
+# class UserListMostRecentTempView(TemplateView):
+#     template_name = 'pages/users_directory_temp.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super(
+#             UserListMostRecentTempView, self).get_context_data(**kwargs)
+#         params = {'sort_type': 'last_created'}
+#         context['users'] = Client().get_users(params)
+#         return context

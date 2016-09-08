@@ -48,6 +48,10 @@ THIRD_PARTY_APPS = (
     'plans',
     'payments',
     'sorl.thumbnail',
+    'ckeditor',
+    'ckeditor_uploader',
+    'django_markdown',
+    'markdown_deux',
 )
 
 # Apps specific for this project go here.
@@ -314,3 +318,24 @@ PAYMENT_VARIANTS = {
         'name': 'seoq',
     })
 }
+
+# ckeditor settings
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Cut', 'Copy', 'Paste', 'Undo', 'Redo'],
+            ['Bold', 'Italic', 'Underline', 'Table', 'RemoveFormat'],
+            ['NumberedList', 'BulletedList',
+             '-', 'Outdent', 'Indent', '-',
+             'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Image', 'Link', 'Unlink'],
+            ['Styles', 'Format', 'Font', 'Size', 'TextColor', 'BGColor'],
+        ]
+    }
+}
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_ALLOW_NONIMAGE_FILES = False

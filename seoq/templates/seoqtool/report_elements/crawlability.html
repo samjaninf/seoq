@@ -2,6 +2,7 @@
 <div class="col-md-10 col-md-offset-1 text-center m-t-50">
 	<p><span class="score-number">{{ numeric_info.crawlability.success }}</span><small class="text-muted">/{{ numeric_info.crawlability.total }}</small></p>
 	<h3 class="m-b-30">Crawlability</h3>
+	<p class="text-muted m-b-30">Search engines send out their robots to crawl websites and find the content users are looking for in order to display relevant webpages in their list of search results. Allowing robots to crawl your site, including links to key sections, and a fast loading time are the best ways to get your website noticed.</p>
 	<p class="text-muted">{% if report.analysis.crawlability.robots == "error" %}Make sure no robots are disallowed{% else %}Robots file activated{% endif %}</p>
 	<p class="text-muted">{% if report.analysis.crawlability.sitemap == 'error' %}Make sure you have a sitemap{% else %}Sitemap found{% endif %}</p>
 	<p class="text-muted">{% if report.analysis.crawlability.speed == 'to improve' %}Reduce loading times by compressing images and files, optimizing caching and optimizing your css/js files{% else %}The speed of your site is above average{% endif %}</p>

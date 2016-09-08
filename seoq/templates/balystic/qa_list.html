@@ -1,6 +1,85 @@
-{% extends "balystic/base.html" %}
-{% block content %}
-  {% for question in questions %}
-  	{{ question }}
-  {% endfor %}
-{% endblock content %}
+{% extends "balystic/qa/base.html" %}
+{% block title %}Q&A{% endblock title %}
+{% load staticfiles date_string %}
+
+{% block qa %}
+<div class="row">
+  <div class="ask">
+    <a class="btn btn-lg btn-seoq" href="{% url 'balystic_qa_create_question' %}">Ask a question</a>
+  </div>
+</div>
+<div class="row">
+  <section id="qa-list">
+    <ul id="question-tabs" class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation" class="{% if active_tab == 'questions' %}active{% endif %}"><a href="#latest" data-toggle="tab">Latest</a></li>
+        <li role="presentation" class="{% if active_tab == 'noans' %}active{% endif %}"><a href="#unans" data-toggle="tab">Unanswered <span class="badge">{{ total_noans }}</span></a></li>
+        <li role="presentation" class="{% if active_tab == 'reward' %}active{% endif %}"><a href="#reward" data-toggle="tab">Most Rewarding <span class="badge">{{ reward | length }}</span></a></li>
+    </ul>
+
+    <div class="tab-content">
+      <!-- Questions -->
+      <div class="tab-pane fade in {% if active_tab == 'questions' %}active{% endif %}" id="latest">
+      {% if questions %}
+        {% include "balystic/qa/question_in_list.html" with pane=questions %}
+
+        <div class="pagination">
+        {% if is_paginated %}
+          <div class="pagination">
+            <span class="page-links">
+            {% if page_obj.has_previous %}
+              <a href="{% url 'qa_index' %}?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+              <span class="page-current">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+            {% if page_obj.has_next %}
+              <a href="{% url 'qa_index' %}?page={{ page_obj.next_page_number }}">next</a>
+            {% endif %}
+            </span>
+          </div>
+        {% endif %}
+        </div>
+
+      {% else %}
+        {% include "balystic/qa/no_question.html "%}
+      {% endif %}
+      </div>
+      <!-- End of Questions -->
+
+      <!-- No Answers -->
+      <div class="tab-pane fade {% if active_tab == 'noans' %}active{% endif %}" id="unans">
+      {% if noans %}
+        {% include "balystic/qa/question_in_list.html" with pane=noans %}
+      {% else %}
+        {% include "balystic/qa/no_question.html "%}
+      {% endif %}
+        <div class="pagination">
+          <span class="step-links">
+            {% if noans.has_previous %}
+              <a href="?noans_page={{ noans.previous_page_number }}&active_tab=noans">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ noans.number }} of {{ noans.paginator.num_pages }}.
+            </span>
+
+            {% if noans.has_next %}
+              <a href="?noans_page={{ noans.next_page_number }}&active_tab=noans">next</a>
+            {% endif %}
+          </span>
+        </div>
+      </div>
+      <!--End of No Answers-->
+      <!-- Rewards -->
+      <div class="tab-pane fade {% if active_tab == 'reward' %}active{% endif %}" id="reward">
+      {% if reward %}
+          {% include "balystic/qa/question_in_list.html" with pane=reward %}
+      {% else %}
+        {% include "balystic/qa/no_question.html "%}
+      {% endif %}
+      </div>
+      <!-- End Rewards -->
+    </div>
+  </section>
+</div>
+{% endblock qa %}

@@ -1,6 +1,32 @@
 {% extends "base.html" %}
 {% load static i18n %}
 {% block title %}Report{% endblock title %}
+{% block meta %}
+<meta name="description" content="{% trans 'Check out this SEO report for' %} {{ netloc }} {% trans "on" %} {{request.get_host}}">
+
+<!-- Facebook -->
+<meta property="og:description" content="{% trans 'Check out this SEO report for' %} {{ netloc }} {% trans "on" %} {{request.get_host}}">
+<meta property="og:image" content="{% static 'images/social-image.jpg' %}">
+<meta property="og:title" content="{% trans 'SEOQ Website Report' %}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<!-- End Facebook -->
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@SEOQuotient">
+<meta name="twitter:description" content="{% trans 'Check out this SEO report for' %} {{ netloc }} {% trans "on" %} {{request.get_host}}">
+<meta name="twitter:image" content="{% static 'images/social-image.jpg' %}">
+<meta name="twitter:site" content="{{ request.build_absolute_uri }}">
+<meta name="twitter:title" content="{% trans 'SEOQ Website Report' %}">
+<!-- End Twitter -->
+
+<!-- Google Plus -->
+<meta itemprop="description" content="{% trans 'Check out this SEO report for' %} {{ netloc }} {% trans "on" %} {{request.get_host}}">
+<meta itemprop="image" content="{% static 'images/social-image.jpg' %}">
+<meta itemprop="name" content="{% trans 'SEOQ Website Report' %}">
+<!-- End Google Plus -->
+{% endblock meta %}
 {% block page_class %}report{% endblock page_class %}
 {% block nav_class %}navbar-about{% endblock nav_class %}
 {% block logo %}
@@ -13,18 +39,20 @@
       <p class="text-center m-0">Score for:</p>
       <h3 class="text-center text-white m-0">{{ netloc }}</h3>
       {% if report.keywords %}
-        <h4 class="text-center text-white m-0">{{ report.keywords }}</h4>
+        <a href="{{report.keywords}}" target="_blank">
+          <h4 class="text-center text-white m-0">{{ report.keywords }}</h4>
+        </a>
       {% endif %}
       <div id="container">
         <h2 class="text-center text-white">{{ total_score }}</h2>
       </div>
       <div class="col-xs-10 col-xs-offset-1 m-t-10 text-center">
         <p class="m-b-10 m-t-10">Share score:</p>
-        <a href="http://www.facebook.com/dialog/share?display=popup&amp;href={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}&amp;app_id=554100534774985" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
           <i class="fa fa-facebook-f m-r-5"></i>
           Facebook
         </a>
-        <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20SEO%20report%20on%20SEOQ.com%20for%20{{ netloc }}!%20{{ request.build_absolute_uri }}&amp;via=SEOQuotient&amp;lang=en" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
+        <a href="https://twitter.com/home?status=Check%20out%20this%20SEO%20report%20for {{ netloc }} on {{request.get_host}} %20&amp;via=SEOQuotient" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
           <i class="fa fa-twitter m-r-5"></i>
           Twitter
         </a>
@@ -60,7 +88,7 @@
       <div class="col-md-10 col-md-offset-1 text-center m-t-50">
         <p><span class="score-number">3</span><small class="text-muted">/3</small></p>
         <h3 class="m-b-30">Conversation</h3>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae assumenda dolor asperiores soluta commodi temporibus cum minus ipsam, dolore voluptatum eius explicabo laudantium totam dolorum id sequi veniam, corporis laboriosam.</p>
+        <p class="text-muted">Ensuring users are talking about your website will get you noticed. This includes forums or QA on your site, other websites linking back to yours, and social media shares. This conversation among users generates traffic to your website from different sources which ultimately boosts your credibility and ranking.</p>
         <img src="{% static 'images/fish-3.png' %}" alt="Fish animation" class="img-responsive center-block m-y-25" width="190" height="140">
         <div class="row">
           <div class="col-sm-4 col-sm-offset-2"><a class="btn btn-info btn-outline btn-lg btn-block" href="#" role="button">Disqus extension</a></div>
@@ -86,7 +114,7 @@
         {% comment %}
         <div class="col-md-10 col-md-offset-1 text-center m-t-50">
           <h3 class="m-b-30">Competition</h3>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae assumenda dolor asperiores soluta commodi temporibus cum minus ipsam, dolore voluptatum eius explicabo laudantium totam dolorum id sequi veniam, corporis laboriosam.</p>
+          <p class="text-muted">Everyone knows something you don't, so comparing your website's ranking for specific keyword phrases to your competition is a good way to improve your own ranking.</p>
           <img src="{% static 'images/fish-6.png' %}" alt="Fish animation" class="img-responsive center-block m-y-25" width="190" height="140">
           <div class="row">
             <div class="col-sm-4 col-sm-offset-2"><a class="btn btn-muted btn-lg btn-block" href="#" role="button">Link</a></div>
@@ -98,23 +126,23 @@
           <p class="text-center m-y-25">Share this report:</p>
           <div class="row">
             <div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1 text-center">
-              <a href="http://www.facebook.com/dialog/share?display=popup&amp;href={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}&amp;app_id=554100534774985" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
-              <i class="fa fa-facebook-f m-r-5"></i>
-              Facebook
-              </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;redirect_uri={{ request.build_absolute_uri }}" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
+            <i class="fa fa-facebook-f m-r-5"></i>
+            Facebook
+          </a>
             </div>
             <div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1 text-center">
-            <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20SEO%20report%20on%20SEOQ.com%20for%20{{ netloc }}!%20{{ request.build_absolute_uri }}&amp;via=SEOQuotient&amp;lang=en" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
+          <a href="https://twitter.com/home?status=Check%20out%20this%20SEO%20report%20for {{ netloc }} on {{request.get_host}} %20&amp;via=SEOQuotient" target="_blank" class="text-white f-s-18 f-w-700 btn btn-twitter btn-lg">
             <i class="fa fa-twitter m-r-5"></i>
-              Twitter
-            </a>
+            Twitter
+          </a>
             </div>
             <div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1 text-center">
-              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title=Check%20Your%20SEO%20of%20Website
-              &summary=Check%20out%20my%20SEO%20report%20on%20SEOQ.com%20for%20{{ netloc }}!%20via%20@SEOQuotient!%20&source={{ request.build_absolute_uri }}" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
-                <i class="fa fa-linkedin m-r-5" aria-hidden="true"></i>
-                  Linkedin
-              </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title=Check%20Your%20SEO%20of%20Website
+          &summary=Check%20out%20my%20SEO%20report%20on%20SEOQ.com%20for%20{{ netloc }}!%20via%20@SEOQuotient!%20&source={{ request.build_absolute_uri }}" target="_blank" class="text-white f-s-18 f-w-700 btn btn-facebook btn-lg">
+            <i class="fa fa-linkedin m-r-5" aria-hidden="true"></i>
+            Linkedin
+          </a>
             </div>
             <div class="col-sm-12 text-center m-t-20">
               <form class="form-inline" action="" method="POST">
@@ -127,6 +155,7 @@
             </div>
           </div>
         </div>
+
     </div>
   </div>
 </section>

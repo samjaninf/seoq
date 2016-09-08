@@ -8,8 +8,10 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from balystic import views as balystic_views
+from ckeditor_uploader import views as ckeditor_views
 from seoq.core import views as core_views
 from seoq.payments_seoq import views as payments_seoq
+from seoq.users.views import UserUpdateRedirect
 
 from django.views.generic.base import RedirectView
 
@@ -25,8 +27,8 @@ urlpatterns = [
         balystic_views.LoginView.as_view(), name='balystic_login'),
     url(r'^accounts/logout/$',
         balystic_views.LogoutView.as_view(), name='balystic_logout'),
-    url(r'^users/edit/(?P<username>[-\w.]+)/$',
-        balystic_views.CommunityUserUpdate.as_view(),
+    url(r'^users/edit/(?P<username>[-\w.+]+)/$',
+        UserUpdateRedirect.as_view(),
         name='balystic_user_update'),
     url(r'^accounts/signup/$',
         balystic_views.UserSignupView.as_view(), name='balystic_signup'),
@@ -55,13 +57,18 @@ urlpatterns = [
         name='order_payment_success'),
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),
+    url(r'^ckeditor/upload/',
+        ckeditor_views.upload, name='ckeditor_upload'),
+    url(r'^ckeditor/browse/', ckeditor_views.browse, name='ckeditor_browse'),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url('^markdown/', include( 'django_markdown.urls')),
 
     # User management
     url(r'^', include('seoq.users.urls', namespace='users')),
-    url(r'^qa/.*$',
-        RedirectView.as_view(
-            url='http://seoq.app.balystic.com/questions-and-answers/',
-            permanent=False), name='balystic_qa'),
+    # url(r'^qa/.*$',
+    #     RedirectView.as_view(
+    #         url='http://seoq.app.balystic.com/questions-and-answers/',
+    #         permanent=False), name='balystic_qa'),
     url(r'^', include('balystic.urls')),
     url(r'^', include('seoq.seoqtool.urls', namespace='seoqtool')),
     url(r'^', include('plans.urls')),

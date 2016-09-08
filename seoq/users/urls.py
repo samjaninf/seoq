@@ -13,11 +13,17 @@ urlpatterns = [
         name='list'
     ),
 
-    url(
-        regex=r'^user_list/$',
-        view=views.UserListTempView.as_view(),
-        name='list'
-    ),
+    # url(
+    #     regex=r'^user_list/$',
+    #     view=views.UserListTempView.as_view(),
+    #     name='list'
+    # ),
+
+    # url(
+    #     regex=r'^user-list-recent/$',
+    #     view=views.UserListMostRecentTempView.as_view(),
+    #     name='list'
+    # ),
 
     # URL pattern for the UserRedirectView
     url(
@@ -33,10 +39,10 @@ urlpatterns = [
         name='detail'
     ),
 
-    # URL pattern for the UserUpdateView
-    #url(
-    #    regex=r'^~update/$',
-    #    view=views.UserUpdateView.as_view(),
-    #    name='update'
-    #),
+    #URL pattern for the UserUpdateView
+    url(
+        regex=r'^~update/$',
+        view=views.UserUpdateView.as_view(),
+        name='update'
+    ),
 ]
