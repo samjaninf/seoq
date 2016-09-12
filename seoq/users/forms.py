@@ -9,6 +9,8 @@ class EditProfileForm(forms.ModelForm):
 
     areas_of_expertise = ArraySelect(forms.CharField(max_length=50), widget=ArrayWidget(choices=User.EXPERTISE_CHOICES))
     languages = ArraySelect(forms.CharField(max_length=50), widget=ArrayWidget(choices=User.LANGUAGE_CHOICES))
+    title = forms.CharField( required=False, 
+      widget=forms.TextInput(attrs={'placeholder': 'e.g. SEO Professional and Marketing Consultant'}))
 
     class Meta:
         model = User
