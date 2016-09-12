@@ -20,3 +20,14 @@ class EditProfileForm(forms.ModelForm):
                   'areas_of_expertise', 'areas_of_expertise_other',
                   'languages', 'languages_other', 'company_name',
                   'company_logo']
+
+    def __init__(self, *args, **kwargs):
+        super(EditProfileForm, self).__init__(*args, **kwargs)
+        self.fields['fb_account'].widget.attrs.update({
+          'placeholder': 'https://www.facebook.com/SEOQuotient'})
+        self.fields['twitter_account'].widget.attrs.update({
+          'placeholder': 'https://twitter.com/SEOQuotient'})
+        self.fields['linkedin_account'].widget.attrs.update({
+          'placeholder': 'https://www.linkedin.com/in/SEOQuotient'})
+        self.fields['google_account'].widget.attrs.update({
+          'placeholder': 'https://plus.google.com/SEOQuotient'})
