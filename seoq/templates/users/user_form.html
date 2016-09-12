@@ -181,8 +181,9 @@
           <div class="hidden">
             {{ form.company_logo|as_crispy_field }}
           </div>
+          <br>
           {% if form.company_logo.value != '' %}
-            <img src="{{ MEDIA_URL }}{{ form.company_logo.value }}" alt="" class="img-responsive" width="200" height="200" id="image-logo">
+            <img src="{{ MEDIA_URL }}{{ form.company_logo.value }}" alt="" class="img-responsive img-thumbnail" width="200" height="200" id="image-logo">
           {% else %}
             <img src="" id="image-logo" class="img-responsive img-thumbnail">
           {% endif %}
@@ -255,6 +256,7 @@ function readURL(input) {
       reader.onload = function (e) {
         $('#image-logo').attr('src', e.target.result);
         document.getElementById('image-logo').style.display = 'block';
+        document.getElementById('image-logo').style.width = '200px';
       }
       reader.readAsDataURL(input.files[0]);
     }
