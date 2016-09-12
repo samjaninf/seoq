@@ -22,23 +22,20 @@
       {% if questions %}
         {% include "balystic/qa/question_in_list.html" with pane=questions %}
 
+        {% if question_pages.previous != None or question_pages.next != None %}
         <div class="pagination">
-        {% if is_paginated %}
           <div class="pagination">
             <span class="page-links">
-            {% if page_obj.has_previous %}
-              <a href="{% url 'qa_index' %}?page={{ page_obj.previous_page_number }}">previous</a>
+            {% if question_pages.previous != None %}
+              <a href="{% url 'balystic_qa' %}?page={{ question_pages.previous }}">previous</a>
             {% endif %}
-              <span class="page-current">
-              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-              </span>
-            {% if page_obj.has_next %}
-              <a href="{% url 'qa_index' %}?page={{ page_obj.next_page_number }}">next</a>
+            {% if question_pages.next != None %}
+              <a href="{% url 'balystic_qa' %}?page={{ question_pages.next }}">next</a>
             {% endif %}
             </span>
           </div>
-        {% endif %}
         </div>
+        {% endif %}
 
       {% else %}
         {% include "balystic/qa/no_question.html "%}
@@ -53,21 +50,21 @@
       {% else %}
         {% include "balystic/qa/no_question.html "%}
       {% endif %}
+      {% if noans_pages.previous != None or noans_pages.next != None %}
+        
         <div class="pagination">
           <span class="step-links">
-            {% if noans.has_previous %}
-              <a href="?noans_page={{ noans.previous_page_number }}&active_tab=noans">previous</a>
+            {% if noans_pages.previous != None %}
+              <a href="?noans_page={{ noans_pages.previous }}&active_tab=noans">previous</a>
             {% endif %}
 
-            <span class="current">
-                Page {{ noans.number }} of {{ noans.paginator.num_pages }}.
-            </span>
-
-            {% if noans.has_next %}
-              <a href="?noans_page={{ noans.next_page_number }}&active_tab=noans">next</a>
+            {% if noans_pages.next != None %}
+              <a href="?noans_page={{ noans_pages.next }}&active_tab=noans">next</a>
             {% endif %}
           </span>
         </div>
+      {% endif %}
+
       </div>
       <!--End of No Answers-->
       <!-- Rewards -->
