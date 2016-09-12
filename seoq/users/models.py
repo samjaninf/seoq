@@ -28,6 +28,8 @@ class User(AbstractUser):
         ('English', 'English'),
         ('French', 'French'),
         ('Spanish', 'Spanish'),
+        ('German', 'German'),
+        ('Portuguese', 'Portuguese'),
     )
 
     # First Name and Last Name do not cover name patterns
