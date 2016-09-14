@@ -1,5 +1,5 @@
 from django.contrib.postgres.forms.array import SimpleArrayField
-from django.forms import SelectMultiple
+from django.forms import SelectMultiple, CheckboxSelectMultiple
 
 
 class ArraySelect(SimpleArrayField):
@@ -32,8 +32,9 @@ class ArraySelect(SimpleArrayField):
         return values
 
 
-class ArrayWidget(SelectMultiple):
+class ArrayWidget(CheckboxSelectMultiple):
 
     def render(self, name, value, attrs=None):
         value = value.split(',')
+        print value
         return super(ArrayWidget, self).render(name, value, attrs)
