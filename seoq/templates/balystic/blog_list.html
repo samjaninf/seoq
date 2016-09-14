@@ -25,16 +25,16 @@
     {% endif %}
     {% for entry in blog_entries %}
       <div class="row p-20">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <a href="{% url 'balystic_blog_detail' entry.slug %}">
             {% if entry.image %}
-                <img class="img-responsive center-block-responsive" src="{{ entry.image }}" width="200" height="150" alt="Blog image {{ entry.title }}">
+                <img class="h3 img-responsive center-block-responsive" src="{{ entry.image }}" width="250" height="200" alt="Blog image {{ entry.title }}">
             {% else %}
-                <img class="img-responsive center-block-responsive" src="{% static 'images/default_small.jpg' %}" width="200" height="150" alt="Blog default image">
+                <img class="h3 img-responsive center-block-responsive" src="{% static 'images/default_small.jpg' %}" width="250" height="200" alt="Blog default image">
             {% endif %}
           </a>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
           <div class="col-md-12">
             <a href="{% url 'balystic_blog_detail' entry.slug %}" class="title-blog">
               <h3>{{ entry.title }}</h3>
@@ -47,7 +47,7 @@
             <p class="m-t-10">{{ entry.excerpt|safe }}
               <a href="{% url 'balystic_blog_detail' entry.slug %}">{% trans "Read more..." %}</a>
             </p>
-            {% if entry.tags %}  
+            {% if entry.tags %}
             <p>Tagged: {% for tag in entry.tags %}<a href=""><span class="label label-default"><i class="fa fa-tag"></i> {{ tag }}</span></a>{% endfor %}</p>
             {% endif %}
           </div>
