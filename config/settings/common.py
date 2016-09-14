@@ -339,3 +339,6 @@ CKEDITOR_CONFIGS = {
 }
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 CKEDITOR_ALLOW_NONIMAGE_FILES = False
+
+PRODUCTION_ENVIRONMENT = env.bool('PRODUCTION_ENVIRONMENT', default=False)
+

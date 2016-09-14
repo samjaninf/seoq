@@ -80,7 +80,7 @@ urlpatterns = [
         name='seo_companies_redirect'),
     url(r'^(?P<slug>[-\w.]+)/$',
         core_views.ArchivedBlogRedirectView.as_view(), name='archived_blog'),
-
+    url(r'^robots.txt$', core_views.RobotsView.as_view())
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

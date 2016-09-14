@@ -1,0 +1,7 @@
+{% if environment %}Sitemap: {% if request.is_secure %}https://{% else %}http://{% endif %}{{request.get_host}}/sitemap.xml{% endif %}
+User-agent: *
+{% if not environment %}
+Disallow /
+{% else %}
+Disallow /admin/
+{% endif %}

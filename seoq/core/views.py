@@ -133,3 +133,10 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['qscraper_url'] = settings.QSCRAPER_URL
         return context
+
+class RobotsView(TemplateView):
+    template_name = 'core/robots.txt'
+
+    def get_context_data(self, **kwargs):
+        kwargs['environment'] = settings.PRODUCTION_ENVIRONMENT
+        return kwargs
