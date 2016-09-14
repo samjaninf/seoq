@@ -36,5 +36,4 @@ class ArrayWidget(CheckboxSelectMultiple):
 
     def render(self, name, value, attrs=None):
         value = value.split(',')
-        print value
         return super(ArrayWidget, self).render(name, value, attrs)
