@@ -95,7 +95,8 @@
           {% endfor %}
         </div>
         <div class="form-group">
-          {{ form.areas_of_expertise|as_crispy_field }}
+          <label for="id_areas_of_expertise" class="control-label m-b-5">Areas of expertise</label>
+          {{ form.areas_of_expertise }}
           {% for error in form.areas_of_expertise.errors %}
             <span class="help-block">
               {{ error|escape }}
@@ -111,7 +112,8 @@
           {% endfor %}
         </div>
         <div class="form-group">
-          {{ form.languages|as_crispy_field }}
+          <label for="id_languages" class="control-label m-b-5">Languages</label>
+          {{ form.languages }}
           {% for error in form.languages.errors %}
             <span class="help-block">
               {{ error|escape }}

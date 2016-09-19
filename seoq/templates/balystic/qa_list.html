@@ -23,18 +23,16 @@
         {% include "balystic/qa/question_in_list.html" with pane=questions %}
 
         {% if question_pages.previous != None or question_pages.next != None %}
-        <div class="pagination">
-          <div class="pagination">
-            <span class="page-links">
+        <nav>
+          <ul class="pager">
             {% if question_pages.previous != None %}
-              <a href="{% url 'balystic_qa' %}?page={{ question_pages.previous }}">previous</a>
+              <li><a href="{% url 'balystic_qa' %}?page={{ question_pages.previous }}">Previous</a></li>
             {% endif %}
             {% if question_pages.next != None %}
-              <a href="{% url 'balystic_qa' %}?page={{ question_pages.next }}">next</a>
+              <li><a href="{% url 'balystic_qa' %}?page={{ question_pages.next }}">Next</a></li>
             {% endif %}
-            </span>
-          </div>
-        </div>
+          </ul>
+        </nav>
         {% endif %}
 
       {% else %}
@@ -51,18 +49,16 @@
         {% include "balystic/qa/no_question.html "%}
       {% endif %}
       {% if noans_pages.previous != None or noans_pages.next != None %}
-        
-        <div class="pagination">
-          <span class="step-links">
+        <nav>
+          <ul class="pager">
             {% if noans_pages.previous != None %}
-              <a href="?noans_page={{ noans_pages.previous }}&active_tab=noans">previous</a>
+              <li><a href="?noans_page={{ noans_pages.previous }}&active_tab=noans">Previous</a></li>
             {% endif %}
-
             {% if noans_pages.next != None %}
-              <a href="?noans_page={{ noans_pages.next }}&active_tab=noans">next</a>
+              <li><a href="?noans_page={{ noans_pages.next }}&active_tab=noans">Next</a></li>
             {% endif %}
-          </span>
-        </div>
+          </ul>
+        </nav>
       {% endif %}
 
       </div>
