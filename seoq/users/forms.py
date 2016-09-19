@@ -34,6 +34,8 @@ class EditProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(EditProfileForm, self).__init__(*args, **kwargs)
+        self.fields['phone_number'].label = 'Phone number (for users to contact you)'
+        self.fields['website_url'].label = 'Website URL'
         self.fields['fb_account'].widget.attrs.update({
           'placeholder': 'https://www.facebook.com/SEOQuotient'})
         self.fields['twitter_account'].widget.attrs.update({
