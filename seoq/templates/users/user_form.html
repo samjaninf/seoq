@@ -14,7 +14,7 @@
         {% csrf_token %}
         <div class="form-group">
           <label for="id_profile_picture" class="control-label ">
-            Profile picture
+            Profile pic
           </label>
           <div class="hidden">
             {{ form.profile_picture|as_crispy_field }}
@@ -166,6 +166,8 @@
             </span>
           {% endfor %}
         </div>
+        <strong>Company Information</strong>
+      	<br><br>
         <div class="form-group">
           {{ form.company_name|as_crispy_field }}
           {% for error in form.company_name.errors %}
