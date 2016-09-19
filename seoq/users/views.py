@@ -49,7 +49,6 @@ class UserUpdateRedirect(RedirectView):
     permanent = False
 
     def get_redirect_url(self, **kwargs):
-        print 'reached this far?'
         return reverse('users:update')
 
 

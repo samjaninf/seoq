@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n staticfiles %}
 
 {% block title %}Edit profile{% endblock %}
 
@@ -12,6 +13,32 @@
                 action="">
         {% csrf_token %}
         <div class="form-group">
+          <label for="id_profile_picture" class="control-label ">
+            Profile pic
+          </label>
+          <div class="hidden">
+            {{ form.profile_picture|as_crispy_field }}
+          </div>
+          {% if form.profile_picture.value != '' %}
+            <img src="{{ MEDIA_URL }}{{ form.profile_picture.value }}" alt="profile" class="img-responsive center-block img-thumbnail" width="200" height="200" id="blah">
+          {% else %}
+            <img src="{% static 'images/profile-default-thumbnail.jpg' %}" id="blah" class="img-responsive img-thumbnail center-block" width="200" height="200">
+          {% endif %}
+          {% for error in form.profile_picture.errors %}
+            <span class="help-block">
+              {{ error|escape }}
+            </span>
+          {% endfor %}
+        </div>
+        <div class="row fieldWrapper form-group text-center">
+          <label for="id_profile_picture" class="btn btn-primary">
+            <span>Choose File</span> <i class="fa fa-camera" aria-hidden="true"></i>
+          </label>
+          {% if form.profile_picture.value != '' %}
+            <label for="profile_picture-clear_id" id="reset" type="button" class="btn btn-danger" onclick="clearImage()">Clear Image <i class="fa fa-camera" aria-hidden="true"></i></label>
+          {% endif %}
+        </div>
+        <div class="form-group">
           {{ form.first_name|as_crispy_field }}
           {% for error in form.first_name.errors %}
             <span class="help-block">
@@ -22,6 +49,80 @@
         <div class="form-group">
           {{ form.last_name|as_crispy_field }}
           {% for error in form.last_name.errors %}
+            <span class="help-block">
+              {{ error|escape }}
+            </span>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          {{ form.title|as_crispy_field }}
+          {% for error in form.title.errors %}
+            <span class="help-block">
+              {{ error|escape }}
+            </span>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          {{ form.about|as_crispy_field }}
+          {% for error in form.about.errors %}
+            <span class="help-block">
+              {{ error|escape }}
+            </span>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          {{ form.website_url|as_crispy_field }}
+          {% for error in form.website_url.errors %}
+            <span class="help-block">
+              {{ error|escape }}
+            </span>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          {{ form.location|as_crispy_field }}
+          {% for error in form.location.errors %}
+            <span class="help-block">
+              {{ error|escape }}
+            </span>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          {{ form.phone_number|as_crispy_field }}
+          {% for error in form.phone_number.errors %}
+            <span class="help-block">
+              {{ error|escape }}
+            </span>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          <label for="id_areas_of_expertise" class="control-label m-b-5">Areas of expertise</label>
+          {{ form.areas_of_expertise }}
+          {% for error in form.areas_of_expertise.errors %}
+            <span class="help-block">
+              {{ error|escape }}
+            </span>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          {{ form.areas_of_expertise_other|as_crispy_field }}
+          {% for error in form.areas_of_expertise_other.errors %}
+            <span class="help-block">
+              {{ error|escape }}
+            </span>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          <label for="id_languages" class="control-label m-b-5">Languages</label>
+          {{ form.languages }}
+          {% for error in form.languages.errors %}
+            <span class="help-block">
+              {{ error|escape }}
+            </span>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          {{ form.languages_other|as_crispy_field }}
+          {% for error in form.languages_other.errors %}
             <span class="help-block">
               {{ error|escape }}
             </span>
@@ -67,104 +168,8 @@
             </span>
           {% endfor %}
         </div>
-        <div class="form-group">
-          {{ form.location|as_crispy_field }}
-          {% for error in form.location.errors %}
-            <span class="help-block">
-              {{ error|escape }}
-            </span>
-          {% endfor %}
-        </div>
-        <div class="form-group">
-          {{ form.phone_number|as_crispy_field }}
-          {% for error in form.phone_number.errors %}
-            <span class="help-block">
-              {{ error|escape }}
-            </span>
-          {% endfor %}
-        </div>
-        <div class="form-group">
-          {{ form.title|as_crispy_field }}
-          {% for error in form.title.errors %}
-            <span class="help-block">
-              {{ error|escape }}
-            </span>
-          {% endfor %}
-        </div>
-        <div class="form-group">
-          {{ form.about|as_crispy_field }}
-          {% for error in form.about.errors %}
-            <span class="help-block">
-              {{ error|escape }}
-            </span>
-          {% endfor %}
-        </div>
-        <div class="form-group">
-          <label for="id_profile_picture" class="control-label ">
-            Profile picture
-          </label>
-          <div class="hidden">
-            {{ form.profile_picture|as_crispy_field }}
-          </div>
-          {% if form.profile_picture.value != '' %}
-            <img src="{{ MEDIA_URL }}{{ form.profile_picture.value }}" alt="profile" class="img-responsive" width="200" height="200" id="blah">
-          {% else %}
-            <img src="" id="blah" class="img-responsive img-thumbnail">
-          {% endif %}
-          {% for error in form.profile_picture.errors %}
-            <span class="help-block">
-              {{ error|escape }}
-            </span>
-          {% endfor %}
-        </div>
-        <div class="row fieldWrapper form-group">
-          <label for="id_profile_picture" class="btn btn-primary">
-            <span>Choose File</span> <i class="fa fa-camera" aria-hidden="true"></i>
-          </label>
-          {% if form.profile_picture.value != '' %}
-            <label for="profile_picture-clear_id" id="reset" type="button" class="btn btn-danger" onclick="clearImage()">Clear Image <i class="fa fa-camera" aria-hidden="true"></i></label>
-          {% endif %}
-        </div>
-        <div class="form-group">
-          {{ form.website_url|as_crispy_field }}
-          {% for error in form.website_url.errors %}
-            <span class="help-block">
-              {{ error|escape }}
-            </span>
-          {% endfor %}
-        </div>
-        <div class="form-group">
-          {{ form.areas_of_expertise|as_crispy_field }}
-          {% for error in form.areas_of_expertise.errors %}
-            <span class="help-block">
-              {{ error|escape }}
-            </span>
-          {% endfor %}
-        </div>
-        <div class="form-group">
-          {{ form.areas_of_expertise_other|as_crispy_field }}
-          {% for error in form.areas_of_expertise_other.errors %}
-            <span class="help-block">
-              {{ error|escape }}
-            </span>
-          {% endfor %}
-        </div>
-        <div class="form-group">
-          {{ form.languages|as_crispy_field }}
-          {% for error in form.languages.errors %}
-            <span class="help-block">
-              {{ error|escape }}
-            </span>
-          {% endfor %}
-        </div>
-        <div class="form-group">
-          {{ form.languages_other|as_crispy_field }}
-          {% for error in form.languages_other.errors %}
-            <span class="help-block">
-              {{ error|escape }}
-            </span>
-          {% endfor %}
-        </div>
+        <strong>Company Information</strong>
+      	<br><br>
         <div class="form-group">
           {{ form.company_name|as_crispy_field }}
           {% for error in form.company_name.errors %}
@@ -180,8 +185,9 @@
           <div class="hidden">
             {{ form.company_logo|as_crispy_field }}
           </div>
+          <br>
           {% if form.company_logo.value != '' %}
-            <img src="{{ MEDIA_URL }}{{ form.company_logo.value }}" alt="" class="img-responsive" width="200" height="200" id="image-logo">
+            <img src="{{ MEDIA_URL }}{{ form.company_logo.value }}" alt="" class="img-responsive img-thumbnail" width="200" height="200" id="image-logo">
           {% else %}
             <img src="" id="image-logo" class="img-responsive img-thumbnail">
           {% endif %}
@@ -254,6 +260,7 @@ function readURL(input) {
       reader.onload = function (e) {
         $('#image-logo').attr('src', e.target.result);
         document.getElementById('image-logo').style.display = 'block';
+        document.getElementById('image-logo').style.width = '200px';
       }
       reader.readAsDataURL(input.files[0]);
     }
