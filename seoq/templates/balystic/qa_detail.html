@@ -35,11 +35,21 @@
       <div class="options arrow-box">
         {% if question.closed %}
           <div class="alert alert-danger">This Question has been closed.</div>
-        {% elif request.user.is_authenticated and question.user.username = request.user.username %}
+        {% endif %}
+        {% if request.user.is_authenticated and question.user.username = request.user.username %}
           <a class="action pull-right text-muted" 
               href="{% url 'balystic_qa_edit_question' question.pk %}" 
               role="button">
             <i class="fa fa-pencil"></i><span class="hidden-xs">Edit question</span></a>
+          <form action="{% url 'balystic_qa_close_question' question.pk %}?next={{ request.path }}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="action pull-right btn-delete text-danger">
+              {% if not question.closed %}
+                <span class="hidden-xs">Close question</span></button>
+              {% else %}
+                <span class="hidden-xs">Reopen question</span></button>
+              {% endif %}
+          </form>
           <form action="{% url 'balystic_qa_delete_question' question.pk %}" method="post">
               {% csrf_token %}
               <button type="submit" class="action pull-right btn-delete text-danger"><i class="fa fa-trash"></i><span class="hidden-xs">Delete question</span></button>
@@ -114,18 +124,9 @@
     <!-- Answers -->
     <section class="answers">
       <h3>Answers ({{ question.answer_set|length }})</h3>
-      {% if question.closed %}
-        {% for answer in question.answer_set %}
-          {% if answer.answer %}
-            {% include "balystic/qa/answer.html" %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
       
       {% for answer in question.answer_set %}
-        {% if not answer.answer %}
           {% include "balystic/qa/answer.html" %}
-        {% endif %}
       {% empty %}
         <hr>
         <p class="text-center m-t-20">There are no answers yet.</p>
