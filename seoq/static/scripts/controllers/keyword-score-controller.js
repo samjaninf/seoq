@@ -1,17 +1,16 @@
 'use strict';
 
-angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', function ($scope, $http) {
-	$scope.request_data = {
-		'url': '',
-		'keyword': ''
-	}
+angular.module('seoq').controller('keywordScoreController', ['$scope', '$http', function ($scope, $http) {
+  $scope.request_data = {
+    'url': '',
+    'keyword': ''
+  }
 
   var csrftoken = $('#my_token').val();
   $scope.animation = false;
   $scope.bad_status_code = false;
   $scope.bad_url = true;
   $scope.validate_url = function(qscraper_url){
-    console.log(qscraper_url)
     var qscraper_var = qscraper_url + '/api/validation/url/?url='
     $http({
       method: 'GET',
@@ -29,13 +28,13 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
   }
   $scope.startReport = function(qscraper_url, username){
     var keyword_disabled = document.getElementById('keywords_input').getAttribute('disabled');
-		var url = qscraper_url + '/api/seoq-tool/start-report/';
+    var url = qscraper_url + '/api/seoq-tool/start-report/';
     document.getElementById('how-website').className = "animation-line";
-		var data = {
-			url: $scope.request_data.url,
-		};
+    var data = {
+      url: $scope.request_data.url,
+    };
     if ($scope.request_data.keyword) {
-      data.keywords = $scope.request_data.url;
+      data.keywords = $scope.request_data.keyword;
     }
     if (username) {
       data.username = username;
@@ -49,7 +48,7 @@ angular.module('seoq').controller('keywordScoreController',	['$scope', '$http', 
       $scope.bad_status_code = false;
       $scope.analysis_message = "we are getting your site score. It'll take some minutes to finish";
       var obtained_pk = data.report;
-      url = qscraper_url + '/api/seoq-tool/report-status/' + obtained_pk;
+      url = qscraper_url + '/api/seoq-tool/report-status/' + obtained_pk + '/';
       setInterval(function(){
         $http({
           method: 'GET',
